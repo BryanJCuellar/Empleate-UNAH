@@ -1,10 +1,15 @@
-var express = require('express');
-var app = express();
+//Install express server
+const express = require('express');
 const path = require('path');
-const PORT = process.env.PORT || 5000;
 
-var app_path = 'src';
+const app = express();
 
-app.use('/', express.static(path.join(__dirname, app_path)))
-  .get('*', (req, res) => res.sendFile(path.join(__dirname, app_path + '/index.html')))
-  .listen(PORT, () => console.log(`Listening on port ${PORT}`));
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/empleate-unah'));
+
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/empleate-unah/'}),
+);
+
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
