@@ -5,6 +5,12 @@ var cors = require('cors');
 // Modulo body-parser para obtener datos en metodo POST
 var bodyParser = require('body-parser');
 
+// Conexion a BD
+var database = require('./modules/database');
+
+// Rutas Express
+var estudiantesRouter = require('./routes/estudiantes-router');
+
 var app = express();
 
 // Middleware
@@ -17,6 +23,10 @@ app.use(bodyParser.urlencoded({
 app.get('/', function (req, res) {
     res.send('Ruta principal de servidor Backend de EMPLEATE-UNAH activa');
 });
+
+// Estudiantes
+app.use('/estudiantes', estudiantesRouter);
+
 // process.env.PORT: variable de entorno para escuchar el puerto que la plataforma a subir la app nos brinde
 app.set('port', process.env.PORT || 8888);
 
