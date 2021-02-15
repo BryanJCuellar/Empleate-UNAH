@@ -9,11 +9,12 @@ class Database {
         mongoose.connect(process.env.MONGODB_URI || `mongodb://${servidor}/${db}`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            useCreateIndex: true,
             useFindAndModify: false
         }).then(() => {
             console.log('Conexion a mongoDB exitosa');
         }).catch((error) => {
-            console.log(error);
+            console.log('Error en la BD: ', error);
         });
     }
 }

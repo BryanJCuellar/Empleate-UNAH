@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Aguafina+Script&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!--link rel="shortcut icon" type="image/png" href="/favicon.png"-->
+</head>
+
+<body>
+    <div id="contenedor">
+        <!--<a href="#"><img id="logo" src="img/logo.png" alt="logotipo"></a>-->
+        <section id="login">
+            <a href="#"><img id="birrete" src="img/birrete.png" alt="b"></a>
+            <h1>Registrate</h1>
+            <input type="text" placeholder="correo electronico"><br>
+            <input type="password" placeholder="contrasena"><br><br>
+
+            <!-- confirmacion -->
+            <button type=button onclick="pregunta()" value="Enviar">Enviar</button>
+            <script>
+                function pregunta() {
+
+                    swal({
+                        title: "Registro exitoso",
+                        text: "Redireccionando en 2 segundos",
+                        type: "success",
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function() {
+                        window.location.href = "otrapagina.html";
+                    });
+                }
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+            <!--fin de la confirmacion -->
+
+
+
+            <label class="texto-pequenio">o inicia con: </label>
+            <div class="social-login texto-derecha">
+
+                <div>
+                    <a href="#"><img style="margin:5px" src="img/facebook.png" width="30" height="30" alt="Instagram"></a>
+                    <a href="#"><img style="margin:5px" src="img/linkedin.png" width="30" height="30" alt="Facebook"></a>
+                    <a href="#"><img style="margin:5px" src="img/google-logo.png" width="30" height="30" alt="YouTube"></a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
