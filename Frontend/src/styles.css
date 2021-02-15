@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*Background image of student login*/
+.student-login {
+  background-color: #d4d4d4ad;
+  background-image: url('assets/img/unah.jpg');
+  /*min-height: 100vh;*/
+  width: 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-attachment: fixed;*/
+}
+
+/*Formularios reactivos*/
+.form-error {
+  color: #CD0052;
+  margin: 5px;
+  margin-top: 0px;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.form-input-error {
+  border-color: #DD0000;
+}
+
+.form-input-error:focus {
+  outline: 0px;
+  border-color: #DD0000;
+  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0, .25);
+}
+/**/

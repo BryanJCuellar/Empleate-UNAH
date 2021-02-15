@@ -13,7 +13,7 @@
 }
 
 body {
-    background-image: url(../img/unah.jpg);
+    background-image: url(../img/unahR.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -21,8 +21,9 @@ body {
 
 #contenedor {
     background-color: rgba(0, 0, 0, 0.65);
-    height: 100vh;
+    height: 100%;
     padding: 30px;
+    justify-content: center;
 }
 
 #birrete {
@@ -30,14 +31,16 @@ body {
     margin-left: 90px;
 }
 
-#login {
+#registro {
     background-color: #d4d4d4ad;
-    width: 300px;
+    width: 60%;
+    
     color: white;
     border-radius: 5px;
     padding: 30px 80px 30px 80px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 10px;  
     min-height: 600px;
 }
 
@@ -48,7 +51,7 @@ body {
 }
 */
 
-#login h1 {
+#registro h1 {
     /*Aplicar estilo a cualquier etiqueta h1 DENTRO de la etiqueta con id #login*/
     text-align: -webkit-center;
     font-size: 32px;
@@ -59,8 +62,8 @@ body {
     /*font-family: FuenteGoticaSalvaje, Arial;*/
 }
 
-#login input[type='text'],
-#login input[type='password'] {
+#registro input[type='text'],
+#registro input[type='password'] {
     background-color: #eaeaea;
     font-size: 1.1rem;
     /* border: 0px solid #000; */
@@ -72,7 +75,7 @@ body {
     box-sizing: border-box;
 }
 
-#login button {
+#registro button {
     width: 100%;
     font-size: 1.1rem;
     padding: 11px;
@@ -108,7 +111,7 @@ body {
 }
 
 @media (max-width:575.98px) {
-    #login {
+    #registro {
         width: auto;
         color: white;
         padding: 30px 20px;
@@ -116,5 +119,6 @@ body {
     }
     #birrete {
         display: none;
+        position: relative;
     }
 }

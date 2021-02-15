@@ -46,9 +46,16 @@ router.post('/signup', validateEmail, function (req, res) {
         apellido: req.body.apellido,
         email: req.body.email,
         password: password_hash,
+        fechaNacimiento: null,
+        numeroIdentidad: null,
+        genero: null,
+        datosDireccion: [],
+        centro: null,
+        carreras: [],
         telefono: req.body.telefono,
         imagenPerfil: null,
-        educacion: null,
+        tituloCurriculum: null,
+        descripcionPerfil: null,
         intereses: null
     });
 
@@ -92,7 +99,7 @@ router.post('/login', function (req, res) {
             // Comparar hash de password
             let password_match = bcrypt.compareSync(req.body.password, result.password)
             if (password_match) {
-                 // Success, inicia sesion con JWT
+                // Success, inicia sesion con JWT
                 const expiresIn = 24 * 60 * 60;
                 const accessToken = jwt.sign({
                     _id: result._id,
@@ -123,6 +130,24 @@ router.post('/login', function (req, res) {
                 error: error,
                 mensaje: 'No-Autorizado: Email no encontrado'
             });
+            res.end();
+        });
+});
+
+// Obtener todos los estudiantes
+router.get('/', function (req, res) {
+    estudiante.find({}, {
+            _id: true,
+            nombre: true,
+            apellido: true,
+            email: true
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
             res.end();
         });
 });
