@@ -16,7 +16,7 @@ router.get('/tokenID', verifyToken, function (req, res) {
     });
 });
 
-// Obtener informacion general de estudiante
+// Obtener informacion principal de estudiante
 router.get('/:idEstudiante', function (req, res) {
     estudiante.findOne({
             _id: mongoose.Types.ObjectId(req.params.idEstudiante)

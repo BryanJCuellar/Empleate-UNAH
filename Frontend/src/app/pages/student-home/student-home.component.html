@@ -1,1 +1,4 @@
-<p>student-home works!</p>
+<div id="student-homepg" *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
+    <h2 class="p-5">Bienvenid@ {{estudianteActual.nombre}} {{estudianteActual.apellido}}</h2>
+</div>
+
