@@ -18,9 +18,18 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  /*background-attachment: fixed;*/
+  background-attachment: fixed;
 }
 
+.primary-link {
+  color: #009FE1 !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+.primary-link:hover{
+  color: #2f7ea0 !important;
+  text-decoration: none;
+}
 /*Formularios reactivos*/
 .form-error {
   color: #CD0052;

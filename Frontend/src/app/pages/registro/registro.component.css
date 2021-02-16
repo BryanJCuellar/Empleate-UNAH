@@ -26,15 +26,15 @@
 
 #registro {
     background-color: #d4d4d4ad;
-    width: 60%;
-    
+    width: 700px;
+    max-width: 100%;
     color: white;
     border-radius: 5px;
-    padding: 30px 80px 30px 80px;
+    padding: 30px 80px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;  
-    min-height: 600px;
+    /*padding-top: 10px;  
+    min-height: 600px;*/
 }
 
 
@@ -97,6 +97,5 @@
 
 .icono-alumno{
     font-size: 55px;
-    padding-left: 278px;
 }
 

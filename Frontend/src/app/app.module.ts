@@ -21,6 +21,7 @@ import { RouterModule} from '@angular/router';
   declarations: [
     AppComponent,
     LandingComponent,
+    RegistroComponent,
     StudentHomeComponent,
     LoginComponent
   ],

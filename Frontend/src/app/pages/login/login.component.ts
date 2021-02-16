@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       timer: 2000,
       showConfirmButton: false
     }).then(success => {
-      window.location.href = '/home/student';
+      window.location.href = '/student/home';
     }
     ).catch(err => console.log(err));
   }

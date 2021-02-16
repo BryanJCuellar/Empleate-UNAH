@@ -7,6 +7,7 @@ import { StudentHomeComponent } from './pages/student-home/student-home.componen
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
+  { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: '', component: LandingComponent, data: { title: 'Empleate-UNAH' } },
   { path: 'register/student', component: RegistroComponent, data: { title: 'Empleate-UNAH - Registro Estudiante' } },
   { path: 'login', component: LoginComponent, data: { title: 'Empleate-UNAH - Login' } },
