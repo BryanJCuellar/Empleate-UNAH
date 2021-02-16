@@ -3,24 +3,22 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingComponent } from './pages/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Components
-import { StudentLoginComponent } from './pages/login/student-login/student-login.component';
+import { LandingComponent } from './pages/landing/landing.component';
 import { StudentSignupComponent } from './pages/signup/student-signup/student-signup.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
-
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
-    StudentLoginComponent,
     StudentSignupComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
