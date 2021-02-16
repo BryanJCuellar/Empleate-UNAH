@@ -13,6 +13,9 @@ import { StudentSignupComponent } from './pages/signup/student-signup/student-si
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { RouterModule} from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { RegistroComponent } from './pages/registro/registro.component';
     StudentSignupComponent,
     StudentHomeComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    LandingComponent ,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,14 @@ import { RegistroComponent } from './pages/registro/registro.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: LandingComponent, data: { title: 'Empleate-UNAH' } },
+      { path: 'login', component: LoginComponent, data: { title: 'Empleate-UNAH - Login' } },
+      { path: 'student/signup', component: StudentSignupComponent, data: { title: 'Empleate-UNAH - Registro Estudiante' } },
+      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - Inicio Estudiante' } },
+      { path: 'register/student', component: RegistroComponent }
+  ])
   ],
   providers: [
     Title

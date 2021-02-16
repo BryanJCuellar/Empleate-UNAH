@@ -1,11 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light nav-principal">
-  <!-- Just an image 
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img src="./assets/Logo_UNAH.png" width="30" height="30" alt="">
-      </a>
-    </nav>-->
-    <a style=" color: white !important;" class="navbar-brand" href="#">Empléate UNAH</a>
+  <!-- Image and text -->
+  <a class="navbar-brand" href="#" style=" color: white !important;">
+    <img src="./assets/img/logo.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
+    Empléate UNAH
+  </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,19 +19,22 @@
     
       </ul>
     </div>
+   
     <div class="btn-group dropleft ">
       <button type="button" class="btn boton-menu dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Regístrate
       </button>
       <div class="dropdown-menu">
         <!-- Dropdown menu links -->
-        <a class="dropdown-item" href="#">Estudiantes</a>
-        <a class="dropdown-item" href="#">Empresas</a>
+        <a class="dropdown-item" [routerLink]= "['register/student']">Estudiantes</a>
+        <a class="dropdown-item" [routerLink]= "['register/student']">Empresas</a>
       </div>
     </div>
+    
+      <a  style=" color: white !important;"class="nav-link" [routerLink]= "['login']" >Ingresar</a>
   </nav>
 
-<div class="card bg-dark text-white">
+<div class="card bg-dark">
     <img src="./assets/fondo.jpg" class="card-img" alt="...">
     <div class="card-img-overlay">
       <div class="card text-center">
