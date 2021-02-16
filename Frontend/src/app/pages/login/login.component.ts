@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     // Funcionalidad boton login
-
+    this.emailValido = true;
+    this.passwordValido = true;
+    
     Swal.fire({
       title: 'Login exitoso',
       text: '',

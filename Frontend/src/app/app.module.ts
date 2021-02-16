@@ -7,25 +7,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// Services
+import { AuthService } from './services/auth.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 // Components
 import { LandingComponent } from './pages/landing/landing.component';
-import { StudentSignupComponent } from './pages/signup/student-signup/student-signup.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegistroComponent } from './pages/registro/registro.component';
 import { RouterModule} from '@angular/router';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentSignupComponent,
+    LandingComponent,
     StudentHomeComponent,
-    LoginComponent,
-    RegistroComponent,
-    LandingComponent ,
-
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,14 +33,19 @@ import { RouterModule} from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LandingComponent, data: { title: 'Empleate-UNAH' } },
+      { path: 'register/student', component: RegistroComponent, data: { title: 'Empleate-UNAH - Registro Estudiante' } },
       { path: 'login', component: LoginComponent, data: { title: 'Empleate-UNAH - Login' } },
-      { path: 'student/signup', component: StudentSignupComponent, data: { title: 'Empleate-UNAH - Registro Estudiante' } },
-      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - Inicio Estudiante' } },
-      { path: 'register/student', component: RegistroComponent }
-  ])
+      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - Inicio Estudiante' } }
+    ])
   ],
   providers: [
-    Title
+    Title,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
