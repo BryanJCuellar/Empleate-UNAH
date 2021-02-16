@@ -12,13 +12,15 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { StudentSignupComponent } from './pages/signup/student-signup/student-signup.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentSignupComponent,
     StudentHomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
