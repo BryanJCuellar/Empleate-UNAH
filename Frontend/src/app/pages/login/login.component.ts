@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
-  constructor() { }
+  constructor(
+    private userService:UserService
+  ) { }
 
   ngOnInit(): void {
     document.body.classList.add('student-login');
@@ -33,20 +35,27 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // Funcionalidad boton login
-    this.emailValido = true;
-    this.passwordValido = true;
-    
-    Swal.fire({
-      title: 'Login exitoso',
-      text: '',
-      icon: 'success',
-      timer: 2000,
-      showConfirmButton: false
-    }).then(success => {
-      window.location.href = '/student/home';
-    }
-    ).catch(err => console.log(err));
+   // Funcionalidad boton login
+   const formData= this.formularioLoginEstudiante.value;
+   console.log(formData);
+   this.userService.userLogin(formData).subscribe(response=>{ 
+     console.log('se ejecuto el servicio userLogin', response)
+   })
+
+
+ /*
+
+ Swal.fire({
+   title: 'Login exitoso',
+   text: '',
+   icon: 'success',
+   timer: 2000,
+   showConfirmButton: false
+ }).then(success => {
+   window.location.href = '/home/student';
+ }
+ ).catch(err => console.log(err));
+ */
   }
 
   cambiarInput(input: any): any {
