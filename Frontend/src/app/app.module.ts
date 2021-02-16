@@ -33,6 +33,7 @@ import { RouterModule} from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      { path: 'home', redirectTo: '', pathMatch: 'full' },
       { path: '', component: LandingComponent, data: { title: 'Empleate-UNAH' } },
       { path: 'register/student', component: RegistroComponent, data: { title: 'Empleate-UNAH - Registro Estudiante' } },
       { path: 'login', component: LoginComponent, data: { title: 'Empleate-UNAH - Login' } },
