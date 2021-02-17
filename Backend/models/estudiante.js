@@ -7,12 +7,14 @@ var esquemaEstudiante = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        unique: true
+        unique: true,
+        required: true
     },
     // verifiedEmail: Boolean,
     password: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
     fechaNacimiento: String,
     numeroIdentidad: String,
@@ -20,6 +22,7 @@ var esquemaEstudiante = new mongoose.Schema({
     datosDireccion: Array, // Nacionalidad, Pais, departamento, ciudad, codigo postal
     centro: String,
     carreras: Array,
+    clasesAprobadas: Number,
     telefono: String,
     imagenPerfil: String,
     tituloCurriculum: String,
@@ -28,9 +31,5 @@ var esquemaEstudiante = new mongoose.Schema({
 }, {
     timestamps: true,
 });
-
-/*esquemaEstudiante.methods.matchPassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
-}*/
 
 module.exports = mongoose.model('estudiantes', esquemaEstudiante);
