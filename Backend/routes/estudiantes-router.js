@@ -52,7 +52,7 @@ router.post('/signup', validateEmail, function (req, res) {
         datosDireccion: [],
         centro: null,
         carreras: [],
-        telefono: req.body.telefono,
+        telefono: null,
         imagenPerfil: null,
         tituloCurriculum: null,
         descripcionPerfil: null,

@@ -23,6 +23,7 @@ export class StudentHomeComponent implements OnInit {
             this.estudiantesService.obtenerInfoPrincipalEstudiante(res.id)
               .subscribe(
                 data => {
+                  // console.log(data);
                   this.estudianteActual = data;
                 },
                 error => console.log('Error al obtener informacion estudiante', error)
