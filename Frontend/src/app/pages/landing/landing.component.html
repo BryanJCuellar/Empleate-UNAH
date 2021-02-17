@@ -1,55 +1,100 @@
-<nav class="navbar navbar-expand-lg navbar-light nav-principal">
-  <!-- Image and text -->
-  <a class="navbar-brand" href="#" style=" color: white !important;">
-    <img src="./assets/img/logo.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
-    Empléate UNAH
-  </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">Sobre nosotros</h4>
+            <p class="text-muted">
+              Con base a la situación que atravesamos como país, muchas familias han sido afectadas y muchos estudiantes tuvieron que 
+              dejar sus estudios. La idea del proyecto surge para ayudar a los estudiantes que puedan encontrar el empleo que les permita
+              continuar con sus sueños. 
+               <p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <i class="fas fa-laptop-house"></i>
+          <strong>Empléate</strong>
+        </a>
+        <a  style=" color: white !important;"class="nav-link" [routerLink]= "['login']" ><i class="fas fa-sign-in-alt"></i>Ingresar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+      </div>
+    </div>
+  </header>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a style=" color: white !important;" class="nav-link" href="#">Acerca de nosotros<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a  style=" color: white !important;"class="nav-link" href="#">¿Cómo funciona?</a>
-        </li>
-    
-      </ul>
-    </div>
-   
-    <div class="btn-group dropleft ">
-      <button type="button" class="btn boton-menu dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Regístrate
-      </button>
-      <div class="dropdown-menu">
-        <!-- Dropdown menu links -->
-        <a class="dropdown-item" [routerLink]= "['register/student']">Estudiantes</a>
-        <a class="dropdown-item" [routerLink]= "['register/student']">Empresas</a>
+  <main role="main">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Empléate UNAH</h1>
+        <p class="lead text-muted">Aprovecha e inscríbete a la plataforma donde los estudiantes y empresas se encuentran</p>
+        <p>
+          <a  [routerLink]= "['register/student']" class="btn btn-estudiante my-2">Estudiantes</a>
+          <a  [routerLink]= "['register/student']" class="btn btn-secondary my-2">Empresas</a>
+        </p>
+      </div>
+    </section>
+  
+    <div class="album py-5 bg-light">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <p class="card-text">Encuentra trabajo de acuerdo al horario que tengas</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="far fa-clock"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <p class="card-text">¡No tienes que moverte de casa! Busca trabajo según tu locación</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                      <i class="fas fa-map-marked-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <p class="card-text">La mayoría de los estudiantes están deseosos de aprender. Haz crecer tu empresa con 
+                nuevas ideas.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-users"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-      <a  style=" color: white !important;"class="nav-link" [routerLink]= "['login']" >Ingresar</a>
-  </nav>
-
-<div class="card bg-dark">
-    <img src="./assets/fondo.jpg" class="card-img" alt="...">
-    <div class="card-img-overlay">
-      <div class="card text-center">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
+  </main>
+  
