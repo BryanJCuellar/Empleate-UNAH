@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   backendHost: string = 'http://localhost:8888';
-  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com';
 
   constructor(private httpClient: HttpClient) { }
 
