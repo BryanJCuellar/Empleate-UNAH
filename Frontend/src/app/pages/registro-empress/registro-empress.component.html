@@ -2,31 +2,32 @@
     <!--<a href="#"><img id="logo" src="img/logo.png" alt="logotipo"></a>-->
     <section id="registro">
         <div class="text-center">
-            <i class="fas fa-user-graduate icono-alumno"></i>
+            <i class="fas fa-user-edit icono-alumno"></i>
         </div>
-        <h1 class="mt-3">Regístro de Estudiante</h1>
+        <h1 class="mt-3">Regístra tu Empresa</h1>
 
         <form [formGroup]="formularioEstudiante" (ngSubmit)="registrar()">
             <div class="mb-2">
-                <input [ngClass]="{'form-input-error':name.invalid && (name.dirty || name.touched)}" type="text" formControlName="name" placeholder="Nombre">
+                <input [ngClass]="{'form-input-error':name.invalid && (name.dirty || name.touched)}" type="text" formControlName="name" placeholder="Nombre de tu empresa">
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-error">
                     <span *ngIf="name.errors.required">Campo obligatorio</span>
                 </div>
             </div>
+
             <div class="mb-2">
-                <input [ngClass]="{'form-input-error':lastName.invalid && (lastName.dirty || lastName.touched)}" type="text" formControlName="lastName" placeholder="Apellido">
-                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="form-error">
-                    <span *ngIf="lastName.errors.required">Campo obligatorio</span>
-                </div>
-            </div>
-            <div class="mb-2">
-                <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}" type="text" formControlName="email" placeholder="Correo Institucional UNAH">
+                <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}" type="text" formControlName="email" placeholder="Correo electronico">
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
                     <span *ngIf="email.errors.required">Campo obligatorio</span>
                     <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
                 </div>
                 <div *ngIf="emailDuplicado" class="form-error">
                     <span>Error: Email ya registrado</span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}" type="text" formControlName="direction" placeholder="Direccion">
+                <div *ngIf="direction.invalid && (direction.dirty || direction.touched)" class="form-error">
+                    <span *ngIf="direction.errors.required">Campo obligatorio</span>
                 </div>
             </div>
             <div class="mb-2">
@@ -48,20 +49,10 @@
             </div>
             <!-- Boton registrar -->
             <button type=submit [disabled]="formularioEstudiante.invalid" value="Registrar">Registrarme</button>
-            <!---->
+
         </form>
-        <!--<label class="texto-pequenio">o con: </label>
-    <div class="social-login texto-derecha">
-      <div>
-        <a href="#"><img style="margin:5px" src="../../../../assets/img/facebook.png" width="30" height="30"
-            alt="Facebook"></a>
-        <a href="#"><img style="margin:5px" src="../../../../assets/img/linkedin.png" width="30" height="30"
-            alt="Linkedin"></a>
-        <a href="#"><img style="margin:5px" src="../../../../assets/img/google-logo.png" width="30" height="30"
-            alt="Google"></a>
-      </div>
-    </div>-->
+
         <div class="mt-2"><a class="primary-link" href="/home">Regresar a Inicio<i
-          class="fas fa-arrow-circle-left ml-1"></i></a></div>
+            class="fas fa-arrow-circle-left ml-1"></i></a></div>
     </section>
 </div>

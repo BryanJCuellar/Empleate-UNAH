@@ -9,7 +9,7 @@
 
 #contenedor {
     background-color: rgba(0, 0, 0, 0.65);
-    height: auto;
+    height: 100%;
     padding: 30px;
     justify-content: center;
     background-repeat: no-repeat;
