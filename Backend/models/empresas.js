@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
 var esquemaEmpresas = new mongoose.Schema({
+    
     organizacion: String,
     email: {
         type: String,
@@ -18,7 +19,9 @@ var esquemaEmpresas = new mongoose.Schema({
     telefono: String,
     imagenPerfil: String,
     descripcionPerfil: String,
-    vacantes: Array
+    vacantes: Array,
+    solicitudEnviada: Array,
+    solicitudRecibida: Array
 }, {
     timestamps: true,
 });

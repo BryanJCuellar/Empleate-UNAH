@@ -1,33 +1,53 @@
 var mongoose = require('mongoose');
-// var bcrypt = require('bcryptjs');
 
 var esquemaEstudiante = new mongoose.Schema({
-    nombre: String,
+
+//  DATOS SIMULADOS: OBTENIDOS DE REGISTRO UNAH
+
+    nombre: String, 
     apellido: String,
+    cuenta: String,
+    passwordCuenta: {
+        type: String,
+        trim: true,
+        required: true
+    },
     email: {
         type: String,
         trim: true,
         unique: true,
         required: true
     },
-    // verifiedEmail: Boolean,
-    password: {
-        type: String,
-        trim: true,
-        required: true
-    },
+    centro: String,
+    imagenPerfil: String,
+    clasesAprobadas: Number,
+    indice: Number,
+    carreras: Array,
+
+// *******************************************************
+// INFOTMACION DEL PERFIL
+    
+    genero: String,
+    telefono: String,
     fechaNacimiento: String,
     numeroIdentidad: String,
-    genero: String,
-    datosDireccion: Array, // Nacionalidad, Pais, departamento, ciudad, codigo postal
-    centro: String,
-    carreras: Array,
-    clasesAprobadas: Number,
-    telefono: String,
-    imagenPerfil: String,
-    tituloCurriculum: String,
     descripcionPerfil: String,
-    intereses: String
+    intereses: String,
+    datosDireccion: Array, // Nacionalidad, Pais, departamento, ciudad, codigo postal
+    CurriculumAdjunto: String,
+    Lenguajes: Array, // ingles, frances, aleman, japones
+
+// *********************************************************
+// CARACTERISTICAS DE TRABAJO DESEADO
+    
+    areaDeseada: String,
+    puestoDeseado: String,
+    horarioDeseado: String,
+    estado: Boolean,
+    solicitudEnviada: Array,
+    solicitudRecibida: Array
+
+// **********************************************************
 }, {
     timestamps: true,
 });
