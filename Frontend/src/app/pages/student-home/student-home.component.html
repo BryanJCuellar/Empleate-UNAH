@@ -1,0 +1,5 @@
+<div id="student-homepg" *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
+    <h2 class="pt-5 px-5">Bienvenid@ {{estudianteActual.nombre}} {{estudianteActual.apellido}}</h2>
+    <h4 class="px-5 primary-link"><a (click)="getAuthService().logout()">Cerrar Sesión</a></h4>
+</div>
+

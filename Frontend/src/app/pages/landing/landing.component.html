@@ -1,0 +1,97 @@
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">Sobre nosotros</h4>
+                    <p class="text-muted">
+                        Con base a la situación que atravesamos como país, muchas familias han sido afectadas y muchos estudiantes tuvieron que dejar sus estudios. La idea del proyecto surge para ayudar a los estudiantes que puedan encontrar el empleo que les permita continuar
+                        con sus sueños.
+                        <p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                        <li><a href="#" class="text-white">Like on Facebook</a></li>
+                        <li><a href="#" class="text-white">Email me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <i class="fas fa-laptop-house"></i>
+                <strong>Empléate</strong>
+            </a>
+            <a style=" color: white !important;" class="nav-link" [routerLink]="['login']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
+            <a style=" color: white !important;" class="nav-link" [routerLink]="['login-Empresas']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        </div>
+    </div>
+</header>
+
+<main role="main">
+    <section class="jumbotron text-center" style="background-image: url(../assets/img/azul-lineas.PNG); background-size: cover;">
+        <div class="container">
+            <h1 class="jumbotron-heading" style="color:#0080ff">Empléate UNAH</h1>
+            <p class="lead text-muted" style="color:#fff !important">Aprovecha e inscríbete a la plataforma donde los estudiantes y empresas se encuentran</p>
+            <p>
+                <a [routerLink]="['register/student']" class="btn btn-estudiante m-2">Estudiantes</a>
+                <a [routerLink]="['register/empress']" class="btn btn-secondary m-2">Empresas</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">Encuentra trabajo de acuerdo al horario que tengas</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="far fa-clock"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">¡No tienes que moverte de casa! Busca trabajo según tu locación</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                      <i class="fas fa-map-marked-alt"></i>
+                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">La mayoría de los estudiantes están deseosos de aprender. Haz crecer tu empresa con nuevas ideas.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-users"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

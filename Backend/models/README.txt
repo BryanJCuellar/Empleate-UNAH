@@ -1,0 +1,1 @@
+Carpeta para archivos de modelos de las colecciones de la BD
