@@ -27,6 +27,9 @@ export class RegistroEmpressComponent implements OnInit {
     this.formularioEstudiante = this.fb.group({
       name: ['', [Validators.required]],
       direction: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      departament: ['', [Validators.required]],
+      city: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@unah+\\.hn")]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       samePassword: ['', [Validators.required]]
@@ -40,6 +43,17 @@ export class RegistroEmpressComponent implements OnInit {
   get direction() {
     return this.formularioEstudiante.get('direction');
   }
+
+  get phone() {
+    return this.formularioEstudiante.get('phone');
+  }
+  get departament() {
+    return this.formularioEstudiante.get('departament');
+  }
+  get city() {
+    return this.formularioEstudiante.get('city');
+  }
+
   get email() {
     return this.formularioEstudiante.get('email');
   }
@@ -61,6 +75,9 @@ export class RegistroEmpressComponent implements OnInit {
     const formData = {
       nombre: this.name.value,
       direccion: this.direction.value,
+      telefono: this.phone.value,
+      departamento: this.departament.value,
+      ciudad: this.city.value,
       email: this.email.value,
       password: this.password.value
     };

@@ -30,6 +30,27 @@
                     <span *ngIf="direction.errors.required">Campo obligatorio</span>
                 </div>
             </div>
+
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}" type="text" formControlName="phone" placeholder="Telefono">
+                <div *ngIf="direction.invalid && (phone.dirty || phone.touched)" class="form-error">
+                    <span *ngIf="direction.errors.required">Campo obligatorio</span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}" type="text" formControlName="departament" placeholder="Departamento">
+                <div *ngIf="direction.invalid && (departament.dirty || departament.touched)" class="form-error">
+                    <span *ngIf="direction.errors.required">Campo obligatorio</span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}" type="text" formControlName="city" placeholder="Ciudad">
+                <div *ngIf="direction.invalid && (city.dirty || city.touched)" class="form-error">
+                    <span *ngIf="direction.errors.required">Campo obligatorio</span>
+                </div>
+            </div>
+
+
             <div class="mb-2">
                 <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}" type="password" #inputPassword formControlName="password" placeholder="Contraseña">
                 <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
