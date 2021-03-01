@@ -10,6 +10,7 @@ var database = require('./modules/database');
 
 // Rutas Express
 var estudiantesRouter = require('./routes/estudiantes-router');
+var empresasRouter = require('./routes/empresas-router');
 
 var app = express();
 
@@ -26,6 +27,8 @@ app.get('/', function (req, res) {
 
 // Estudiantes
 app.use('/estudiantes', estudiantesRouter);
+// Empresas
+app.use('/empresas', empresasRouter);
 
 // process.env.PORT: variable de entorno para escuchar el puerto que la plataforma a subir la app nos brinde
 app.set('port', process.env.PORT || 8888);

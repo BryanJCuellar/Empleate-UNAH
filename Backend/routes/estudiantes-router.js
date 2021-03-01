@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 // var nodemailer = require('nodemailer');
-var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var estudiante = require('../models/estudiante');
 var SECRET_KEY = 'bHYFnHrZ20WQDPQnCqcZbwAXDuyWxSxsRRQQ78IkhvmykZiE6jPsZuMbAFsvXOz';
@@ -38,7 +37,7 @@ router.get('/:idEstudiante', function (req, res) {
 });
 
 // Registrar estudiante
-router.post('/signup', validateEmail, function (req, res) {
+/*router.post('/signup', validateEmail, function (req, res) {
     // Hashing password
     let password_hash = bcrypt.hashSync(req.body.password, 10);
     const student = new estudiante({
@@ -85,7 +84,7 @@ router.post('/signup', validateEmail, function (req, res) {
             res.send(error);
             res.end();
         })
-});
+});*/
 
 // Loguear estudiante
 router.post('/login', function (req, res) {
@@ -94,12 +93,10 @@ router.post('/login', function (req, res) {
         }, {
             _id: true,
             email: true,
-            password: true
+            passwordCuenta: true
         })
         .then(result => {
-            // Comparar hash de password
-            let password_match = bcrypt.compareSync(req.body.password, result.password)
-            if (password_match) {
+            if (result.passwordCuenta === req.body.password) {
                 // Success, inicia sesion con JWT
                 const expiresIn = 24 * 60 * 60;
                 const accessToken = jwt.sign({
@@ -154,24 +151,6 @@ router.get('/', function (req, res) {
 });
 
 module.exports = router;
-
-// Validar email duplicado o no
-function validateEmail(req, res, next) {
-    estudiante.findOne({
-        email: req.body.email
-    }, (err, email) => {
-        if (err) return res.status(500).send('Server error');
-        if (!email) {
-            // Si email no se repite, prosigue con la peticion
-            next();
-        } else {
-            res.status(403).send({
-                mensaje: 'Email ya registrado'
-            });
-            res.end();
-        }
-    })
-}
 
 // Verificar token
 function verifyToken(req, res, next) {

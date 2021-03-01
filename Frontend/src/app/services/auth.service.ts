@@ -21,6 +21,11 @@ export class AuthService {
     return this.httpClient.post(`${this.backendHost}/estudiantes/login`, data);
   }
 
+  /***Empresas***/
+  loginEmpresa(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/login`, data);
+  }
+
   /*Verificar login*/
   loggedIn(): boolean {
     if (localStorage.getItem('token') && localStorage.getItem('rol')) {
@@ -47,8 +52,15 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
-    window.location.href = "/login";
+    window.location.href = "/login/student";
   }
+
+  logoutCompany(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    window.location.href = "/login/company";
+  }
+
 
   getToken() {
     return localStorage.getItem('token');
