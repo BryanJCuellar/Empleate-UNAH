@@ -1,18 +1,17 @@
 <div id="contenedor-login">
     <!--<a href="#"><img id="logo" src="../../../../assets/img/logo.png" alt="logotipo"></a>-->
-    <section id="login">
+    <section id="login" class="my-4">
         <div class="text-center">
-
-            <i class="far fa-building fa-5x"></i>
+            <i class="far fa-building fa-5x mt-3"></i>
         </div>
 
         <h1 class="mb-4 mt-3">Inicio de Sesión</h1>
-        <form [formGroup]="formularioLogin">
+        <form [formGroup]="formularioLoginCompany">
             <div class="mb-4">
                 <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}" formControlName="email" type="text" placeholder="correo electronico" required>
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
                     <span *ngIf="email.errors.required">Por favor, ingrese su correo</span>
-                    <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
+                    <span *ngIf="email.errors.pattern">Ingrese un correo válido</span>
                 </div>
                 <div *ngIf="!emailValido" class="form-error">
                     <span>Error: Correo no encontrado</span>
@@ -32,7 +31,7 @@
         </form>
 
         <!-- Boton iniciar sesion -->
-        <button class="mb-4" type=button [disabled]="!formularioLogin.valid" (click)="login()" value="Iniciar">Iniciar</button>
+        <button class="mb-4" type=button [disabled]="!formularioLoginCompany.valid" (click)="login()" value="Iniciar">Iniciar</button>
         <!---->
         <!--<div class="mb-3">
         <label class="texto-pequenio">o inicia con: </label>
