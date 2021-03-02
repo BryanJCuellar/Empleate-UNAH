@@ -4,8 +4,8 @@ var esquemaEstudiante = new mongoose.Schema({
 
 //  DATOS SIMULADOS: OBTENIDOS DE REGISTRO UNAH
 
-    nombres: String, 
-    apellidos: String,
+    nombre: String, 
+    apellido: String,
     cuenta: String,
     passwordCuenta: {
         type: String,
@@ -22,7 +22,7 @@ var esquemaEstudiante = new mongoose.Schema({
     imagenPerfil: String,
     clasesAprobadas: Number,
     indice: Number,
-    carrera: String,
+    carreras: String,
 
 // *******************************************************
 // INFOTMACION DEL PERFIL

@@ -16,16 +16,19 @@ router.get('/tokenID', verifyToken, function (req, res) {
     });
 });
 
-// Obtener informacion principal de estudiante
-router.get('/:idEstudiante', function (req, res) {
+// Obtener informacion principal de estudiante (Logueado)
+router.get('/:idEstudiante/main', verifyToken, function (req, res) {
     estudiante.findOne({
             _id: mongoose.Types.ObjectId(req.params.idEstudiante)
         }, {
-            id: true,
+            _id: true,
             nombre: true,
             apellido: true,
             email: true,
-            imagenPerfil: true
+            centro: true,
+            imagenPerfil: true,
+            carreras: true,
+            estado: true
         })
         .then(result => {
             res.send(result);
@@ -37,55 +40,20 @@ router.get('/:idEstudiante', function (req, res) {
         });
 });
 
-// Registrar estudiante
-/*router.post('/signup', validateEmail, function (req, res) {
-    // Hashing password
-    let password_hash = bcrypt.hashSync(req.body.password, 10);
-    const student = new estudiante({
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        email: req.body.email,
-        password: password_hash,
-        fechaNacimiento: null,
-        numeroIdentidad: null,
-        genero: null,
-        datosDireccion: [],
-        centro: null,
-        carreras: [],
-        clasesAprobadas: null,
-        telefono: null,
-        imagenPerfil: null,
-        tituloCurriculum: null,
-        descripcionPerfil: null,
-        intereses: null
-    });
-
-    student.save()
+// Obtener toda la informacion de un estudiante (Logueado)
+router.get('/:idEstudiante', verifyToken, function (req, res) {
+    estudiante.findOne({
+            _id: mongoose.Types.ObjectId(req.params.idEstudiante)
+        }, {})
         .then(result => {
-            // Success, inicia sesion con JWT
-            const expiresIn = 24 * 60 * 60;
-            const accessToken = jwt.sign({
-                _id: result.id,
-                rol: 'Estudiante'
-            }, SECRET_KEY, {
-                expiresIn: expiresIn
-            });
-            const dataEnviar = {
-                email: result.email,
-                rol: 'Estudiante',
-                accessToken: accessToken,
-                expiresIn: expiresIn
-            };
-            res.status(200).send({
-                mensaje: 'Registrado',
-                data: dataEnviar
-            });
-            res.end();
-        }).catch(error => {
-            res.send(error);
+            res.send(result);
             res.end();
         })
-});*/
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
 
 // Loguear estudiante
 router.post('/login', function (req, res) {
@@ -139,7 +107,11 @@ router.get('/', function (req, res) {
             _id: true,
             nombre: true,
             apellido: true,
-            email: true
+            email: true,
+            centro: true,
+            imagenPerfil: true,
+            carreras: true,
+            estado: true
         })
         .then(result => {
             res.send(result);
@@ -151,23 +123,22 @@ router.get('/', function (req, res) {
         });
 });
 
-router.post('/:idEstudiante/', multer.single('imagenPerfil'), function(req,res){
-    estudiante.updateOne(
-        {
-            _id:req.params.idEstudiante
-    },{
-        $set:{
+router.post('/:idEstudiante/imagenPerfil', multer.single('imagenPerfil'), function (req, res) {
+    estudiante.updateOne({
+            _id: req.params.idEstudiante
+        }, {
+            $set: {
                 imagenPerfil: req.file.path
-        }    
-    })
-    .then(result=>{
-        res.send(result);
-        res.end();
-    })
-    .catch(error=>{
-        res.send(error);
-        res.end();
-    }); 
+            }
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
 });
 
 module.exports = router;

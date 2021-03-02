@@ -15,6 +15,21 @@ router.get('/tokenID', verifyToken, function (req, res) {
     });
 });
 
+// Obtener toda la informacion de una empresa (logueada)
+router.get('/:idEmpresa', verifyToken, function (req, res) {
+    empresa.findOne({
+            _id: mongoose.Types.ObjectId(req.params.idEmpresa)
+        }, {})
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
+
 // Registrar Empresa
 router.post('/signup', validateEmail, function (req, res) {
     // Hashing password
@@ -34,7 +49,6 @@ router.post('/signup', validateEmail, function (req, res) {
         vacantes: [],
         solicitudEnviada: [],
         solicitudRecibida: []
-        
     });
 
     nueva_empresa.save()
@@ -115,10 +129,13 @@ router.post('/login', function (req, res) {
 // Obtener todas las empresas
 router.get('/', function (req, res) {
     empresa.find({}, {
-            _id: true,
-            nombre: true,
-            apellido: true,
-            email: true
+            organizacion: true,
+            email: true,
+            datosDireccion: true,
+            telefono: true,
+            imagenPerfil: true,
+            descripcionPerfil: true,
+            vacantes: true
         })
         .then(result => {
             res.send(result);
