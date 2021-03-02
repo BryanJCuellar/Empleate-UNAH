@@ -25,6 +25,12 @@ export class AuthService {
   loginEmpresa(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/login`, data);
   }
+  
+  registrarEmpresa(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/signup`, data);
+  }
+
+
 
   /*Verificar login*/
   loggedIn(): boolean {

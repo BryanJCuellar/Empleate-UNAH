@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class RegistroEmpressComponent implements OnInit {
   emailDuplicado: boolean = false;
   passwordEqual: boolean = true;
-  formularioEstudiante: FormGroup;
+  formularioEmpresa: FormGroup;
+  departments:any = ['Comayagua', 'Francisco Morazan', 'Choluteca'];
 
   constructor(
     private fb: FormBuilder,
@@ -24,13 +25,13 @@ export class RegistroEmpressComponent implements OnInit {
   }
 
   createForm() {
-    this.formularioEstudiante = this.fb.group({
+    this.formularioEmpresa = this.fb.group({
       name: ['', [Validators.required]],
       direction: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern("^[0-9]{4}+[-]+[0-9]{4}")]],
       departament: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@unah+\\.hn")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       samePassword: ['', [Validators.required]]
     })
@@ -38,30 +39,30 @@ export class RegistroEmpressComponent implements OnInit {
 
   // Metodos GET
   get name() {
-    return this.formularioEstudiante.get('name');
+    return this.formularioEmpresa.get('name');
   }
   get direction() {
-    return this.formularioEstudiante.get('direction');
+    return this.formularioEmpresa.get('direction');
   }
 
   get phone() {
-    return this.formularioEstudiante.get('phone');
+    return this.formularioEmpresa.get('phone');
   }
   get departament() {
-    return this.formularioEstudiante.get('departament');
+    return this.formularioEmpresa.get('departament');
   }
   get city() {
-    return this.formularioEstudiante.get('city');
+    return this.formularioEmpresa.get('city');
   }
 
   get email() {
-    return this.formularioEstudiante.get('email');
+    return this.formularioEmpresa.get('email');
   }
   get password() {
-    return this.formularioEstudiante.get('password');
+    return this.formularioEmpresa.get('password');
   }
   get samePassword() {
-    return this.formularioEstudiante.get('samePassword');
+    return this.formularioEmpresa.get('samePassword');
   }
 
   registrar() {
@@ -73,7 +74,7 @@ export class RegistroEmpressComponent implements OnInit {
       return;
     }
     const formData = {
-      nombre: this.name.value,
+      organizacion: this.name.value,
       direccion: this.direction.value,
       telefono: this.phone.value,
       departamento: this.departament.value,
@@ -81,7 +82,7 @@ export class RegistroEmpressComponent implements OnInit {
       email: this.email.value,
       password: this.password.value
     };
-    this.authService.registrarEstudiante(formData)
+    this.authService.registrarEmpresa(formData)
       .subscribe(
         response => {
           console.log('Respuesta del servidor', response);
@@ -97,7 +98,7 @@ export class RegistroEmpressComponent implements OnInit {
               timer: 2000,
               showConfirmButton: false
             }).then(success => {
-              window.location.href = '/student/home';
+              window.location.href = '/company/home';
             }
             ).catch(err => console.log(err));
           }
