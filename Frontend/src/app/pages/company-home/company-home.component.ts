@@ -17,14 +17,14 @@ export class CompanyHomeComponent implements OnInit {
 
   ngOnInit(): void {
     // Estudiantes
-    if (this.authService.getRol() == 'Empresa') {
+    if (this.authService.loggedInCompany() && this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
         .subscribe(
           res => {
-            this.empresasService.obtenerInfoPrincipalEmpresa(res.id)
+            this.empresasService.obtenerEmpresa(res.id)
               .subscribe(
                 data => {
-                  // console.log(data);
+                  console.log(data);
                   this.empresaActual = data;
                 },
                 error => console.log('Error al obtener informacion empresa', error)

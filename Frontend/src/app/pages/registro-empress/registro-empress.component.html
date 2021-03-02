@@ -39,12 +39,15 @@
                 </div>
             </div>
             <div class="mb-2">
-                <select class="form-control" [ngClass]="{'form-input-error':departament.invalid && (departament.dirty || departament.touched)}"  formControlName="departament">
-                    <option *ngFor="let department of departments" value="{{department}}">{{department}}</option>
+                <select formControlName="departament" [ngClass]="{'form-input-error':departament.invalid && (departament.dirty || departament.touched)}">
+                    <option value="-">Seleccione Departamento</option>
+                    <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}</option>
                 </select>
                 <div *ngIf="departament.invalid && (departament.dirty || departament.touched)" class="form-error">
                     <span *ngIf="departament.errors.required">Campo obligatorio</span>
+                    <span *ngIf="departament.errors.valueRestricted">Seleccione un departamento, por favor</span>
                 </div>
+                <!--<div>{{departament.errors | json}}</div>-->
             </div>
             <div class="mb-2">
                 <input [ngClass]="{'form-input-error':city.invalid && (city.dirty || city.touched)}" type="text" formControlName="city" placeholder="Ciudad">

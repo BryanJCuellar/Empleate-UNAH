@@ -54,7 +54,8 @@
 }
 
 #registro input[type='text'],
-#registro input[type='password'] {
+#registro input[type='password'],
+#registro select {
     background-color: #eaeaea;
     font-size: 1.1rem;
     /* border: 0px solid #000; */

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+// Custom Validations
+import { customValidations } from '../../utils/custom-validations';
 // Sweet Alert
 import Swal from 'sweetalert2';
 
@@ -12,8 +14,10 @@ import Swal from 'sweetalert2';
 export class RegistroEmpressComponent implements OnInit {
   emailDuplicado: boolean = false;
   passwordEqual: boolean = true;
+  departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
+    'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
+    'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
   formularioEmpresa: FormGroup;
-  departments:any = ['Comayagua', 'Francisco Morazan', 'Choluteca'];
 
   constructor(
     private fb: FormBuilder,
@@ -22,19 +26,20 @@ export class RegistroEmpressComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.formularioEmpresa.reset();
   }
 
   createForm() {
     this.formularioEmpresa = this.fb.group({
       name: ['', [Validators.required]],
       direction: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.pattern("^[0-9]{4}+[-]+[0-9]{4}")]],
-      departament: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern("^[0-9]{4}[-][0-9]{4}")]],
+      departament: ['', [Validators.required, customValidations.valueRestricted('-')]],
       city: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       samePassword: ['', [Validators.required]]
-    })
+    });
   }
 
   // Metodos GET

@@ -15,7 +15,11 @@ export class EmpresasService {
     return this.httpClient.get(`${this.backendHost}/empresas/tokenID`, {});
   }
 
-  obtenerInfoPrincipalEmpresa(idEmpresa): Observable<any> {
+  obtenerEmpresa(idEmpresa): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/empresas/${idEmpresa}`, {});
+  }
+
+  obtenerEmpresas(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/empresas`, {});
   }
 }

@@ -12,24 +12,20 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   /***Estudiantes***/
-  // Login al registrar
-  registrarEstudiante(data): Observable<any> {
-    return this.httpClient.post(`${this.backendHost}/estudiantes/signup`, data);
-  }
   // Login
   loginEstudiante(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/estudiantes/login`, data);
   }
 
   /***Empresas***/
+  // Login
   loginEmpresa(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/login`, data);
   }
-  
+  // Registro
   registrarEmpresa(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/signup`, data);
   }
-
 
 
   /*Verificar login*/
