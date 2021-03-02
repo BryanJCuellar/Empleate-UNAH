@@ -13,8 +13,8 @@ export class LoginEmpressComponent implements OnInit {
   emailValido: boolean = true;
   passwordValido: boolean = true;
 
-  formularioLogin = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@unah+\\.hn")]),
+  formularioLoginCompany = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
@@ -22,24 +22,24 @@ export class LoginEmpressComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.classList.add('student-login');
-    this.formularioLogin.reset();
+    this.formularioLoginCompany.reset();
   }
 
   // Metodos GET
   get email() {
-    return this.formularioLogin.get('email');
+    return this.formularioLoginCompany.get('email');
   }
   get password() {
-    return this.formularioLogin.get('password');
+    return this.formularioLoginCompany.get('password');
   }
 
   login() {
     // Funcionalidad boton login
     this.emailValido = true;
     this.passwordValido = true;
-    const formData = this.formularioLogin.value;
+    const formData = this.formularioLoginCompany.value;
     // console.log(formData);
-    this.authService.loginEstudiante(formData)
+    this.authService.loginEmpresa(formData)
       .subscribe(
         response => {
           console.log('Respuesta del servidor', response);
@@ -55,7 +55,7 @@ export class LoginEmpressComponent implements OnInit {
               timer: 2000,
               showConfirmButton: false
             }).then(success => {
-              window.location.href = '/student/home';
+              window.location.href = '/company/home';
             }
             ).catch(err => console.log(err));
           }

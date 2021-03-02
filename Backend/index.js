@@ -4,12 +4,15 @@ var express = require('express');
 var cors = require('cors');
 // Modulo body-parser para obtener datos en metodo POST
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var path = require('path');
 
 // Conexion a BD
 var database = require('./modules/database');
 
 // Rutas Express
 var estudiantesRouter = require('./routes/estudiantes-router');
+var empresasRouter = require('./routes/empresas-router');
 
 var app = express();
 
@@ -26,6 +29,9 @@ app.get('/', function (req, res) {
 
 // Estudiantes
 app.use('/estudiantes', estudiantesRouter);
+// Empresas
+app.use('/empresas', empresasRouter);
+app.use('/uploads', express.static(path.resolve('uploads')));
 
 // process.env.PORT: variable de entorno para escuchar el puerto que la plataforma a subir la app nos brinde
 app.set('port', process.env.PORT || 8888);

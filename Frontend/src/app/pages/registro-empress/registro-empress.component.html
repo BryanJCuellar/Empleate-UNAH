@@ -6,7 +6,7 @@
         </div>
         <h1 class="mt-3">Regístra tu Empresa</h1>
 
-        <form [formGroup]="formularioEstudiante" (ngSubmit)="registrar()">
+        <form [formGroup]="formularioEmpresa" (ngSubmit)="registrar()">
             <div class="mb-2">
                 <input [ngClass]="{'form-input-error':name.invalid && (name.dirty || name.touched)}" type="text" formControlName="name" placeholder="Nombre de tu empresa">
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-error">
@@ -18,7 +18,7 @@
                 <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}" type="text" formControlName="email" placeholder="Correo electronico">
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
                     <span *ngIf="email.errors.required">Campo obligatorio</span>
-                    <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
+                    <span *ngIf="email.errors.pattern">Ingrese un correo válido</span>
                 </div>
                 <div *ngIf="emailDuplicado" class="form-error">
                     <span>Error: Email ya registrado</span>
@@ -30,6 +30,33 @@
                     <span *ngIf="direction.errors.required">Campo obligatorio</span>
                 </div>
             </div>
+
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':phone.invalid && (phone.dirty || phone.touched)}" type="text" formControlName="phone" placeholder="Telefono">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-error">
+                    <span *ngIf="phone.errors.required">Campo obligatorio</span>
+                    <span *ngIf="phone.errors.pattern">Ingrese un Telefono valido, Ejemplo: 1234-5678</span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <select formControlName="departament" [ngClass]="{'form-input-error':departament.invalid && (departament.dirty || departament.touched)}">
+                    <option value="-">Seleccione Departamento</option>
+                    <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}</option>
+                </select>
+                <div *ngIf="departament.invalid && (departament.dirty || departament.touched)" class="form-error">
+                    <span *ngIf="departament.errors.required">Campo obligatorio</span>
+                    <span *ngIf="departament.errors.valueRestricted">Seleccione un departamento, por favor</span>
+                </div>
+                <!--<div>{{departament.errors | json}}</div>-->
+            </div>
+            <div class="mb-2">
+                <input [ngClass]="{'form-input-error':city.invalid && (city.dirty || city.touched)}" type="text" formControlName="city" placeholder="Ciudad">
+                <div *ngIf="city.invalid && (city.dirty || city.touched)" class="form-error">
+                    <span *ngIf="city.errors.required">Campo obligatorio</span>
+                </div>
+            </div>
+
+
             <div class="mb-2">
                 <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}" type="password" #inputPassword formControlName="password" placeholder="Contraseña">
                 <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
@@ -48,7 +75,7 @@
                 <div class="pt-2 pl-2"><input type="checkbox" class="mr-2" (click)="mostrarPasswords(inputPassword, confirmPassword)"><b>Mostrar contraseña</b></div>
             </div>
             <!-- Boton registrar -->
-            <button type=submit [disabled]="formularioEstudiante.invalid" value="Registrar">Registrarme</button>
+            <button type=submit [disabled]="formularioEmpresa.invalid" value="Registrar">Registrarme</button>
 
         </form>
 

@@ -16,6 +16,18 @@ export class EstudiantesService {
   }
 
   obtenerInfoPrincipalEstudiante(idEstudiante): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/estudiantes/${idEstudiante}/main`, {});
+  }
+
+  obtenerEstudiante(idEstudiante): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/estudiantes/${idEstudiante}`, {});
+  }
+
+  obtenerEstudiantes(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/estudiantes`, {});
+  }
+
+  subirImagenPerfil(idEstudiante, dataImage): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/estudiantes/${idEstudiante}/imagenPerfil`, dataImage);
   }
 }

@@ -12,14 +12,21 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   /***Estudiantes***/
-  // Login al registrar
-  registrarEstudiante(data): Observable<any> {
-    return this.httpClient.post(`${this.backendHost}/estudiantes/signup`, data);
-  }
   // Login
   loginEstudiante(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/estudiantes/login`, data);
   }
+
+  /***Empresas***/
+  // Login
+  loginEmpresa(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/login`, data);
+  }
+  // Registro
+  registrarEmpresa(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/signup`, data);
+  }
+
 
   /*Verificar login*/
   loggedIn(): boolean {
@@ -47,8 +54,15 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
-    window.location.href = "/login";
+    window.location.href = "/login/student";
   }
+
+  logoutCompany(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    window.location.href = "/login/company";
+  }
+
 
   getToken() {
     return localStorage.getItem('token');

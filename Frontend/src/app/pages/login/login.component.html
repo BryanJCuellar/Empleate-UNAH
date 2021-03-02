@@ -1,43 +1,43 @@
 <div id="contenedor-login">
-    <!--<a href="#"><img id="logo" src="../../../../assets/img/logo.png" alt="logotipo"></a>-->
-    <section id="login">
-      <div class="text-center">
-        <a href="#"><img id="birrete" src="../../../../assets/img/birrete.png" alt="b"></a>
+  <!--<a href="#"><img id="logo" src="../../../../assets/img/logo.png" alt="logotipo"></a>-->
+  <section id="login" class="my-3">
+    <div class="text-center">
+      <a href="#"><img id="birrete" src="../../../../assets/img/birrete.png" alt="b"></a>
+    </div>
+    <h1 class="mb-4">Inicio de Sesión</h1>
+    <form [formGroup]="formularioLogin">
+      <div class="mb-4">
+        <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
+          formControlName="email" type="text" placeholder="correo electronico" required>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
+          <span *ngIf="email.errors.required">Por favor, ingrese su correo</span>
+          <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
+        </div>
+        <div *ngIf="!emailValido" class="form-error">
+          <span>Error: Correo no encontrado</span>
+        </div>
       </div>
-      <h1 class="mb-4">Inicio de Sesión</h1>
-      <form [formGroup]="formularioLogin">
-        <div class="mb-4">
-          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
-            formControlName="email" type="text" placeholder="correo electronico" required>
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
-            <span *ngIf="email.errors.required">Por favor, ingrese su correo</span>
-            <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
-          </div>
-          <div *ngIf="!emailValido" class="form-error">
-            <span>Error: Correo no encontrado</span>
-          </div>
+      <div class="mb-4">
+        <input
+          [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched) || !passwordValido}"
+          formControlName="password" #inputPassword type="password" placeholder="contraseña">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
+          <span *ngIf="password.errors.required">Por favor, ingrese una contraseña</span>
+          <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>
         </div>
-        <div class="mb-4">
-          <input
-            [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched) || !passwordValido}"
-            formControlName="password" #inputPassword type="password" placeholder="contraseña">
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
-            <span *ngIf="password.errors.required">Por favor, ingrese una contraseña</span>
-            <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>
-          </div>
-          <div *ngIf="!passwordValido" class="form-error">
-            <span>Error: Contraseña incorrecta</span>
-          </div>
-          <div class="pt-2 pl-2"><input type="checkbox" class="mr-2"
-            (click)="cambiarInput(inputPassword)"><b>Mostrar contraseña</b></div>
+        <div *ngIf="!passwordValido" class="form-error">
+          <span>Error: Contraseña incorrecta</span>
         </div>
-      </form>
-  
-      <!-- Boton iniciar sesion -->
-      <button class="mb-4" type=button [disabled]="!formularioLogin.valid" (click)="login()"
-        value="Iniciar">Iniciar</button>
-      <!---->
-      <!--<div class="mb-3">
+        <div class="pt-2 pl-2"><input type="checkbox" class="mr-2" (click)="cambiarInput(inputPassword)"><b>Mostrar
+            contraseña</b></div>
+      </div>
+    </form>
+
+    <!-- Boton iniciar sesion -->
+    <button class="mb-4" type=button [disabled]="!formularioLogin.valid" (click)="login()"
+      value="Iniciar">Iniciar</button>
+    <!---->
+    <!--<div class="mb-3">
         <label class="texto-pequenio">o inicia con: </label>
         <div class="social-login texto-derecha">
           <div>
@@ -50,7 +50,6 @@
           </div>
         </div>
       </div>-->
-      <div><a class="primary-link" href="/home">Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i></a></div>
-    </section>
-  </div>
-  
+    <div><a class="primary-link" href="/home">Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i></a></div>
+  </section>
+</div>
