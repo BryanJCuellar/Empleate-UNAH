@@ -6,6 +6,64 @@ var jwt = require('jsonwebtoken');
 var empresa = require('../models/empresas');
 var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 
+// Obtener Token
+router.get('/tokenID', verifyToken, function (req, res) {
+    res.send({
+        text: 'This is your token ID and Rol',
+        id: req._id,
+        rol: req.rol
+    });
+});
+
+// Registrar Empresa
+router.post('/signup', validateEmail, function (req, res) {
+    // Hashing password
+    let password_hash = bcrypt.hashSync(req.body.password, 10);
+    const nueva_empresa = new empresa({
+        organizacion: req.body.organizacion,
+        email: req.body.email,
+        password: password_hash,
+        datosDireccion: {
+            departamento: req.body.departamento,
+            ciudad: req.body.ciudad,
+            direccion: req.body.direccion
+        },
+        telefono: req.body.telefono,
+        imagenPerfil: null,
+        descripcionPerfil: null,
+        vacantes: [],
+        solicitudEnviada: [],
+        solicitudRecibida: []
+        
+    });
+
+    nueva_empresa.save()
+        .then(result => {
+            // Success, inicia sesion con JWT
+            const expiresIn = 24 * 60 * 60;
+            const accessToken = jwt.sign({
+                _id: result.id,
+                rol: 'Empresa'
+            }, SECRET_KEY, {
+                expiresIn: expiresIn
+            });
+            const dataEnviar = {
+                email: result.email,
+                rol: 'Empresa',
+                accessToken: accessToken,
+                expiresIn: expiresIn
+            };
+            res.status(200).send({
+                mensaje: 'Registrado',
+                data: dataEnviar
+            });
+            res.end();
+        }).catch(error => {
+            res.send(error);
+            res.end();
+        })
+});
+
 // Loguear empresa
 router.post('/login', function (req, res) {
     empresa.findOne({

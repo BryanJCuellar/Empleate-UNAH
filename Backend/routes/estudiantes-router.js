@@ -150,6 +150,7 @@ router.get('/', function (req, res) {
             res.end();
         });
 });
+
 router.post('/:idEstudiante/', multer.single('imagenPerfil'), function(req,res){
     estudiante.updateOne(
         {
