@@ -28,7 +28,14 @@ router.get('/:idEstudiante/main', verifyToken, function (req, res) {
             centro: true,
             imagenPerfil: true,
             carreras: true,
-            estado: true
+            estado: true,
+            telefono: true,
+            intereses: true,
+            Lenguajes:true,
+            descripcionPerfil:true,
+            indice: true,
+            clasesAprobadas: true,
+            fechaNacimiento: true
         })
         .then(result => {
             res.send(result);
