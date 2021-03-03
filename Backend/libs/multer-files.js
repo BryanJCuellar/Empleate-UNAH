@@ -4,7 +4,7 @@ var path = require('path');
 const { modelName } = require('../models/estudiante');
 
 const storage = multer.diskStorage({
-    destination: 'uploads', 
+    destination: 'uploads/files', 
     filename: (req, file, cb)=>{
         cb(null, uuidv4() + path.extname(file.originalname));
     }

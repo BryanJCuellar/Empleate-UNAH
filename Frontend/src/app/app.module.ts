@@ -19,7 +19,8 @@ import { LoginEmpressComponent } from './pages/login-empress/login-empress.compo
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { CompanyHomeComponent } from './pages/company-home/company-home.component';
 import { RouterModule } from '@angular/router';
-import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
+import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estudiante.component';
+import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StudentProfileComponent } from './pages/student-profile/student-profile
     LoginEmpressComponent,
     RegistroEmpressComponent,
     CompanyHomeComponent,
-    StudentProfileComponent
+    PerfilEstudianteComponent,
+    StudentProfileEditComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +48,9 @@ import { StudentProfileComponent } from './pages/student-profile/student-profile
       { path: 'register/company', component: RegistroEmpressComponent, data: { title: 'Empleate-UNAH - Registro Empresa' } },
       { path: 'login/student', component: LoginComponent, data: { title: 'Empleate-UNAH - Login Estudiante' } },
       { path: 'login/company', component: LoginEmpressComponent, data: { title: 'Empleate-UNAH - Login Empresa' } },
-      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - Inicio Estudiante' } },
+      { path: 'student/profile', component: PerfilEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
       { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
-      { path: 'student/profile', component: StudentProfileComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } }
+      { path: 'student/profile/edit', component: StudentProfileEditComponent, data: { title: 'Empleate-UNAH - Editar Perfil Estudiante' } }
     ])
   ],
   providers: [

@@ -25,8 +25,8 @@
                       <img src="../assets/img/Logo.png" width="60" height="40" class="d-inline-block align-top" alt="">
                       Empléate UNAH
             </a>
-            <a style=" color: white !important;" class="nav-link" [routerLink]="['login']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
-            <a style=" color: white !important;" class="nav-link" [routerLink]="['login-Empresas']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+            <a style=" color: white !important;" class="nav-link" [routerLink]="['login/student']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
+            <a style=" color: white !important;" class="nav-link" [routerLink]="['login/company']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,13 +39,13 @@
     <section class="jumbotron text-center" style="background-image: url(../assets/img/img5.jpg); background-size: cover;">
         <div class="container">
             <!-- Image and text -->
-           <h3 style="color: beige !important; font-weight: bolder;">Empléate UNAH</h3>
-            <p class="lead text-muted" style="color:#1E7064 !important; font-weight: bolder;">
+           <h3 style="color: beige !important; font-weight: bolder; background-color: #0000005e;">Empléate UNAH</h3>
+            <p class="lead text-muted" style="color:#1E7064 !important; font-weight: bolder; background-color: #f0ffff54;">
                 Aprovecha e inscríbete a la plataforma <br>
                  donde los <br> estudiantes y empresas <br> se encuentran
             </p>
             <p>
-                <a [routerLink]="['register/empress']" class="btn btn-empresa m-2">Empresas</a>
+                <a [routerLink]="['register/company']" class="btn btn-empresa m-2">Registro de empresas</a>
             </p>
         </div>
     </section>
@@ -96,7 +96,7 @@
 <footer class="footer-ditributed">
     <div class="footer-left">
         <img src="../assets/img/Logo.png" alt="logo">
-        <h3>Empleate <span>UNAH</span></h3>
+        <h3>Empléate <span>UNAH</span></h3>
         
         <p class="footer-company-name">&copy;2021 Derechos Reservados</p>
     </div>

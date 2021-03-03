@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var multer = require('../libs/multer');
+var multerImages = require('../libs/multer-images');
+var multerFiles = require('../libs/multer-files');
 // var nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 var estudiante = require('../models/estudiante');
@@ -130,12 +131,55 @@ router.get('/', function (req, res) {
         });
 });
 
-router.post('/:idEstudiante/imagenPerfil', multer.single('imagenPerfil'), function (req, res) {
+// Guardar o actualizar datos del estudiante
+router.put('/:idEstudiante', verifyToken, function (req, res) {
+    estudiante.updateOne({
+            _id: mongoose.Types.ObjectId(req.params.idEstudiante)
+        }, {
+            telefono: req.body.telefono,
+            descripcionPerfil: req.body.descripcionPerfil,
+            intereses: req.body.intereses,
+            datosDireccion: {
+                departamento: req.body.departamento,
+                ciudad: req.body.ciudad,
+                direccion: req.body.direccion
+            },
+            Lenguajes: req.body.Lenguajes
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+});
+
+router.post('/:idEstudiante/imagenPerfil', multerImages.single('imagenPerfil'), function (req, res) {
     estudiante.updateOne({
             _id: req.params.idEstudiante
         }, {
             $set: {
                 imagenPerfil: req.file.path
+            }
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
+
+router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'), function (req, res) {
+    estudiante.updateOne({
+            _id: req.params.idEstudiante
+        }, {
+            $set: {
+                CurriculumAdjunto: req.file.path
             }
         })
         .then(result => {

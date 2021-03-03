@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 // Custom Validations
-import { customValidations } from '../../utils/custom-validations';
+import { customValidations } from 'src/app/utils/custom-validations';
 // Sweet Alert
 import Swal from 'sweetalert2';
 
