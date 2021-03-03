@@ -1,0 +1,171 @@
+<body>
+  <div *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
+    <div class="navPerfil d-none d-lg-block">
+      <img src="../../../assets/img/logo/Logo180X100.png" alt="">
+      <span class="textoNavPerfil">Empleate-UNAH</span>
+      <span class="textoNavPerfil">Actualizando mi Perfil</span>
+    </div>
+    <div class="navPerfil d-block d-lg-none">
+      <div><img src="../../../assets/img/logo/Logo180X100.png" alt=""></div>
+      <div><span class="textoNavPerfil">Empleate-UNAH</span></div>
+      <div><span class="textoNavPerfil">Actualizando mi Perfil</span></div>
+    </div>
+    <div class="container">
+      <div class="row form-group mt-3">
+        <div class="col-lg-5 col-sm-12">
+          <div class="text-center">
+            <div class="">
+              <img *ngIf="estudianteActual.imagenPerfil==null" class="img-fluid rounded-circle imGUsuario"
+                src="../../../assets/img/usuario.png" alt="">
+              <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid rounded-circle imGUsuario"
+                [src]="'http://localhost:8888/'+ estudianteActual.imagenPerfil" alt="Profile Image">
+            </div>
+            <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar</button>
+            <form [formGroup]="formularioUploadImage">
+              <input
+                [ngClass]="{'visible':imagenPerfilHabilitada == true, 'no-visible': imagenPerfilHabilitada == false}"
+                formControlName="imagenPerfil" class="ml-5 ml-lg-0" type="file" (change)="selectProfileImage($event)">
+              <button [ngClass]="{'visible': hayImagenPerfil == true, 'no-visible': hayImagenPerfil == false}"
+                type="button" class="btn btn-red my-4" (click)="cancelProfileImage()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-7 col-sm-12 my-4">
+          <div class="text-center text-lg-left datosGenerales">
+            <h3 class="font-weight-bold User">{{estudianteActual.nombre}} {{estudianteActual.apellido}}</h3>
+            <h4 class="font-weight-bold">{{estudianteActual.email}}</h4>
+            <h4 class="font-weight-bold"><span class="mr-3">Identidad:</span>{{estudianteActual.numeroIdentidad}}</h4>
+            <h4 class="font-weight-bold"><span class="mr-3">Centro:</span>{{estudianteActual.centro}}</h4>
+            <h4 class="font-weight-bold"><span class="mr-3">Carrera:</span>{{estudianteActual.carreras}}</h4>
+          </div>
+          <div class="text-center text-lg-right mt-4 pr-0 pr-lg-5">
+            <a class="secondary-link font-s" href="student/profile">Regresar<i
+                class="fas fa-arrow-circle-left ml-1"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+      <form autocomplete="off" [formGroup]="formularioEdit" class="">
+
+        <div style="text-align: left;">
+          <h4 class="titGen">Datos Generales</h4>
+        </div>
+        <div class="form-group mt-3 row">
+          <label class="col-2 col-form-label">Descripcion del Perfil</label>
+          <div class="col">
+            <textarea
+              [ngClass]="{'form-input-error':profileDescription.invalid && (profileDescription.dirty || profileDescription.touched)}"
+              class="form-control" type="text" formControlName="profileDescription"
+              placeholder="Aqui puede agregar una breve descripcion de sus habilidades, cursos y certificados"
+              rows="5"></textarea>
+            <div *ngIf="profileDescription.invalid && (profileDescription.dirty || profileDescription.touched)"
+              class="form-error">
+              <span *ngIf="profileDescription.errors.required">Campo obligatorio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+          <label class="col-2 col-form-label">Telefóno</label>
+          <div class="col">
+            <input [ngClass]="{'form-input-error':phone.invalid && (phone.dirty || phone.touched)}" class="form-control"
+              type="text" placeholder="Ingrese su telefono" formControlName="phone">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-error">
+              <span *ngIf="phone.errors.required">Campo obligatorio</span>
+              <span *ngIf="phone.errors.pattern">Ingrese un Telefono valido, Ejemplo: 1234-5678</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+          <label class="col-2 col-form-label">Intereses Personales</label>
+          <div class="col">
+            <input [ngClass]="{'form-input-error':interests.invalid && (interests.dirty || interests.touched)}"
+              class="form-control" type="text" placeholder="Ingrese sus intereses" formControlName="interests">
+            <div *ngIf="interests.invalid && (interests.dirty || interests.touched)" class="form-error">
+              <span *ngIf="interests.errors.required">Campo obligatorio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+          <label class="col-2 col-form-label">Dirección</label>
+          <div class="form-row col">
+            <div class="col">
+              <select [ngClass]="{'form-input-error':department.invalid && (department.dirty || department.touched)}"
+                class="form-control mt-2" formControlName="department">
+                <option value="-"><b>Seleccione Departamento</b></option>
+                <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}</option>
+              </select>
+              <div *ngIf="department.invalid && (department.dirty || department.touched)" class="form-error">
+                <span *ngIf="department.errors.required">Campo obligatorio</span>
+                <span *ngIf="department.errors.valueRestricted">Seleccione un departamento, por favor</span>
+              </div>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'form-input-error':city.invalid && (city.dirty || city.touched)}" type="text"
+                class="form-control mt-2" placeholder="Ciudad" formControlName="city">
+              <div *ngIf="city.invalid && (city.dirty || city.touched)" class="form-error">
+                <span *ngIf="city.errors.required">Campo obligatorio</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <input
+                [ngClass]="{'form-input-error':descriptionAddress.invalid && (descriptionAddress.dirty || descriptionAddress.touched)}"
+                type="text" class="form-control mt-2" placeholder="Descripcion" formControlName="descriptionAddress">
+              <div *ngIf="descriptionAddress.invalid && (descriptionAddress.dirty || descriptionAddress.touched)"
+                class="form-error">
+                <span *ngIf="descriptionAddress.errors.required">Campo obligatorio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mt-5">
+          <label class="col-2 col-form-label">Idiomas</label>
+          <div class="col">
+            <select class="col-12 seleLengua" #select formControlName="languages">
+              <option *ngFor="let idioma of idiomas">{{idioma}}</option>
+            </select>
+
+            <ul class="list-group listaLenguas">
+              <li *ngFor="let item of selectedLanguages;" class="list-group-item">
+                <div class="row">
+                  <div class="col-10">{{item}}<span class="float-right"><i class="fas fa-minus-circle"
+                        (click)="removeItem(item)"></i></span></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-block btnLenguaje" (click)="addItem(select.value)">
+              Agregar Idioma
+            </button>
+
+          </div>
+        </div>
+      </form>
+
+      <form [formGroup]="formularioUploadCV">
+        <div class="form-group mt-3 row">
+          <label class="col-2 col-form-label">Adjuntar CV (Opcional)</label>
+          <div class="col">
+            <input class="form-control" type="file" formControlName="curriculumAdjunto" (change)="selectCurriculumFile($event)">
+            <button [ngClass]="{'visible': hayCurriculum == true, 'no-visible': hayCurriculum == false}"
+                type="button" class="btn btn-red my-4" (click)="cancelCurriculumFile()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="form-group row mt-5">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col">
+          <button [disabled]="formularioEdit.invalid" type="button" class="btn btn-primary btn-block btnLenguaje" (click)="sendForm()">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

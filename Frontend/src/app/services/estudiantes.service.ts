@@ -27,7 +27,15 @@ export class EstudiantesService {
     return this.httpClient.get(`${this.backendHost}/estudiantes`, {});
   }
 
+  actualizarPerfilEstudiante(idEstudiante, data): Observable<any>{
+    return this.httpClient.put(`${this.backendHost}/estudiantes/${idEstudiante}`, data);
+  }
+
   subirImagenPerfil(idEstudiante, dataImage): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/estudiantes/${idEstudiante}/imagenPerfil`, dataImage);
+  }
+
+  subirCV(idEstudiante, dataCV): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/estudiantes/${idEstudiante}/CV`, dataCV);
   }
 }
