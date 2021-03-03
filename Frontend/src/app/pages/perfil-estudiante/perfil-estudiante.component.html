@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Editar perfil</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="main-wrapper">
+    <div class="container px-3 px-lg-5">
+        <article class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+            
+            <div class="resume-header">
+                <div class="row align-items-center">
+                    <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
+                        <h2 class="resume-name mb-0 text-uppercase">{{estudiante.nombre}} {{estudiante.apellido}}</h2>
+                        <div class="resume-tagline mb-3 mb-md-0">{{estudiante.carreras}}</div>
+                    </div><!--//resume-title-->
+                    <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-phone-square fa-fw fa-lg mr-2 "></i><a class="resume-link" href="tel:#">{{estudiante.telefono}}</a></li>
+                            <li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg mr-2"></i><a class="resume-link" href="mailto:#">{{estudiante.email}}</a></li>
+                            <li class="mb-0"><i class="fas fa-map-marker-alt fa-fw fa-lg mr-2"></i>{{estudiante.centro}}</li>
+                        </ul>
+                    </div><!--//resume-contact-->
+                </div><!--//row-->
+                
+            </div><!--//resume-header-->
+            <hr>
+            <div class="resume-intro py-3">
+                <div class="media flex-column flex-md-row align-items-center">
+                    <img class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto" 
+                    [src]="'http://localhost:8888/'+ estudiante.imagenPerfil" alt="image">
+                    <div class="media-body text-left">
+                        <p class="mb-0">{{estudiante.descripcionPerfil}}
+                         </p>
+                    </div><!--//media-body-->
+                </div>
+            </div><!--//resume-intro-->
+            <hr>
+            <div class="resume-body">
+                <div class="row">
+                    <div class="resume-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
+                        <section class="work-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Datos de estudiante</h3>
+                            <div class="item mb-3">
+                                <div class="item-heading row align-items-center mb-2">
+                                    <h5 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Fecha Nacimiento</h5>
+                                    <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">{{estudiante.fechaNacimiento}}</div>
+                                    
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-heading row align-items-center mb-2">
+                                        <h5 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Indice</h5>
+                                        <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">{{estudiante.indice}}</div>    
+                                    </div>
+                                    <div class="item-heading row align-items-center mb-2">
+                                        <h5 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Clases aprobadas</h5>
+                                        <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">{{estudiante.clasesAprobadas}}</div>    
+                                    </div>
+                                </div>
+                            </div><!--//item-->
+                            
+                        </section><!--//work-section-->	
+                    </div><!--//resume-main-->
+                    <aside class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
+                        <section class="skills-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Habilidades</h3>
+                                </section><!--//skills-section-->
+                                <section class="skills-section py-3">
+                                    <h3 class="text-uppercase resume-section-heading mb-4">Lenguajes</h3>
+                                    <ul class="list-unstyled resume-lang-list">
+                                        <li class="mb-2">{{estudiante.Lenguajes}}<span class="text-muted">(Native)</span></li>
+                                    </ul>
+                                </section><!--//certificates-section-->
+                                <section class="skills-section py-3">
+                                    <h3 class="text-uppercase resume-section-heading mb-4">Intereses</h3>
+                                    <ul class="list-unstyled resume-interests-list mb-0">
+                                        <li class="mb-2">{{estudiante.intereses}}</li>
+                                    </ul>
+                                </section><!--//certificates-section-->
+                                
+                            </aside><!--//resume-aside-->
+                        </div><!--//row-->
+                    </div><!--//resume-body-->
+                    <hr>
+                </article>
+                
+            </div><!--//container-->
+            
+            <footer class="footer text-center py-4">
+                <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+                <small class="copyright text-muted">Empléate UNAH <i class="fas fa-heart"></i> <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank"></a>para estudiantes</small>
+            </footer>
+            
+        </div><!--//main-wrapper-->
+
+
