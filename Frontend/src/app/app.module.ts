@@ -19,6 +19,7 @@ import { LoginEmpressComponent } from './pages/login-empress/login-empress.compo
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { CompanyHomeComponent } from './pages/company-home/company-home.component';
 import { RouterModule } from '@angular/router';
+import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     LoginEmpressComponent,
     RegistroEmpressComponent,
-    CompanyHomeComponent
+    CompanyHomeComponent,
+    StudentProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { RouterModule } from '@angular/router';
       { path: 'login/student', component: LoginComponent, data: { title: 'Empleate-UNAH - Login Estudiante' } },
       { path: 'login/company', component: LoginEmpressComponent, data: { title: 'Empleate-UNAH - Login Empresa' } },
       { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - Inicio Estudiante' } },
-      { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } }
+      { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
+      { path: 'student/profile', component: StudentProfileComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } }
     ])
   ],
   providers: [
