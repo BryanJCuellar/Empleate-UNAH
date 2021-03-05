@@ -18,7 +18,7 @@ var esquemaEmpresas = new mongoose.Schema({
     telefono: String,
     imagenPerfil: String,
     descripcionPerfil: String,
-    vacantes: Array,
+    ofertas: Array,
     solicitudEnviada: Array,
     solicitudRecibida: Array
 }, {
