@@ -46,7 +46,7 @@ router.post('/signup', validateEmail, function (req, res) {
         telefono: req.body.telefono,
         imagenPerfil: null,
         descripcionPerfil: null,
-        vacantes: [],
+        ofertas: [],
         solicitudEnviada: [],
         solicitudRecibida: []
     });
@@ -135,7 +135,7 @@ router.get('/', function (req, res) {
             telefono: true,
             imagenPerfil: true,
             descripcionPerfil: true,
-            vacantes: true
+            ofertas: true
         })
         .then(result => {
             res.send(result);
@@ -145,6 +145,31 @@ router.get('/', function (req, res) {
             res.send(error);
             res.end();
         });
+});
+
+// Listar las ofertas de una empresa logueada (Metodo aggregate)
+router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
+    // Code
+});
+
+// Guardar ID de ofertas en una empresa
+router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
+    empresa.updateOne({
+        _id: req.params.idEmpresa
+    }, {
+        $push: {
+            ofertas: {
+                _id: mongoose.Types.ObjectId(req.body.idOferta),
+                titulo_Oferta: req.body.titulo_Oferta
+            }
+        }
+    }).then(result => {
+        res.send(result);
+        res.end();
+    }).catch(error => {
+        res.send(error);
+        res.end();
+    })
 });
 
 module.exports = router;
