@@ -1,0 +1,140 @@
+body {
+  /*background-color: #32D5AD;*/
+  background-color: #191140;
+
+}
+
+.container {
+  background-color: #d4d4d4ad !important;
+  padding: 20px 20px !important;
+  border-radius: 10px !important;
+}
+
+.navPerfil {
+  text-align: center !important;
+  /*background-color: #32D5AD;*/
+  background-color:  #191140;
+  width: 100%;
+  color: white;
+  padding: 10px 10px 10px 10px !important;
+  font-size: 30px;
+}
+
+.textoNavPerfil {
+  padding: 15px;
+}
+
+
+.primerGrupo {
+
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.imGUsuario {
+  /*border-radius: 50%;
+  width: 80%;*/
+  width: 400px;
+  max-height: 400px;
+}
+
+.datosGenerales {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+
+  /*.imGUsuario {
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+  }*/
+
+
+}
+
+@media only screen and (max-width: 770px) {
+
+  .navPerfil {
+    font-size: 20px;
+  }
+
+
+}
+
+.inputFile {
+  margin-left: 2%;
+  margin-top: 15px;
+  background-color: #40a0c5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.custom-file,
+.input-group-append {
+  margin-top: 15px !important;
+}
+
+.User {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 50px !important;
+  font-weight: bold !important;
+}
+
+.titGen {
+  font-size: 30px !important;
+  font-weight: bold !important;
+}
+
+.col-form-label {
+  font-size: 20px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+}
+
+
+
+.form-control:hover {
+
+  border: 3px solid #40a0c5 !important;
+}
+
+.btnLenguaje {
+  padding: 10px !important;
+  background-color: #1C928A !important;
+  border-color: #1C928A !important;
+  font-size: 20px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  color: cornsilk;
+  border-radius: 10px;
+}
+
+.btnLenguaje:hover {
+  padding: 10px !important;
+  background-color: #25c2b7 !important;
+  border-color: #25c2b7 !important;
+  box-shadow: 0px 0px 5px inset#ffffff;
+  font-size: 20px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  border-radius: 10px;
+
+}
+
+.listaLenguas {
+  margin-top: 10px;
+  width: 100% !important;
+}
+
+
+.seleLengua {
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.seleLengua:hover {
+  padding: 8px;
+  border-radius: 5px;
+  border: 3px solid #40a0c5;
+}

@@ -1,0 +1,164 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*Background image of student login*/
+.student-login {
+  background-color: #d4d4d4ad;
+  background-image: url('assets/img/unahR.jpg');
+  /*min-height: 100vh;*/
+  width: 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.primary-link {
+  color: #009FE1 !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-link:hover {
+  color: #2f7ea0 !important;
+  text-decoration: none;
+}
+
+.secondary-link {
+  color: #1C928A !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.secondary-link:hover {
+  color: #25c4b9 !important;
+  text-decoration: none;
+}
+
+/*Colores*/
+.morado {
+  color: #65305D;
+}
+
+.morado2 {
+  color: #7B2E5B;
+}
+
+.verde {
+  color: #70AD30;
+}
+
+.azul {
+  color: #0DA1C4;
+}
+
+.azul2 {
+  color: #1C928A;
+}
+
+.azul3 {
+  color: #32D5AD;
+}
+
+.azul4 {
+  color: #1E7064;
+}
+
+.rojo {
+  color: #E11A41;
+}
+
+.gris {
+  color: #768F95;
+}
+
+/*Font Size*/
+.font-s {
+  font-size: 1.5rem;
+}
+.font-s-2 {
+  font-size: 2rem;
+}
+
+.font-s-3 {
+  font-size: 3rem;
+}
+
+.font-s-4 {
+  font-size: 4rem;
+}
+
+.font-s-5 {
+  font-size: 5rem;
+}
+
+/*Visibilidad*/
+.visible {
+  display: block;
+}
+
+.no-visible {
+  display: none;
+}
+
+/*Botones*/
+.btn-primary {
+  color: #FFF !important;
+  background-color: #1C928A !important;
+  border-color: #1C928A !important;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  color: #FFF !important;
+  background-color: #25c2b7 !important;
+  border-color: #25c2b7 !important;
+  box-shadow: 0px 0px 5px inset#ffffff;
+}
+
+.btn-red {
+  color: #FFF !important;
+  background-color: #E11A41 !important;
+  border-color: #E11A41 !important;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+.btn-red:hover {
+  color: #FFF !important;
+  background-color: #f5234d !important;
+  border-color: #f5234d !important;
+  box-shadow: 0px 0px 5px inset#ffffff;
+}
+
+/*Formularios reactivos*/
+.form-error {
+  color: #CD0052;
+  margin: 5px;
+  margin-top: 0px;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.form-input-error {
+  border-color: #DD0000;
+}
+
+.form-input-error:focus {
+  outline: 0px;
+  border-color: #DD0000;
+  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0, .25);
+}
+
+/**/

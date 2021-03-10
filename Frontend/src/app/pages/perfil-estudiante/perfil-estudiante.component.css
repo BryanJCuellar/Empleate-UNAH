@@ -1,0 +1,14 @@
+.nav-logo{
+    width: 100px;
+}
+.resume-profile-image{
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    max-height: 900px;
+}
+
+.nav-principal{
+    background-color:  #191140;
+}
+
