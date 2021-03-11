@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg nav-principal">
+    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+
+<body>
+    <div class="main">
+        <div class="wrap" style="width:100%">
+            <ul class="tabs">
+                <li><a (click)="perfil()"><span class="fa fa-home "></span><span class="tab-text">Perfil</span></a></li>
+                <li><a (click)="empleos()"><span class="fa fa-briefcase"></span><span class="tab-text">Empleos</span></a></li>
+                <li><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span class="tab-text">Oferta</span></a></li>
+                <li><a (click)="favoritos()" class="active"><span class="fa fa-bookmark"></span><span class="tab-text">favoritos</span></a></li>
+
+            </ul>
+
+            <div class="secciones">
+                <div id="Perfil" *ngIf="elegir=='perfil'">
+                    <p>hola perfil</p>
+
+                </div>
+                <div *ngIf="elegir=='empleos' ">
+                    <div class="cards" *ngFor="let item of arreglo">
+                        <div class="card">
+                            <div class="card-top">
+                                <div class="name">
+                                    <img class="imagen-empresa" src="../../../assets/img/tigo.jpg" alt="green forest">
+                                </div>
+
+                            </div>
+
+                            <div class="description col-md-8">
+                                <h1>{{item.vacante}}</h1>
+                                <span class="empresa">{{item.empresa}}</span><span class="location">{{item.ubicacion}}</span>
+                                <div>{{item.info}}</div>
+                                <button class="btn">Mostrar mas</button>
+                                <button class="btn">Eliminar</button>
+                            </div>
+
+                            <div class="card-action">
+                                <div class="rate"><i class="fas fa-star"></i></div>
+                                <span>{{item.fecha}}</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="elegir=='oferta'">
+                    <div class="cards">
+                        <div class="card">
+                            <div class="card-top">
+                                <div class="name">
+                                    <img class="imagen-empresa" src="../../../assets/img/tigo.jpg" alt="green forest">
+                                </div>
+                            </div>
+
+                            <div class="description">
+                                <input type="text" placeholder="vacante" style="width: 100%;" [(ngModel)]="addoffer.vacante">
+                                <input type="text" placeholder="Empresa" class="empresa" [(ngModel)]="addoffer.empresa">
+                                <input type="text" placeholder="Ubicacion" class="location" [(ngModel)]="addoffer.ubicacion">
+                                <textarea name="descripcion" id="describir" cols="75" rows="10" [(ngModel)]="addoffer.info"></textarea>
+                                <input type="date" placeholder="fecha" [(ngModel)]="addoffer.fecha">
+                                <button type="button" (click)="guardar()" class="btn">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="elegir=='favoritos'">
+                    <p>hola favoritos</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

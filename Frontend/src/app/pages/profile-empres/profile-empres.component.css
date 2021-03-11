@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.main {
+    /*funciona en cada despliegue de pestana */
+    background-image: url(../../../assets/img/lineas2.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute
+}
+
+body {
+    /*funciona cuando no hay contenido y asi no aparesca cortada la imagen */
+    font-family: 'Open sans';
+    background-image: url(../../../assets/img/lineas2.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute
+}
+
+.wrap {
+    width: 800px;
+    height: 100%;
+    max-width: 90%;
+    margin: 30px auto;
+}
+
+ul.tabs {
+    width: 100%;
+    background: #00035a;
+    list-style: none;
+    display: flex;
+}
+
+ul.tabs li {
+    width: 18%;
+}
+
+ul.tabs li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding: 20px 0px;
+}
+
+ul.tabs a:active {
+    background: #ffd900;
+}
+
+ul.tabs a:hover {
+    background: #ffc400;
+}
+
+ul.tabs li a .tab-text {
+    margin-left: 8px;
+}
+
+.secciones {
+    width: 100%;
+    background: #fff;
+}
+
+.secciones div {
+    padding: 10px 16px 10px 16px;
+}
+
+.secciones div p {
+    text-align: justify;
+}
+
+@media screen and (max-width: 700px) {
+    ul.tabs li {
+        width: none;
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    ul.tabs li a {
+        padding: 15px 0px;
+    }
+    ul.tabs li a .tab-text {
+        display: none;
+    }
+    .secciones div {
+        padding: 20px;
+    }
+}
+
+.nav-logo {
+    width: 100px;
+}
+
+.resume-profile-image {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    max-height: 900px;
+}
+
+.nav-principal {
+    background-color: #191140;
+}
+
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.card {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    margin: 2em auto;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 0.3em;
+}
+
+.imagen-empresa {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+.description {
+    font-size: 1em;
+    padding: 1em 0.5em;
+    font-family: "Montserrat";
+    font-weight: 300;
+}
+
+.description h1 {
+    font-size: 1.7em;
+    font-family: "Roboto", sans-serif;
+    padding-bottom: 0.4em;
+}
+
+.description .location {
+    color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    font-size: 1em;
+    margin: 0px 16px 4px 0px;
+}
+
+.empresa {
+    color: rgba(21, 7, 218, 0.678);
+    display: inline-block;
+    font-size: 1em;
+    margin: 2px 16px 4px 0px;
+    font-weight: 900;
+}
+
+.description>p {
+    font-size: 1em;
+    margin-bottom: 0.6em;
+    line-height: 1.3;
+}
+
+.description>button {
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 10px;
+    padding-inline: 0.9em;
+    padding-block: 0.6em;
+    transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    margin-top: 1em;
+    margin-left: 10px;
+}
+
+.description>button:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+@media (min-width: 780px) {
+    .card {
+        flex-direction: row;
+        max-width: 90%;
+    }
+    .description {
+        padding-left: 1em;
+    }
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+input {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}

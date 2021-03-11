@@ -8,12 +8,13 @@
 }
 
 #contenedor {
-    background-image: url(../../../assets/img/lineas2.png);
     background-color: rgba(0, 0, 0, 0.65);
+    height: auto;
     padding: 30px;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
 }
 
 #birrete {
@@ -22,7 +23,7 @@
 }
 
 #registro {
-    background-color: #6f6f6fad;
+    background-color: #888888ad;
     width: 700px;
     max-width: 100%;
     color: white;
@@ -53,8 +54,7 @@
 }
 
 #registro input[type='text'],
-#registro input[type='password'],
-#registro select {
+#registro input[type='password'] {
     background-color: #eaeaea;
     font-size: 1.1rem;
     /* border: 0px solid #000; */
