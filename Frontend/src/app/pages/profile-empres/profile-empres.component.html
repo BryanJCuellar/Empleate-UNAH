@@ -12,16 +12,88 @@
     <div class="main">
         <div class="wrap" style="width:100%">
             <ul class="tabs">
-                <li><a (click)="perfil()"><span class="fa fa-home "></span><span class="tab-text">Perfil</span></a></li>
-                <li><a (click)="empleos()"><span class="fa fa-briefcase"></span><span class="tab-text">Empleos</span></a></li>
-                <li><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span class="tab-text">Oferta</span></a></li>
-                <li><a (click)="favoritos()" class="active"><span class="fa fa-bookmark"></span><span class="tab-text">favoritos</span></a></li>
+                <li [style.background-color]= "color1"><a (click)="perfil()" 
+                    ><span class="fa fa-home ">
+
+                </span><span class="tab-text"  >Perfil</span></a></li>
+                <li [style.background-color]= "color2" ><a (click)="empleos()"><span class="fa fa-briefcase"></span><span class="tab-text">Empleos</span></a></li>
+                <li [style.background-color]= "color3" ><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span class="tab-text">Oferta</span></a></li>
+                <li [style.background-color]= "color4" ><a (click)="favoritos()" class="active"><span class="fa fa-bookmark"></span><span class="tab-text">favoritos</span></a></li>
 
             </ul>
 
             <div class="secciones">
                 <div id="Perfil" *ngIf="elegir=='perfil'">
-                    <p>hola perfil</p>
+                    <article class="resume-wrapper text-center position-relative">
+                        <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+                            <header class="resume-header pt-4 pt-md-0">
+                                <div class="media flex-column flex-md-row">
+                                    <img class="mr-3 img-fluid picture mx-auto" src="../../../assets/img/tigo.jpg" alt="">
+                                    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+                                        <div class="primary-info">
+                                            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>
+                                            <h1 class="title mb-3">Nombre empresa</h1>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#"><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>telefono</a></li>
+                                            </ul>
+                                        </div><!--//primary-info-->
+                                        <div class="secondary-info ml-md-auto mt-2">
+                                            <ul class="resume-social list-unstyled">
+                                                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fab fa-facebook"></i></span>facebook</a></li>
+                                                <li><a href="#"><span class="fa-container text-center mr-2"><i class="fas fa-globe"></i></span>yourwebsite.com</a></li>
+                                            </ul>
+                                        </div><!--//secondary-info-->
+                                        
+                                    </div><!--//media-body-->
+                                </div><!--//media-->
+                            </header>
+                            <div class="resume-body p-5">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <section class="resume-section experience-section mb-5">
+                                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Descripción de la empresa</h2>
+                                            <div class="resume-section-content">
+                                                <div class="resume-timeline position-relative">
+                                                    
+                                                    <article class="resume-timeline-item position-relative pb-5">
+                                                        <div class="resume-timeline-item-desc">
+                                                            <p>Role description </p>
+                                                        </div><!--//resume-timeline-item-desc-->
+                    
+                                                    </article><!--//resume-timeline-item-->
+                                                    
+                                                    
+                                                </div><!--//resume-timeline-->
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                            </div>
+                                        </section><!--//experience-section-->
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <section class="resume-section skills-section mb-5">
+                                            <h3 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
+                                            <div class="resume-section-content">
+                                                <div class="resume-skill-item">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item">
+                                                            <p>DevOps</p></li>
+                                                    </ul>
+                                                </div><!--//resume-skill-item-->
+                                            </div><!--resume-section-content-->
+                                        </section><!--//skills-section-->
+                                    </div>
+                                </div><!--//row-->
+                            </div><!--//resume-body-->
+                            
+                            
+                        </div>
+                    </article>  
+
+
 
                 </div>
                 <div *ngIf="elegir=='empleos' ">

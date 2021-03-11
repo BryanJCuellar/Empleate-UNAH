@@ -18,6 +18,12 @@ export class ProfileEmpresComponent implements OnInit {
  arreglo:any=[];
 
   elegir='perfil';
+ 
+  color1 = "#00035a";
+  color2 = "#00035a";
+  color3 = "#00035a";
+  color4 = "#00035a";
+  
   constructor() {  }
   ngOnInit(): void { 
   }
@@ -52,16 +58,32 @@ export class ProfileEmpresComponent implements OnInit {
 
 
   perfil(){
-    this.elegir='perfil'
+    this.color2 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.elegir='perfil';
+    this.color1 = '#ffc400';
   }
   empleos(){
-    this.elegir='empleos'
+    this.color1 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.elegir='empleos';
+    this.color2 = '#ffc400';
   }
   oferta(){
-    this.elegir='oferta'
+    this.color1 = "#00035a";
+    this.color2 = "#00035a";
+    this.color4 = "#00035a";
+    this.elegir='oferta';
+    this.color3 = '#ffc400';
   }
   favoritos(){
-    this.elegir='favoritos'
+    this.color1 = "#00035a";
+    this.color2 = "#00035a";
+    this.color3 = "#00035a";
+    this.elegir='favoritos';
+    this.color4 = '#ffc400';
   }
   
 }
