@@ -3,10 +3,11 @@ var mongoose = require('mongoose');
 
 var servidor = 'localhost:27017';
 var db = 'dbEmpleate';
+var urlDB = process.env.MONGODB_URI || `mongodb://${servidor}/${db}`;
 
 class Database {
     constructor() {
-        mongoose.connect(process.env.MONGODB_URI || `mongodb://${servidor}/${db}`, {
+        mongoose.connect(urlDB, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
