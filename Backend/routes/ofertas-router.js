@@ -19,8 +19,43 @@ router.get('/', function (req, res) {
 
 // Guardar una oferta
 router.post('/', verifyToken, function (req, res) {
-    // Code
-})
+    const nueva_oferta = new oferta({
+        id_empresa: mongoose.Types.ObjectId(req.body.idEmpresa),
+        titulo_oferta: req.body.titulo_oferta,
+        ubicacion: {
+            departamento: req.body.departamento,
+            ciudad: req.body.ciudad,
+            direccion: req.body.direccion
+        },
+        fecha_publicacion: {
+            dia: req.body.dia,
+            mes: req.body.mes, 
+            anio: req.body.anio
+        },
+        descripcion_oferta: req.body.descripcion_oferta,
+        palabras_clave: req.body.palabras_clave,
+        idiomas: req.body.idiomas,
+        edad: req.body.edad,
+        indice_estudiante: req.body.indice_estudiante,
+        experiencia_laboral: req.body.experiencia_laboral,
+        jornada_laboral: req.body.jornada_laboral,
+        tipo_contrato: req.body.tipo_contrato,
+        salario: req.body.salario,
+        estado_oferta: true
+    });
+
+    nueva_oferta.save()
+        .then(result => {
+            res.status(200).send({
+                mensaje: 'publicado',
+                data: result
+            });
+            res.end();
+        }).catch(error => {
+            res.send(error);
+            res.end();
+        })
+});
 
 module.exports = router;
 
