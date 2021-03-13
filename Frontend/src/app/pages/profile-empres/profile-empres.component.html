@@ -28,19 +28,23 @@
                         <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
                             <header class="resume-header pt-4 pt-md-0">
                                 <div class="media flex-column flex-md-row">
-                                    <img class="mr-3 img-fluid picture mx-auto" src="../../../assets/img/tigo.jpg" alt="">
+                                    <img class="mr-3 img-fluid picture mx-auto"
+                                     [src]="'http://localhost:8888/'+ empresa.imagenPerfil" alt="">
                                     <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
                                         <div class="primary-info">
                                             <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>
-                                            <h1 class="title mb-3">Nombre empresa</h1>
+                                            <h1 class="title mb-3">{{empresa.organizacion}}</h1>
                                             <ul class="list-unstyled">
-                                                <li><a href="#"><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>telefono</a></li>
+                                                <li><a href="#"><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>
+                                                    {{empresa.telefono}}</a></li>
                                             </ul>
                                         </div><!--//primary-info-->
                                         <div class="secondary-info ml-md-auto mt-2">
                                             <ul class="resume-social list-unstyled">
-                                                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fab fa-facebook"></i></span>facebook</a></li>
-                                                <li><a href="#"><span class="fa-container text-center mr-2"><i class="fas fa-globe"></i></span>yourwebsite.com</a></li>
+                                                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fab fa-facebook"></i>
+                                                </span>{{empresa.facebook}}</a></li>
+                                                <li><a href="#"><span class="fa-container text-center mr-2"><i class="fas fa-globe"></i>
+                                                </span>{{empresa.paginaWeb}}</a></li>
                                             </ul>
                                         </div><!--//secondary-info-->
                                         
@@ -57,7 +61,7 @@
                                                     
                                                     <article class="resume-timeline-item position-relative pb-5">
                                                         <div class="resume-timeline-item-desc">
-                                                            <p>Role description </p>
+                                                            <p>{{empresa.descripcionPerfil}} </p>
                                                         </div><!--//resume-timeline-item-desc-->
                     
                                                     </article><!--//resume-timeline-item-->
@@ -78,9 +82,11 @@
                                             <h3 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
                                             <div class="resume-section-content">
                                                 <div class="resume-skill-item">
-                                                    <ul class="list-inline">
+                                                    <ul class="list-inline" *ngFor = "let direccion of empresa.datosDireccion" >
                                                         <li class="list-inline-item">
-                                                            <p>DevOps</p></li>
+                                                            <p>{{direccion.departamento}}</p></li>
+                                                        <li class="list-inline-item"><p>{{direccion.ciudad}}</p></li>
+                                                        <li class="list-inline-item"><p>{{direccion.direccion}}</p></li>
                                                     </ul>
                                                 </div><!--//resume-skill-item-->
                                             </div><!--resume-section-content-->

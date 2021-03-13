@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatTabsModule} from '@angular/material/tabs';
+import { AuthService } from 'src/app/services/auth.service';
+import { EmpresasService } from 'src/app/services/empresas.service';
 @Component({
   selector: 'app-profile-empres',
   templateUrl: './profile-empres.component.html',
@@ -16,6 +18,7 @@ export class ProfileEmpresComponent implements OnInit {
   fecha:'fecha'
 }
  arreglo:any=[];
+ empresa: any;
 
   elegir='perfil';
  
@@ -24,8 +27,27 @@ export class ProfileEmpresComponent implements OnInit {
   color3 = "#00035a";
   color4 = "#00035a";
   
-  constructor() {  }
+  constructor(private empresasService: EmpresasService,  private authService: AuthService) {  }
   ngOnInit(): void { 
+    if (this.authService.getRol() == 'Empresa') {
+      this.empresasService.obtenerIDEmpresa()
+        .subscribe(
+          res => {
+            this.empresasService.obtenerEmpresa(res.id)
+              .subscribe(
+                data => {
+                  // console.log(data);
+                  this.empresa = data;
+                  console.log(this.empresa);
+                },
+                error => console.log('Error al obtener informacion empresa', error)
+              )
+          },
+          error => console.log('Error al obtener ID', error)
+        )
+    
+       }
+  
   }
  
 
@@ -86,4 +108,4 @@ export class ProfileEmpresComponent implements OnInit {
     this.color4 = '#ffc400';
   }
   
-}
+}  
