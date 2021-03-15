@@ -10,5 +10,5 @@ export class customValidations {
             }
             return null;
         }
-    }
+    }  
 }
