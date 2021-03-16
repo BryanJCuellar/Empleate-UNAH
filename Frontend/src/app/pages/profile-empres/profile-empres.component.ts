@@ -86,11 +86,11 @@ export class ProfileEmpresComponent implements OnInit {
     this.elegir='perfil';
     this.color1 = '#ffc400';
   }
-  empleos(){
+  verOfertas(){
     this.color1 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
-    this.elegir='empleos';
+    this.elegir='listarOfertas';
     this.color2 = '#ffc400';
   }
   oferta(){
@@ -100,6 +100,8 @@ export class ProfileEmpresComponent implements OnInit {
     this.elegir='oferta';
     this.color3 = '#ffc400';
   }
+
+  
   favoritos(){
     this.color1 = "#00035a";
     this.color2 = "#00035a";

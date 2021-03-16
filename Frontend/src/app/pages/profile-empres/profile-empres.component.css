@@ -228,3 +228,23 @@ input {
     background-color: #f8f8f8;
     resize: none;
 }
+
+/*Estilizando la parte de ver OFERTAS*/
+
+.table-dark th{
+    background-color: #00035a !important;
+}
+
+.table-dark tr:hover{
+    background-color: #0069d9 !important;
+}
+
+.btn{
+    padding: 5px 5px 5px 5px !important;
+}
+
+.btn:hover{
+    background-color: #ffd900 !important;
+    outline: none !important;
+}
+/***************************************************************************/

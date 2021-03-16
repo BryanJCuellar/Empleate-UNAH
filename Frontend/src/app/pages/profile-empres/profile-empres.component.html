@@ -16,7 +16,7 @@
                     ><span class="fa fa-home ">
 
                 </span><span class="tab-text"  >Perfil</span></a></li>
-                <li [style.background-color]= "color2" ><a (click)="empleos()"><span class="fa fa-briefcase"></span><span class="tab-text">Empleos</span></a></li>
+                <li [style.background-color]= "color2" ><a (click)="verOfertas()"><span class="fa fa-briefcase"></span><span class="tab-text">Ofertas Realizadas</span></a></li>
                 <li [style.background-color]= "color3" ><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span class="tab-text">Oferta</span></a></li>
                 <li [style.background-color]= "color4" ><a (click)="favoritos()" class="active"><span class="fa fa-bookmark"></span><span class="tab-text">favoritos</span></a></li>
 
@@ -98,36 +98,105 @@
                             
                         </div>
                     </article>  
-
-
-
                 </div>
-                <div *ngIf="elegir=='empleos' ">
-                    <div class="cards" *ngFor="let item of arreglo">
-                        <div class="card">
-                            <div class="card-top">
-                                <div class="name">
-                                    <img class="imagen-empresa" src="../../../assets/img/tigo.jpg" alt="green forest">
-                                </div>
 
-                            </div>
 
-                            <div class="description col-md-8">
-                                <h1>{{item.vacante}}</h1>
-                                <span class="empresa">{{item.empresa}}</span><span class="location">{{item.ubicacion}}</span>
-                                <div>{{item.info}}</div>
-                                <button class="btn">Mostrar mas</button>
-                                <button class="btn">Eliminar</button>
-                            </div>
-
-                            <div class="card-action">
-                                <div class="rate"><i class="fas fa-star"></i></div>
-                                <span>{{item.fecha}}</span>
-
-                            </div>
-
+                <!-- Listando las Ofertas-->
+                <div *ngIf="elegir=='listarOfertas'">
+                    <div class="cards">
+                      <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+                              <h1>Ofertas Activas <i class="fas fa-box-open"></i></h1>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-right">
+                            <button type="button" (click)=" oferta()" class="btn btn-success">Crear Nueva Oferta <i class="fas fa-plus-square"></i></button>
+                          </div>
+                      </div>
+                        <div class="table-responsive text-center">
+                            <table class="table table-dark">
+                                <thead>
+                                  <tr>
+                                    <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                                    <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                                    <th>Fecha <i class="fas fa-calendar-day"></i></th>
+                                    <th></th>
+                                    <th>Opciones <i class="fas fa-cogs"></i></th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td> <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td> <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td> <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
                         </div>
-
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <h1>Ofertas Archivadas <i class="fas fa-archive"></i></h1>
+                            </div>
+                        </div>
+                        <div class="table-responsive text-center">
+                            <table class="table table-dark">
+                                <thead>
+                                  <tr>
+                                    <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                                    <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                                    <th>Fecha <i class="fas fa-calendar-day"></i></th>
+                                    <th></th>
+                                    <th>Opciones <i class="fas fa-cogs"></i></th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td>  <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td>  <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gerente de Recursos Humanos</td>
+                                    <td>$120/mes</td>
+                                    <td>12/12/2012</td>
+                                    <td> <button type="button" class="btn btn-warning">Actualizar <i class="fas fa-edit"></i></button></td>
+                                    <td> <button type="button" class="btn btn-info">Detalles <i class="fas fa-info"></i></button></td>
+                                    <td>  <button type="button" class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
                     </div>
                 </div>
 
