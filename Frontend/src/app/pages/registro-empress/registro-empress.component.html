@@ -117,7 +117,7 @@
           <button class="mb-5 w-100" type="submit" [disabled]="formularioConfirm.invalid">Confirmar</button>
         </form>
         <p>¿No recibió el mensaje de confirmación?</p>
-        <div class="mb-4"><a class="primary-link">Enviar de nuevo el código</a></div>
+        <div class="mb-4"><a class="primary-link" (click)="enviarConfirmacionEmail()">Enviar de nuevo el código</a></div>
         <button class="btn btn-red" type="button" (click)="formRegistro=true;confirmRegistro=false;">Regresar</button>
       </section>
     </div>

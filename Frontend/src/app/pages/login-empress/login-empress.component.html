@@ -9,7 +9,7 @@
     <form [formGroup]="formularioLoginCompany" (ngSubmit)="login()">
       <div class="mb-4">
         <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
-          formControlName="email" type="text" placeholder="correo electronico" required>
+          formControlName="email" type="text" placeholder="correo electronico" required (keydown)="emailValido = true;">
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
           <span *ngIf="email.errors.required">Por favor, ingrese su correo</span>
           <span *ngIf="email.errors.pattern">Ingrese un correo válido</span>
@@ -21,7 +21,8 @@
       <div class="mb-4">
         <input
           [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched) || !passwordValido}"
-          formControlName="password" #inputPassword type="password" placeholder="contraseña">
+          formControlName="password" #inputPassword type="password" placeholder="contraseña"
+          (keydown)="passwordValido = true;">
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
           <span *ngIf="password.errors.required">Por favor, ingrese una contraseña</span>
           <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>

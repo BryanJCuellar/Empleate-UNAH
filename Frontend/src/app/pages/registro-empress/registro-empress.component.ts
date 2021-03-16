@@ -20,6 +20,7 @@ export class RegistroEmpressComponent implements OnInit {
   emailDuplicado: boolean = false;
   errorCodigo: boolean = false;
   codigoExpirado: boolean = false;
+  cuentaVerificada: boolean = false;
   departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
     'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
     'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
@@ -36,6 +37,8 @@ export class RegistroEmpressComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.formularioEmpresa.reset();
+    this.formRegistro = true;
+    this.confirmRegistro = false;
   }
 
   createForm() {
@@ -92,6 +95,7 @@ export class RegistroEmpressComponent implements OnInit {
   }
 
   enviarConfirmacionEmail() {
+    this.errorCodigo = false;
     this.codigoExpirado = false;
     const data = {
       email: this.email.value
@@ -104,6 +108,13 @@ export class RegistroEmpressComponent implements OnInit {
           setTimeout(() => {
             console.log(`El codigo ${this.codigo_hash} ha expirado`);
             this.codigo_hash = '';
+            /*if (!this.formRegistro && this.confirmRegistro && !this.cuentaVerificada) {
+              Swal.fire(
+                'El código ha expirado',
+                'Solicite otro código dando click en "Enviar de nuevo el código"',
+                'error'
+              );
+            }*/
           }, 90000)
         },
         error => console.log(error)
@@ -160,6 +171,7 @@ export class RegistroEmpressComponent implements OnInit {
         response => {
           console.log('Respuesta del servidor', response);
           if (response.mensaje == "Registrado") {
+            this.cuentaVerificada = true;
             // Guardar token en localStorage
             localStorage.setItem('token', response.data.accessToken);
             localStorage.setItem('rol', response.data.rol);
@@ -172,7 +184,7 @@ export class RegistroEmpressComponent implements OnInit {
               showConfirmButton: false
             }).then(success => {
               // window.location.href = '/company/home';
-              this.router.navigate(['/company/home']);
+              this.router.navigate(['/company/profile']);
             }
             ).catch(err => console.log(err));
           }
