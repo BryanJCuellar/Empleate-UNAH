@@ -22,7 +22,16 @@ export class AuthService {
   loginEmpresa(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/login`, data);
   }
-  // Registro
+  /*Registro Empresa*/
+  // Validar si email ya existe
+  validateEmailRegister(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/signup/validateEmail`, data);
+  }
+  // Send Mail Verification
+  sendMailRegister(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/signup/send-email/verify`, data);
+  }
+  // Registrar una vez verificado el correo
   registrarEmpresa(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/signup`, data);
   }

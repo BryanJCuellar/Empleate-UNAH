@@ -6,7 +6,7 @@
     </div>
 
     <h1 class="mb-4 mt-3">Inicio de Sesión</h1>
-    <form [formGroup]="formularioLoginCompany">
+    <form [formGroup]="formularioLoginCompany" (ngSubmit)="login()">
       <div class="mb-4">
         <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
           formControlName="email" type="text" placeholder="correo electronico" required>
@@ -32,11 +32,9 @@
         <div class="pt-2 pl-2"><input type="checkbox" class="mr-2" (click)="cambiarInput(inputPassword)"><b>Mostrar
             contraseña</b></div>
       </div>
+      <!-- Boton iniciar sesion -->
+      <button class="mb-4" type="submit" [disabled]="formularioLoginCompany.invalid">Iniciar</button>
     </form>
-
-    <!-- Boton iniciar sesion -->
-    <button class="mb-4" type=button [disabled]="!formularioLoginCompany.valid" (click)="login()"
-      value="Iniciar">Iniciar</button>
     <!---->
     <!--<div class="mb-3">
         <label class="texto-pequenio">o inicia con: </label>
