@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.main {
+    /*funciona en cada despliegue de pestana */
+    background-image: url(../../../assets/img/lineas2.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute
+}
+body {
+    /*funciona cuando no hay contenido y asi no aparesca cortada la imagen */
+    font-family: 'Open sans';
+    background-image: url(../../../assets/img/lineas2.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute
+}
+#principal{
+    width: 90%;
+    height: auto; overflow: hidden;
+    border: 1px solid;
+    margin: 10px auto;
+}
+
+#publicaciones{
+    width: 70%;
+    height: auto; overflow: hidden;
+    border: 1px solid red;
+    margin-top: 10px;
+    background: #b6b7ee8a;
+    justify-content: center;
+}
+
+.post{
+    width: 95%;
+    height: auto; overflow: hidden;
+    padding: 7px;
+    background: #fdfdfd;
+    border-left-style: solid;
+    border-left-width: 5px;
+    border-left-color: #0205c0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #ccc;
+    margin-bottom: 20px;
+}
+
+.enlace-post{
+    text-decoration: none;
+}
+#publicaciones a .titulo-post{
+    color: #6e6e6e;
+    font-size: 22px;
+    font-family: 'calibri light';
+}
+#publicaciones a .titulo-post:hover{
+    text-decoration: underline;
+}
+#publicaciones .img-post{
+    width: 150px;
+    height: 100px;
+    float: left;
+    margin: 7px 7px 7px 0px;
+    padding: 5px;
+    border: 1px solid rgb(151, 205, 255);
+    border-radius: 5px;
+}
+#publicaciones .datos-publicaciones{
+    font-family: 'calibri light';
+    color: rgb(10, 122, 250);
+}
+#publicaciones .requisitos{
+    font-family: 'calibri light';
+    font-size: 16px;
+    color: #616060;
+    /**padding: 0px 5px 5px 0px ;**/
+}
+#publicaciones .requisitos-items{
+    font-family: 'calibri light';
+    font-size: 13px;
+    color: #848484;
+    padding: 0px 5px 5px 5px;
+}
+#publicaciones .leer-mas{
+    background: #0205c0;
+    color: #fff;
+    border: 0px;
+    padding: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+#publicaciones .leer-mas:hover{
+    background: #010274;
+    color: #fff;
+}
+#publicaciones .aplicar{
+    background: #fde406;
+    color: #fff;
+    border: 0px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+}
+#publicaciones .aplicar:hover{
+    background: #fac104;
+    color: #fff;
+}
+.nav-logo {
+    width: 100px;
+}
+
+.nav-principal {
+    background-color: #191140;
+}
+
+@media(max-width:640px){
+    .post{
+        display: block;
+        width: 95%;
+        height: auto;
+    }
+}

@@ -1,5 +1,74 @@
-<div id="student-homepg" *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
-    <h2 class="pt-5 px-5">Bienvenid@ {{estudianteActual.nombre}} {{estudianteActual.apellido}}</h2>
-    <h4 class="px-5 primary-link"><a (click)="getAuthService().logout()">Cerrar Sesión</a></h4>
-</div>
+<nav class="navbar navbar-expand-lg nav-principal">
+    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+
+<body>
+    <section id="principal">
+        <section id="publicaciones">
+            <article class="post">
+                <a href="##" class="enlace-post">
+                    <h2 class="titulo-post">Nombre de la vacante</h2>
+                </a>
+                <img src="../assets/img/empresa1.jpg" alt="" class="img-post">
+                <p>
+                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
+                    &nbsp;&nbsp;
+                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
+                    &nbsp;&nbsp;
+                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
+                </p>
+                <p class="requisitos"> REQUISITOS:</p>
+                <p class="requisitos-items"> aquí van todo los rquisitos</p>
+                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
+                <a href="" class="aplicar">APLICAR</a>
+    
+            </article>
+            <article class="post">
+                <a href="##" class="enlace-post">
+                    <h2 class="titulo-post">Nombre de la vacante</h2>
+                </a>
+                <img src="../assets/img/empresa2.jpg" alt="" class="img-post">
+                <p>
+                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
+                    &nbsp;&nbsp;
+                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
+                    &nbsp;&nbsp;
+                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
+                </p>
+                <p class="requisitos"> REQUISITOS:</p>
+                <p class="requisitos-items"> aquí van todo los rquisitos</p>
+                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
+                <a href="" class="aplicar">APLICAR</a>
+    
+            </article>
+            <article class="post">
+                <a href="##" class="enlace-post">
+                    <h2 class="titulo-post">Nombre de la vacante</h2>
+                </a>
+                <img src="../assets/img/empresa3.jpg" alt="" class="img-post">
+                <p>
+                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
+                    &nbsp;&nbsp;
+                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
+                    &nbsp;&nbsp;
+                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
+                </p>
+                <p class="requisitos"> REQUISITOS:</p>
+                <p class="requisitos-items"> aquí van todo los rquisitos</p>
+                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
+                <a href="" class="aplicar">APLICAR</a>
+    
+            </article>
+        </section>
+     
+    </section>
+    
+</body>
+
 

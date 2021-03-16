@@ -55,7 +55,8 @@ import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.co
       { path: 'student/profile', component: PerfilEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
       { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
       { path: 'student/profile/edit', component: StudentProfileEditComponent, data: { title: 'Empleate-UNAH - Editar Perfil Estudiante' } },
-      { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } }
+      { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
+      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - HOME-ESTUDIANTE' } }
     ])
   ],
   providers: [
