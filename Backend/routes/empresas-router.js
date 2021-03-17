@@ -50,7 +50,7 @@ router.post('/signup/send-email/verify', function (req, res) {
         secure: true,
         auth: {
             user: "empleateunah@gmail.com",
-            pass: "ingenieria"
+            pass: "eaijdfqfbqtwflui"
         }
     });
     var mailOptions = {
@@ -204,19 +204,18 @@ router.get('/', function (req, res) {
 });
 
 // Listar las ofertas de una empresa logueada (Metodo aggregate)
-router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
+/*router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     // Code
-});
+});*/
 
 // Guardar ID de ofertas en una empresa
 router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     empresa.updateOne({
-        _id: req.params.idEmpresa
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
     }, {
         $push: {
             ofertas: {
-                _id: mongoose.Types.ObjectId(req.body.idOferta),
-                titulo_Oferta: req.body.titulo_Oferta
+                _id: mongoose.Types.ObjectId(req.body.idOferta)
             }
         }
     }).then(result => {

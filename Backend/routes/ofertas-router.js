@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var oferta = require('../models/oferta');
+var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 
 // Obtener todas las ofertas (Renderizar para estudiantes)
 router.get('/', function (req, res) {
@@ -18,7 +19,7 @@ router.get('/', function (req, res) {
 })
 
 // Obtener ofertas de la empresa
-router.get('/:idEmpresa',  function (req, res) {
+router.get('/:idEmpresa', verifyToken, function (req, res) {
     oferta.find({
             id_empresa: mongoose.Types.ObjectId(req.params.idEmpresa)
         }, {})
@@ -36,18 +37,17 @@ router.get('/:idEmpresa',  function (req, res) {
 router.post('/', verifyToken, function (req, res) {
     const nueva_oferta = new oferta({
         id_empresa: mongoose.Types.ObjectId(req.body.idEmpresa),
-        titulo_oferta: req.body.titulo_oferta,
+        titulo_Oferta: req.body.titulo_Oferta,
         ubicacion: {
             departamento: req.body.departamento,
-            ciudad: req.body.ciudad,
-            direccion: req.body.direccion
+            ciudad: req.body.ciudad
         },
         fecha_publicacion: {
             dia: req.body.dia,
             mes: req.body.mes, 
             anio: req.body.anio
         },
-        descripcion_oferta: req.body.descripcion_oferta,
+        descripcion: req.body.descripcion,
         palabras_clave: req.body.palabras_clave,
         idiomas: req.body.idiomas,
         edad: req.body.edad,
@@ -62,7 +62,7 @@ router.post('/', verifyToken, function (req, res) {
     nueva_oferta.save()
         .then(result => {
             res.status(200).send({
-                mensaje: 'publicado',
+                mensaje: 'Oferta Publicada',
                 data: result
             });
             res.end();
@@ -73,9 +73,6 @@ router.post('/', verifyToken, function (req, res) {
 });
 
 module.exports = router;
-
-
-
 
 
 
