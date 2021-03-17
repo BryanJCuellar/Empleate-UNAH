@@ -5,9 +5,47 @@ var jwt = require('jsonwebtoken');
 var oferta = require('../models/oferta');
 var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 
-// Obtener todas las ofertas (Renderizar para estudiantes)
+// Obtener todas las ofertas (Renderizar para estudiantes) (Metodo Aggregate)
 router.get('/', function (req, res) {
-    oferta.find({}, {     
+    oferta.aggregate([{
+                $lookup: {
+                    from: "empresas",
+                    localField: "id_empresa",
+                    foreignField: "_id",
+                    as: "empresa"
+                }
+            },
+            {
+                $project: {
+                    _id: true,
+                    id_empresa: true,
+                    titulo_Oferta: true,
+                    ubicacion: true,
+                    fecha_publicacion: true,
+                    descripcion: true,
+                    palabras_clave: true,
+                    idiomas: true,
+                    edad: true,
+                    indice_estudiante: true,
+                    experiencia_laboral: true,
+                    jornada_laboral: true,
+                    tipo_contrato: true,
+                    salario: true,
+                    estado_oferta: true,
+                    "empresa.organizacion": true,
+                    "empresa.email": true,
+                    "empresa.imagenPerfil": true
+                }
+            }
+        ]).then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+    /*oferta.find({}, {     
     }).then(result => {
             res.send(result);
             res.end();
@@ -15,7 +53,7 @@ router.get('/', function (req, res) {
         .catch(error => {
             res.send(error);
             res.end();
-        })
+        })*/
 })
 
 // Obtener ofertas de la empresa
@@ -44,7 +82,7 @@ router.post('/', verifyToken, function (req, res) {
         },
         fecha_publicacion: {
             dia: req.body.dia,
-            mes: req.body.mes, 
+            mes: req.body.mes,
             anio: req.body.anio
         },
         descripcion: req.body.descripcion,
