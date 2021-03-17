@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
+import { OfertasService } from 'src/app/services/ofertas.service';
 
 @Component({
   selector: 'app-student-home',
@@ -9,9 +10,11 @@ import { EstudiantesService } from 'src/app/services/estudiantes.service';
 })
 export class StudentHomeComponent implements OnInit {
   estudianteActual: any;
+
   constructor(
     private authService: AuthService,
-    private estudiantesService: EstudiantesService
+    private estudiantesService: EstudiantesService,
+    private OfertasService : OfertasService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class StudentHomeComponent implements OnInit {
                 data => {
                   // console.log(data);
                   this.estudianteActual = data;
+                  this.obtenerOfertas();
                 },
                 error => console.log('Error al obtener informacion estudiante', error)
               )
@@ -32,6 +36,17 @@ export class StudentHomeComponent implements OnInit {
           error => console.log('Error al obtener ID', error)
         )
     }
+  }
+
+  obtenerOfertas(){
+   // console.log('Error al obtener informacion estudiante', error)
+   this.OfertasService.obtenerOfertas()
+   .subscribe(
+   res => {   
+     console.log(res);
+   },
+   error => console.log('error al obterner ofertas', error)
+   )
   }
 
   getAuthService() {

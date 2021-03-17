@@ -6,8 +6,8 @@ var oferta = require('../models/oferta');
 
 // Obtener todas las ofertas (Renderizar para estudiantes)
 router.get('/', function (req, res) {
-    oferta.find({}, {})
-        .then(result => {
+    oferta.find({}, {     
+    }).then(result => {
             res.send(result);
             res.end();
         })
@@ -16,6 +16,21 @@ router.get('/', function (req, res) {
             res.end();
         })
 })
+
+// Obtener ofertas de la empresa
+router.get('/:idEmpresa',  function (req, res) {
+    oferta.find({
+            id_empresa: mongoose.Types.ObjectId(req.params.idEmpresa)
+        }, {})
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
 
 // Guardar una oferta
 router.post('/', verifyToken, function (req, res) {
