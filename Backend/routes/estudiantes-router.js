@@ -5,7 +5,6 @@ var path = require('path');
 var fs = require('fs-extra');
 var multerImages = require('../libs/multer-images');
 var multerFiles = require('../libs/multer-files');
-// var nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 var estudiante = require('../models/estudiante');
 var SECRET_KEY = 'bHYFnHrZ20WQDPQnCqcZbwAXDuyWxSxsRRQQ78IkhvmykZiE6jPsZuMbAFsvXOz';
