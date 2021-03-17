@@ -9,6 +9,7 @@ import { OfertasService } from 'src/app/services/ofertas.service';
   styleUrls: ['./student-home.component.css']
 })
 export class StudentHomeComponent implements OnInit {
+  backendHost: string = 'http://localhost:8888/';
   estudianteActual: any;
   ofertas: any;
   closeResult = '';
@@ -51,18 +52,17 @@ export class StudentHomeComponent implements OnInit {
    this.OfertasService.obtenerOfertas()
    .subscribe(
    res => {   
-     console.log(res);
+     console.log("Ofertas", res);
+     // console.log(res[0].empresa[0].imagenPerfil);
      this.ofertas = res;
    },
-   error => console.log('error al obterner ofertas', error)
+   error => console.log('Error al obterner ofertas', error)
    )
   }
 
   getAuthService() {
     return this.authService;
   }
-  
-
   
   home(){
     this.color2 = "#520547";
