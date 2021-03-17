@@ -7,14 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class OfertasService {
   backendHost: string = 'http://localhost:8888';
-  constructor(private httpClient: HttpClient) {   
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com';
+
+  constructor(private httpClient: HttpClient) {
   }
 
   obtenerOfertasEmpresa(idEmpresa): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/ofertas/${idEmpresa}`, {});
   }
+
   obtenerOfertas(): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/ofertas`, {});
+  }
+  
+  guardarOferta(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/ofertas`, data);
   }
 }
 
