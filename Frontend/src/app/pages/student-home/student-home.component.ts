@@ -10,6 +10,14 @@ import { OfertasService } from 'src/app/services/ofertas.service';
 })
 export class StudentHomeComponent implements OnInit {
   estudianteActual: any;
+  ofertas: any;
+  closeResult = '';
+  elegir='home';
+  color1 = "#520547";
+  color2 = "#520547";
+  color3 = "#520547";
+  color4 = "#520547";
+  color5 = "#520547";
 
   constructor(
     private authService: AuthService,
@@ -44,6 +52,7 @@ export class StudentHomeComponent implements OnInit {
    .subscribe(
    res => {   
      console.log(res);
+     this.ofertas = res;
    },
    error => console.log('error al obterner ofertas', error)
    )
@@ -51,6 +60,52 @@ export class StudentHomeComponent implements OnInit {
 
   getAuthService() {
     return this.authService;
+  }
+  
+
+  
+  home(){
+    this.color2 = "#520547";
+    this.color3 = "#520547";
+    this.color4 = "#520547";
+    this.color5 = "#520547";
+    this.elegir='home';
+    this.color1 = '#854A7C';
+  }
+  Mis_Postulaciones(){
+    this.color1 = "#520547";
+    this.color3 = "#520547";
+    this.color4 = "#520547";
+    this.color5 = "#520547";
+    this.elegir='Mis_Postulaciones';
+    this.color2 = '#854A7C';
+  }
+  Buscar_Ofertas(){
+    this.color1 = "#520547";
+    this.color2 = "#520547";
+    this.color4 = "#520547";
+    this.color5 = "#520547";
+    this.elegir='Buscar_Ofertas';
+    this.color3 = '#854A7C';
+  }
+
+  
+  Mi_Curriculum(){
+    this.color1 = "#520547";
+    this.color2 = "#520547";
+    this.color3 = "#520547";
+    this.color5 = "#520547";
+    this.elegir='Mi_Curriculum';
+    this.color4 = '#854A7C';
+  }
+
+  Configuracion(){
+    this.color1 = "#520547";
+    this.color2 = "#520547";
+    this.color3 = "#520547";
+    this.color4 = "#520547";
+    this.elegir='Configuracion';
+    this.color5 = '#854A7C';
   }
 
 }

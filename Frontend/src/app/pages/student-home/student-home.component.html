@@ -2,109 +2,123 @@
     <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
         <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
     </a>
-    <div id="mn">
+   <!-- <div id="mn">
         <input type="checkbox" id="btn-mn">
         <label for="btn-mn"><img src="../assets/img/mm.png" alt=""></label>
-    </div>
-
+    </div>-->
+    <a style=" color: white !important; margin-left: 50px;"  href="/student/profile">
+        <span class="fas fa-id-card-alt"></span>  Ver perfil</a>  
+    <form class="form-inline my-2 my-lg-0">
+      <span style=" color:white !important; margin-left: 400px;">
+        ¡Bievenido {{estudianteActual.nombre}}!   </span> 
+      </form>
+    <button type="button" style="margin-left: 30px;" class="btn btn-cerrar">Cerrar Sesión</button>
 </nav>
 
 <body>
-    <div class="saludo"><h2>Bienvenid@ Estudiante UNAH</h2> <br>
-        <h4>Aquí podrás encontrar las ofertas de empleo disponibles para ti</h4>
-    </div>
-    <section id="principal">
-        <section id="publicaciones">
-            <div class="titulo-vacante"><h2>Lista de Vacantes Disponibles</h2></div>
-            <article class="post">
-                <a href="##" class="enlace-post">
-                    <h2 class="titulo-post">Nombre de la vacante</h2>
-                </a>
-                <img src="../assets/img/empresa1.jpg" alt="" class="img-post">
-                <p>
-                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
-                    &nbsp;&nbsp;
-                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
-                    &nbsp;&nbsp;
-                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
-                </p>
-                <p class="requisitos"> REQUISITOS:</p>
-                <p class="requisitos-items"> aquí van todo los rquisitos</p>
-                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
-                <a href="" class="aplicar">APLICAR</a>
     
-            </article>
-            <article class="post">
-                <a href="##" class="enlace-post">
-                    <h2 class="titulo-post">Nombre de la vacante</h2>
-                </a>
-                <img src="../assets/img/empresa2.jpg" alt="" class="img-post">
-                <p>
-                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
-                    &nbsp;&nbsp;
-                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
-                    &nbsp;&nbsp;
-                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
-                </p>
-                <p class="requisitos"> REQUISITOS:</p>
-                <p class="requisitos-items"> aquí van todo los rquisitos</p>
-                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
-                <a href="" class="aplicar">APLICAR</a>
-    
-            </article>
-            <article class="post">
-                <a href="##" class="enlace-post">
-                    <h2 class="titulo-post">Nombre de la vacante</h2>
-                </a>
-                <img src="../assets/img/empresa3.jpg" alt="" class="img-post">
-                <p>
-                    <strong>Por:</strong><span class="datos-publicaciones">Nombre Empresa</span>
-                    &nbsp;&nbsp;
-                    <strong>Fecha:</strong><span class="datos-publicaciones">25/03/2021</span>
-                    &nbsp;&nbsp;
-                    <strong>Lugar:</strong><span class="datos-publicaciones">Tegucigalpa</span>
-                </p>
-                <p class="requisitos"> REQUISITOS:</p>
-                <p class="requisitos-items"> aquí van todo los rquisitos</p>
-                <a href="" class="leer-mas">Leer más...</a> &nbsp;&nbsp;
-                <a href="" class="aplicar">APLICAR</a>
-    
-            </article>
-        </section>
-     
-    </section>
+    <div class="main">
+        <div class="wrap" style="width:100%">
+            <ul class="tabs">
+                <li [style.background-color]= "color1"><a (click)="home()" 
+                    ><span class="fa fa-home ">
+                        
+                    </span><span class="tab-text text-center"  >Home</span></a></li >
+                    <li [style.background-color]= "color2" ><a (click)="Mis_Postulaciones()"><span class="fas fa-list-alt"></span><span class="tab-text">Mis Postulaciones</span></a></li>
+                    <li [style.background-color]= "color3" ><a (click)="Buscar_Ofertas()" class="active"><span class="fas fa-search"></span><span class="tab-text">Buscar Ofertas</span></a></li>
+                    <li [style.background-color]= "color5" ><a (click)="Configuracion()" class="active"><span class="fas fa-user-cog"></span><span class="tab-text">Configuración</span></a></li>
+                   <!-- <li><img class="imgUSER" src="../../../assets/img/usuario.png" alt=""></li>-->
+                    
+            </ul>
 
-    <div id="sidemenu"  class="menu">
-        <!--header menu--> 
-        <div id="heade">
-            <div id="title"> <span>MENU</span></div>
-        </div>
-        <!--PErfil-->
-        <div id="perfil">
-            <div id="foto"><img src="../assets/img/perfil.jpg" alt=""></div>
-            <div id="name"><span>Andres Martines</span></div>
-            <div id="carrera"><span>Ingeniería en Sistemas</span></div>    
-        </div>
-        <!--ITEMS-->
-        <div id="menu-itms">
-            <div class="item">
-                <a href="student/profile">
-                <div class="nom-item"><span>Mi Perfil</span></div>
-                </a>
-                <a href="student/profile/edit">
-                    <div class="nom-item"><span>Editar Perfil</span></div>
-                </a>
-                <a href="#">
-                    <div class="nom-item"><span>Filtrar por lugar </span></div>
-                </a>
-                <a href="#">
-                    <div class="nom-item"><span>Filtrar por carrera</span></div>
-                </a>
+            <div class="secciones">
+                <div  *ngIf="elegir=='home'" >
+                    <div class="row mt-2"  >
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
+                         *ngFor= "let oferta of ofertas">
+                            <div class="card">
+                                <img class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
+                                  <p class="card-text">{{oferta.experiencia_laboral}}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-dollar-sign"></i>{{oferta.salario}}</li>
+                                  <li class="list-group-item"><i class="fas fa-calendar-day"></i>{{oferta.edad}} años</li>
+                                </ul>
+                                <div class="card-body" style="padding-left: 0px;">
+                                  <span (click)="openVerticallyCentered(content)" class="card-link"
+                                  style="margin-left: 0px;"><i class="fas fa-info-circle"></i> Detalles</span>
+                                  <i class="fas fa-mail-bulk"></i><span class="card-link"> Postularse </span>
+                                </div>
+                              </div>
+                        </div>
+                       
+                        
+                        
+                    </div>
+                </div>
+
+                <div *ngIf="elegir=='Mis_Postulaciones'">
+                    <p>hola Mis_Postulaciones</p>
+                </div>
+
+                <div *ngIf="elegir=='Buscar_Ofertas'">
+                    <p>hola Buscar_Ofertas</p>
+                </div>
+
+                <div *ngIf="elegir=='Mi_Curriculum'">
+                    <p>hola Mi_Curriculum</p>
+                </div>
+
+                <div *ngIf="elegir=='Configuracion'">
+                    <p>hola Configuracion</p>
+                </div>
+
             </div>
-            <a href=""><div id="salir"><span>SALIR</span></div></a>       
         </div>
-
     </div>
+    
+        <ng-template #content let-modal>
+            <div class="modalDetalles">
+                <div class="modal-header mt-2">
+                    <h5 class="card-title"> Oferta 1 </h5>
+                   
+                </div>
+                <div class="modal-body  mt-3 mb-3">
+                    <div class="card cardDetalles" style="width: 10rem">
+                        <div class="text-center">
+                            <img class="card-img-top rounded-circle" style="width: 200px; height: 200px;" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa impedit illum sequi ipsum natus voluptas, porro sit asperiores facere temporibus.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><i class="fas fa-dollar-sign"></i>  salario </li>
+                          <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                          <li class="list-group-item"><i class="fas fa-dollar-sign"></i>  salario </li>
+                          <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                          <li class="list-group-item"><i class="fas fa-dollar-sign"></i>  salario </li>
+                          <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                          <li class="list-group-item"><i class="fas fa-dollar-sign"></i>  salario </li>
+                          <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                        </ul>
+                        
+                      </div>
+                </div>
+                <div class=" mt-2 mb-2">
+                    <div class="row botonesDetalles">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-light">Postularse </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+          </ng-template>
     
 </body>
 
