@@ -58,7 +58,6 @@ export class ProfileEmpresComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfil();
-    this.createFormOferta();
     // Datos Empresa logueada
     if (this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
@@ -198,7 +197,7 @@ export class ProfileEmpresComponent implements OnInit {
 
     if (this.hayPalabras_Clave() && this.authService.loggedInCompany()) {
       const formOfertaData = {
-        idEmpresa:this.idEmpresa,
+        idEmpresa: this.idEmpresa,
         titulo_Oferta: this.vacante.value,
         departamento: this.departamento.value,
         ciudad: this.ciudad.value,
@@ -216,23 +215,32 @@ export class ProfileEmpresComponent implements OnInit {
         salario: salary,
       }
       this.ofertasService.guardarOferta(formOfertaData)
-      .subscribe(
-        res => {
-          console.log(res);
-          if(res.mensaje == 'Oferta Publicada'){
-            // Mensaje success
-            Swal.fire({
-              title: 'Oferta publicada con exito!',
-              icon: 'success',
-              showConfirmButton: true
-            }).then(success => {
-              window.location.href = 'company/profile';
+        .subscribe(
+          res => {
+            console.log("Respuesta al guardar Oferta", res);
+            if (res.mensaje == 'Oferta Publicada') {
+              this.empresasService.guardarIDOfertaEmpresa(this.idEmpresa, res.data._id)
+                .subscribe(
+                  response => {
+                    console.log("Respuesta al guardar IDOferta en Empresa", response);
+                    if (response.ok == 1) {
+                      // Mensaje success
+                      Swal.fire({
+                        title: 'Oferta publicada con exito!',
+                        icon: 'success',
+                        showConfirmButton: true
+                      }).then(success => {
+                        window.location.href = 'company/profile';
+                      }
+                      ).catch(err => console.log(err));
+                    }
+                  },
+                  error => console.log(error)
+                )
             }
-            ).catch(err => console.log(err));
-          }
-        },
-        error => console.log(error)
-      )
+          },
+          err => console.log(err)
+        )
     }
     /*
     Swal.fire(
@@ -280,10 +288,10 @@ export class ProfileEmpresComponent implements OnInit {
           }
           // Recorrer para ofertas activas y archivadas
           for (let i = 0; i < res.length; i++) {
-            if(res[i].fecha_publicacion[0].dia < 10){
+            if (res[i].fecha_publicacion[0].dia < 10) {
               res[i].fecha_publicacion[0].dia = `0${res[i].fecha_publicacion[0].dia}`;
             }
-            if(res[i].fecha_publicacion[0].mes < 10){
+            if (res[i].fecha_publicacion[0].mes < 10) {
               res[i].fecha_publicacion[0].mes = `0${res[i].fecha_publicacion[0].mes}`;
             }
             if (res[i].estado_oferta == true) {
@@ -305,6 +313,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color4 = "#00035a";
     this.color3 = '#ffc400';
     this.elegir = 'oferta';
+    this.createFormOferta();
   }
 
   // Componente Favoritos

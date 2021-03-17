@@ -215,7 +215,7 @@ router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     }, {
         $push: {
             ofertas: {
-                _id: mongoose.Types.ObjectId(req.body.idOferta)
+                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta)
             }
         }
     }).then(result => {

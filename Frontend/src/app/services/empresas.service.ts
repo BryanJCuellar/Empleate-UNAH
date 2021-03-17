@@ -22,4 +22,11 @@ export class EmpresasService {
   obtenerEmpresas(): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/empresas`, {});
   }
+  // Guardar id de Oferta en el campo ofertas de Empresa
+  guardarIDOfertaEmpresa(idEmpresa, idOferta): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/${idEmpresa}/ofertas`,
+      {
+        id_oferta: idOferta
+      });
+  }
 }
