@@ -2,15 +2,20 @@
     <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
         <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div id="mn">
+        <input type="checkbox" id="btn-mn">
+        <label for="btn-mn"><img src="../assets/img/mm.png" alt=""></label>
+    </div>
 
 </nav>
 
 <body>
+    <div class="saludo"><h2>Bienvenid@ Estudiante UNAH</h2> <br>
+        <h4>Aquí podrás encontrar las ofertas de empleo disponibles para ti</h4>
+    </div>
     <section id="principal">
         <section id="publicaciones">
+            <div class="titulo-vacante"><h2>Lista de Vacantes Disponibles</h2></div>
             <article class="post">
                 <a href="##" class="enlace-post">
                     <h2 class="titulo-post">Nombre de la vacante</h2>
@@ -68,6 +73,38 @@
         </section>
      
     </section>
+
+    <div id="sidemenu"  class="menu">
+        <!--header menu--> 
+        <div id="heade">
+            <div id="title"> <span>MENU</span></div>
+        </div>
+        <!--PErfil-->
+        <div id="perfil">
+            <div id="foto"><img src="../assets/img/perfil.jpg" alt=""></div>
+            <div id="name"><span>Andres Martines</span></div>
+            <div id="carrera"><span>Ingeniería en Sistemas</span></div>    
+        </div>
+        <!--ITEMS-->
+        <div id="menu-itms">
+            <div class="item">
+                <a href="student/profile">
+                <div class="nom-item"><span>Mi Perfil</span></div>
+                </a>
+                <a href="student/profile/edit">
+                    <div class="nom-item"><span>Editar Perfil</span></div>
+                </a>
+                <a href="#">
+                    <div class="nom-item"><span>Filtrar por lugar </span></div>
+                </a>
+                <a href="#">
+                    <div class="nom-item"><span>Filtrar por carrera</span></div>
+                </a>
+            </div>
+            <a href=""><div id="salir"><span>SALIR</span></div></a>       
+        </div>
+
+    </div>
     
 </body>
 

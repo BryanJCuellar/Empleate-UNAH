@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmpresasService } from 'src/app/services/empresas.service';
+import { OfertasService } from 'src/app/services/ofertas.service';
+
+
 @Component({
   selector: 'app-profile-empres',
   templateUrl: './profile-empres.component.html',
@@ -17,8 +20,11 @@ export class ProfileEmpresComponent implements OnInit {
   info:'contenido',
   fecha:'fecha'
 }
+
  arreglo:any=[];
  empresa: any;
+ OfertasActivas =  [] ;
+ OfertasArchivadas =  [] ;
 
   elegir='perfil';
  
@@ -27,17 +33,23 @@ export class ProfileEmpresComponent implements OnInit {
   color3 = "#00035a";
   color4 = "#00035a";
   
-  constructor(private empresasService: EmpresasService,  private authService: AuthService) {  }
+  //Variable para guardar id de la empresa
+  idEmpresa : any;
+
+  constructor(private empresasService: EmpresasService, private ofertasService: OfertasService, private authService: AuthService) {  }
   ngOnInit(): void { 
     if (this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
         .subscribe(
           res => {
-            this.empresasService.obtenerEmpresa(res.id)
+            this.idEmpresa = res.id;
+            this.empresasService.obtenerEmpresa(this.idEmpresa)
               .subscribe(
                 data => {
                   // console.log(data);
+                
                   this.empresa = data;
+                  //this.ListarOfertas( this.idEmpresa);
                   console.log(this.empresa);
                 },
                 error => console.log('Error al obtener informacion empresa', error)
@@ -48,9 +60,11 @@ export class ProfileEmpresComponent implements OnInit {
     
        }
   
+   
+
   }
  
-
+//funcion ofertas     
   guardar(){
     this.arreglo.push({
       vacante: this.addoffer.vacante,
@@ -78,20 +92,40 @@ export class ProfileEmpresComponent implements OnInit {
     
   }
 
+verOfertas(){     
+    this.color1 = "#00035a";     
+    this.color3 = "#00035a";     
+    this.color4 = "#00035a";     
+    this.elegir='listarOfertas';     
+    this.color2 = '#ffc400';   
 
+    this.ofertasService.obtenerOfertasEmpresa(this.idEmpresa)
+    .subscribe(
+    res => {
+
+      for (let i=0; i<=res.length-1; i++){
+
+      
+      if(res[i].estado_oferta == true){
+        this.OfertasActivas.push(res[i]);
+      }
+      if(res[i].estado_oferta == false){
+        this.OfertasArchivadas.push(res[i]);
+      }
+    
+    }
+      console.log("Ofertas");
+      
+    },
+    error => console.log('error al obterner ofertas', error)
+    )
+}
   perfil(){
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
     this.elegir='perfil';
     this.color1 = '#ffc400';
-  }
-  empleos(){
-    this.color1 = "#00035a";
-    this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.elegir='empleos';
-    this.color2 = '#ffc400';
   }
   oferta(){
     this.color1 = "#00035a";
