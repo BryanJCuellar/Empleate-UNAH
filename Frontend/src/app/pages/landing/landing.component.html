@@ -23,18 +23,27 @@
   </div>
   <div class="navbar navbar-dark nav-principal shadow-sm">
     <div class="container d-flex justify-content-between">
-      <a href="#" class="navbar-brand d-flex align-items-center">
+      <a href="/home" class="navbar-brand d-flex align-items-center">
         <img src="../assets/img/Logo.png" width="60" height="40" class="d-inline-block align-top" alt=""> Empléate UNAH
       </a>
-      <a style=" color: white !important;" class="nav-link" [routerLink]="['login/student']"><i
-          class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
-      <a style=" color: white !important;" class="nav-link" [routerLink]="['login/company']"><i
-          class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+      <ng-container *ngIf="!getAuthService().loggedIn()">
+        <a style="color: white;" class="nav-link link-login" [routerLink]="['login/student']"><i
+            class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
+        <a style=" color: white;" class="nav-link link-login" [routerLink]="['login/company']"><i
+            class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+      </ng-container>
+      <ng-container *ngIf="getAuthService().loggedIn() && getAuthService().loggedInStudent()">
+        <a style="color: white;" class="nav-link link-session font-s" [routerLink]="['student/home']"><i
+            class="fas fa-sign-in-alt mr-1"></i>Volver a sesión</a>
+      </ng-container>
+      <ng-container *ngIf="getAuthService().loggedIn() && getAuthService().loggedInCompany()">
+        <a style="color: white;" class="nav-link link-session font-s" [routerLink]="['company/profile']"><i
+            class="fas fa-sign-in-alt mr-1"></i>Volver a sesión</a>
+      </ng-container>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
         aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
     </div>
   </div>
 </header>
@@ -68,7 +77,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-4 d-flex">
           <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
             <div class="card-header">
@@ -99,32 +108,32 @@
 
   </div>
   <div class="album py-5 sec-two">
-    <div class="container" >
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="col-md-4 img-anio card " style="background-color: white;">
             <img src="../assets/img/prueba 4.jpg" class="card-img" alt="...">
           </div>
           <br>
-          <div class="card mb-3 medium-card"  >
+          <div class="card mb-3 medium-card">
             <div class="row">
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: bold;">No dejes que este 2021 fruste tus planes</h5>
-                  <p class="card-text">Empléate UNAH te ayuda a encontrar el trabajo que deseas</p>
-                </div>
-              
+              <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">No dejes que este 2021 fruste tus planes</h5>
+                <p class="card-text">Empléate UNAH te ayuda a encontrar el trabajo que deseas</p>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
     <br><br>
-  
-  </div>
-  
-  
 
-  
+  </div>
+
+
+
+
 
 </main>
 

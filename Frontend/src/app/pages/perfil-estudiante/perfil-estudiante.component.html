@@ -1,18 +1,34 @@
-<nav class="navbar navbar-expand-lg nav-principal">
+<nav class="navbar navbar-expand-lg nav-principal py-2">
   <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
     <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt="">
     Empléate UNAH
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerStudentProfile" aria-controls="navbarTogglerStudentProfile" aria-expanded="false"
+    aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" style=" color:white !important;" href="student/profile/edit">Editar perfil</a>
+  <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentProfile">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item my-2 my-lg-0">
+        <a class="nav-link mx-2 ml-lg-3" style=" color:white !important;" href="student/home">
+          <span class="link-profile">
+            <span class="fas fa-home mr-2"></span>Home
+          </span>
+        </a>
+      </li>
+      <li class="nav-item my-2 my-lg-0">
+        <a class="nav-link mx-2 ml-lg-3" style=" color:white !important;" href="student/profile/edit">
+          <span class="link-profile">
+            <span class="fas fa-user-edit mr-2"></span>Editar perfil
+          </span>
+        </a>
       </li>
     </ul>
+
+    <form class="form-inline my-2 my-lg-0 ml-lg-auto">
+      <button type="button" class="btn btn-cerrar mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
+    </form>
   </div>
 </nav>
 

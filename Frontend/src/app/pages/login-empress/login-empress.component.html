@@ -34,7 +34,7 @@
             contraseña</b></div>
       </div>
       <!-- Boton iniciar sesion -->
-      <button class="mb-4" type="submit" [disabled]="formularioLoginCompany.invalid">Iniciar</button>
+      <button class="mb-2" type="submit" [disabled]="formularioLoginCompany.invalid">Iniciar</button>
     </form>
     <!---->
     <!--<div class="mb-3">
@@ -50,7 +50,15 @@
           </div>
         </div>
       </div>-->
-    <div><a class="primary-link" [routerLink]="['/home']">Regresar a Inicio<i
-          class="fas fa-arrow-circle-left ml-1"></i></a></div>
+    <div class="text-right mb-4">
+      <a class="primary-link" style="font-size: 14px;" [routerLink]="['/register/company']">
+        Nuevo en Empléate UNAH? Regístrate
+      </a>
+    </div>
+    <div>
+      <a class="primary-link" style="font-size: 17px;" [routerLink]="['/home']">
+        Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i>
+      </a>
+    </div>
   </section>
 </div>

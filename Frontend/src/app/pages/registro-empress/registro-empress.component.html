@@ -85,12 +85,20 @@
                 (click)="mostrarPasswords(inputPassword, confirmPassword)"><b>Mostrar contraseña</b></div>
           </div>
           <!-- Boton registrar -->
-          <button type="submit" [disabled]="formularioEmpresa.invalid || emailDuplicado">Registrarme</button>
+          <button class="mb-2" type="submit"
+            [disabled]="formularioEmpresa.invalid || emailDuplicado">Registrarme</button>
 
         </form>
-
-        <div class="mt-2"><a class="primary-link" [routerLink]="['/home']">Regresar a Inicio<i
-              class="fas fa-arrow-circle-left ml-1"></i></a></div>
+        <div class="text-right mb-3">
+          <a class="primary-link" style="font-size: 14px;" [routerLink]="['/login/company']">
+            Ya tienes una cuenta? Inicia sesión
+          </a>
+        </div>
+        <div>
+          <a class="primary-link" style="font-size: 17px;" [routerLink]="['/home']">
+            Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i>
+          </a>
+        </div>
 
       </section>
     </div>
@@ -117,7 +125,8 @@
           <button class="mb-5 w-100" type="submit" [disabled]="formularioConfirm.invalid">Confirmar</button>
         </form>
         <p>¿No recibió el mensaje de confirmación?</p>
-        <div class="mb-4"><a class="primary-link" (click)="enviarConfirmacionEmail()">Enviar de nuevo el código</a></div>
+        <div class="mb-4"><a class="primary-link" (click)="enviarConfirmacionEmail()">Enviar de nuevo el código</a>
+        </div>
         <button class="btn btn-red" type="button" (click)="formRegistro=true;confirmRegistro=false;">Regresar</button>
       </section>
     </div>
