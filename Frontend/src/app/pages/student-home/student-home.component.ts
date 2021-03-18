@@ -10,6 +10,7 @@ import { OfertasService } from 'src/app/services/ofertas.service';
 })
 export class StudentHomeComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   estudianteActual: any;
   ofertas: any;
   closeResult = '';

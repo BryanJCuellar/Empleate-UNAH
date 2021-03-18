@@ -567,12 +567,12 @@ ul.tabs li a .tab-text {
 
 .card-body h5:hover {
   color: #191140 !important;
-  font-size: 25px;
+  /*font-size: 25px;*/
 }
 
-.card-body p:hover {
+/*.card-body p:hover {
   font-size: 20px !important;
-}
+}*/
 
 
 /********************************/

@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./student-profile-edit.component.css']
 })
 export class StudentProfileEditComponent implements OnInit {
+  backendHost: string = 'http://localhost:8888/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   formularioEdit: FormGroup;
   formularioUploadImage: FormGroup;
   formularioUploadCV: FormGroup;

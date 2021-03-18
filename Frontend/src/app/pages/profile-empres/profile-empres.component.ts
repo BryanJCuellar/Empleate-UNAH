@@ -15,6 +15,7 @@ import { OfertasService } from 'src/app/services/ofertas.service';
 })
 export class ProfileEmpresComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
 
   empresa: any;
   OfertasActivas = [];
