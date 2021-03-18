@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 //import { AppRoutingModule } from '../app-routing.module';
 
 
@@ -9,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+  }
+
+  getAuthService() {
+    return this.authService;
   }
 
 }

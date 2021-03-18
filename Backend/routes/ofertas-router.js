@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 var oferta = require('../models/oferta');
 var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 
-// Obtener todas las ofertas (Renderizar para estudiantes) (Metodo Aggregate)
+// Obtener todas las ofertas con estado true (Renderizar para estudiantes) (Metodo Aggregate)
 router.get('/', function (req, res) {
     oferta.aggregate([{
                 $lookup: {
@@ -13,6 +13,11 @@ router.get('/', function (req, res) {
                     localField: "id_empresa",
                     foreignField: "_id",
                     as: "empresa"
+                }
+            },
+            {
+                $match: {
+                    estado_oferta: true
                 }
             },
             {

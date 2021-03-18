@@ -1,7 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .btn-cerrar {
   color: white;
   background-color: #966FA6;
-  width: 150px;
+  padding: 4px 30px;
 }
 
 .btn-cerrar:hover {
@@ -12,14 +20,6 @@
 
 .vh-100 {
   height: 100vh;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .main {
@@ -193,7 +193,25 @@ body {
 
 .nav-principal {
   background-color: #191140;
+}
 
+.nav-principal .custom-toggler {
+  padding: 4px 8px ;
+  border-color: #4c33c7;
+}
+
+.nav-principal .navbar-toggler:focus {
+  box-shadow: 0px 0px 5px inset #4c33c7;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(98, 52, 224, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.link-profile:hover{
+  color: #966FA6;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 /**estilos del menu**/
@@ -402,7 +420,8 @@ body {
 
 
 
-*Estilizando la pagina HOME de estudiante*/ * {
+/*Estilizando la pagina HOME de estudiante*/
+* {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -446,6 +465,7 @@ ul.tabs {
 
 ul.tabs li {
   width: 18%;
+  cursor: pointer;
 }
 
 ul.tabs li a {
@@ -462,9 +482,8 @@ ul.tabs a:active {
 }
 
 ul.tabs a:hover {
-  background: #854A7C;
+  background: #854A7C !important;
 }
-
 
 ul.tabs li a .tab-text {
   margin-left: 8px;
@@ -534,7 +553,9 @@ ul.tabs li a .tab-text {
 }
 
 .card:hover {
-  border: #ffd900 solid 2px;
+  border: #854A7C solid 2px;
+  box-shadow: 0px 0px 15px inset #854A7C;
+  color:#854A7C !important
 }
 
 .imgUSER {
@@ -551,24 +572,26 @@ ul.tabs li a .tab-text {
 
 .card-body span:hover {
   color: #191140;
-  background-color: #ffd900;
+  background-color: #854A7C;
+  color: #FFF;
   border-radius: 10px;
-  padding: 2px 2px;
-  border: solid #191140 2px;
+  padding: 7px;
+  box-shadow: 0px 0px 7px #ccc;
+  border: solid #FFF 1px;
   cursor: pointer;
   width: 100%;
 }
 
 .list-group-item:hover {
-  color: #191140 !important;
-  background-color: #ffd900;
+  color: #FFF;
+  background-color: #854A7C;
   padding: 2px 2px;
 }
 
-.card-body h5:hover {
+/*.card-body h5:hover {
   color: #191140 !important;
-  /*font-size: 25px;*/
-}
+  font-size: 25px;
+}*/
 
 /*.card-body p:hover {
   font-size: 20px !important;

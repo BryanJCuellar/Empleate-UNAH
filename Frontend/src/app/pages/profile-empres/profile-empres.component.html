@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg nav-principal">
+<nav class="navbar navbar-expand-lg nav-principal py-2">
   <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" [routerLink]="['/home']">
     <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerCompanyProfile" aria-controls="navbarTogglerCompanyProfile" aria-expanded="false"
+    aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="ml-auto">
-    <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión</button>
+  <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerCompanyProfile">
+    <div class="ml-3 ml-lg-auto">
+      <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión</button>
+    </div>
   </div>
 </nav>
 
@@ -34,7 +37,7 @@
               <header class="resume-header pt-4 pt-md-0">
                 <div class="media flex-column flex-md-row">
                   <img *ngIf="empresa.imagenPerfil==null" class="mr-3 img-fluid resume-profile-image picture mx-auto"
-                    src="../../../assets/img/sin-imagen.jpg" alt="">
+                    src="../../../assets/img/empresa1.jpg" alt="">
                   <img *ngIf="empresa.imagenPerfil!=null" class="mr-3 img-fluid resume-profile-image picture mx-auto"
                     [src]="backendHost + empresa.imagenPerfil" alt="">
                   <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
@@ -42,15 +45,17 @@
                       <!--<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>-->
                       <h1 class="title mb-3">{{empresa.organizacion}}</h1>
                       <ul class="list-unstyled">
-                        <li><a href="#"><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>
-                            {{empresa.telefono}}</a></li>
+                        <li style="color: #009FE1 !important;font-weight: bold;">
+                          <i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>
+                          {{empresa.telefono}}
+                        </li>
                       </ul>
                     </div>
                     <!--//primary-info-->
                     <div class="secondary-info ml-md-auto py-5">
                       <ul class="resume-social list-unstyled">
                         <li class="mb-3">
-                          <a href="#">
+                          <a class="primary-link">
                             <span class="fa-container text-center">
                               <i class="fab fa-facebook mr-2"></i>
                               {{empresa.facebook}}Facebook
@@ -58,7 +63,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a class="primary-link">
                             <span class="fa-container text-center">
                               <i class="fas fa-globe mr-2"></i>
                               {{empresa.paginaWeb}}Sitio Web
@@ -170,7 +175,9 @@
                     <td>{{item.titulo_Oferta}}</td>
                     <td *ngIf="item.salario == null">N/A</td>
                     <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
-                    <td>{{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}</td>
+                    <td>
+                      {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                    </td>
                     <td> <button type="button" class="btn btn-warning boton">Actualizar <i
                           class="fas fa-edit"></i></button>
                     </td>
@@ -205,7 +212,9 @@
                     <td>{{item.titulo_Oferta}}</td>
                     <td *ngIf="item.salario == null">N/A</td>
                     <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
-                    <td>{{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}</td>
+                    <td>
+                      {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                    </td>
                     <td> <button type="button" class="btn btn-warning boton">Actualizar <i
                           class="fas fa-edit"></i></button>
                     </td>
@@ -227,7 +236,7 @@
               <div class="card-top">
                 <div class="name">
                   <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa"
-                    src="../../../assets/img/sin-imagen.jpg" alt="green forest">
+                    src="../../../assets/img/empresa1.jpg" alt="green forest">
                   <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa"
                     [src]="backendHost + empresa.imagenPerfil" alt="green forest">
                 </div>
