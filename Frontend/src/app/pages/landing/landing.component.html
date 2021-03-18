@@ -1,133 +1,169 @@
 <header>
-    <div class="collapse nav-principal " id="navbarHeader">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">Sobre nosotros</h4>
-                    <p class="text-muted">
-                        Con base a la situación que atravesamos como país, muchas familias han sido afectadas y muchos estudiantes tuvieron que dejar sus estudios. La idea del proyecto surge para ayudar a los estudiantes que puedan encontrar el empleo que les permita continuar
-                        con sus sueños.
-                        <p>
-                </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                        <li><a href="#" class="text-white">Like on Facebook</a></li>
-                        <li><a href="#" class="text-white">Email me</a></li>
-                    </ul>
-                </div>
-            </div>
+  <div class="collapse nav-principal " id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">Sobre nosotros</h4>
+          <p class="text-muted">
+            Con base a la situación que atravesamos como país, muchas familias han sido afectadas y muchos estudiantes
+            tuvieron que dejar sus estudios. La idea del proyecto surge para ayudar a los estudiantes que puedan
+            encontrar el empleo que les permita continuar
+            con sus sueños.
+            <p>
         </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="navbar navbar-dark nav-principal shadow-sm">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                      <img src="../assets/img/Logo.png" width="60" height="40" class="d-inline-block align-top" alt="">
-                      Empléate UNAH
-            </a>
-            <a style=" color: white !important;" class="nav-link" [routerLink]="['login/student']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
-            <a style=" color: white !important;" class="nav-link" [routerLink]="['login/company']"><i class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  </div>
+  <div class="navbar navbar-dark nav-principal shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <img src="../assets/img/Logo.png" width="60" height="40" class="d-inline-block align-top" alt=""> Empléate UNAH
+      </a>
+      <a style=" color: white !important;" class="nav-link" [routerLink]="['login/student']"><i
+          class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
+      <a style=" color: white !important;" class="nav-link" [routerLink]="['login/company']"><i
+          class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        </div>
     </div>
+  </div>
 </header>
 
 <main role="main">
-    <section class="jumbotron text-center" style="background-image: url(../assets/img/img5.jpg); background-size: cover;">
-        <div class="container">
-            <!-- Image and text -->
-           <h3 style="color: beige !important; font-weight: bolder; background-color: #0000005e;">Empléate UNAH</h3>
-            <p class="lead text-muted" style="color:#1E7064 !important; font-weight: bolder; background-color: #f0ffff54;">
-                Aprovecha e inscríbete a la plataforma <br>
-                 donde los <br> estudiantes y empresas <br> se encuentran
-            </p>
-            <p>
-                <a [routerLink]="['register/company']" class="btn btn-empresa m-2">Registro de empresas</a>
-            </p>
-        </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card outline-cards mb-3" style="max-width: 18rem;">
-                        <div class="card-header">
-                            <img src="../assets/img/img7.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title">Encuentra trabajo de acuerdo al horario que tengas <i class="far fa-clock"></i></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card outline-cards mb-3" style="max-width: 18rem;">
-                        <div class="card-header">
-                            <img src="../assets/img/img2.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title">¡No tienes que moverte de casa! Busca trabajo según tu locación!
-                            <i class="fas fa-map-marked-alt"></i>  </h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card outline-cards mb-3" style="max-width: 18rem;">
-                        <div class="card-header">
-                            <img src="../assets/img/img1.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title">La mayoría de los estudiantes están deseosos de aprender. Haz crecer tu empresa con nuevas ideas.
-                            <i class="fas fa-users"></i>  </h5>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
+  <section class="jumbotron text-center" style="background-image: url(../assets/img/img5.jpg); background-size: cover;">
+    <div class="container">
+      <!-- Image and text -->
+      <h3 style="color: beige !important; font-weight: bolder; background-color: #0000005e;">Empléate UNAH</h3>
+      <p class="lead text-muted" style="color:#1E7064 !important; font-weight: bolder; background-color: #f0ffff54;">
+        Aprovecha e inscríbete a la plataforma <br> donde los <br> estudiantes y empresas <br> se encuentran
+      </p>
+      <p>
+        <a [routerLink]="['register/company']" class="btn btn-empresa m-2">Registro de empresas</a>
+      </p>
     </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-4 d-flex">
+          <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+            <div class="card-header">
+              <img src="../assets/img/img7.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Encuentra trabajo de acuerdo al horario que tengas <i class="far fa-clock"></i>
+              </h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 d-flex">
+          <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+            <div class="card-header">
+              <img src="../assets/img/img2.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">¡No tienes que moverte de casa! Busca trabajo según tu locación!
+                <i class="fas fa-map-marked-alt"></i> </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex">
+          <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+            <div class="card-header">
+              <img src="../assets/img/img1.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">La mayoría de los estudiantes están deseosos de aprender. Haz crecer tu empresa con
+                nuevas ideas.
+                <i class="fas fa-users"></i> </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="album py-2 bg-light">
+
+  </div>
+  <div class="album py-5 sec-two">
+    <div class="container" >
+      <div class="row">
+        <div class="col-12">
+          <div class="col-md-4 img-anio card " style="background-color: white;">
+            <img src="../assets/img/prueba 4.jpg" class="card-img" alt="...">
+          </div>
+          <br>
+          <div class="card mb-3 medium-card"  >
+            <div class="row">
+                <div class="card-body">
+                  <h5 class="card-title" style="font-weight: bold;">No dejes que este 2021 fruste tus planes</h5>
+                  <p class="card-text">Empléate UNAH te ayuda a encontrar el trabajo que deseas</p>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  
+  </div>
+  
+  
+
+  
 
 </main>
 
 
 <footer class="footer-ditributed">
-    <div class="footer-left">
-        <img src="../assets/img/Logo.png" alt="logo">
-        <h3>Empléate <span>UNAH</span></h3>
-        
-        <p class="footer-company-name">&copy;2021 Derechos Reservados</p>
+  <div class="footer-left">
+    <img src="../assets/img/Logo.png" alt="logo">
+    <h3>Empléate <span>UNAH</span></h3>
+
+    <p class="footer-company-name">&copy;2021 Derechos Reservados</p>
+  </div>
+
+  <div class="footer-center">
+    <div>
+      <i class="fa fa-map-marker"></i>
+      <p><span>Bulevar Suyapa, Tegucigalpa, M.D.C, Honduras</span></p>
     </div>
 
-    <div class="footer-center">
-        <div>
-            <i class="fa fa-map-marker"></i>
-            <p><span>Bulevar Suyapa, Tegucigalpa, M.D.C, Honduras</span></p>
-        </div>
-
-        <div>
-            <i class="fa fa-phone"></i>
-            <p> (+504)2216-7000</p>
-        </div>
-
-        <div>
-            <i class="fa fa-envelope"></i>
-            <p><a href="mail to: support@CodeSmoker.com">info@unah.edu.hn</a></p>
-        </div>
+    <div>
+      <i class="fa fa-phone"></i>
+      <p> (+504)2216-7000</p>
     </div>
-    
-    <div class="footer-right">
-        <p class="footer-commpany-about">
-            <span>About UNAH</span>
-            La Universidad Nacional Autónoma de Honduras (UNAH) es una institución autónoma, laica y estatal de la República de Honduras.
-        </p>
-        <div class="footer-icons">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-        </div>
+
+    <div>
+      <i class="fa fa-envelope"></i>
+      <p><a href="mail to: support@CodeSmoker.com">info@unah.edu.hn</a></p>
     </div>
+  </div>
+
+  <div class="footer-right">
+    <p class="footer-commpany-about">
+      <span>About UNAH</span> La Universidad Nacional Autónoma de Honduras (UNAH) es una institución autónoma, laica y
+      estatal de la República de Honduras.
+    </p>
+    <div class="footer-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-youtube-play"></i></a>
+    </div>
+  </div>
 </footer>

@@ -1,40 +1,53 @@
 #logo {
-    /*margin-top: ;
+  /*margin-top: ;
     margin-bottom: ;
     margin-left: ;
     margin-right: ;*/
-    margin: 20px 0px 0px 50px;
-    /*padding: 10px 10px 10px 10px;*/
+  margin: 20px 0px 0px 50px;
+  /*padding: 10px 10px 10px 10px;*/
 }
 
-#contenedor {
-    background-color: rgba(0, 0, 0, 0.65);
-    height: 100%;
-    padding: 30px;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
+#contenedor, #contenedor-confirmacion {
+  background-image: url(../../../assets/img/lineas2.png);
+  background-color: rgba(0, 0, 0, 0.65);
+  min-height: 100%;
+  width: 100%;
+  padding: 30px;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #birrete {
-    height: 130px;
-    margin-left: 90px;
+  height: 130px;
+  margin-left: 90px;
 }
 
 #registro {
-    background-color: #d4d4d4ad;
-    width: 700px;
-    max-width: 100%;
-    color: white;
-    border-radius: 5px;
-    padding: 30px 80px;
-    margin-left: auto;
-    margin-right: auto;
-    /*padding-top: 10px;  
+  background-color: #6f6f6fad;
+  width: 700px;
+  max-width: 100%;
+  color: white;
+  border-radius: 5px;
+  padding: 30px 80px;
+  margin-left: auto;
+  margin-right: auto;
+  /*padding-top: 10px;  
     min-height: 600px;*/
 }
 
+#confirmacion-email {
+  background-color: #6f6f6fad;
+  width: 700px;
+  max-width: 100%;
+  color: white;
+  border-radius: 5px;
+  padding: 55px 80px;
+  margin-left: auto;
+  margin-right: auto;
+  /*padding-top: 10px;  
+    min-height: 600px;*/
+}
 
 /*#login:hover {
     /*PSeudoclases*
@@ -42,57 +55,89 @@
 }
 */
 
-#registro h1 {
-    /*Aplicar estilo a cualquier etiqueta h1 DENTRO de la etiqueta con id #login*/
-    text-align: -webkit-center;
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    /*font-family: 'Aguafina Script', cursive; /*Fuente del API de Google fonts*/
-    /*font-family: FuenteGoticaSalvaje, Arial;*/
+#registro h1,
+#confirmacion-email h1 {
+  /*Aplicar estilo a cualquier etiqueta h1 DENTRO de la etiqueta con id #login*/
+  text-align: -webkit-center;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /*font-family: 'Aguafina Script', cursive; /*Fuente del API de Google fonts*/
+  /*font-family: FuenteGoticaSalvaje, Arial;*/
 }
 
 #registro input[type='text'],
 #registro input[type='password'],
-#registro select {
-    background-color: #eaeaea;
-    font-size: 1.1rem;
-    /* border: 0px solid #000; */
-    border-width: 0;
-    border-radius: 5px;
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
+#registro select,
+#confirmacion-email input[type='text'],
+#confirmacion-email input[type='password'] {
+  background-color: #eaeaea;
+  font-size: 1.1rem;
+  /* border: 0px solid #000; */
+  border-width: 0;
+  border-radius: 5px;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 #registro button {
-    width: 100%;
-    font-size: 1.1rem;
-    padding: 11px;
-    background-color: #40a0c5;
-    border: 0;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 11px;
+  background-color: #40a0c5;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
+#confirmacion-email button {
+  font-size: 1.1rem;
+  padding: 11px;
+  background-color: #40a0c5;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
+#registro button:hover,
+#confirmacion-email button:hover {
+  background-color: #44abd4;
+  box-shadow: 0px 0px 5px inset#ffffff;
+
+}
+
+.btn-red {
+    padding: 10px 40px !important;
+  }
+
 .texto-pequenio {
-    font-size: 0.9rem;
-    color: #000000;
+  font-size: 0.9rem;
+  color: #000000;
 }
 
 .enlace {
-    float: right;
-    text-decoration: none;
+  float: right;
+  text-decoration: none;
 }
 
 .enlace:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .icono-alumno {
-    font-size: 55px;
+  font-size: 55px;
+}
+
+.form-error {
+  color: #e7214c;
+  font-size: 1rem;
 }

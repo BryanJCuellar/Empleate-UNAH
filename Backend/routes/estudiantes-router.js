@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var path = require('path');
+var fs = require('fs-extra');
 var multerImages = require('../libs/multer-images');
 var multerFiles = require('../libs/multer-files');
-// var nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 var estudiante = require('../models/estudiante');
 var SECRET_KEY = 'bHYFnHrZ20WQDPQnCqcZbwAXDuyWxSxsRRQQ78IkhvmykZiE6jPsZuMbAFsvXOz';
@@ -32,8 +33,8 @@ router.get('/:idEstudiante/main', verifyToken, function (req, res) {
             estado: true,
             telefono: true,
             intereses: true,
-            Lenguajes:true,
-            descripcionPerfil:true,
+            Lenguajes: true,
+            descripcionPerfil: true,
             indice: true,
             clasesAprobadas: true,
             fechaNacimiento: true
@@ -156,41 +157,64 @@ router.put('/:idEstudiante', verifyToken, function (req, res) {
         });
 });
 
-router.post('/:idEstudiante/imagenPerfil', multerImages.single('imagenPerfil'), function (req, res) {
-    estudiante.updateOne({
-            _id: req.params.idEstudiante
-        }, {
-            $set: {
-                imagenPerfil: req.file.path
-            }
-        })
-        .then(result => {
-            res.send(result);
-            res.end();
-        })
-        .catch(error => {
-            res.send(error);
-            res.end();
-        });
-});
+// Subir o actualizar imagenPerfil
+router.post('/:idEstudiante/imagenPerfil', multerImages.single('imagenPerfil'),
+    deleteImageOnUpdate,
+    function (req, res) {
+        estudiante.updateOne({
+                _id: req.params.idEstudiante
+            }, {
+                $set: {
+                    imagenPerfil: req.file.path
+                }
+            })
+            .then(result => {
+                // console.log("Original Name", req.file.originalname);
+                res.send(result);
+                res.end();
+            })
+            .catch(error => {
+                res.send(error);
+                res.end();
+            });
+    });
 
-router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'), function (req, res) {
-    estudiante.updateOne({
-            _id: req.params.idEstudiante
-        }, {
-            $set: {
-                CurriculumAdjunto: req.file.path
-            }
-        })
-        .then(result => {
-            res.send(result);
-            res.end();
-        })
-        .catch(error => {
-            res.send(error);
-            res.end();
-        });
-});
+// Subir o actualizar curriculum
+router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'),
+    deleteCVOnUpdate,
+    function (req, res) {
+        estudiante.updateOne({
+                _id: req.params.idEstudiante
+            }, {
+                $set: {
+                    CurriculumAdjunto: req.file.path
+                }
+            })
+            .then(result => {
+                res.send(result);
+                res.end();
+            })
+            .catch(error => {
+                res.send(error);
+                res.end();
+            });
+    });
+
+async function deleteImageOnUpdate(req, res, next) {
+    const Estudiante = await estudiante.findById(req.params.idEstudiante);
+    if (Estudiante.imagenPerfil != null) {
+        await fs.unlink(path.resolve(Estudiante.imagenPerfil));
+    }
+    next();
+}
+
+async function deleteCVOnUpdate(req, res, next) {
+    const Estudiante = await estudiante.findById(req.params.idEstudiante);
+    if (Estudiante.CurriculumAdjunto != null) {
+        await fs.unlink(path.resolve(Estudiante.CurriculumAdjunto));
+    }
+    next();
+}
 
 module.exports = router;
 

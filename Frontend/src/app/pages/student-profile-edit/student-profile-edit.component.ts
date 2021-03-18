@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./student-profile-edit.component.css']
 })
 export class StudentProfileEditComponent implements OnInit {
+  backendHost: string = 'http://localhost:8888/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   formularioEdit: FormGroup;
   formularioUploadImage: FormGroup;
   formularioUploadCV: FormGroup;
@@ -85,6 +87,9 @@ export class StudentProfileEditComponent implements OnInit {
       curriculumAdjunto: new FormControl(''),
       curriculumAdjuntoSrc: new FormControl(''),
     });
+    // Resetear campos de formularios de archivos
+    this.imagenPerfilSrc.setValue(null);
+    this.curriculumAdjuntoSrc.setValue(null);
   }
 
   // Metodos GET
@@ -197,10 +202,10 @@ export class StudentProfileEditComponent implements OnInit {
       this.estudiantesService.obtenerIDEstudiante()
         .subscribe(
           res => {
-            if(this.imagenPerfilSrc.value != null){
+            if(this.hayImagenPerfil && this.imagenPerfilSrc.value != null){
               this.uploadImage(res.id);
             }
-            if(this.curriculumAdjuntoSrc.value != null){
+            if(this.hayCurriculum && this.curriculumAdjuntoSrc.value != null){
               this.uploadCV(res.id);
             }
             this.estudiantesService.actualizarPerfilEstudiante(res.id, formEditData)

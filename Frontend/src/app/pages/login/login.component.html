@@ -5,10 +5,10 @@
       <a href="#"><img id="birrete" src="../../../../assets/img/birrete.png" alt="b"></a>
     </div>
     <h1 class="mb-4">Inicio de Sesión</h1>
-    <form [formGroup]="formularioLogin">
+    <form [formGroup]="formularioLogin" (ngSubmit)="login()">
       <div class="mb-4">
         <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
-          formControlName="email" type="text" placeholder="correo electronico" required>
+          formControlName="email" type="text" placeholder="correo electronico" required (keydown)="emailValido = true;">
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
           <span *ngIf="email.errors.required">Por favor, ingrese su correo</span>
           <span *ngIf="email.errors.pattern">Ingrese un correo institucional UNAH válido</span>
@@ -20,7 +20,8 @@
       <div class="mb-4">
         <input
           [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched) || !passwordValido}"
-          formControlName="password" #inputPassword type="password" placeholder="contraseña">
+          formControlName="password" #inputPassword type="password" placeholder="contraseña"
+          (keydown)="passwordValido = true;">
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
           <span *ngIf="password.errors.required">Por favor, ingrese una contraseña</span>
           <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>
@@ -31,11 +32,9 @@
         <div class="pt-2 pl-2"><input type="checkbox" class="mr-2" (click)="cambiarInput(inputPassword)"><b>Mostrar
             contraseña</b></div>
       </div>
+      <!-- Boton iniciar sesion -->
+      <button class="mb-4" type="submit" [disabled]="!formularioLogin.valid">Iniciar</button>
     </form>
-
-    <!-- Boton iniciar sesion -->
-    <button class="mb-4" type=button [disabled]="!formularioLogin.valid" (click)="login()"
-      value="Iniciar">Iniciar</button>
     <!---->
     <!--<div class="mb-3">
         <label class="texto-pequenio">o inicia con: </label>
@@ -50,6 +49,7 @@
           </div>
         </div>
       </div>-->
-    <div><a class="primary-link" href="/home">Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i></a></div>
+    <div><a class="primary-link" [routerLink]="['/home']">Regresar a Inicio<i
+          class="fas fa-arrow-circle-left ml-1"></i></a></div>
   </section>
 </div>

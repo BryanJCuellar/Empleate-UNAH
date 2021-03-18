@@ -8,6 +8,8 @@ import { EstudiantesService } from 'src/app/services/estudiantes.service';
   styleUrls: ['./perfil-estudiante.component.css']
 })
 export class PerfilEstudianteComponent implements OnInit {
+  backendHost: string = 'http://localhost:8888/';
+  // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   estudiante: any;
   idEstudiante = '603b3cf672051918ac09a05e';
   constructor(private estudiantesService: EstudiantesService,  private authService: AuthService,) { }
