@@ -18,7 +18,8 @@ var esquemaOfertas = new mongoose.Schema({
     jornada_laboral: String, // para el filtro estudiante busque su horario de conveniencia
     tipo_contrato: String, // filtro por hora, medio tiempo, tiempo completo..
     salario: Number, // filtro para buscar segun el billete que va a caerle... +50,000
-    estado_oferta: Boolean
+    estado_oferta: Boolean,
+    postulaciones: Array
 }, {
     timestamps: true,
 });

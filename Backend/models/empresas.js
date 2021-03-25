@@ -19,9 +19,7 @@ var esquemaEmpresas = new mongoose.Schema({
     descripcionPerfil: String,
     ofertas: Array,
     facebook: String,
-    paginaWeb: String,
-    solicitudEnviada: Array,
-    solicitudRecibida: Array
+    paginaWeb: String
 }, {
     timestamps: true
 });
