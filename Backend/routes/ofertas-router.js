@@ -99,7 +99,8 @@ router.post('/', verifyToken, function (req, res) {
         jornada_laboral: req.body.jornada_laboral,
         tipo_contrato: req.body.tipo_contrato,
         salario: req.body.salario,
-        estado_oferta: true
+        estado_oferta: true,
+        postulaciones: []
     });
 
     nueva_oferta.save()

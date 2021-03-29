@@ -92,9 +92,7 @@ router.post('/signup', function (req, res) {
         descripcionPerfil: null,
         ofertas: [],
         facebook: null,
-        paginaWeb: null,
-        solicitudEnviada: [],
-        solicitudRecibida: []
+        paginaWeb: null
     });
 
     if(codigoCorrecto){
