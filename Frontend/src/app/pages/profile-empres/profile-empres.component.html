@@ -1,84 +1,830 @@
-<nav class="navbar navbar-expand-lg nav-principal">
-    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+<nav class="navbar navbar-expand-lg nav-principal py-2">
+<<<<<<< HEAD
+    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" [routerLink]="['/home']">
         <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse" data-target="#navbarTogglerCompanyProfile" aria-controls="navbarTogglerCompanyProfile" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerCompanyProfile">
+        <!--VENTANA MODAL DE EDITAR OFERTAS-->
+        <ul class="navbar-nav mr-auto">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: beige !important; font-weight: bolder; text-align: center;">Editar Oferta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              
+                            </button>
+                        </div>
+                        <div class="modal-body" style="background-color: rgb(13, 35, 77);">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="recipient-name" class=" col-form-label">Cargo o Ocupacio:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                        <label for="recipient-name" class=" col-form-label">Idiomas:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
 
-</nav>
-
-<body>
-    <div class="main">
-        <div class="wrap" style="width:100%">
-            <ul class="tabs">
-                <li><a (click)="perfil()"><span class="fa fa-home "></span><span class="tab-text">Perfil</span></a></li>
-                <li><a (click)="empleos()"><span class="fa fa-briefcase"></span><span class="tab-text">Empleos</span></a></li>
-                <li><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span class="tab-text">Oferta</span></a></li>
-                <li><a (click)="favoritos()" class="active"><span class="fa fa-bookmark"></span><span class="tab-text">favoritos</span></a></li>
-
-            </ul>
-
-            <div class="secciones">
-                <div id="Perfil" *ngIf="elegir=='perfil'">
-                    <p>hola perfil</p>
-
-                </div>
-                <div *ngIf="elegir=='empleos' ">
-                    <div class="cards" *ngFor="let item of arreglo">
-                        <div class="card">
-                            <div class="card-top">
-                                <div class="name">
-                                    <img class="imagen-empresa" src="../../../assets/img/tigo.jpg" alt="green forest">
+                                        <div class="row">
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Salario:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Rango Edad:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Experiencia:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Indice:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Jornada:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Contrato:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Ciudad:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Departamento:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Descripcion:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
-                            </div>
+                                <button type="button" class="btn btn-primary">Actualizar Oferta</button>
 
-                            <div class="description col-md-8">
-                                <h1>{{item.vacante}}</h1>
-                                <span class="empresa">{{item.empresa}}</span><span class="location">{{item.ubicacion}}</span>
-                                <div>{{item.info}}</div>
-                                <button class="btn">Mostrar mas</button>
-                                <button class="btn">Eliminar</button>
-                            </div>
-
-                            <div class="card-action">
-                                <div class="rate"><i class="fas fa-star"></i></div>
-                                <span>{{item.fecha}}</span>
-
-                            </div>
-
+                            </form>
                         </div>
 
                     </div>
                 </div>
+            </div>
+        </ul>
+        <!--FIN VENTANA MODAL DE EDITAR OFERTAS-->
+        <div class="ml-3 ml-lg-auto">
+            <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión</button>
+        </div>
+    </div>
+</nav>
 
+<body>
+    <div class="main" [ngClass]="{'vh-100':elegir == 'postulados' || (elegir == 'listarOfertas' && !ofertas_Optimas)}" *ngIf="getAuthService().loggedInCompany() && empresa != null">
+        <div class="wrap" style="width:100%">
+            <ul class="tabs">
+                <li [style.background-color]="color1"><a (click)="perfil()"><span class="fa fa-home "></span>
+                   <span class="tab-text">Perfil</span></a></li>
+                <li [style.background-color]="color5"><a (click)="editarPerfil()"><span class="fas fa-user-edit"></span>
+                    <span class="tab-text">Editar Perfil</span></a></li>
+                <li [style.background-color]="color2"><a (click)="verOfertas()"><span class="fa fa-briefcase"></span>
+                    <span class="tab-text">Ofertas Realizadas</span></a></li>
+                <li [style.background-color]="color3"><a (click)="oferta()" class="active"><span class="fa fa-edit"></span>
+                    <span class="tab-text">Oferta</span></a></li>
+                <li [style.background-color]="color4"><a (click)="postulados()" class="active"><span class="fas fa-clipboard"></span>
+                    <span class="tab-text">Postulados</span></a></li>
+=======
+  <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" [routerLink]="['/home']">
+    <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+  </a>
+  <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerCompanyProfile" aria-controls="navbarTogglerCompanyProfile" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerCompanyProfile">
+    <div class="ml-3 ml-lg-auto">
+      <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión</button>
+    </div>
+  </div>
+</nav>
+
+<body>
+  <div class="main" [ngClass]="{'vh-100':elegir == 'favoritos' || (elegir == 'listarOfertas' && !ofertas_Optimas)}"
+    *ngIf="getAuthService().loggedInCompany() && empresa != null">
+    <div class="wrap" style="width:100%">
+      <ul class="tabs">
+        <li [style.background-color]="color1"><a (click)="perfil()"><span class="fa fa-home ">
+            </span><span class="tab-text">Perfil</span></a></li>
+        <li [style.background-color]="color2"><a (click)="verOfertas()"><span class="fa fa-briefcase"></span><span
+              class="tab-text">Ofertas Realizadas</span></a></li>
+        <li [style.background-color]="color3"><a (click)="oferta()" class="active"><span class="fa fa-edit"></span><span
+              class="tab-text">Oferta</span></a></li>
+        <li [style.background-color]="color4"><a (click)="favoritos()" class="active"><span
+              class="fa fa-bookmark"></span><span class="tab-text">Favoritos</span></a></li>
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
+
+      </ul>
+
+<<<<<<< HEAD
+            <div class="secciones">
+                <div id="Perfil" *ngIf="elegir=='perfil'">
+                    <article class="resume-wrapper text-center position-relative">
+                        <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+                            <header class="resume-header pt-4 pt-md-0">
+                                <div class="media flex-column flex-md-row">
+                                    <img *ngIf="empresa.imagenPerfil==null" class="mr-3 img-fluid resume-profile-image picture mx-auto" src="../../../assets/img/empresa1.jpg" alt="">
+                                    <img *ngIf="empresa.imagenPerfil!=null" class="mr-3 img-fluid resume-profile-image picture mx-auto" [src]="backendHost + empresa.imagenPerfil" alt="">
+                                    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+                                        <div class="primary-info py-5">
+                                            <!--<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>-->
+                                            <h1 class="title mb-3">{{empresa.organizacion}}</h1>
+                                            <ul class="list-unstyled">
+                                                <li style="color: #009FE1 !important;font-weight: bold;">
+                                                    <i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i> {{empresa.telefono}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--//primary-info-->
+                                        <div class="secondary-info ml-md-auto py-5">
+                                            <ul class="resume-social list-unstyled">
+                                                <li class="mb-3">
+                                                    <a class="primary-link">
+                                                        <span class="fa-container text-center">
+                              <i class="fab fa-facebook mr-2"></i>
+                              {{empresa.facebook}}Facebook
+                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="primary-link">
+                                                        <span class="fa-container text-center">
+                              <i class="fas fa-globe mr-2"></i>
+                              {{empresa.paginaWeb}}Sitio Web
+                            </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--//secondary-info-->
+
+                                    </div>
+                                    <!--//media-body-->
+                                </div>
+                                <!--//media-->
+                            </header>
+                            <div class="resume-body p-5">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <section class="resume-section experience-section mb-5">
+                                            <h2 class="resume-section-title text-center text-uppercase font-weight-bold pb-3 mb-3">
+                                                Descripción de la empresa
+                                            </h2>
+                                            <div class="resume-section-content">
+                                                <div class="resume-timeline position-relative">
+
+                                                    <article class="resume-timeline-item position-relative pb-5">
+                                                        <div class="resume-timeline-item-desc">
+                                                            <p class="text-center" *ngIf="empresa.descripcionPerfil == null">No hay datos.</p>
+                                                            <p *ngIf="empresa.descripcionPerfil != null">{{empresa.descripcionPerfil}}</p>
+                                                        </div>
+                                                        <!--//resume-timeline-item-desc-->
+
+                                                    </article>
+                                                    <!--//resume-timeline-item-->
+
+
+                                                </div>
+                                                <!--//resume-timeline-->
+
+
+
+
+
+
+                                            </div>
+                                        </section>
+                                        <!--//experience-section-->
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <section class="resume-section skills-section mb-5">
+                                            <h3 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
+                                            <div class="resume-section-content">
+                                                <div class="resume-skill-item">
+                                                    <ul class="list-inline" *ngFor="let direccion of empresa.datosDireccion">
+                                                        <li class="list-inline-item">
+                                                            <p>{{direccion.departamento}}</p>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <p>{{direccion.ciudad}}</p>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <p>{{direccion.direccion}}</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--//resume-skill-item-->
+                                            </div>
+                                            <!--resume-section-content-->
+                                        </section>
+                                        <!--//skills-section-->
+                                    </div>
+                                </div>
+                                <!--//row-->
+                            </div>
+                            <!--//resume-body-->
+
+
+                        </div>
+                    </article>
+                </div>
+
+                <div *ngIf="elegir=='editarPerfil'">
+                    <div class="cards">
+                        <div class="card">
+                            <div class="card-top">
+                                <div class="name">
+                                    <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa mr-3 img-fluid resume-profile-image picture mx-auto" src="../../../assets/img/empresa1.jpg" alt="green forest">
+                                    <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa mr-3 img-fluid resume-profile-image picture mx-auto" [src]="backendHost + empresa.imagenPerfil" alt="green forest">
+                                    <input type="file" id="file" class="boton-img">
+                                    <label for="file" class="btn" style="margin: -15px; width: 200px;">Eligue fotografia</label>
+                                </div>
+                            </div>
+
+                            <div class="description">
+                                <form [formGroup]="formulario_Oferta">
+
+                                    <label class="boton-editar">Empresa: </label>
+                                    <input type="text" placeholder="Nombre de tu empresa" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Email: </label>
+                                    <input type="text" placeholder="correo electronico" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Telefono: </label>
+                                    <input type="text" placeholder="Telefono" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Departamento: </label>
+                                    <input type="text" placeholder="Departamento" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Ciudad: </label>
+                                    <input type="text" placeholder="Ciudad" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Direccion: </label>
+                                    <input type="text" placeholder="Direccion" class="mb-2" style="width: 100%;">
+                                    <label class="boton-editar">Contrasena: </label>
+                                    <input type="password" placeholder="Contrasena" class="mb-2" style="width: 100%;">
+
+                                    <!--<input type="date" placeholder="fecha">-->
+                                    <button type="button" (click)="actualizarPerfil()" class="btn boton-guardar">Actualizar Perfil</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+=======
+      <div class="secciones">
+        <div id="Perfil" *ngIf="elegir=='perfil'">
+          <article class="resume-wrapper text-center position-relative">
+            <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+              <header class="resume-header pt-4 pt-md-0">
+                <div class="media flex-column flex-md-row">
+                  <img *ngIf="empresa.imagenPerfil==null" class="mr-3 img-fluid resume-profile-image picture mx-auto"
+                    src="../../../assets/img/empresa1.jpg" alt="">
+                  <img *ngIf="empresa.imagenPerfil!=null" class="mr-3 img-fluid resume-profile-image picture mx-auto"
+                    [src]="backendHost + empresa.imagenPerfil" alt="">
+                  <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+                    <div class="primary-info py-5">
+                      <!--<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>-->
+                      <h1 class="title mb-3">{{empresa.organizacion}}</h1>
+                      <ul class="list-unstyled">
+                        <li style="color: #009FE1 !important;font-weight: bold;">
+                          <i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>
+                          {{empresa.telefono}}
+                        </li>
+                      </ul>
+                    </div>
+                    <!--//primary-info-->
+                    <div class="secondary-info ml-md-auto py-5">
+                      <ul class="resume-social list-unstyled">
+                        <li class="mb-3">
+                          <a class="primary-link">
+                            <span class="fa-container text-center">
+                              <i class="fab fa-facebook mr-2"></i>
+                              {{empresa.facebook}}Facebook
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="primary-link">
+                            <span class="fa-container text-center">
+                              <i class="fas fa-globe mr-2"></i>
+                              {{empresa.paginaWeb}}Sitio Web
+                            </span>
+                          </a></li>
+                      </ul>
+                    </div>
+                    <!--//secondary-info-->
+
+                  </div>
+                  <!--//media-body-->
+                </div>
+                <!--//media-->
+              </header>
+              <div class="resume-body p-5">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <section class="resume-section experience-section mb-5">
+                      <h2 class="resume-section-title text-center text-uppercase font-weight-bold pb-3 mb-3">
+                        Descripción de la empresa
+                      </h2>
+                      <div class="resume-section-content">
+                        <div class="resume-timeline position-relative">
+
+                          <article class="resume-timeline-item position-relative pb-5">
+                            <div class="resume-timeline-item-desc">
+                              <p class="text-center" *ngIf="empresa.descripcionPerfil == null">No hay datos.</p>
+                              <p *ngIf="empresa.descripcionPerfil != null">{{empresa.descripcionPerfil}}</p>
+                            </div>
+                            <!--//resume-timeline-item-desc-->
+
+                          </article>
+                          <!--//resume-timeline-item-->
+
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
+
+                <!-- Listando las Ofertas-->
+                <div *ngIf="elegir=='listarOfertas'">
+                    <div class="cards">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+                                <h1>Ofertas Activas <i class="fas fa-box-open"></i></h1>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-right">
+                                <button type="button" (click)=" oferta()" class="btn btn-success boton">Crear Nueva Oferta <i
+                    class="fas fa-plus-square"></i></button>
+                            </div>
+                        </div>
+<<<<<<< HEAD
+                        <div class="table-responsive text-center" *ngIf="OfertasActivas != null">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                                        <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                                        <th>Fecha <i class="fas fa-calendar-day"></i></th>
+
+                                        <th>Opciones <i class="fas fa-cogs"></i></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of OfertasActivas">
+                                        <td>{{item.titulo_Oferta}}</td>
+                                        <td *ngIf="item.salario == null">N/A</td>
+                                        <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
+                                        <td>
+                                            {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                                        </td>
+                                        <td>
+                                            <button style="margin: 5px;" type="button" class="btn btn-warning boton" data-toggle="modal" data-target="#exampleModal">Actualizar <i
+                          class="fas fa-edit"></i></button>
+
+                                            <button style="margin: 5px;" type="button" class="btn btn-info boton">Detalles <i class="fas fa-info"></i></button>
+
+                                            <button style="margin: 5px;" type="button" class="btn btn-danger boton">Eliminar <i
+                          class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <h1>Ofertas Archivadas <i class="fas fa-archive"></i></h1>
+                            </div>
+                        </div>
+                        <div class="table-responsive text-center" *ngIf="OfertasArchivadas != null">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                                        <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                                        <th>Fecha <i class="fas fa-calendar-day"></i></th>
+                                        <th></th>
+                                        <th>Opciones <i class="fas fa-cogs"></i></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of OfertasArchivadas">
+                                        <td>{{item.titulo_Oferta}}</td>
+                                        <td *ngIf="item.salario == null">N/A</td>
+                                        <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
+                                        <td>
+                                            {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                                        </td>
+                                        <td> <button type="button" class="btn btn-warning boton">Actualizar<i class="fas fa-edit"></i></button> </td>
+                                        <td> <button type="button" class="btn btn-info boton">Detalles <i class="fas fa-info"></i></button></td>
+                                        <td> <button type="button" class="btn btn-danger boton">Eliminar <i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Formulario Guardar Oferta-->
                 <div *ngIf="elegir=='oferta'">
                     <div class="cards">
                         <div class="card">
                             <div class="card-top">
                                 <div class="name">
-                                    <img class="imagen-empresa" src="../../../assets/img/tigo.jpg" alt="green forest">
+                                    <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa" src="../../../assets/img/empresa1.jpg" alt="green forest">
+                                    <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa" [src]="backendHost + empresa.imagenPerfil" alt="green forest">
                                 </div>
                             </div>
 
                             <div class="description">
-                                <input type="text" placeholder="vacante" style="width: 100%;" [(ngModel)]="addoffer.vacante">
-                                <input type="text" placeholder="Empresa" class="empresa" [(ngModel)]="addoffer.empresa">
-                                <input type="text" placeholder="Ubicacion" class="location" [(ngModel)]="addoffer.ubicacion">
-                                <textarea name="descripcion" id="describir" cols="75" rows="10" [(ngModel)]="addoffer.info"></textarea>
-                                <input type="date" placeholder="fecha" [(ngModel)]="addoffer.fecha">
-                                <button type="button" (click)="guardar()" class="btn">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                <form [formGroup]="formulario_Oferta">
+                                    <input [ngClass]="{'form-input-error':vacante.invalid && (vacante.dirty || vacante.touched)}" formControlName="vacante" type="text" placeholder="Vacante" class="mb-2" style="width: 100%;">
+                                    <div *ngIf="vacante.invalid && (vacante.dirty || vacante.touched)" class="form-error">
+                                        <span *ngIf="vacante.errors.required">Campo obligatorio</span>
+                                    </div>
 
-                <div *ngIf="elegir=='favoritos'">
-                    <p>hola favoritos</p>
+                                    <label class="label-form text-white pb-1">Departamento</label>
+                                    <select [ngClass]="{'form-input-error':departamento.invalid && (departamento.dirty || departamento.touched)}" formControlName="departamento" class="mb-2">
+                    <option *ngFor="let department of departamentos" value="{{department}}">{{department}}</option>
+                  </select>
+                                    <div *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="form-error">
+                                        <span *ngIf="departamento.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <input [ngClass]="{'form-input-error':ciudad.invalid && (ciudad.dirty || ciudad.touched)}" formControlName="ciudad" type="text" placeholder="Ciudad" style="width: 100%;" class="location mb-2">
+                                    <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="form-error">
+                                        <span *ngIf="ciudad.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <textarea [ngClass]="{'form-input-error':descripcion.invalid && (descripcion.dirty || descripcion.touched)}" formControlName="descripcion" placeholder="Descripcion de Vacante" class="mb-1" name="descripcion" id="describir" cols="75" rows="10"></textarea>
+                                    <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="form-error">
+                                        <span *ngIf="descripcion.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <input formControlName="salario" type="number" placeholder="Salario (Neto Mensual)" min="1" class="mb-2" style="width: 100%;">
+
+                                    <input formControlName="edad" type="text" placeholder="Rango edad (Ej. entre 20 y 30 años)" class="mb-2" style="width: 100%;">
+
+                                    <input formControlName="idiomas" type="text" placeholder="Idiomas (Ej. Español, Inglés, Francés)" class="mb-2" style="width: 100%;">
+
+                                    <input formControlName="indiceEstudiante" type="number" placeholder="Índice de Estudiante requerido" min="1" max="100" class="mb-2" style="width: 100%;">
+
+                                    <label class="label-form text-white pb-1">Experiencia Laboral</label>
+                                    <select [ngClass]="{'form-input-error':experienciaLaboral.invalid && (experienciaLaboral.dirty || experienciaLaboral.touched)}" formControlName="experienciaLaboral" class="mb-2">
+                    <option *ngFor="let item of experiencia_laboral" value="{{item}}">{{item}}</option>
+                  </select>
+                                    <div *ngIf="experienciaLaboral.invalid && (experienciaLaboral.dirty || experienciaLaboral.touched)" class="form-error">
+                                        <span *ngIf="experienciaLaboral.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <label class="label-form text-white pb-1">Tipo de Jornada</label>
+                                    <select [ngClass]="{'form-input-error':jornadaLaboral.invalid && (jornadaLaboral.dirty || jornadaLaboral.touched)}" formControlName="jornadaLaboral" class="mb-2">
+                    <option *ngFor="let jornada of jornada_laboral" value="{{jornada}}">{{jornada}}</option>
+                  </select>
+                                    <div *ngIf="jornadaLaboral.invalid && (jornadaLaboral.dirty || jornadaLaboral.touched)" class="form-error">
+                                        <span *ngIf="jornadaLaboral.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <label class="label-form text-white pb-1">Tipo de Contrato</label>
+                                    <select [ngClass]="{'form-input-error':tipoContrato.invalid && (tipoContrato.dirty || tipoContrato.touched)}" formControlName="tipoContrato" class="mb-2">
+                    <option *ngFor="let contrato of tipo_contrato" value="{{contrato}}">{{contrato}}</option>
+                  </select>
+                                    <div *ngIf="tipoContrato.invalid && (tipoContrato.dirty || tipoContrato.touched)" class="form-error">
+                                        <span *ngIf="tipoContrato.errors.required">Campo obligatorio</span>
+                                    </div>
+
+                                    <input type="text" formControlName="palabrasClave" placeholder="Palabras claves para filtros de búsqueda (Ej. Carreras, habilidades, tecnologias)" style="width: 100%;" class="empresa mb-2">
+                                    <div *ngIf="!hayPalabrasClave" class="form-error">
+                                        <span>Se requiere mínimo un dato</span>
+                                    </div>
+                                    <div class="row p-0 mb-4">
+                                        <div class="col-12 col-lg-7 p-0">
+                                            <ul class="list-group listaPalabrasClave">
+                                                <li *ngFor="let item of array_palabras;" class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-12">{{item}}<span class="float-right"><i class="fas fa-minus-circle"
+                                  (click)="removeItem(item)"></i></span></div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-12 col-lg-5 p-0">
+                                            <div class="text-right">
+                                                <button type="button" (click)="addItem(palabrasClave.value)" class="btn boton-guardar">Agregar
+                          Palabra Clave</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--<input type="date" placeholder="fecha">-->
+                                    <button type="button" [disabled]="formulario_Oferta.invalid" (click)="guardarOferta()" class="btn boton-guardar">Guardar Oferta</button>
+                                </form>
+                            </div>
+=======
+                        <!--//resume-timeline-->
+
+
+
+
+
+
+                      </div>
+                    </section>
+                    <!--//experience-section-->
+                  </div>
+                  <div class="col-lg-3">
+                    <section class="resume-section skills-section mb-5">
+                      <h3 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
+                      <div class="resume-section-content">
+                        <div class="resume-skill-item">
+                          <ul class="list-inline" *ngFor="let direccion of empresa.datosDireccion">
+                            <li class="list-inline-item">
+                              <p>{{direccion.departamento}}</p>
+                            </li>
+                            <li class="list-inline-item">
+                              <p>{{direccion.ciudad}}</p>
+                            </li>
+                            <li class="list-inline-item">
+                              <p>{{direccion.direccion}}</p>
+                            </li>
+                          </ul>
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
+                        </div>
+                        <!--//resume-skill-item-->
+                      </div>
+                      <!--resume-section-content-->
+                    </section>
+                    <!--//skills-section-->
+                  </div>
                 </div>
+                <!--//row-->
+              </div>
+              <!--//resume-body-->
+
 
             </div>
+          </article>
+
+<<<<<<< HEAD
+                <div *ngIf="elegir=='postulados'">
+                    <div class="p-20 min-h-screen bg-gray-200">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th>Puesto a Ocupar <i class="fas fa-paperclip"></i></th>
+                                    <th>Postulados <i class="fas fa-user-tie"></i></th>
+                                    <th>Fecha <i class="fas fa-calendar-day"></i></th>
+
+                                    <th>Indice <i class="fas fa-percentage"></i></th>
+                                    <th>Curriculum <i class="fas fa-book-open"></i></th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="text-align: center;">
+                                    <td>Gerente de servicio al cliente</td>
+                                    <td>Marry Arley Valladares Lopez</td>
+                                    <td>01/04/21 </td>
+                                    <td>81% </td>
+                                    <td>
+                                        <button class="col-4" type="button" class="btn btn-info boton" style="margin: 5px;">ver <i class="fas fa-info"></i></button>
+                                        <button class="col-4" type="button" class="btn btn-danger boton" style="margin: 5px;">Rechazar <i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+=======
+
         </div>
+
+        <!-- Listando las Ofertas-->
+        <div *ngIf="elegir=='listarOfertas'">
+          <div class="cards">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+                <h1>Ofertas Activas <i class="fas fa-box-open"></i></h1>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-right">
+                <button type="button" (click)=" oferta()" class="btn btn-success boton">Crear Nueva Oferta <i
+                    class="fas fa-plus-square"></i></button>
+              </div>
+            </div>
+            <div class="table-responsive text-center" *ngIf="OfertasActivas != null">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                    <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                    <th>Fecha <i class="fas fa-calendar-day"></i></th>
+                    <th></th>
+                    <th>Opciones <i class="fas fa-cogs"></i></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of OfertasActivas">
+                    <td>{{item.titulo_Oferta}}</td>
+                    <td *ngIf="item.salario == null">N/A</td>
+                    <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
+                    <td>
+                      {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                    </td>
+                    <td> <button type="button" class="btn btn-warning boton">Actualizar <i
+                          class="fas fa-edit"></i></button>
+                    </td>
+                    <td> <button type="button" class="btn btn-info boton">Detalles <i class="fas fa-info"></i></button>
+                    </td>
+                    <td> <button type="button" class="btn btn-danger boton">Eliminar <i
+                          class="fas fa-trash-alt"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h1>Ofertas Archivadas <i class="fas fa-archive"></i></h1>
+              </div>
+            </div>
+            <div class="table-responsive text-center" *ngIf="OfertasArchivadas != null">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th>Cargo a Ocupar <i class="fas fa-user-tie"></i></th>
+                    <th>Salario Estimado <i class="fas fa-money-check-alt"></i></th>
+                    <th>Fecha <i class="fas fa-calendar-day"></i></th>
+                    <th></th>
+                    <th>Opciones <i class="fas fa-cogs"></i></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of OfertasArchivadas">
+                    <td>{{item.titulo_Oferta}}</td>
+                    <td *ngIf="item.salario == null">N/A</td>
+                    <td *ngIf="item.salario != null">{{item.salario}} Lps.</td>
+                    <td>
+                      {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                    </td>
+                    <td> <button type="button" class="btn btn-warning boton">Actualizar <i
+                          class="fas fa-edit"></i></button>
+                    </td>
+                    <td> <button type="button" class="btn btn-info boton">Detalles <i class="fas fa-info"></i></button>
+                    </td>
+                    <td> <button type="button" class="btn btn-danger boton">Eliminar <i
+                          class="fas fa-trash-alt"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--Formulario Guardar Oferta-->
+        <div *ngIf="elegir=='oferta'">
+          <div class="cards">
+            <div class="card">
+              <div class="card-top">
+                <div class="name">
+                  <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa"
+                    src="../../../assets/img/empresa1.jpg" alt="green forest">
+                  <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa"
+                    [src]="backendHost + empresa.imagenPerfil" alt="green forest">
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
+                </div>
+              </div>
+
+              <div class="description">
+                <form [formGroup]="formulario_Oferta">
+                  <input [ngClass]="{'form-input-error':vacante.invalid && (vacante.dirty || vacante.touched)}"
+                    formControlName="vacante" type="text" placeholder="Vacante" class="mb-2" style="width: 100%;">
+                  <div *ngIf="vacante.invalid && (vacante.dirty || vacante.touched)" class="form-error">
+                    <span *ngIf="vacante.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <label class="label-form text-white pb-1">Departamento</label>
+                  <select
+                    [ngClass]="{'form-input-error':departamento.invalid && (departamento.dirty || departamento.touched)}"
+                    formControlName="departamento" class="mb-2">
+                    <option *ngFor="let department of departamentos" value="{{department}}">{{department}}</option>
+                  </select>
+                  <div *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="form-error">
+                    <span *ngIf="departamento.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <input [ngClass]="{'form-input-error':ciudad.invalid && (ciudad.dirty || ciudad.touched)}"
+                    formControlName="ciudad" type="text" placeholder="Ciudad" style="width: 100%;"
+                    class="location mb-2">
+                  <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="form-error">
+                    <span *ngIf="ciudad.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <textarea
+                    [ngClass]="{'form-input-error':descripcion.invalid && (descripcion.dirty || descripcion.touched)}"
+                    formControlName="descripcion" placeholder="Descripcion de Vacante" class="mb-1" name="descripcion"
+                    id="describir" cols="75" rows="10"></textarea>
+                  <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="form-error">
+                    <span *ngIf="descripcion.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <input formControlName="salario" type="number" placeholder="Salario (Neto Mensual)" min="1"
+                    class="mb-2" style="width: 100%;">
+
+                  <input formControlName="edad" type="text" placeholder="Rango edad (Ej. entre 20 y 30 años)"
+                    class="mb-2" style="width: 100%;">
+
+                  <input formControlName="idiomas" type="text" placeholder="Idiomas (Ej. Español, Inglés, Francés)"
+                    class="mb-2" style="width: 100%;">
+
+                  <input formControlName="indiceEstudiante" type="number" placeholder="Índice de Estudiante requerido"
+                    min="1" max="100" class="mb-2" style="width: 100%;">
+
+                  <label class="label-form text-white pb-1">Experiencia Laboral</label>
+                  <select
+                    [ngClass]="{'form-input-error':experienciaLaboral.invalid && (experienciaLaboral.dirty || experienciaLaboral.touched)}"
+                    formControlName="experienciaLaboral" class="mb-2">
+                    <option *ngFor="let item of experiencia_laboral" value="{{item}}">{{item}}</option>
+                  </select>
+                  <div *ngIf="experienciaLaboral.invalid && (experienciaLaboral.dirty || experienciaLaboral.touched)"
+                    class="form-error">
+                    <span *ngIf="experienciaLaboral.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <label class="label-form text-white pb-1">Tipo de Jornada</label>
+                  <select
+                    [ngClass]="{'form-input-error':jornadaLaboral.invalid && (jornadaLaboral.dirty || jornadaLaboral.touched)}"
+                    formControlName="jornadaLaboral" class="mb-2">
+                    <option *ngFor="let jornada of jornada_laboral" value="{{jornada}}">{{jornada}}</option>
+                  </select>
+                  <div *ngIf="jornadaLaboral.invalid && (jornadaLaboral.dirty || jornadaLaboral.touched)"
+                    class="form-error">
+                    <span *ngIf="jornadaLaboral.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <label class="label-form text-white pb-1">Tipo de Contrato</label>
+                  <select
+                    [ngClass]="{'form-input-error':tipoContrato.invalid && (tipoContrato.dirty || tipoContrato.touched)}"
+                    formControlName="tipoContrato" class="mb-2">
+                    <option *ngFor="let contrato of tipo_contrato" value="{{contrato}}">{{contrato}}</option>
+                  </select>
+                  <div *ngIf="tipoContrato.invalid && (tipoContrato.dirty || tipoContrato.touched)" class="form-error">
+                    <span *ngIf="tipoContrato.errors.required">Campo obligatorio</span>
+                  </div>
+
+                  <input type="text" formControlName="palabrasClave"
+                    placeholder="Palabras claves para filtros de búsqueda (Ej. Carreras, habilidades, tecnologias)"
+                    style="width: 100%;" class="empresa mb-2">
+                  <div *ngIf="!hayPalabrasClave" class="form-error">
+                    <span>Se requiere mínimo un dato</span>
+                  </div>
+                  <div class="row p-0 mb-4">
+                    <div class="col-12 col-lg-7 p-0">
+                      <ul class="list-group listaPalabrasClave">
+                        <li *ngFor="let item of array_palabras;" class="list-group-item">
+                          <div class="row">
+                            <div class="col-12">{{item}}<span class="float-right"><i class="fas fa-minus-circle"
+                                  (click)="removeItem(item)"></i></span></div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-12 col-lg-5 p-0">
+                      <div class="text-right">
+                        <button type="button" (click)="addItem(palabrasClave.value)" class="btn boton-guardar">Agregar
+                          Palabra Clave</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <!--<input type="date" placeholder="fecha">-->
+                  <button type="button" [disabled]="formulario_Oferta.invalid" (click)="guardarOferta()"
+                    class="btn boton-guardar">Guardar Oferta</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="elegir=='favoritos'">
+          <p>No hay favoritos</p>
+        </div>
+
+      </div>
     </div>
+  </div>
 </body>

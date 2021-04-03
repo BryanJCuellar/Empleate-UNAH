@@ -1,5 +1,327 @@
-<div id="student-homepg" *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
-    <h2 class="pt-5 px-5">Bienvenid@ {{estudianteActual.nombre}} {{estudianteActual.apellido}}</h2>
-    <h4 class="px-5 primary-link"><a (click)="getAuthService().logout()">Cerrar Sesión</a></h4>
+<div *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
+<<<<<<< HEAD
+    <nav class="navbar navbar-expand-lg nav-principal py-2">
+        <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+            <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+        </a>
+        <!-- <div id="mn">
+        <input type="checkbox" id="btn-mn">
+        <label for="btn-mn"><img src="../assets/img/mm.png" alt=""></label>
+    </div>-->
+        <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse" data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item my-2 my-lg-0">
+                    <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="/student/profile">
+                        <span class="link-profile">
+              <span class="fas fa-id-card-alt"></span> Ver perfil
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
+                <span style="color:white !important;">
+          ¡Bievenido {{estudianteActual.nombre}}! </span>
+                <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i
+            class="fas fa-sign-out-alt ml-2"></i></button>
+            </form>
+        </div>
+    </nav>
+=======
+  <nav class="navbar navbar-expand-lg nav-principal py-2">
+    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+      <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+    </a>
+    <!-- <div id="mn">
+        <input type="checkbox" id="btn-mn">
+        <label for="btn-mn"><img src="../assets/img/mm.png" alt=""></label>
+    </div>-->
+    <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+      data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item my-2 my-lg-0">
+          <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="/student/profile">
+            <span class="link-profile">
+              <span class="fas fa-id-card-alt"></span> Ver perfil
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
+        <span style="color:white !important;">
+          ¡Bievenido {{estudianteActual.nombre}}! </span>
+        <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i
+            class="fas fa-sign-out-alt ml-2"></i></button>
+      </form>
+    </div>
+  </nav>
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
 </div>
 
+<body>
+
+<<<<<<< HEAD
+    <div class="main" [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
+        <div class="wrap" style="width:100%">
+            <ul class="tabs">
+                <li [style.background-color]="color1"><a (click)="home()"><span class="fa fa-home ">
+
+            </span><span class="tab-text text-center">Home</span></a></li>
+                <li [style.background-color]="color2"><a (click)="Mis_Postulaciones()"><span
+              class="fas fa-list-alt"></span><span class="tab-text">Mis Postulaciones</span></a></li>
+                <li [style.background-color]="color3"><a (click)="Buscar_Ofertas()" class="active"><span
+              class="fas fa-search"></span><span class="tab-text">Buscar Ofertas</span></a></li>
+                <li [style.background-color]="color5"><a (click)="Configuracion()" class="active"><span
+              class="fas fa-user-cog"></span><span class="tab-text">Configuración</span></a></li>
+                <!-- <li><img class="imgUSER" src="../../../assets/img/usuario.png" alt=""></li>-->
+
+            </ul>
+
+            <div class="secciones">
+                <div *ngIf="elegir=='home'">
+                    <div class="row mt-2">
+                        <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
+                         *ngFor= "let oferta of ofertas">-->
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let oferta of ofertas">
+                            <div class="card flex-fill">
+                                <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                                <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle" [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
+                                    <p class="card-text text-left">{{oferta.resumenDescripcion}}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i> {{oferta.ubicacion[0].ciudad}}, {{oferta.ubicacion[0].departamento}}
+                                    </li>
+                                    <li class="list-group-item" *ngIf="oferta.salario != null"><i class="fas fa-money-bill-wave mr-1"></i>{{oferta.salario}}</li>
+                                    <li class="list-group-item"><i class="fas fa-calendar-day"></i> {{oferta.fecha_publicacion[0].dia}}-{{oferta.fecha_publicacion[0].mes}}-{{oferta.fecha_publicacion[0].anio}}
+                                    </li>
+                                </ul>
+                                <div class="card-body" style="padding-left: 0px;">
+                                    <!--<span (click)="openVerticallyCentered(content)" class="card-link"
+                                  style="margin-left: 0px;"><i class="fas fa-info-circle"></i> Detalles</span>-->
+                                    <span class="card-link mr-1" style="margin-left: 0px;">
+                                      <i class="fas fa-info-circle mr-1"></i>Detalles</span>
+                                    <a style="color: purple;" href="/student/home/postulate">
+                                        <span><i class="fas fa-mail-bulk mr-1" ></i>Postularse</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="elegir=='Mis_Postulaciones'">
+
+                    <div class="row mt-2">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex">
+                            <div class="card flex-fill">
+                                <img class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                                <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle" [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Contador</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i> teg, Francisco Morazán
+                                    </li>
+                                    <li class="list-group-item"><i class="fas fa-calendar-day"></i> 31-3-2021
+                                    </li>
+                                </ul>
+                                <div class="card-body" style="padding-left: 0px;">
+                                    <span class="card-link mr-1" style="margin-left: 0px;">
+                                      <i class="fas fa-info-circle mr-1"></i>Ver Aplicacion</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="elegir=='Buscar_Ofertas'">
+                    <p>hola Buscar_Ofertas</p>
+                </div>
+
+                <div *ngIf="elegir=='Mi_Curriculum'">
+                    <p>hola Mi_Curriculum</p>
+                </div>
+
+                <div *ngIf="elegir=='Configuracion'">
+                    <p>hola Configuracion</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <ng-template #content let-modal>
+        <div class="modalDetalles">
+            <div class="modal-header mt-2">
+                <h5 class="card-title"> Oferta 1 </h5>
+
+            </div>
+            <div class="modal-body  mt-3 mb-3">
+                <div class="card cardDetalles" style="width: 10rem">
+                    <div class="text-center">
+                        <img class="card-img-top rounded-circle" style="width: 200px; height: 200px;" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa impedit illum sequi ipsum natus voluptas, porro sit asperiores facere temporibus.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class=" mt-2 mb-2">
+                <div class="row botonesDetalles">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-light">Postularse </button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+
+</body>
+=======
+  <div class="main"
+    [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
+    <div class="wrap" style="width:100%">
+      <ul class="tabs">
+        <li [style.background-color]="color1"><a (click)="home()"><span class="fa fa-home ">
+
+            </span><span class="tab-text text-center">Home</span></a></li>
+        <li [style.background-color]="color2"><a (click)="Mis_Postulaciones()"><span
+              class="fas fa-list-alt"></span><span class="tab-text">Mis Postulaciones</span></a></li>
+        <li [style.background-color]="color3"><a (click)="Buscar_Ofertas()" class="active"><span
+              class="fas fa-search"></span><span class="tab-text">Buscar Ofertas</span></a></li>
+        <li [style.background-color]="color5"><a (click)="Configuracion()" class="active"><span
+              class="fas fa-user-cog"></span><span class="tab-text">Configuración</span></a></li>
+        <!-- <li><img class="imgUSER" src="../../../assets/img/usuario.png" alt=""></li>-->
+
+      </ul>
+
+      <div class="secciones">
+        <div *ngIf="elegir=='home'">
+          <div class="row mt-2">
+            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
+                         *ngFor= "let oferta of ofertas">-->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let oferta of ofertas">
+              <div class="card flex-fill">
+                <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top rounded-circle"
+                  src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle"
+                  [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
+                  <p class="card-text text-left">{{oferta.resumenDescripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i>
+                    {{oferta.ubicacion[0].ciudad}}, {{oferta.ubicacion[0].departamento}}
+                  </li>
+                  <li class="list-group-item" *ngIf="oferta.salario != null"><i
+                      class="fas fa-money-bill-wave mr-1"></i>{{oferta.salario}}</li>
+                  <li class="list-group-item"><i class="fas fa-calendar-day"></i>
+                    {{oferta.fecha_publicacion[0].dia}}-{{oferta.fecha_publicacion[0].mes}}-{{oferta.fecha_publicacion[0].anio}}
+                  </li>
+                </ul>
+                <div class="card-body" style="padding-left: 0px;">
+                  <!--<span (click)="openVerticallyCentered(content)" class="card-link"
+                                  style="margin-left: 0px;"><i class="fas fa-info-circle"></i> Detalles</span>-->
+                  <span class="card-link mr-1" style="margin-left: 0px;"><i
+                      class="fas fa-info-circle mr-1"></i>Detalles</span>
+                  <span><i class="fas fa-mail-bulk mr-1"></i>Postularse</span>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div *ngIf="elegir=='Mis_Postulaciones'">
+          <p>hola Mis_Postulaciones</p>
+        </div>
+
+        <div *ngIf="elegir=='Buscar_Ofertas'">
+          <p>hola Buscar_Ofertas</p>
+        </div>
+
+        <div *ngIf="elegir=='Mi_Curriculum'">
+          <p>hola Mi_Curriculum</p>
+        </div>
+
+        <div *ngIf="elegir=='Configuracion'">
+          <p>hola Configuracion</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modalDetalles">
+      <div class="modal-header mt-2">
+        <h5 class="card-title"> Oferta 1 </h5>
+
+      </div>
+      <div class="modal-body  mt-3 mb-3">
+        <div class="card cardDetalles" style="width: 10rem">
+          <div class="text-center">
+            <img class="card-img-top rounded-circle" style="width: 200px; height: 200px;"
+              src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa impedit illum sequi
+              ipsum natus voluptas, porro sit asperiores facere temporibus.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+            <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+            <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+            <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+            <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+            <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+            <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
+            <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
+          </ul>
+
+        </div>
+      </div>
+      <div class=" mt-2 mb-2">
+        <div class="row botonesDetalles">
+          <div class="col-6">
+            <button type="button" class="btn btn-light">Postularse </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+
+</body>
+>>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1

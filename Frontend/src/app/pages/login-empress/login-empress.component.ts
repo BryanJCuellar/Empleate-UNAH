@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 // Sweet Alert
 import Swal from 'sweetalert2';
@@ -18,7 +19,10 @@ export class LoginEmpressComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     document.body.classList.add('student-login');
@@ -49,13 +53,14 @@ export class LoginEmpressComponent implements OnInit {
             localStorage.setItem('rol', response.data.rol);
             // Mensaje success
             Swal.fire({
-              title: 'Login exitoso',
+              title: '',
               text: '',
               icon: 'success',
-              timer: 2000,
+              timer: 1500,
               showConfirmButton: false
             }).then(success => {
-              window.location.href = '/company/home';
+              // window.location.href = '/company/home';
+              this.router.navigate(['/company/profile']);
             }
             ).catch(err => console.log(err));
           }

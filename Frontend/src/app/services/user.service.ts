@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   private url = 'http://localhost:8888/estudiantes';
-  // private url = url de atlas
+  // private url: string = 'https://ingsoftware-backend.herokuapp.com';
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) {
-   }
-   userLogin(userData: any):Observable<any>{
-     return this.http.post(`${this.url}/login`, userData);
-   }
+  }
+  userLogin(userData: any): Observable<any> {
+    return this.http.post(`${this.url}/login`, userData);
+  }
 }

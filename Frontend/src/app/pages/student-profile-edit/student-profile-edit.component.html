@@ -18,7 +18,7 @@
               <img *ngIf="estudianteActual.imagenPerfil==null" class="img-fluid rounded-circle imGUsuario"
                 src="../../../assets/img/usuario.png" alt="">
               <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid rounded-circle imGUsuario"
-                [src]="'http://localhost:8888/'+ estudianteActual.imagenPerfil" alt="Profile Image">
+                [src]="backendHost + estudianteActual.imagenPerfil" alt="Profile Image">
             </div>
             <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar</button>
             <form [formGroup]="formularioUploadImage">
