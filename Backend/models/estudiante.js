@@ -44,8 +44,7 @@ var esquemaEstudiante = new mongoose.Schema({
     puestoDeseado: String,
     horarioDeseado: String,
     estado: Boolean,
-    solicitudEnviada: Array,
-    solicitudRecibida: Array
+    postulaciones: Array
 
 // **********************************************************
 }, {

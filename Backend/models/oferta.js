@@ -14,11 +14,12 @@ var esquemaOfertas = new mongoose.Schema({
     edad: String, // mostrado como dato de requisito
     indice_estudiante: Number, // para el filtro por indice
   //anio_estudiantil: Number, // para el filtro de buscar por año cursado
-    experiencia_laboral: Number, // filtro para los graduados (años de experiencia)
+    experiencia_laboral: String, // filtro para los graduados (años de experiencia)
     jornada_laboral: String, // para el filtro estudiante busque su horario de conveniencia
     tipo_contrato: String, // filtro por hora, medio tiempo, tiempo completo..
     salario: Number, // filtro para buscar segun el billete que va a caerle... +50,000
-    estado_oferta: Boolean
+    estado_oferta: Boolean,
+    postulaciones: Array
 }, {
     timestamps: true,
 });

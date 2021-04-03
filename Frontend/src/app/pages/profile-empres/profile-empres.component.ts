@@ -31,10 +31,7 @@ export class ProfileEmpresComponent implements OnInit {
   color2 = "#00035a";
   color3 = "#00035a";
   color4 = "#00035a";
-<<<<<<< HEAD
   color5 = "#00035a";
-=======
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
 
   //Variable para guardar id de la empresa
   idEmpresa: any;
@@ -268,10 +265,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
-<<<<<<< HEAD
     this.color5 = "#00035a";
-=======
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
     this.color1 = '#ffc400';
     this.elegir = 'perfil';
   }
@@ -281,10 +275,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
-<<<<<<< HEAD
     this.color5 = "#00035a";
-=======
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
     this.color2 = '#ffc400';
     this.elegir = 'listarOfertas';
 
@@ -324,27 +315,18 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color4 = "#00035a";
-<<<<<<< HEAD
     this.color5 = "#00035a";
-=======
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
     this.color3 = '#ffc400';
     this.elegir = 'oferta';
     this.createFormOferta();
   }
 
-<<<<<<< HEAD
   // Componente postulados
   postulados() {
-=======
-  // Componente Favoritos
-  favoritos() {
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = '#ffc400';
-<<<<<<< HEAD
     this.color5 = "#00035a";
     this.elegir = 'postulados';
   }
@@ -363,13 +345,4 @@ export class ProfileEmpresComponent implements OnInit {
     return this.authService;
   }
 
-=======
-    this.elegir = 'favoritos';
-  }
-
-  getAuthService() {
-    return this.authService;
-  }
-
->>>>>>> 80cb0f4d2f0360e1dd0b9cc463bf84d67e696db1
 }

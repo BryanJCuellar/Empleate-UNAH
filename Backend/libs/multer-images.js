@@ -1,7 +1,7 @@
 var multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 var path = require('path');
-const { modelName } = require('../models/estudiante');
+// const { modelName } = require('../models/estudiante');
 
 const storage = multer.diskStorage({
     destination: 'uploads/images', 

@@ -13,17 +13,15 @@ var esquemaEmpresas = new mongoose.Schema({
         trim: true,
         required: true
     },
-    datosDireccion: Array, 
+    datosDireccion: Array,
     telefono: String,
     imagenPerfil: String,
     descripcionPerfil: String,
     ofertas: Array,
-    solicitudEnviada: Array,
-    solicitudRecibida: Array
+    facebook: String,
+    paginaWeb: String
 }, {
-    timestamps: true,
+    timestamps: true
 });
 
 module.exports = mongoose.model('empresas', esquemaEmpresas);
-
-

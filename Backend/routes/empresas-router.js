@@ -5,6 +5,7 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var empresa = require('../models/empresas');
 var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
+var nodemailer = require('nodemailer');
 
 // Obtener Token
 router.get('/tokenID', verifyToken, function (req, res) {
@@ -30,10 +31,53 @@ router.get('/:idEmpresa', verifyToken, function (req, res) {
         });
 });
 
+router.post('/signup/validateEmail', validateEmail, function (req, res){
+    res.status(200).send({
+        mensaje: 'Email no duplicado'
+    });
+    res.end();
+});
+
+// Enviar correo de confirmacion (Registro Empresa)
+router.post('/signup/send-email/verify', function (req, res) {
+    var rand = Math.floor((Math.random() * 100000) + 77);
+    rand = rand.toString();
+    let rand_hash = bcrypt.hashSync(rand, 10);
+    var transporter = nodemailer.createTransport({
+        // Gmail
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: "empleateunah@gmail.com",
+            pass: "eaijdfqfbqtwflui"
+        }
+    });
+    var mailOptions = {
+        from: "empleateunah@gmail.com",
+        to: req.body.email,
+        subject: "Correo de confirmación",
+        text: `El código de confirmación es: ${rand}`
+    };
+
+    transporter.sendMail(mailOptions, (err, data) => {
+        if (err) {
+            res.status(500).send(err.message);
+        } else {
+            // console.log("Email enviado.");
+            res.status(200).send({
+                data: data,
+                code_hash: rand_hash
+            });
+        }
+    });
+});
+
 // Registrar Empresa
-router.post('/signup', validateEmail, function (req, res) {
+router.post('/signup', function (req, res) {
     // Hashing password
     let password_hash = bcrypt.hashSync(req.body.password, 10);
+    let codigoCorrecto = bcrypt.compareSync(req.body.codigoConfirmacion, req.body.codigoHash)
     const nueva_empresa = new empresa({
         organizacion: req.body.organizacion,
         email: req.body.email,
@@ -47,11 +91,12 @@ router.post('/signup', validateEmail, function (req, res) {
         imagenPerfil: null,
         descripcionPerfil: null,
         ofertas: [],
-        solicitudEnviada: [],
-        solicitudRecibida: []
+        facebook: null,
+        paginaWeb: null
     });
 
-    nueva_empresa.save()
+    if(codigoCorrecto){
+        nueva_empresa.save()
         .then(result => {
             // Success, inicia sesion con JWT
             const expiresIn = 24 * 60 * 60;
@@ -73,9 +118,18 @@ router.post('/signup', validateEmail, function (req, res) {
             });
             res.end();
         }).catch(error => {
-            res.send(error);
+            res.send({
+                error: error,
+                mensaje: "Error al guardar empresa"
+            });
             res.end();
         })
+    } else {
+        res.status(401).send({
+            mensaje: "Codigo no valido"
+        });
+        res.end();
+    }
 });
 
 // Loguear empresa
@@ -148,19 +202,18 @@ router.get('/', function (req, res) {
 });
 
 // Listar las ofertas de una empresa logueada (Metodo aggregate)
-router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
+/*router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     // Code
-});
+});*/
 
 // Guardar ID de ofertas en una empresa
 router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     empresa.updateOne({
-        _id: req.params.idEmpresa
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
     }, {
         $push: {
             ofertas: {
-                _id: mongoose.Types.ObjectId(req.body.idOferta),
-                titulo_Oferta: req.body.titulo_Oferta
+                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta)
             }
         }
     }).then(result => {
