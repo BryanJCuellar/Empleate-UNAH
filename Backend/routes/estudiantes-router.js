@@ -225,7 +225,12 @@ router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
     }, {
         $push: {
             postulaciones: {
-                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta)
+                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta),
+                fecha_postulacion: {
+                    dia: req.body.dia,
+                    mes: req.body.mes,
+                    anio: req.body.anio
+                }
             }
         }
     }).then(result => {
