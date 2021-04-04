@@ -230,7 +230,8 @@ router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
                     dia: req.body.dia,
                     mes: req.body.mes,
                     anio: req.body.anio
-                }
+                },
+                estado_postulacion: "En proceso"
             }
         }
     }).then(result => {
