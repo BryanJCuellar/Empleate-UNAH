@@ -3,7 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var oferta = require('../models/oferta');
-var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
+// Secret Key Empresa
+var SK_EMPRESA = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 
 // Obtener todas las ofertas con estado true (Renderizar para estudiantes) (Metodo Aggregate)
 router.get('/', function (req, res) {
@@ -116,9 +117,112 @@ router.post('/', verifyToken, function (req, res) {
         })
 });
 
+// Agregar postulados para empresas (Postulaciones en Ofertas)
+router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res) {
+    oferta.updateOne({
+        _id: mongoose.Types.ObjectId(req.params.idOferta)
+    }, {
+        $push: {
+            postulaciones: {
+                id_estudiante: mongoose.Types.ObjectId(req.body.id_estudiante),
+                fecha_postulacion: {
+                    dia: req.body.dia,
+                    mes: req.body.mes,
+                    anio: req.body.anio
+                },
+                estado_postulacion: 'En proceso'
+            }
+        }
+    }).then(result => {
+        res.send(result);
+        res.end();
+    }).catch(error => {
+        res.send({
+            error: error,
+            mensaje: 'Ocurrio un error al postular en Ofertas'
+        });
+        res.end();
+    });
+});
+
+// Obtener todas las postulaciones de ofertas de una empresa (Metodo Aggregate)
+router.get('/empresa/:idEmpresa/postulaciones', function (req, res) {
+    oferta.aggregate([
+            // Join with empresa
+            {
+                $lookup: {
+                    from: "empresas",
+                    localField: "id_empresa",
+                    foreignField: "_id",
+                    as: "empresa"
+                }
+            },
+            {
+                $unwind: "$empresa"
+            },
+            // Join with estudiante
+            {
+                $lookup: {
+                    from: "estudiantes",
+                    localField: "postulaciones.id_estudiante",
+                    foreignField: "_id",
+                    as: "estudiante"
+                }
+            },
+            {
+                $unwind: "$estudiante"
+            },
+            {
+                $match: {
+                    id_empresa: mongoose.Types.ObjectId(req.params.idEmpresa)
+                }
+            },
+            {
+                $project: {
+                    _id: true,
+                    id_empresa: true,
+                    titulo_Oferta: true,
+                    ubicacion: true,
+                    estado_oferta: true,
+                    "empresa.organizacion": true,
+                    "empresa.imagenPerfil": true,
+                    "estudiante.nombre": true,
+                    "estudiante.apellido": true
+                }
+            }
+        ]).then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send({
+                error: error,
+                mensaje: 'Ocurrio un error en el aggregate de las postulaciones de ofertas de una empresa'
+            });
+            res.end();
+        });
+})
+
 module.exports = router;
 
-
+// Postulacion existente?
+function verificarPostulacion(req, res, next) {
+    oferta.findOne({
+        _id: mongoose.Types.ObjectId(req.params.idOferta),
+        "postulaciones.id_estudiante": mongoose.Types.ObjectId(req.body.id_estudiante)
+    }, (err, data) => {
+        if (err) return res.status(500).send('Server error');
+        if (!data) {
+            // Si estudiante no esta postulado, prosigue con la peticion
+            next();
+        } else {
+            res.status(403).send({
+                mensaje: 'Ya postulado para esta oferta'
+            });
+            res.end();
+        }
+    });
+}
 
 // Verificar token (para Empresa)
 function verifyToken(req, res, next) {
@@ -129,7 +233,7 @@ function verifyToken(req, res, next) {
         if (bearerToken === null) {
             return res.status(401).send('No-Autorizado');
         }
-        const payload = jwt.verify(bearerToken, SECRET_KEY);
+        const payload = jwt.verify(bearerToken, SK_EMPRESA);
         if (payload.rol !== 'Empresa') {
             return res.status(401).send('No-Autorizado');
         }

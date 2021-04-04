@@ -200,24 +200,6 @@ router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'),
             });
     });
 
-async function deleteImageOnUpdate(req, res, next) {
-    const Estudiante = await estudiante.findById(req.params.idEstudiante);
-    if (Estudiante.imagenPerfil != null) {
-        await fs.unlink(path.resolve(Estudiante.imagenPerfil));
-    }
-    next();
-}
-
-async function deleteCVOnUpdate(req, res, next) {
-    const Estudiante = await estudiante.findById(req.params.idEstudiante);
-    if (Estudiante.CurriculumAdjunto != null) {
-        await fs.unlink(path.resolve(Estudiante.CurriculumAdjunto));
-    }
-    next();
-}
-
-module.exports = router;
-
 // postulaciones para estudiantes
 router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
     empresa.updateOne({
@@ -242,6 +224,24 @@ router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
         res.end();
     })
 });
+
+async function deleteImageOnUpdate(req, res, next) {
+    const Estudiante = await estudiante.findById(req.params.idEstudiante);
+    if (Estudiante.imagenPerfil != null) {
+        await fs.unlink(path.resolve(Estudiante.imagenPerfil));
+    }
+    next();
+}
+
+async function deleteCVOnUpdate(req, res, next) {
+    const Estudiante = await estudiante.findById(req.params.idEstudiante);
+    if (Estudiante.CurriculumAdjunto != null) {
+        await fs.unlink(path.resolve(Estudiante.CurriculumAdjunto));
+    }
+    next();
+}
+
+module.exports = router;
 
 // Verificar token
 function verifyToken(req, res, next) {

@@ -201,11 +201,6 @@ router.get('/', function (req, res) {
         });
 });
 
-// Listar las ofertas de una empresa logueada (Metodo aggregate)
-/*router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
-    // Code
-});*/
-
 // Guardar ID de ofertas en una empresa
 router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     empresa.updateOne({

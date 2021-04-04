@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var esquemaOfertas = new mongoose.Schema({
     id_empresa: {
       type: mongoose.Schema.Types.ObjectId,
-      req: "empresas"
+      ref: "empresas"
     },
     titulo_Oferta: String, // titulo breve de la oferta
     ubicacion: Array, // Ciudad donde se necesita el personal a emplear
