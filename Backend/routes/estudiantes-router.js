@@ -218,6 +218,25 @@ async function deleteCVOnUpdate(req, res, next) {
 
 module.exports = router;
 
+// postulaciones para estudiantes
+router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
+    empresa.updateOne({
+        _id: mongoose.Types.ObjectId(req.params.idEstudiante)
+    }, {
+        $push: {
+            postulaciones: {
+                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta)
+            }
+        }
+    }).then(result => {
+        res.send(result);
+        res.end();
+    }).catch(error => {
+        res.send(error);
+        res.end();
+    })
+});
+
 // Verificar token
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers["authorization"];
