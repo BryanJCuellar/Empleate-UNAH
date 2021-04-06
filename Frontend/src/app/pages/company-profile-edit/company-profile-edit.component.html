@@ -1,0 +1,188 @@
+<nav class="navbar navbar-expand-lg nav-principal py-2">
+    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" [routerLink]="['/home']">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+    </a>
+    <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse" data-target="#navbarTogglerCompanyProfile" aria-controls="navbarTogglerCompanyProfile" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerCompanyProfile">
+        <!--VENTANA MODAL DE EDITAR OFERTAS-->
+        <ul class="navbar-nav mr-auto">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: beige !important; font-weight: bolder; text-align: center;">Editar Oferta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              
+                            </button>
+                        </div>
+                        <div class="modal-body" style="background-color: rgb(13, 35, 77);">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="recipient-name" class=" col-form-label">Cargo o Ocupacio:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                        <label for="recipient-name" class=" col-form-label">Idiomas:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+
+                                        <div class="row">
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Salario:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Rango Edad:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Experiencia:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Indice:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Jornada:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Contrato:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Ciudad:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <label for="recipient-name" class=" col-form-label">Departamento:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Descripcion:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-primary">Actualizar Oferta</button>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <!--FIN VENTANA MODAL DE EDITAR OFERTAS-->
+        <div class="ml-3 ml-lg-auto">
+            <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión</button>
+        </div>
+    </div>
+</nav>
+
+
+<div class="cards">
+    <div class="card">
+        <div class="card-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="name">
+                            <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa" src="../../../assets/img/empresa1.jpg" alt="green forest">
+                            <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa" [src]="backendHost + empresa.imagenPerfil" alt="green forest">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar</button>
+                        <form [formGroup]="formularioUploadImage">
+                            <input
+                              [ngClass]="{'visible':imagenPerfilHabilitada == true, 'no-visible': imagenPerfilHabilitada == false}"
+                              formControlName="imagenPerfil" class="ml-5 ml-lg-0" type="file" (change)="selectProfileImage($event)">
+                            <button [ngClass]="{'visible': hayImagenPerfil == true, 'no-visible': hayImagenPerfil == false}"
+                              type="button" class="btn btn-red my-4" (click)="cancelProfileImage()">Cancelar</button>
+                          </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="description">
+         <form [formGroup]="formulario_Edit">
+            <label class="label-form text-white pb-1" style="margin-left: 119px;">Nombre organización</label>
+            <br>
+                <input 
+                [ngClass]="{'form-input-error':organizacion.invalid && (organizacion.dirty || organizacion.touched)}"
+                 formControlName="organizacion" type="text" placeholder="Organización" class="mb-2" 
+                 style="width: 55%; margin-left: 120px;">
+                <div *ngIf="organizacion.invalid && (organizacion.dirty || organizacion.touched)" class="form-error">
+                    <span *ngIf="organizacion.errors.required">Campo obligatorio</span>
+                </div>
+                <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Teléfono</label>
+            <br>
+                <input 
+                [ngClass]="{'form-input-error':telefono.invalid && (telefono.dirty || telefono.touched)}"
+                 formControlName="telefono" type="text" placeholder="Ingrese un teléfono" class="mb-2" 
+                 style="width: 55%; margin-left: 120px;">
+                <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="form-error">
+                    <span *ngIf="telefono.errors.required">Campo obligatorio</span>
+                </div>
+                <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Dirección de la empresa</label>
+            <br>
+                <input 
+                [ngClass]="{'form-input-error':direccion.invalid && (direccion.dirty || direccion.touched)}"
+                 formControlName="direccion" type="text" placeholder="Ingrese la dirección" class="mb-2" 
+                 style="width: 55%; margin-left: 120px;">
+                <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="form-error">
+                    <span *ngIf="direccion.errors.required">Campo obligatorio</span>
+                </div>
+                <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Departamento</label>
+                <br>
+                <select [ngClass]="{'form-input-error':departamento.invalid && (departamento.dirty || departamento.touched)}"
+                 formControlName="departamento" class="mb-2" style="width: 55%; margin-left: 120px;">
+                <option *ngFor="let department of departamentos" value="{{department}}">{{department}}</option>
+                </select>
+                <div *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="form-error">
+                    <span *ngIf="departamento.errors.required">Campo obligatorio</span>
+                </div>
+                <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Ciudad</label>
+                <br>
+                <input [ngClass]="{'form-input-error':ciudad.invalid && (ciudad.dirty || ciudad.touched)}" formControlName="ciudad" 
+                type="text" placeholder="Ciudad" style="width: 55%; margin-left: 120px;" class="location mb-2">
+                <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="form-error">
+                    <span *ngIf="ciudad.errors.required">Campo obligatorio</span>
+                </div> <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Descripción</label>
+                <br>
+                <textarea [ngClass]="{'form-input-error':descripcion.invalid && (descripcion.dirty || descripcion.touched)}" 
+                formControlName="descripcion" placeholder="Descripcion de la empresa" class="mb-1" name="descripcion" id="describir" 
+                cols="75" rows="10" style="margin-left: 120px;"></textarea>
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="form-error">
+                    <span *ngIf="descripcion.errors.required">Campo obligatorio</span>
+                </div>
+                <br>
+                <label class="label-form text-white pb-1" style="margin-left: 119px;">Página de facebook</label>
+                <br>
+                <input formControlName="facebook" type="text"
+                 placeholder="Ingrese su página de facebook" min="1" class="mb-2" style="width: 55%; margin-left: 120px;">
+                 <br>
+                 <label class="label-form text-white pb-1" style="margin-left: 119px;">Sitio web</label>
+                 <br>
+
+                <input formControlName="sitioWeb" type="text" placeholder="Ingrese su sitio web" class="mb-2"
+                 style="width: 55%; margin-left: 120px;">
+                <br>
+                <button type="button" [disabled]="formulario_Edit.invalid" (click)="sendForm()" 
+                class="btn boton-guardar">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>

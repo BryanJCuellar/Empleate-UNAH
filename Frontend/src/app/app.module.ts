@@ -24,6 +24,7 @@ import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estu
 import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.component';
 import { PostulacionComponent } from './pages/postulacion/postulacion.component';
+import {CompanyProfileEditComponent} from './pages/company-profile-edit/company-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PostulacionComponent } from './pages/postulacion/postulacion.component'
     PerfilEstudianteComponent,
     StudentProfileEditComponent,
     ProfileEmpresComponent,
-    PostulacionComponent
+    PostulacionComponent,
+    CompanyProfileEditComponent
   ],
   imports: [
     BrowserModule,

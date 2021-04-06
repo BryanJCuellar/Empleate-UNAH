@@ -11,7 +11,7 @@ import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estu
 import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.component';
 import { PostulacionComponent } from './pages/postulacion/postulacion.component';
-
+import {CompanyProfileEditComponent} from './pages/company-profile-edit/company-profile-edit.component';
 const routes: Routes = [
   { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: '', component: LandingComponent, data: { title: 'Empleate-UNAH' } },
@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'student/profile/edit', component: StudentProfileEditComponent, data: { title: 'Empleate-UNAH - Editar Perfil Estudiante' } },
   { path: 'student/home/postulate', component: PostulacionComponent, data: { title: 'Empleate-UNAH - Postulate' } },
   { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
-  { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } }
+  { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
+  { path: 'company/profile/edit', component: CompanyProfileEditComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } }
 ];
 
 @NgModule({
