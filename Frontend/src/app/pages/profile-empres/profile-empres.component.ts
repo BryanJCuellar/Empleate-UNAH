@@ -21,7 +21,7 @@ export class ProfileEmpresComponent implements OnInit {
   empresa: any;
   OfertasActivas = [];
   OfertasArchivadas = [];
-
+  estudiantes_postulados = [];
   array_palabras: any = [];
   ofertas_Optimas: Boolean = false;
   postulaciones_Optimas: Boolean = false;
@@ -334,13 +334,26 @@ export class ProfileEmpresComponent implements OnInit {
   }
 
   // Componente postuladosDetalle
-  postuladosDetalle(){
+  postuladosDetalle(idOferta){
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = '#ffc400';
     this.elegir = 'postuladosDetalle';
-
+    this.ofertasService.obtenerPostulacionesOferta(idOferta)
+    .subscribe(
+      res => {
+        // Reset Ofertas
+        this.estudiantes_postulados = res;
+        if (res.length > 2) {
+          this.postulaciones_Optimas = true;
+        } else {
+          this.postulaciones_Optimas = false;
+        }
+        console.log(res);
+      },
+      error => console.log('error al obterner ofertas', error)
+    )
   }
 
   getAuthService() {

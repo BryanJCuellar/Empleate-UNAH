@@ -148,7 +148,7 @@ router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res
 // Obtener todas las postulaciones de ofertas de una empresa (Metodo Aggregate)
 router.get('/:idOferta/postulaciones', function (req, res) {
     oferta.aggregate([
-            // Join with empresa
+            //Join with empresa
             {
                 $lookup: {
                     from: "empresas",
@@ -183,7 +183,7 @@ router.get('/:idOferta/postulaciones', function (req, res) {
                     titulo_Oferta: true,
                     ubicacion: true,
                     estado_oferta: true,
-                    "empresa.organizacion": true,
+                   "empresa.organizacion": true,
                     "empresa.imagenPerfil": true,
                     "estudiante.nombre": true,
                     "estudiante.apellido": true,

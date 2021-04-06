@@ -378,7 +378,7 @@
 
               <div class="col-12" *ngFor="let item of OfertasActivas">
 
-                <a (click)="postuladosDetalle()">
+                <a (click)="postuladosDetalle(item._id)">
                   <div class="postulacion-item">
                     <div class="container-fluid">
                       <div class="row h-100">
@@ -408,6 +408,7 @@
             <table class="table table-dark">
               <thead>
                 <tr style="text-align: center;">
+                  <th>Cargo a ocupar <i class="fas fa-user-tie"></i></th>
                   <th>Postulado <i class="fas fa-user-tie"></i></th>
                   <th>Fecha Postulación <i class="fas fa-calendar-day"></i></th>
                   <th>Perfil <i class="fas fa-book-open"></i></th>
@@ -415,8 +416,9 @@
               </thead>
 
               <tbody>
-                <tr style="text-align: center;">
-                  <td>Marry Arley Valladares Lopez</td>
+                <tr *ngFor="let postulado of estudiantes_postulados" style="text-align: center;">
+                  <td>{{postulado.titulo_Oferta}}</td>
+                  <td>{{postulado.estudiante.nombre}} {{postulado.estudiante.apellido}}</td>
                   <td>01/04/21 </td>
                   <td>
                     <button class="col-4" type="button" class="btn btn-info boton" style="margin: 5px;">Ver <i
