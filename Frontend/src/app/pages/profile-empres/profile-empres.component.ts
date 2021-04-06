@@ -16,6 +16,7 @@ import { OfertasService } from 'src/app/services/ofertas.service';
 export class ProfileEmpresComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
+  date = new Date();
 
   empresa: any;
   OfertasActivas = [];
@@ -23,6 +24,7 @@ export class ProfileEmpresComponent implements OnInit {
 
   array_palabras: any = [];
   ofertas_Optimas: Boolean = false;
+  postulaciones_Optimas: Boolean = false;
   hayPalabrasClave: Boolean = true;
 
   elegir = 'perfil';
@@ -31,7 +33,6 @@ export class ProfileEmpresComponent implements OnInit {
   color2 = "#00035a";
   color3 = "#00035a";
   color4 = "#00035a";
-  color5 = "#00035a";
 
   //Variable para guardar id de la empresa
   idEmpresa: any;
@@ -192,10 +193,9 @@ export class ProfileEmpresComponent implements OnInit {
       contract_type = null;
     }
 
-    let date = new Date();
-    let dia = date.getDate();
-    let mes = date.getMonth() + 1;
-    let anio = date.getFullYear();
+    let dia = this.date.getDate();
+    let mes = this.date.getMonth() + 1;
+    let anio = this.date.getFullYear();
 
     if (this.hayPalabras_Clave() && this.authService.loggedInCompany()) {
       const formOfertaData = {
@@ -260,25 +260,8 @@ export class ProfileEmpresComponent implements OnInit {
     */
   }
 
-  // Componente Perfil
-  perfil() {
-    this.color2 = "#00035a";
-    this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = "#00035a";
-    this.color1 = '#ffc400';
-    this.elegir = 'perfil';
-  }
-
-  // Componente Ofertas Realizadas
-  verOfertas() {
-    this.color1 = "#00035a";
-    this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = "#00035a";
-    this.color2 = '#ffc400';
-    this.elegir = 'listarOfertas';
-
+  // Funcion cargar ofertas empresa
+  cargarOfertasRealizadas() {
     this.ofertasService.obtenerOfertasEmpresa(this.idEmpresa)
       .subscribe(
         res => {
@@ -305,9 +288,29 @@ export class ProfileEmpresComponent implements OnInit {
               this.OfertasArchivadas.push(res[i]);
             }
           }
+          console.log(this.OfertasActivas);
         },
         error => console.log('error al obterner ofertas', error)
       )
+  }
+
+  // Componente Perfil
+  perfil() {
+    this.color2 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.color1 = '#ffc400';
+    this.elegir = 'perfil';
+  }
+
+  // Componente Ofertas Realizadas
+  verOfertas() {
+    this.color1 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.color2 = '#ffc400';
+    this.elegir = 'listarOfertas';
+    this.cargarOfertasRealizadas();
   }
 
   // Componente Oferta
@@ -315,7 +318,6 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color4 = "#00035a";
-    this.color5 = "#00035a";
     this.color3 = '#ffc400';
     this.elegir = 'oferta';
     this.createFormOferta();
@@ -327,18 +329,18 @@ export class ProfileEmpresComponent implements OnInit {
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = '#ffc400';
-    this.color5 = "#00035a";
     this.elegir = 'postulados';
+    this.cargarOfertasRealizadas();
   }
 
-  // Componente editarperfil
-  editarPerfil() {
+  // Componente postuladosDetalle
+  postuladosDetalle(){
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = '#ffc400';
-    this.elegir = 'editarPerfil';
+    this.color4 = '#ffc400';
+    this.elegir = 'postuladosDetalle';
+
   }
 
   getAuthService() {

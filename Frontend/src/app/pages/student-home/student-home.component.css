@@ -544,7 +544,7 @@ ul.tabs li a .tab-text {
 
 .card {
   border-radius: 10px;
-  border: #191140 2px solid;
+  border: #191140 3px solid;
 }
 
 .card-title {
@@ -553,7 +553,7 @@ ul.tabs li a .tab-text {
 }
 
 .card:hover {
-  border: #854A7C solid 2px;
+  border: #854A7C solid 3px;
   box-shadow: 0px 0px 15px inset #854A7C;
   color:#854A7C !important
 }

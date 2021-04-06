@@ -19,6 +19,10 @@ export class OfertasService {
   obtenerOfertas(): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/ofertas`, {});
   }
+
+  obtenerPostulacionesOferta(idOferta): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/ofertas/${idOferta}/postulaciones`, {});
+  }
   
   guardarOferta(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/ofertas`, data);

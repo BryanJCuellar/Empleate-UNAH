@@ -146,7 +146,7 @@ router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res
 });
 
 // Obtener todas las postulaciones de ofertas de una empresa (Metodo Aggregate)
-router.get('/empresa/:idEmpresa/postulaciones', function (req, res) {
+router.get('/:idOferta/postulaciones', function (req, res) {
     oferta.aggregate([
             // Join with empresa
             {
@@ -174,20 +174,20 @@ router.get('/empresa/:idEmpresa/postulaciones', function (req, res) {
             },
             {
                 $match: {
-                    id_empresa: mongoose.Types.ObjectId(req.params.idEmpresa)
+                    _id: mongoose.Types.ObjectId(req.params.idOferta),
+                    estado_oferta: true
                 }
             },
             {
                 $project: {
-                    _id: true,
-                    id_empresa: true,
                     titulo_Oferta: true,
                     ubicacion: true,
                     estado_oferta: true,
                     "empresa.organizacion": true,
                     "empresa.imagenPerfil": true,
                     "estudiante.nombre": true,
-                    "estudiante.apellido": true
+                    "estudiante.apellido": true,
+                    "postulaciones.fecha_postulacion": true
                 }
             }
         ]).then(result => {
