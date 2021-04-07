@@ -63,7 +63,7 @@ router.get('/', function (req, res) {
 })
 
 // Obtener ofertas de la empresa
-router.get('/:idEmpresa', verifyToken, function (req, res) {
+router.get('/empresa/:idEmpresa', verifyToken, function (req, res) {
     oferta.find({
             id_empresa: mongoose.Types.ObjectId(req.params.idEmpresa)
         }, {})
@@ -117,6 +117,57 @@ router.post('/', verifyToken, function (req, res) {
         })
 });
 
+// Actualizar oferta 
+router.put('/:idOferta', verifyToken, function (req, res) {
+    const newOferta = req.body
+
+    oferta.updateOne({
+            _id: mongoose.Types.ObjectId(req.params.idOferta)
+        }, newOferta, {
+            new: true
+        }).exec()
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+});
+
+// Cambiar estado oferta (Oferta archivada o activa)
+router.put('/:idOferta/estado', verifyToken, function (req, res) {
+    oferta.updateOne({
+            _id: mongoose.Types.ObjectId(req.params.idOferta)
+        }, {
+            estado_oferta: req.body.estado_oferta
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+})
+
+// Eliminar Oferta
+router.delete('/:idOferta', function (req, res) {
+    oferta.deleteOne({
+            _id: mongoose.Types.ObjectId(req.params.idOferta)
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+});
+
 // Agregar postulados para empresas (Postulaciones en Ofertas)
 router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res) {
     oferta.updateOne({
@@ -146,7 +197,7 @@ router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res
 });
 
 // Obtener todas las postulaciones de ofertas de una empresa (Metodo Aggregate)
-router.get('/:idOferta/postulaciones', function (req, res) {
+router.get('/:idOferta/postulaciones', verifyToken, function (req, res) {
     oferta.aggregate([
             //Join with empresa
             {
@@ -183,11 +234,11 @@ router.get('/:idOferta/postulaciones', function (req, res) {
                     titulo_Oferta: true,
                     ubicacion: true,
                     estado_oferta: true,
-                   "empresa.organizacion": true,
-                    "empresa.imagenPerfil": true,
+                    "empresa.organizacion": true,
+                    "estudiante._id": true,
                     "estudiante.nombre": true,
                     "estudiante.apellido": true,
-                    "postulaciones.fecha_postulacion": true
+                    "postulaciones": true
                 }
             }
         ]).then(result => {
@@ -244,29 +295,3 @@ function verifyToken(req, res, next) {
         res.status(401).send('No-Autorizado');
     }
 }
-
-//Editar oferta 
-router.put('/:idOferta',  function (req, res) {
-    const newOferta = req.body
-
-    oferta.update({
-            _id: mongoose.Types.ObjectId(req.params.idOferta)
-        }, newOferta,{new: true}
-        ).exec()
-        .then(result => {
-            res.send(result);
-            res.end();
-        })
-        .catch(error => {
-            res.status(500).send(error);
-            res.end();
-        });
-});
-
-//Eliminar Oferta
-router.delete('/:idOferta',  function (req, res) {
-
-    res.send("back:" + mongoose.Types.ObjectId(req.params.idOferta));
-       
-});
-

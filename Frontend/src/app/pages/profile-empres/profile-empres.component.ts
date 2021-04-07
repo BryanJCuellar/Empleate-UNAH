@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -21,12 +22,14 @@ export class ProfileEmpresComponent implements OnInit {
   empresa: any;
   OfertasActivas = [];
   OfertasArchivadas = [];
+  ofertasPostulaciones = [];
   estudiantes_postulados = [];
   array_palabras: any = [];
   ofertas_Optimas: Boolean = false;
   postulaciones_Optimas: Boolean = false;
   hayPalabrasClave: Boolean = true;
-  formUp: FormGroup;
+
+  ofertaSeleccionada: any;
 
   elegir = 'perfil';
 
@@ -51,9 +54,11 @@ export class ProfileEmpresComponent implements OnInit {
 
   // Form
   formulario_Oferta: FormGroup;
+  formEditOferta: FormGroup;
 
   constructor(
     private router: Router,
+    private modalService: NgbModal,
     private fb: FormBuilder,
     private empresasService: EmpresasService,
     private ofertasService: OfertasService,
@@ -62,7 +67,7 @@ export class ProfileEmpresComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfil();
-    this.editarOferta();
+    this.editOfertaModal();
     // Datos Empresa logueada
     if (this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
@@ -270,6 +275,7 @@ export class ProfileEmpresComponent implements OnInit {
           // Reset Ofertas
           this.OfertasActivas = [];
           this.OfertasArchivadas = [];
+          this.ofertasPostulaciones = [];
           if (res.length > 2) {
             this.ofertas_Optimas = true;
           } else {
@@ -285,12 +291,15 @@ export class ProfileEmpresComponent implements OnInit {
             }
             if (res[i].estado_oferta == true) {
               this.OfertasActivas.push(res[i]);
+              if (res[i].postulaciones.length > 0) {
+                this.ofertasPostulaciones.push(res[i]);
+              }
             }
             if (res[i].estado_oferta == false) {
               this.OfertasArchivadas.push(res[i]);
             }
           }
-          console.log(this.OfertasActivas);
+          // console.log(this.OfertasActivas);
         },
         error => console.log('error al obterner ofertas', error)
       )
@@ -336,68 +345,197 @@ export class ProfileEmpresComponent implements OnInit {
   }
 
   // Componente postuladosDetalle
-  postuladosDetalle(idOferta){
+  postuladosDetalle(idOferta) {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = '#ffc400';
     this.elegir = 'postuladosDetalle';
     this.ofertasService.obtenerPostulacionesOferta(idOferta)
-    .subscribe(
-      res => {
-        // Reset Ofertas
-        this.estudiantes_postulados = res;
-        if (res.length > 2) {
-          this.postulaciones_Optimas = true;
-        } else {
-          this.postulaciones_Optimas = false;
-        }
-        console.log(res);
-      },
-      error => console.log('error al obterner ofertas', error)
-    )
+      .subscribe(
+        res => {
+          if (res.length > 4) {
+            this.postulaciones_Optimas = true;
+          } else {
+            this.postulaciones_Optimas = false;
+          }
+          for (let i = 0; i < res.length; i++) {
+            for (let j = 0; j < res[i].postulaciones.length; j++) {
+              if (res[i].estudiante._id == res[i].postulaciones[j].id_estudiante) {
+                res[i].postulaciones = res[i].postulaciones[j];
+              }
+            }
+            if (res[i].postulaciones.fecha_postulacion.dia < 10) {
+              res[i].postulaciones.fecha_postulacion.dia = `0${res[i].postulaciones.fecha_postulacion.dia}`;
+            }
+            if (res[i].postulaciones.fecha_postulacion.mes < 10) {
+              res[i].postulaciones.fecha_postulacion.mes = `0${res[i].postulaciones.fecha_postulacion.mes}`;
+            }
+          }
+          this.estudiantes_postulados = res;
+        },
+        error => console.log('error al obterner ofertas', error)
+      )
   }
 
-  editarOferta(){
-    this.formUp = this.fb.group({
+  editOfertaModal() {
+    this.formEditOferta = this.fb.group({
       _id: [''],
-      titulo_Oferta: [''],
+      titulo_Oferta: ['', [Validators.required]],
       idiomas: [''],
       salario: [''],
       edad: [''],
-      experiencia_laboral: [''],
       indice_estudiante: [''],
-      jornada_laboral: [''],
-      tipo_contrato: [''],
-      ciudad: [''],
-      departamento: [''],
-      descripcion: ['']
+      ciudad: ['', [Validators.required]],
+      departamento: ['', [Validators.required]],
+      experiencia_laboral: ['', [Validators.required]],
+      jornada_laboral: ['', [Validators.required]],
+      tipo_contrato: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]]
     })
   }
 
-  listarOferta(oferta) {  
-    this.formUp.patchValue(oferta)
-    this.formUp.get('ciudad').setValue(oferta.ubicacion[0].ciudad)
-    this.formUp.get('departamento').setValue(oferta.ubicacion[0].departamento)
-    console.log(this.formUp.value)
-   
+  // Metodos GET de formEditOferta
+  get titulo_Oferta() {
+    return this.formEditOferta.get('titulo_Oferta');
+  }
+  get ciudadEdit() {
+    return this.formEditOferta.get('ciudad');
+  }
+  get departamentoEdit() {
+    return this.formEditOferta.get('departamento');
+  }
+  get experiencia_laboralEdit() {
+    return this.formEditOferta.get('experiencia_laboral');
+  }
+  get jornada_laboralEdit() {
+    return this.formEditOferta.get('jornada_laboral');
+  }
+  get tipo_contratoEdit() {
+    return this.formEditOferta.get('tipo_contrato');
+  }
+  get descripcionEdit() {
+    return this.formEditOferta.get('descripcion');
   }
 
-  actualizarOferta(){
-    const data = this.formUp.getRawValue()
-    data['ubicacion'] = [{ciudad: data.ciudad, departamento: data.departamento}]
-    this.ofertasService.actualizarOferta(data._id, data)
-    .subscribe (res => {
-      console.log(res);
-    },
-    error => console.log('Error al actualizar oferta', error)
-  )
+  listarOferta(oferta) {
+    this.formEditOferta.reset();
+    this.formEditOferta.patchValue(oferta);
+    this.ciudadEdit.setValue(oferta.ubicacion[0].ciudad);
+    this.departamentoEdit.setValue(oferta.ubicacion[0].departamento);
+    // console.log(this.formEditOferta.value);
   }
 
-  borrarOferta(id){
-    this.ofertasService.borrarOferta(id);
-    console.log("borrando oferta: " + id);
- } 
+  actualizarOferta() {
+    /*const data = this.formEditOferta.getRawValue()
+    data['ubicacion'] = [{ ciudad: data.ciudad, departamento: data.departamento }]*/
+    let languages = this.formEditOferta.get('idiomas').value;
+    let salary = this.formEditOferta.get('salario').value;
+    let age = this.formEditOferta.get('edad').value;
+    let student_index = this.formEditOferta.get('indice_estudiante').value;
+    let work_experience = this.experiencia_laboralEdit.value;
+    let working_day = this.jornada_laboralEdit.value;
+    let contract_type = this.tipo_contratoEdit.value;
+    if (this.formEditOferta.get('idiomas').value == '' || this.formEditOferta.get('idiomas').value == null) {
+      languages = null;
+    }
+    if (this.formEditOferta.get('salario').value == '' || this.formEditOferta.get('salario').value == null) {
+      salary = null;
+    }
+    if (this.formEditOferta.get('edad').value == '' || this.formEditOferta.get('edad').value == null) {
+      age = null;
+    }
+    if (this.formEditOferta.get('indice_estudiante').value == '' || this.formEditOferta.get('indice_estudiante').value == null || this.formEditOferta.get('indice_estudiante').value > 100) {
+      student_index = null;
+    }
+    if (this.experiencia_laboralEdit.value == 'No Especificar (N/A)') {
+      work_experience = null;
+    }
+    if (this.jornada_laboralEdit.value == 'No Especificar (N/A)') {
+      working_day = null;
+    }
+    if (this.tipo_contratoEdit.value == 'No Especificar (N/A)') {
+      contract_type = null;
+    }
+    const formData = {
+      titulo_Oferta: this.titulo_Oferta.value,
+      idiomas: languages,
+      salario: salary,
+      edad: age,
+      indice_estudiante: student_index,
+      ciudad: this.ciudadEdit.value,
+      departamento: this.departamentoEdit.value,
+      experiencia_laboral: work_experience,
+      jornada_laboral: working_day,
+      tipo_contrato: contract_type,
+      descripcion: this.descripcionEdit.value
+    }
+    this.ofertasService.actualizarOferta(this.formEditOferta.get('_id').value, formData)
+      .subscribe(
+        res => {
+          console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+          }
+        },
+        error => console.log('Error al actualizar oferta', error)
+      )
+  }
+
+  modalOfertaConfirmar(modal, oferta) {
+    this.ofertaSeleccionada = oferta;
+    this.modalService.open(
+      modal,
+      {
+        centered: false
+      }
+    );
+  }
+
+  archivar() {
+    if (this.ofertaSeleccionada != null) {
+      this.ofertasService.archivarOferta(this.ofertaSeleccionada._id)
+        .subscribe(
+          res => {
+            // console.log(res);
+            if (res.ok == 1) {
+              this.verOfertas();
+              this.modalService.dismissAll();
+            }
+          },
+          error => console.log('Error al cambiar estado de oferta', error)
+        )
+    }
+  }
+
+  restaurar(id) {
+    this.ofertasService.restaurarOferta(id)
+      .subscribe(
+        res => {
+          // console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+          }
+        },
+        error => console.log('Error al cambiar estado de oferta', error)
+      )
+  }
+
+  borrarOferta() {
+    if (this.ofertaSeleccionada != null) {
+      this.ofertasService.borrarOferta(this.ofertaSeleccionada._id)
+      .subscribe(
+        res => {
+          // console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+            this.modalService.dismissAll();
+          }
+        },
+        error => console.log('Error al eliminar oferta', error)
+      );
+    }
+  }
 
   getAuthService() {
     return this.authService;

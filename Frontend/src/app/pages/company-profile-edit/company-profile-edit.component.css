@@ -126,3 +126,9 @@
     border-color: #FFC400 !important;
     box-shadow: 0px 0px 5px inset#ffffff;
 }
+
+.link-profile:hover {
+    color: #966FA6;
+    font-weight: bold;
+    font-size: 18px;
+  }

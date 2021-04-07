@@ -222,7 +222,7 @@ router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
         res.end();
     })
 });
-  // Guardar o actualizar datos del estudiante
+  // Guardar o actualizar datos de la empresa
   router.put('/:idEmpresa', verifyToken, function (req, res) {
     empresa.updateOne({
             _id: mongoose.Types.ObjectId(req.params.idEmpresa)

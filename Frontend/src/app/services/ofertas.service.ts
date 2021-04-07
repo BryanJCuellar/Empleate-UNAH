@@ -13,7 +13,7 @@ export class OfertasService {
   }
 
   obtenerOfertasEmpresa(idEmpresa): Observable<any> {
-    return this.httpClient.get(`${this.backendHost}/ofertas/${idEmpresa}`, {});
+    return this.httpClient.get(`${this.backendHost}/ofertas/empresa/${idEmpresa}`, {});
   }
 
   obtenerOfertas(): Observable<any> {
@@ -23,15 +23,24 @@ export class OfertasService {
   obtenerPostulacionesOferta(idOferta): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/ofertas/${idOferta}/postulaciones`, {});
   }
-  
+
   guardarOferta(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/ofertas`, data);
   }
 
-  actualizarOferta(idOferta, data): Observable<any>{
+  actualizarOferta(idOferta, data): Observable<any> {
     return this.httpClient.put(`${this.backendHost}/ofertas/${idOferta}`, data);
   }
-  borrarOferta(idOferta): Observable<any>{
+
+  archivarOferta(idOferta): Observable<any> {
+    return this.httpClient.put(`${this.backendHost}/ofertas/${idOferta}/estado`, { estado_oferta: false });
+  }
+
+  restaurarOferta(idOferta): Observable<any> {
+    return this.httpClient.put(`${this.backendHost}/ofertas/${idOferta}/estado`, { estado_oferta: true });
+  }
+
+  borrarOferta(idOferta): Observable<any> {
     return this.httpClient.delete(`${this.backendHost}/ofertas/${idOferta}`);
   }
 

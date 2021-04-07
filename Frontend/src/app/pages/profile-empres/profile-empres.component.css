@@ -49,8 +49,10 @@ label {
   position: absolute
 }
 
-.vh-100 {
-  height: 100vh;
+@media screen and (min-width: 768px) {
+  .vh-100 {
+    height: 100vh;
+  }
 }
 
 body {
@@ -381,7 +383,8 @@ select {
   right: 1em;
 }
 
-.modal-header {
+.modal-header,
+.modal-footer {
   background-image: url(../../../assets/img/azul-lineas.PNG);
   border-color: #046990;
 }
@@ -390,6 +393,13 @@ select {
   border: 5px solid rgb(4 105 144);
   border-radius: 10px;
 }
+
+.modal-content.modal-ng,
+.modal-header.modal-ng,
+.modal-footer.modal-ng {
+  border-radius: 0px;
+}
+
 
 .table td,
 .table th {
@@ -437,6 +447,17 @@ select {
 .postulacion-item:hover p,
 .postulacion-item:hover i {
   color: #FFF;
+}
+
+.back-link {
+  color: #00035a !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  color: #0069D9 !important;
+  text-decoration: none;
 }
 
 

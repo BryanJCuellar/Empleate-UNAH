@@ -25,8 +25,7 @@
 </nav>
 
 <body>
-  <div class="main"
-    [ngClass]="{'vh-100':(elegir == 'listarOfertas' && !ofertas_Optimas) || (elegir == 'postulados' && OfertasActivas.length < 2)
+  <div class="main" [ngClass]="{'vh-100':(elegir == 'listarOfertas' && !ofertas_Optimas) || (elegir == 'postulados' && ofertasPostulaciones.length < 2)
     || (elegir == 'postuladosDetalle' && !postulaciones_Optimas)}"
     *ngIf="getAuthService().loggedInCompany() && empresa != null">
     <div class="wrap" style="width:100%">
@@ -70,7 +69,8 @@
                           <a class="primary-link">
                             <span class="fa-container text-center">
                               <i class="fab fa-facebook mr-2"></i>
-                              {{empresa.facebook}}Facebook
+                              <ng-container *ngIf="empresa.facebook == null">Facebook</ng-container>
+                              <ng-container *ngIf="empresa.facebook != null">{{empresa.facebook}}</ng-container>
                             </span>
                           </a>
                         </li>
@@ -78,7 +78,8 @@
                           <a class="primary-link">
                             <span class="fa-container text-center">
                               <i class="fas fa-globe mr-2"></i>
-                              {{empresa.paginaWeb}}Sitio Web
+                              <ng-container *ngIf="empresa.paginaWeb == null">Sitio Web</ng-container>
+                              <ng-container *ngIf="empresa.paginaWeb != null">{{empresa.paginaWeb}}</ng-container>
                             </span>
                           </a>
                         </li>
@@ -191,13 +192,15 @@
                     </td>
                     <td>
                       <button style="margin: 5px;" type="button" class="btn btn-warning boton" data-toggle="modal"
-                        data-target="#modalEditarOferta" (click)="listarOferta(item)">Editar <i class="fas fa-edit"></i></button>
+                        data-target="#modalEditarOferta" (click)="listarOferta(item)">Editar <i
+                          class="fas fa-edit"></i></button>
 
                       <button style="margin: 5px;" type="button" class="btn btn-info boton">Detalles <i
                           class="fas fa-info"></i></button>
 
-                      <button style="margin: 5px;" type="button" class="btn btn-danger boton" (click)="borrarOferta(item._id)">Eliminar <i
-                          class="fas fa-trash-alt"></i></button>
+                      <button style="margin: 5px;" type="button" class="btn btn-danger boton"
+                        (click)="modalOfertaConfirmar(modalArchivarOferta, item)">Archivar <i
+                          class="fas fa-archive"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -228,12 +231,14 @@
                     </td>
                     <td>
                       <button style="margin: 5px;" type="button" class="btn btn-warning boton" data-toggle="modal"
-                        data-target="#modalEditarOferta">Editar <i class="fas fa-edit"></i></button>
+                        data-target="#modalEditarOferta" (click)="listarOferta(item)">Editar <i
+                          class="fas fa-edit"></i></button>
 
-                      <button style="margin: 5px;" type="button" class="btn btn-info boton">Detalles <i
-                          class="fas fa-info"></i></button>
+                      <button style="margin: 5px;" type="button" class="btn btn-info boton"
+                        (click)="restaurar(item._id)">Restaurar <i class="fas fa-box-open"></i></button>
 
-                      <button style="margin: 5px;" type="button" class="btn btn-danger boton">Eliminar <i
+                      <button style="margin: 5px;" type="button" class="btn btn-danger boton"
+                        (click)="modalOfertaConfirmar(modalEliminarOferta, item)">Eliminar <i
                           class="fas fa-trash-alt"></i></button>
                     </td>
                   </tr>
@@ -373,37 +378,61 @@
             <h2 style="color:#00035a;" class="font-weight-bold">Postulaciones de Ofertas <i class="fa fa-briefcase"></i>
             </h2>
           </div>
-          <div class="container">
-            <div class="row">
+          <ng-container *ngIf="ofertasPostulaciones.length == 0">
+            <div class="px-5">
+              <p class="font-s">
+                No hay postulaciones.
+              </p>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="ofertasPostulaciones.length > 0">
+            <div class="container">
+              <div class="row">
 
-              <div class="col-12" *ngFor="let item of OfertasActivas">
+                <div class="col-12" *ngFor="let item of ofertasPostulaciones">
 
-                <a (click)="postuladosDetalle(item._id)">
-                  <div class="postulacion-item">
-                    <div class="container-fluid">
-                      <div class="row h-100">
-                        <div class="col-12 col-sm-9 text-left my-auto">
-                          <h3>{{item.titulo_Oferta}}</h3>
-                          <p class="mb-0">{{item.ubicacion[0].ciudad}}, {{item.ubicacion[0].departamento}}</p>
-                          <p class="mb-0">
-                            {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
-                          </p>
-                        </div>
-                        <div class="col-12 col-sm-3 text-right my-auto">
-                          <i class="fas fa-arrow-alt-circle-right font-s-3"></i>
+                  <a (click)="postuladosDetalle(item._id)">
+                    <div class="postulacion-item">
+                      <div class="container-fluid">
+                        <div class="row h-100">
+                          <div class="col-12 col-sm-9 text-left my-auto">
+                            <h3>{{item.titulo_Oferta}}</h3>
+                            <p class="mb-0">{{item.ubicacion[0].ciudad}}, {{item.ubicacion[0].departamento}}</p>
+                            <p class="mb-0">
+                              {{item.fecha_publicacion[0].dia}}-{{item.fecha_publicacion[0].mes}}-{{item.fecha_publicacion[0].anio}}
+                            </p>
+                          </div>
+                          <div class="col-12 col-sm-3 text-right my-auto">
+                            <i class="fas fa-arrow-alt-circle-right font-s-3"></i>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+
+                </div>
 
               </div>
-
             </div>
-          </div>
+          </ng-container>
         </div>
 
         <div *ngIf="elegir=='postuladosDetalle'">
+          <div class="py-4">
+            <div class="row">
+              <div class="col-6">
+                <h2 style="color:#00035a;" class="font-weight-bold">Postulados
+                </h2>
+              </div>
+              <div class="col-6">
+                <div class="text-right">
+                  <a class="back-link font-s" (click)="elegir = 'postulados'">
+                    Volver<i class="fas fa-arrow-circle-left ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="p-20 min-h-screen bg-gray-200">
             <table class="table table-dark">
               <thead>
@@ -419,7 +448,9 @@
                 <tr *ngFor="let postulado of estudiantes_postulados" style="text-align: center;">
                   <td>{{postulado.titulo_Oferta}}</td>
                   <td>{{postulado.estudiante.nombre}} {{postulado.estudiante.apellido}}</td>
-                  <td>01/04/21 </td>
+                  <td>
+                    {{postulado.postulaciones.fecha_postulacion.dia}}/{{postulado.postulaciones.fecha_postulacion.mes}}/{{postulado.postulaciones.fecha_postulacion.anio}}
+                  </td>
                   <td>
                     <button class="col-4" type="button" class="btn btn-info boton" style="margin: 5px;">Ver <i
                         class="fas fa-info"></i></button>
@@ -454,56 +485,108 @@
         </button>
       </div>
       <div class="modal-body" style="background-color: rgb(13, 35, 77);">
-        <form [formGroup]="formUp" >
+        <form [formGroup]="formEditOferta">
           <div class="row">
             <div class="col-sm-12">
-              <label for="recipient-name" class=" col-form-label">Cargo o Ocupacio:</label>
-              <input formControlName="titulo_Oferta" type="text" class="form-control">
-              <label for="recipient-name" class=" col-form-label">Idiomas:</label>
-              <input type="text" formControlName="idiomas" class="form-control">
+              <label for="recipient-name" class="col-form-label">Cargo o Ocupación:</label>
+              <input
+                [ngClass]="{'form-input-error':titulo_Oferta.invalid && (titulo_Oferta.dirty || titulo_Oferta.touched)}"
+                formControlName="titulo_Oferta" type="text" class="form-control">
+              <div *ngIf="titulo_Oferta.invalid && (titulo_Oferta.dirty || titulo_Oferta.touched)" class="form-error">
+                <span *ngIf="titulo_Oferta.errors.required">Campo obligatorio</span>
+              </div>
+              <label for="recipient-name" class="col-form-label">Idiomas:</label>
+              <input type="text" formControlName="idiomas" class="form-control"
+                placeholder="Idiomas (Ej. Español, Inglés, Francés)">
 
               <div class="row">
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Salario:</label>
-                  <input type="text" formControlName="salario" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Salario:</label>
+                  <input type="number" formControlName="salario" class="form-control" min="1">
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Rango Edad:</label>
-                  <input type="text" formControlName="edad" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Rango Edad:</label>
+                  <input type="text" formControlName="edad" class="form-control"
+                    placeholder="Rango edad (Ej. entre 20 y 30 años)">
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Experiencia:</label>
-                  <input type="text" formControlName="experiencia_laboral" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Indice:</label>
+                  <input type="number" formControlName="indice_estudiante" class="form-control" min="1" max="100"
+                    placeholder="Índice de Estudiante requerido">
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Indice:</label>
-                  <input type="text" formControlName="indice_estudiante" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Ciudad:</label>
+                  <input [ngClass]="{'form-input-error':ciudadEdit.invalid && (ciudadEdit.dirty || ciudadEdit.touched)}"
+                    type="text" formControlName="ciudad" class="form-control">
+                  <div *ngIf="ciudadEdit.invalid && (ciudadEdit.dirty || ciudadEdit.touched)" class="form-error">
+                    <span *ngIf="ciudadEdit.errors.required">Campo obligatorio</span>
+                  </div>
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Jornada:</label>
-                  <input type="text" formControlName="jornada_laboral" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Departamento:</label>
+                  <select
+                    [ngClass]="{'form-input-error':departamentoEdit.invalid && (departamentoEdit.dirty || departamentoEdit.touched)}"
+                    formControlName="departamento">
+                    <option *ngFor="let item of departamentos" value="{{item}}">{{item}}</option>
+                  </select>
+                  <div *ngIf="departamentoEdit.invalid && (departamentoEdit.dirty || departamentoEdit.touched)"
+                    class="form-error">
+                    <span *ngIf="departamentoEdit.errors.required">Campo obligatorio</span>
+                  </div>
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Contrato:</label>
-                  <input type="text" formControlName="tipo_contrato" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Experiencia:</label>
+                  <select
+                    [ngClass]="{'form-input-error':experiencia_laboralEdit.invalid && (experiencia_laboralEdit.dirty || experiencia_laboralEdit.touched)}"
+                    formControlName="experiencia_laboral">
+                    <option *ngFor="let item of experiencia_laboral" value="{{item}}">{{item}}</option>
+                  </select>
+                  <div
+                    *ngIf="experiencia_laboralEdit.invalid && (experiencia_laboralEdit.dirty || experiencia_laboralEdit.touched)"
+                    class="form-error">
+                    <span *ngIf="experiencia_laboralEdit.errors.required">Campo obligatorio</span>
+                  </div>
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Ciudad:</label>
-                  <input type="text" formControlName ="ciudad" class="form-control">
+                  <label for="recipient-name" class="col-form-label">Jornada:</label>
+                  <select
+                    [ngClass]="{'form-input-error':jornada_laboralEdit.invalid && (jornada_laboralEdit.dirty || jornada_laboralEdit.touched)}"
+                    formControlName="jornada_laboral">
+                    <option *ngFor="let item of jornada_laboral" value="{{item}}">{{item}}</option>
+                  </select>
+                  <div *ngIf="jornada_laboralEdit.invalid && (jornada_laboralEdit.dirty || jornada_laboralEdit.touched)"
+                    class="form-error">
+                    <span *ngIf="jornada_laboralEdit.errors.required">Campo obligatorio</span>
+                  </div>
                 </div>
                 <div class="col-4 col-sm-6">
-                  <label for="recipient-name" class=" col-form-label">Departamento:</label>
-                  <input type="text" formControlName = "departamento"class="form-control">
+                  <label for="recipient-name" class="col-form-label">Contrato:</label>
+                  <select
+                    [ngClass]="{'form-input-error':tipo_contratoEdit.invalid && (tipo_contratoEdit.dirty || tipo_contratoEdit.touched)}"
+                    formControlName="tipo_contrato">
+                    <option *ngFor="let item of tipo_contrato" value="{{item}}">{{item}}</option>
+                  </select>
+                  <div *ngIf="tipo_contratoEdit.invalid && (tipo_contratoEdit.dirty || tipo_contratoEdit.touched)"
+                    class="form-error">
+                    <span *ngIf="tipo_contratoEdit.errors.required">Campo obligatorio</span>
+                  </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Descripcion:</label>
-                <textarea class="form-control" formControlName="descripcion" id="message-text"></textarea>
+                <textarea
+                  [ngClass]="{'form-input-error':descripcionEdit.invalid && (descripcionEdit.dirty || descripcionEdit.touched)}"
+                  class="form-control" formControlName="descripcion"></textarea>
+                <div *ngIf="descripcionEdit.invalid && (descripcionEdit.dirty || descripcionEdit.touched)"
+                  class="form-error">
+                  <span *ngIf="descripcionEdit.errors.required">Campo obligatorio</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary" (click)="actualizarOferta()">Actualizar Oferta</button>
+          <button [disabled]="formEditOferta.invalid" type="button" class="btn btn-primary" (click)="actualizarOferta()"
+            data-dismiss="modal">Guardar Cambios</button>
 
         </form>
       </div>
@@ -512,3 +595,61 @@
   </div>
 </div>
 <!--FIN VENTANA MODAL DE EDITAR OFERTAS-->
+
+<!--VENTANA MODAL DE ARCHIVAR OFERTAS-->
+<ng-template #modalArchivarOferta let-modal>
+  <div class="modal-content modal-ng">
+    <div class="modal-header modal-ng">
+      <h5 class="modal-title" id="modalArchivarOfertaLabel"
+        style="color: beige !important; font-weight: bolder; text-align: center;">Archivar Oferta</h5>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="background-color: rgb(13, 35, 77);">
+      <div class="text-center">
+        <p style="color: beige !important; font-size: 20px;" class="text-justify">
+          La oferta pasará a ser archivada.<br>
+          <b>Nota: Las ofertas archivadas no son visibles para los estudiantes</b>,
+          ¿esta seguro que desea continuar?
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer modal-ng">
+      <button type="button" class="btn btn-info boton mr-3" (click)="modal.close('Cancel click')">Cancelar</button>
+      <button type="button" class="btn btn-danger boton" (click)="archivar()">Archivar <i
+          class="fas fa-archive"></i></button>
+    </div>
+  </div>
+</ng-template>
+<!--FIN VENTANA MODAL DE ARCHIVAR OFERTAS-->
+
+<!--VENTANA MODAL DE ELIMINAR OFERTAS-->
+<ng-template #modalEliminarOferta let-modal>
+  <div class="modal-content modal-ng">
+    <div class="modal-header modal-ng">
+      <h5 class="modal-title" id="modalEliminarOfertaLabel"
+        style="color: beige !important; font-weight: bolder; text-align: center;">Eliminar Oferta</h5>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="background-color: rgb(13, 35, 77);">
+      <div class="text-center mb-2">
+        <i style="color:#dc3545;" class="fas fa-exclamation-circle font-s-5"></i>
+      </div>
+      <div class="text-center">
+        <p style="color: beige !important; font-size: 20px;" class="text-justify">
+          ¿Esta seguro que desea eliminar esta oferta (cargo: {{ofertaSeleccionada.titulo_Oferta}}) de forma permanente?<br>
+          <b>Nota: Esta operación es irreversible</b>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer modal-ng">
+      <button type="button" class="btn btn-info boton mr-3" (click)="modal.close('Cancel click')">Cancelar</button>
+      <button type="button" class="btn btn-danger boton" (click)="borrarOferta()">Eliminar <i
+        class="fas fa-trash-alt"></i></button>
+    </div>
+  </div>
+</ng-template>
+<!--FIN VENTANA MODAL DE ELIMINAR OFERTAS-->
