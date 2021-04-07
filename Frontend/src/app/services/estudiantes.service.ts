@@ -38,4 +38,8 @@ export class EstudiantesService {
   subirCV(idEstudiante, dataCV): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/estudiantes/${idEstudiante}/CV`, dataCV);
   }
+
+  agregarPostulacionEstudiante(idEstudiante, postulacion): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/estudiantes/${idEstudiante}/postulaciones`, postulacion);
+  }
 }

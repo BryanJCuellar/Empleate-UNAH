@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class OfertasService {
   backendHost: string = 'http://localhost:8888';
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com';
+  idOferta: any;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -42,6 +43,21 @@ export class OfertasService {
 
   borrarOferta(idOferta): Observable<any> {
     return this.httpClient.delete(`${this.backendHost}/ofertas/${idOferta}`);
+  }
+
+  agregarPostulacionOferta(idOferta, data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/ofertas/${idOferta}/postulaciones`, data);
+  }
+  obtenerOfertaSelccionada(idOferta): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/ofertas/${idOferta}`, {});
+  }
+
+  seleccionarOferta(idOferta){
+    this.idOferta = idOferta;
+  }
+
+  getIdOferta(){
+    return this.idOferta;
   }
 
 }

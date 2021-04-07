@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
 import { OfertasService } from 'src/app/services/ofertas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-home',
@@ -24,7 +25,8 @@ export class StudentHomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private estudiantesService: EstudiantesService,
-    private OfertasService: OfertasService
+    private OfertasService: OfertasService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -115,6 +117,12 @@ export class StudentHomeComponent implements OnInit {
     this.color4 = "#520547";
     this.elegir = 'Configuracion';
     this.color5 = '#854A7C';
+  }
+
+  seleccionarOferta(idOferta){
+    console.log(idOferta);
+    this.OfertasService.seleccionarOferta(idOferta);
+    this.router.navigateByUrl(`/student/home/postulate`);
   }
 
 }
