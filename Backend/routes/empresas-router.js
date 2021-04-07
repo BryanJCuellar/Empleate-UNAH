@@ -34,7 +34,7 @@ router.get('/:idEmpresa', verifyToken, function (req, res) {
         });
 });
 
-router.post('/signup/validateEmail', validateEmail, function (req, res){
+router.post('/signup/validateEmail', validateEmail, function (req, res) {
     res.status(200).send({
         mensaje: 'Email no duplicado'
     });
@@ -98,35 +98,35 @@ router.post('/signup', function (req, res) {
         paginaWeb: null
     });
 
-    if(codigoCorrecto){
+    if (codigoCorrecto) {
         nueva_empresa.save()
-        .then(result => {
-            // Success, inicia sesion con JWT
-            const expiresIn = 24 * 60 * 60;
-            const accessToken = jwt.sign({
-                _id: result.id,
-                rol: 'Empresa'
-            }, SECRET_KEY, {
-                expiresIn: expiresIn
-            });
-            const dataEnviar = {
-                email: result.email,
-                rol: 'Empresa',
-                accessToken: accessToken,
-                expiresIn: expiresIn
-            };
-            res.status(200).send({
-                mensaje: 'Registrado',
-                data: dataEnviar
-            });
-            res.end();
-        }).catch(error => {
-            res.send({
-                error: error,
-                mensaje: "Error al guardar empresa"
-            });
-            res.end();
-        })
+            .then(result => {
+                // Success, inicia sesion con JWT
+                const expiresIn = 24 * 60 * 60;
+                const accessToken = jwt.sign({
+                    _id: result.id,
+                    rol: 'Empresa'
+                }, SECRET_KEY, {
+                    expiresIn: expiresIn
+                });
+                const dataEnviar = {
+                    email: result.email,
+                    rol: 'Empresa',
+                    accessToken: accessToken,
+                    expiresIn: expiresIn
+                };
+                res.status(200).send({
+                    mensaje: 'Registrado',
+                    data: dataEnviar
+                });
+                res.end();
+            }).catch(error => {
+                res.send({
+                    error: error,
+                    mensaje: "Error al guardar empresa"
+                });
+                res.end();
+            })
     } else {
         res.status(401).send({
             mensaje: "Codigo no valido"
@@ -222,8 +222,8 @@ router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
         res.end();
     })
 });
-  // Guardar o actualizar datos de la empresa
-  router.put('/:idEmpresa', verifyToken, function (req, res) {
+// Guardar o actualizar datos de la empresa
+router.put('/:idEmpresa', verifyToken, function (req, res) {
     empresa.updateOne({
             _id: mongoose.Types.ObjectId(req.params.idEmpresa)
         }, {
@@ -270,13 +270,13 @@ router.post('/:idEmpresa/imagenPerfil', multerImages.single('imagenPerfil'),
             });
     });
 
-    async function deleteImageOnUpdate(req, res, next) {
-        const Empresa = await empresa.findById(req.params.idEmpresa);
-        if (Empresa.imagenPerfil != null) {
-            await fs.unlink(path.resolve(Empresa.imagenPerfil));
-        }
-        next();
+async function deleteImageOnUpdate(req, res, next) {
+    const Empresa = await empresa.findById(req.params.idEmpresa);
+    if (Empresa.imagenPerfil != null) {
+        await fs.unlink(path.resolve(Empresa.imagenPerfil));
     }
+    next();
+}
 
 module.exports = router;
 
@@ -318,6 +318,6 @@ function verifyToken(req, res, next) {
         res.status(401).send('No-Autorizado');
     }
 
-  
+
 
 }
