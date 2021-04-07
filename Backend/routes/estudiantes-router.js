@@ -225,6 +225,63 @@ router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
     })
 });
 
+// Obtener postulaciones de Estudiante (Metodo Aggregate)
+router.get('/:idEstudiante/postulaciones', function (req, res) {
+    estudiante.aggregate([
+            // Join with Oferta
+            {
+                $lookup: {
+                    from: "ofertas",
+                    localField: "postulaciones.id_oferta",
+                    foreignField: "_id",
+                    as: "oferta"
+                }
+            },
+            {
+                $unwind: "$oferta"
+            },
+            // Join with Empresa
+            {
+                $lookup: {
+                    from: "empresas",
+                    localField: "oferta.id_empresa",
+                    foreignField: "_id",
+                    as: "empresa"
+                }
+            },
+            {
+                $unwind: "$empresa"
+            },
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(req.params.idEstudiante)
+                }
+            },
+            {
+                $project: {
+                    _id: true,
+                    nombre: true,
+                    apellido: true,
+                    "oferta": true,
+                    "empresa.organizacion": true,
+                    "empresa.email": true,
+                    "empresa.imagenPerfil": true
+                }
+            }
+
+        ]).then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send({
+                error: error,
+                mensaje: 'Ocurrio un error en el aggregate de las postulaciones de estudiantes'
+            });
+            res.end();
+        });
+});
+
 async function deleteImageOnUpdate(req, res, next) {
     const Estudiante = await estudiante.findById(req.params.idEstudiante);
     if (Estudiante.imagenPerfil != null) {
