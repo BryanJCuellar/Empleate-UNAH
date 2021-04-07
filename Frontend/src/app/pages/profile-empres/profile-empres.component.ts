@@ -418,6 +418,13 @@ export class ProfileEmpresComponent implements OnInit {
     return this.formEditOferta.get('descripcion');
   }
 
+  detalleOferta(oferta){
+    this.formEditOferta.reset();
+    this.formEditOferta.patchValue(oferta);
+    this.ciudadEdit.setValue(oferta.ubicacion[0].ciudad);
+    this.departamentoEdit.setValue(oferta.ubicacion[0].departamento);
+  }
+
   listarOferta(oferta) {
     this.formEditOferta.reset();
     this.formEditOferta.patchValue(oferta);

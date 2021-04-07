@@ -194,10 +194,9 @@
                       <button style="margin: 5px;" type="button" class="btn btn-warning boton" data-toggle="modal"
                         data-target="#modalEditarOferta" (click)="listarOferta(item)">Editar <i
                           class="fas fa-edit"></i></button>
-
-                      <button style="margin: 5px;" type="button" class="btn btn-info boton">Detalles <i
+                      <button style="margin: 5px;" type="button" class="btn btn-info boton" data-toggle="modal"
+                        data-target="#modalDetalleOferta" (click)='detalleOferta(item)'>Detalles <i
                           class="fas fa-info"></i></button>
-
                       <button style="margin: 5px;" type="button" class="btn btn-danger boton"
                         (click)="modalOfertaConfirmar(modalArchivarOferta, item)">Archivar <i
                           class="fas fa-archive"></i></button>
@@ -596,6 +595,81 @@
 </div>
 <!--FIN VENTANA MODAL DE EDITAR OFERTAS-->
 
+<!--VENTANA MODAL DE Visualizar Detalles OFERTAS-->
+<div class="modal fade" id="modalDetalleOferta" tabindex="-1" role="dialog" aria-labelledby="modalDetalleOfertaLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarOfertaLabel"
+          style="color: beige !important; font-weight: bolder; text-align: center;">Detalles Oferta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+
+        </button>
+      </div>
+      <div class="modal-body" style="background-color:rgb(13, 35, 77); color: white;">
+        <form [formGroup]="formEditOferta">
+          <div class="row">
+            <div class="col-sm-12">
+              <label class="col-form-label overItemVisualizar">Cargo o Ocupación:
+                <input disabled formControlName="titulo_Oferta" type="text" class="form-control"></label>
+
+              <label class="col-form-label overItemVisualizar">Idiomas:
+                <input type="text" disabled formControlName="idiomas" class="form-control"></label>
+
+              <div class="row">
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Salario:
+                    <input type="number" disabled formControlName="salario" class="form-control"></label>
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Rango Edad:
+                    <input type="text" disabled formControlName="edad" class="form-control"></label>
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Indice:
+                    <input type="number" disabled formControlName="indice_estudiante" class="form-control"></label>
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Ciudad:
+                    <input disabled type="text" formControlName="ciudad" class="form-control"></label>
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Departamento:
+                    <input disabled type="text" formControlName="departamento" class="form-control"></label>
+
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Experiencia:
+                    <input disabled type="text" class="form-control" formControlName="experiencia_laboral"></label>
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Jornada:
+                    <input disabled type="text" class="form-control" formControlName="jornada_laboral"></label>
+
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label class="col-form-label overItemVisualizar">Contrato:
+                    <input disabled type="text" class="form-control" formControlName="tipo_contrato"></label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label overItemVisualizar">Descripcion:
+                  <textarea disabled class="form-control" formControlName="descripcion"></textarea></label>
+
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-info" style="width: 100%;" data-dismiss="modal">Cerrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--FIN VENTANA MODAL DE Visualizar Detalles OFERTAS-->
+
+
 <!--VENTANA MODAL DE ARCHIVAR OFERTAS-->
 <ng-template #modalArchivarOferta let-modal>
   <div class="modal-content modal-ng">
@@ -640,7 +714,8 @@
       </div>
       <div class="text-center">
         <p style="color: beige !important; font-size: 20px;" class="text-justify">
-          ¿Esta seguro que desea eliminar esta oferta (cargo: {{ofertaSeleccionada.titulo_Oferta}}) de forma permanente?<br>
+          ¿Esta seguro que desea eliminar esta oferta (cargo: {{ofertaSeleccionada.titulo_Oferta}}) de forma
+          permanente?<br>
           <b>Nota: Esta operación es irreversible</b>
         </p>
       </div>
@@ -648,7 +723,7 @@
     <div class="modal-footer modal-ng">
       <button type="button" class="btn btn-info boton mr-3" (click)="modal.close('Cancel click')">Cancelar</button>
       <button type="button" class="btn btn-danger boton" (click)="borrarOferta()">Eliminar <i
-        class="fas fa-trash-alt"></i></button>
+          class="fas fa-trash-alt"></i></button>
     </div>
   </div>
 </ng-template>

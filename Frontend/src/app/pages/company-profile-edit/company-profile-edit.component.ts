@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmpresasService } from 'src/app/services/empresas.service';
-import { customValidations } from 'src/app/utils/custom-validations';
 import Swal from 'sweetalert2';
 
 
@@ -21,11 +20,11 @@ export class CompanyProfileEditComponent implements OnInit {
   departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
     'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
     'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
-  formulario_Edit: FormGroup;  
+  formulario_Edit: FormGroup;
   formularioUploadImage: FormGroup;
   imagenPerfilHabilitada: boolean = false;
   hayImagenPerfil: boolean = false;
-  
+
 
   constructor(
     private router: Router,
@@ -46,6 +45,7 @@ export class CompanyProfileEditComponent implements OnInit {
                   console.log(data);
                   this.empresa = data;
                   this.createFormEdit();
+                  this.patchFormEdit(this.empresa);
                 },
                 error => console.log('Error al obtener informacion empresa', error)
               )
@@ -58,13 +58,13 @@ export class CompanyProfileEditComponent implements OnInit {
   createFormEdit() {
     this.formulario_Edit = this.fb.group({
       organizacion: ['', [Validators.required]],
+      telefono: ['', [Validators.required, Validators.pattern("^[0-9]{4}[-][0-9]{4}")]],
       departamento: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
+      descripcionPerfil: ['', [Validators.required]],
       facebook: [''],
-      sitioWeb: [''],
+      paginaWeb: [''],
     });
     this.formularioUploadImage = this.fb.group({
       imagenPerfil: [''],
@@ -72,14 +72,14 @@ export class CompanyProfileEditComponent implements OnInit {
     });
     this.imagenPerfilSrc.setValue(null);
   }
-  get organizacion() {     return this.formulario_Edit.get('organizacion');   }
-  get departamento() {     return this.formulario_Edit.get('departamento');   }
-  get ciudad() {     return this.formulario_Edit.get('ciudad');   }
-  get descripcion() {     return this.formulario_Edit.get('descripcion');   }
-  get facebook() {     return this.formulario_Edit.get('facebook');   }
-  get sitioWeb() {     return this.formulario_Edit.get('sitioWeb');   }
-  get direccion() {     return this.formulario_Edit.get('direccion');   }
-  get telefono() {     return this.formulario_Edit.get('telefono');   }
+  get organizacion() { return this.formulario_Edit.get('organizacion'); }
+  get telefono() { return this.formulario_Edit.get('telefono'); }
+  get departamento() { return this.formulario_Edit.get('departamento'); }
+  get ciudad() { return this.formulario_Edit.get('ciudad'); }
+  get direccion() { return this.formulario_Edit.get('direccion'); }
+  get descripcionPerfil() { return this.formulario_Edit.get('descripcionPerfil'); }
+  get facebook() { return this.formulario_Edit.get('facebook'); }
+  get paginaWeb() { return this.formulario_Edit.get('paginaWeb'); }
   get imagenPerfil() {
     return this.formularioUploadImage.get('imagenPerfil');
   }
@@ -87,13 +87,18 @@ export class CompanyProfileEditComponent implements OnInit {
     return this.formularioUploadImage.get('imagenPerfilSrc');
   }
 
+  patchFormEdit(empresa){
+    this.formulario_Edit.reset();
+    this.formulario_Edit.patchValue(empresa);
+    this.departamento.setValue(empresa.datosDireccion[0].departamento);
+    this.ciudad.setValue(empresa.datosDireccion[0].ciudad);
+    this.direccion.setValue(empresa.datosDireccion[0].direccion);
+  }
+
   getAuthService() {
     return this.authService;
   }
-  guardarOferta(){
 
-  }
- 
   habilitarImagen() {
     this.imagenPerfilHabilitada = !this.imagenPerfilHabilitada;
     console.log(this.imagenPerfilSrc.value);
@@ -117,21 +122,29 @@ export class CompanyProfileEditComponent implements OnInit {
 
   //---------------------------------------EDICIÓN DE PERFIL------------------------------
   sendForm(): void {
+    let facebook = this.facebook.value;
+    let paginaWeb = this.paginaWeb.value;
+    if(this.facebook.value == '' || this.facebook.value == null){
+      facebook = null;
+    }
+    if(this.paginaWeb.value == '' || this.paginaWeb.value == null){
+      paginaWeb = null;
+    }
     const formEditData = {
       organizacion: this.organizacion.value,
-      descripcionPerfil: this.descripcion.value,
       telefono: this.telefono.value,
       departamento: this.departamento.value,
       ciudad: this.ciudad.value,
       direccion: this.direccion.value,
-      facebook: this.facebook.value,
-      paginaWeb: this.sitioWeb.value,
+      descripcionPerfil: this.descripcionPerfil.value,
+      facebook: facebook,
+      paginaWeb: paginaWeb,
     };
     if (this.authService.getRol() == 'Empresa' && this.authService.loggedInCompany()) {
       this.empresasService.obtenerIDEmpresa()
         .subscribe(
           res => {
-            if(this.hayImagenPerfil && this.imagenPerfilSrc.value != null){
+            if (this.hayImagenPerfil && this.imagenPerfilSrc.value != null) {
               this.uploadImage(res.id);
             }
             this.empresasService.actualizarPerfilEmpresa(res.id, formEditData)
@@ -160,13 +173,13 @@ export class CompanyProfileEditComponent implements OnInit {
     const formDataImage = new FormData();
     formDataImage.append('imagenPerfil', this.imagenPerfilSrc.value);
     this.empresasService.subirImagenPerfil(idEmpresa, formDataImage)
-    .subscribe(
-      res => {
-        console.log(res);
-      },
-      error => console.log('Error al subir imagen', error)
-    )
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        error => console.log('Error al subir imagen', error)
+      )
   }
 
 }
-  
+
