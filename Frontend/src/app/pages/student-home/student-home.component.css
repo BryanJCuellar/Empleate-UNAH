@@ -11,6 +11,17 @@
   background-color: #966FA6;
   padding: 4px 30px;
 }
+.btn-detalle{
+  color:#520547;
+  background-color: white;
+  border-color: white;
+}
+
+.titulo-modal{
+  color: white;
+  background-color: #966FA6;
+  
+}
 
 .btn-cerrar:hover {
   color: #966FA6;

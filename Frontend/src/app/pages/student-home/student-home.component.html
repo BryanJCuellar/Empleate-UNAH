@@ -31,6 +31,52 @@
     </nav>
 </div>
 
+<ng-template #content let-modal >
+    <div class="modal-header  titulo-modal">
+      <h4 class="modal-title" id="modal-basic-title" style="padding-left: 15px;">Información de oferta</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <br>
+    <div class="modal-body" >
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Experiencia Laboral</th>
+                <th scope="col">Jornada de trabajo</th>
+                <th scope="col">Indice requerido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ofertaActual.experiencia_laboral}}</td>
+                <td>{{ofertaActual.jornada_laboral}}</td>
+                <td>{{ofertaActual.indice_estudiante}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Rango de edad</th>
+                <th scope="col">Idioma requerido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ofertaActual.edad}}</td>
+                <td>{{ofertaActual.idiomas}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>  
+    </div>
+    <div class="modal-footer">
+    </div>
+  </ng-template>
+
 <body>
 
     <div class="main" [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
@@ -72,8 +118,10 @@
                                 <div class="card-body" style="padding-left: 0px;">
                                     <!--<span (click)="openVerticallyCentered(content)" class="card-link"
                                   style="margin-left: 0px;"><i class="fas fa-info-circle"></i> Detalles</span> href="/student/home/postulate"-->
-                                    <span class="card-link mr-1" style="margin-left: 0px;">
-                                      <i class="fas fa-info-circle mr-1"></i>Detalles</span>
+                                      <button type="button" class="card-link mr-1 btn-detalle" 
+                                      (click)="open(content, oferta._id)">
+                                        <i class="fas fa-info-circle mr-1"></i>Detalles
+                                      </button>  
                                     <a style="color: purple;"  (click)="seleccionarOferta(oferta._id)">
                                         <span><i class="fas fa-mail-bulk mr-1" ></i>Postularse</span></a>
                                 </div>
@@ -83,7 +131,6 @@
                 </div>
 
                 <div *ngIf="elegir=='Mis_Postulaciones'">
-
                     <div class="row mt-2">
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let postulacion of aggregatePostulaciones">
                             <div class="card flex-fill">
@@ -110,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-
+                 
                 </div>
 
                 <div *ngIf="elegir=='Buscar_Ofertas'">
@@ -129,45 +176,10 @@
         </div>
     </div>
 
-    <ng-template #content let-modal>
-        <div class="modalDetalles">
-            <div class="modal-header mt-2">
-                <h5 class="card-title"> Oferta 1 </h5>
+  
 
-            </div>
-            <div class="modal-body  mt-3 mb-3">
-                <div class="card cardDetalles" style="width: 10rem">
-                    <div class="text-center">
-                        <img class="card-img-top rounded-circle" style="width: 200px; height: 200px;" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa impedit illum sequi ipsum natus voluptas, porro sit asperiores facere temporibus.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
-                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
-                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
-                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
-                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
-                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
-                        <li class="list-group-item"><i class="fas fa-dollar-sign"></i> salario </li>
-                        <li class="list-group-item"><i class="fas fa-calendar-day"></i> fecha_publicacion </li>
-                    </ul>
+  
 
-                </div>
-            </div>
-            <div class=" mt-2 mb-2">
-                <div class="row botonesDetalles">
-                    <div class="col-6">
-                        <button type="button" class="btn btn-light">Postularse </button>
-                    </div>
-                    <div class="col-6">
-                        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </ng-template>
+  
 
 </body>
