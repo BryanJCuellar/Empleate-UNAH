@@ -21,9 +21,9 @@ export class PostulacionComponent implements OnInit {
   estudiante: any;
   date = new Date();
   postulacionOferta: FormGroup;
-  dia= new Date().getDay();
-  mes= new Date().getMonth();
-  anio = new Date().getFullYear();
+  dia = this.date.getDate();
+  mes = this.date.getMonth() + 1;
+  anio = this.date.getFullYear();
   idEstudiante: any;
 
 

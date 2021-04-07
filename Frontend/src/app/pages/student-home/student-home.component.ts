@@ -14,6 +14,7 @@ export class StudentHomeComponent implements OnInit {
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   estudianteActual: any;
   ofertas = [];
+  aggregatePostulaciones = [];
   closeResult = '';
   elegir = 'home';
   color1 = "#520547";
@@ -75,6 +76,27 @@ export class StudentHomeComponent implements OnInit {
     return this.authService;
   }
 
+  cargarPostulaciones(){
+    if(this.estudianteActual != null){
+      this.estudiantesService.obtenerPostulacionesEstudiante(this.estudianteActual._id)
+      .subscribe(
+        response => {
+          this.aggregatePostulaciones = [];
+          for(let i = 0; i < response.length; i++){
+            this.aggregatePostulaciones.push(response[i]);
+            if (response[i].oferta.descripcion.length > 50) {
+              this.aggregatePostulaciones[i].oferta.resumenDescripcion = (response[i].oferta.descripcion).substring(0, 49) + '...';
+            } else {
+              this.aggregatePostulaciones[i].oferta.resumenDescripcion = response[i].oferta.descripcion;
+            }
+          }
+          console.log("Postulaciones", this.aggregatePostulaciones);
+        },
+        error => console.log('Error al obtener postulaciones', error)
+      )
+    }
+  }
+
   home() {
     this.color2 = "#520547";
     this.color3 = "#520547";
@@ -90,6 +112,7 @@ export class StudentHomeComponent implements OnInit {
     this.color5 = "#520547";
     this.elegir = 'Mis_Postulaciones';
     this.color2 = '#854A7C';
+    this.cargarPostulaciones();
   }
   Buscar_Ofertas() {
     this.color1 = "#520547";

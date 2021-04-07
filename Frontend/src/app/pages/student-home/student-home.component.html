@@ -85,27 +85,32 @@
                 <div *ngIf="elegir=='Mis_Postulaciones'">
 
                     <div class="row mt-2">
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let postulacion of aggregatePostulaciones">
                             <div class="card flex-fill">
-                                <img class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
-                                <!--<img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle" [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">-->
+                                <img *ngIf="postulacion.empresa.imagenPerfil == null" class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                                <img *ngIf="postulacion.empresa.imagenPerfil != null" class="card-img-top rounded-circle" [src]="backendHost + postulacion.empresa.imagenPerfil" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Contador</h5>
+                                    <h5 class="card-title">{{postulacion.oferta.titulo_Oferta}}</h5>
+                                    <p style="font-weight: bold;" class="card-text text-left">{{postulacion.empresa.organizacion}}</p>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i> teg, Francisco Morazán
+                                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i> 
+                                        {{postulacion.oferta.ubicacion[0].ciudad}}, {{postulacion.oferta.ubicacion[0].departamento}}
                                     </li>
-                                    <li class="list-group-item"><i class="fas fa-calendar-day"></i> 31-3-2021
+                                    <li class="list-group-item" *ngIf="postulacion.oferta.salario != null"><i class="fas fa-money-bill-wave mr-1"></i>{{postulacion.oferta.salario}}</li>
+                                    <li class="list-group-item"><i class="fas fa-calendar-day"></i>
+                                        {{postulacion.oferta.fecha_publicacion[0].dia}}-{{postulacion.oferta.fecha_publicacion[0].mes}}-{{postulacion.oferta.fecha_publicacion[0].anio}}
                                     </li>
                                 </ul>
                                 <div class="card-body" style="padding-left: 0px;">
-                                    <span class="card-link mr-1" style="margin-left: 0px;">
-                                      <i class="fas fa-info-circle mr-1"></i>Ver Aplicacion</span>
+                                    <!--<span class="card-link mr-1" style="margin-left: 0px;">
+                                      <i class="fas fa-info-circle mr-1"></i>Ver Aplicacion</span>-->
 
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div *ngIf="elegir=='Buscar_Ofertas'">
