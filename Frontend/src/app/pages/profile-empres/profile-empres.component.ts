@@ -26,6 +26,7 @@ export class ProfileEmpresComponent implements OnInit {
   ofertas_Optimas: Boolean = false;
   postulaciones_Optimas: Boolean = false;
   hayPalabrasClave: Boolean = true;
+  formUp: FormGroup;
 
   elegir = 'perfil';
 
@@ -61,6 +62,7 @@ export class ProfileEmpresComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfil();
+    this.editarOferta();
     // Datos Empresa logueada
     if (this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
@@ -355,6 +357,47 @@ export class ProfileEmpresComponent implements OnInit {
       error => console.log('error al obterner ofertas', error)
     )
   }
+
+  editarOferta(){
+    this.formUp = this.fb.group({
+      _id: [''],
+      titulo_Oferta: [''],
+      idiomas: [''],
+      salario: [''],
+      edad: [''],
+      experiencia_laboral: [''],
+      indice_estudiante: [''],
+      jornada_laboral: [''],
+      tipo_contrato: [''],
+      ciudad: [''],
+      departamento: [''],
+      descripcion: ['']
+    })
+  }
+
+  listarOferta(oferta) {  
+    this.formUp.patchValue(oferta)
+    this.formUp.get('ciudad').setValue(oferta.ubicacion[0].ciudad)
+    this.formUp.get('departamento').setValue(oferta.ubicacion[0].departamento)
+    console.log(this.formUp.value)
+   
+  }
+
+  actualizarOferta(){
+    const data = this.formUp.getRawValue()
+    data['ubicacion'] = [{ciudad: data.ciudad, departamento: data.departamento}]
+    this.ofertasService.actualizarOferta(data._id, data)
+    .subscribe (res => {
+      console.log(res);
+    },
+    error => console.log('Error al actualizar oferta', error)
+  )
+  }
+
+  borrarOferta(id){
+    this.ofertasService.borrarOferta(id);
+    console.log("borrando oferta: " + id);
+ } 
 
   getAuthService() {
     return this.authService;

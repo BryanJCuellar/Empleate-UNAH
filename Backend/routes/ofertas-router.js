@@ -244,3 +244,29 @@ function verifyToken(req, res, next) {
         res.status(401).send('No-Autorizado');
     }
 }
+
+//Editar oferta 
+router.put('/:idOferta',  function (req, res) {
+    const newOferta = req.body
+
+    oferta.update({
+            _id: mongoose.Types.ObjectId(req.params.idOferta)
+        }, newOferta,{new: true}
+        ).exec()
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+});
+
+//Eliminar Oferta
+router.delete('/:idOferta',  function (req, res) {
+
+    res.send("back:" + mongoose.Types.ObjectId(req.params.idOferta));
+       
+});
+

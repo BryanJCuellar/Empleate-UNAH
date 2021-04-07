@@ -27,5 +27,14 @@ export class OfertasService {
   guardarOferta(data): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/ofertas`, data);
   }
+
+  actualizarOferta(idOferta, data): Observable<any>{
+    return this.httpClient.put(`${this.backendHost}/ofertas/${idOferta}`, data);
+  }
+  borrarOferta(idOferta): Observable<any>{
+    return this.httpClient.delete(`${this.backendHost}/ofertas/${idOferta}`);
+  }
+
 }
+
 

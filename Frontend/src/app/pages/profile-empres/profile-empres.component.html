@@ -191,12 +191,12 @@
                     </td>
                     <td>
                       <button style="margin: 5px;" type="button" class="btn btn-warning boton" data-toggle="modal"
-                        data-target="#modalEditarOferta">Editar <i class="fas fa-edit"></i></button>
+                        data-target="#modalEditarOferta" (click)="listarOferta(item)">Editar <i class="fas fa-edit"></i></button>
 
                       <button style="margin: 5px;" type="button" class="btn btn-info boton">Detalles <i
                           class="fas fa-info"></i></button>
 
-                      <button style="margin: 5px;" type="button" class="btn btn-danger boton">Eliminar <i
+                      <button style="margin: 5px;" type="button" class="btn btn-danger boton" (click)="borrarOferta(item._id)">Eliminar <i
                           class="fas fa-trash-alt"></i></button>
                     </td>
                   </tr>
@@ -454,56 +454,56 @@
         </button>
       </div>
       <div class="modal-body" style="background-color: rgb(13, 35, 77);">
-        <form>
+        <form [formGroup]="formUp" >
           <div class="row">
             <div class="col-sm-12">
               <label for="recipient-name" class=" col-form-label">Cargo o Ocupacio:</label>
-              <input type="text" class="form-control">
+              <input formControlName="titulo_Oferta" type="text" class="form-control">
               <label for="recipient-name" class=" col-form-label">Idiomas:</label>
-              <input type="text" class="form-control">
+              <input type="text" formControlName="idiomas" class="form-control">
 
               <div class="row">
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Salario:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="salario" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Rango Edad:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="edad" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Experiencia:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="experiencia_laboral" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Indice:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="indice_estudiante" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Jornada:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="jornada_laboral" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Contrato:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName="tipo_contrato" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Ciudad:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName ="ciudad" class="form-control">
                 </div>
                 <div class="col-4 col-sm-6">
                   <label for="recipient-name" class=" col-form-label">Departamento:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" formControlName = "departamento"class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Descripcion:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <textarea class="form-control" formControlName="descripcion" id="message-text"></textarea>
               </div>
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary">Actualizar Oferta</button>
+          <button type="button" class="btn btn-primary" (click)="actualizarOferta()">Actualizar Oferta</button>
 
         </form>
       </div>
