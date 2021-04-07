@@ -202,7 +202,7 @@ router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'),
 
 // postulaciones para estudiantes
 router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
-    empresa.updateOne({
+    estudiante.updateOne({
         _id: mongoose.Types.ObjectId(req.params.idEstudiante)
     }, {
         $push: {

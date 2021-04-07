@@ -168,6 +168,24 @@ router.delete('/:idOferta', function (req, res) {
         });
 });
 
+//Obtener una oferta
+router.get('/:idOFerta', function(req,res){
+    oferta.find(
+        {
+            _id: req.params.idOFerta
+        },
+
+        )
+    .then(result=>{
+        res.send(result[0]);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    });
+    
+});
 // Agregar postulados para empresas (Postulaciones en Ofertas)
 router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res) {
     oferta.updateOne({
