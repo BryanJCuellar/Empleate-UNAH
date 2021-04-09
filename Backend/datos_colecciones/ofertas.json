@@ -1,0 +1,300 @@
+[{
+  "_id": {
+    "$oid": "60529b826be62300225261f6"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "comayagua"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 17,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Finanzas"
+  ],
+  "id_empresa": {
+    "$oid": "60529a7b6be62300225261f5"
+  },
+  "titulo_Oferta": "Secretario",
+  "descripcion": "Descripcion",
+  "idiomas": "Ingles",
+  "edad": "Entre 25 y 30",
+  "indice_estudiante": 80,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Desde Casa",
+  "tipo_contrato": null,
+  "salario": 15000,
+  "estado_oferta": true,
+  "postulaciones": [
+    {
+      "id_estudiante": {
+        "$oid": "606bb006f6903615bc5377b0"
+      },
+      "fecha_postulacion": {
+        "dia": 7,
+        "mes": 4,
+        "anio": 2021
+      },
+      "estado_postulacion": "En proceso"
+    }
+  ],
+  "createdAt": {
+    "$date": "2021-03-18T00:14:58.559Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T01:08:48.091Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60529dc96be62300225261f7"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 17,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Contabilidad"
+  ],
+  "id_empresa": {
+    "$oid": "60529a7b6be62300225261f5"
+  },
+  "titulo_Oferta": "Tesorería ",
+  "descripcion": "Descripcion",
+  "idiomas": "Ingles, Frances",
+  "edad": "entre 30 y 35",
+  "indice_estudiante": 70,
+  "experiencia_laboral": "1 año",
+  "jornada_laboral": "Tiempo Completo",
+  "tipo_contrato": "Otro tipo de contrato",
+  "salario": 10000,
+  "estado_oferta": false,
+  "postulaciones": [],
+  "createdAt": {
+    "$date": "2021-03-18T00:24:41.205Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-18T00:24:41.205Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6053d4603061d80022a1fc47"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "Comayagua"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 18,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Tecnologías"
+  ],
+  "id_empresa": {
+    "$oid": "6051443d5807492e1477f3e1"
+  },
+  "titulo_Oferta": "Oferta 2",
+  "descripcion": "Mmm esto es una oferta de prueba",
+  "idiomas": "Todos",
+  "edad": "20",
+  "indice_estudiante": 80,
+  "experiencia_laboral": null,
+  "jornada_laboral": "Medio Tiempo",
+  "tipo_contrato": "Otro tipo de contrato",
+  "salario": null,
+  "estado_oferta": true,
+  "postulaciones": [],
+  "createdAt": {
+    "$date": "2021-03-18T22:29:52.348Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-18T22:29:52.348Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6053f9d80b0c9d0022e9aff1"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "comayagua"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 18,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Ingenieria en sistemas"
+  ],
+  "id_empresa": {
+    "$oid": "60529a7b6be62300225261f5"
+  },
+  "titulo_Oferta": "oferta 1",
+  "descripcion": "ejemplo",
+  "idiomas": "Ingles",
+  "edad": "entre 25 y 30",
+  "indice_estudiante": 70,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Desde Casa",
+  "tipo_contrato": null,
+  "salario": 15000,
+  "estado_oferta": true,
+  "postulaciones": [],
+  "createdAt": {
+    "$date": "2021-03-19T01:09:44.269Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-19T01:09:44.269Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605e5ab3a441760022e63f70"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Atlántida",
+      "ciudad": "teg"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 26,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "call"
+  ],
+  "id_empresa": {
+    "$oid": "605e58fba441760022e63f6f"
+  },
+  "titulo_Oferta": "a",
+  "descripcion": "sssss",
+  "idiomas": "español",
+  "edad": "34",
+  "indice_estudiante": 70,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Tiempo Completo",
+  "tipo_contrato": "Contrato por tiempo determinado",
+  "salario": 4444,
+  "estado_oferta": true,
+  "postulaciones": [],
+  "createdAt": {
+    "$date": "2021-03-26T22:05:39.554Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-26T22:05:39.554Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e4d71ff64510022856198"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 7,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Carreras"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "606e4d18ff64510022856197"
+  },
+  "titulo_Oferta": "Cajero",
+  "descripcion": "Se solicita cajero pasante universitario en carreras a fines al cargo",
+  "idiomas": "Español",
+  "edad": "entre 20 a 30 años",
+  "indice_estudiante": 90,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Tiempo Completo",
+  "tipo_contrato": "Contrato por tiempo indefinido",
+  "salario": 13000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-08T00:25:21.227Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T00:48:43.899Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e5134ff6451002285619a"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 7,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Carreras"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "606e505bff64510022856199"
+  },
+  "titulo_Oferta": "Técnico de mantenimiento de líneas aéreas",
+  "descripcion": "Solicita Técnico en electricidad o pasante de la carrera de ingeniería eléctrica.",
+  "idiomas": "Español",
+  "edad": "entre 25 a 35 años",
+  "indice_estudiante": 90,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Tiempo Completo",
+  "tipo_contrato": "Contrato por tiempo determinado",
+  "salario": 16000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-08T00:41:24.841Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T00:41:24.841Z"
+  },
+  "__v": 0
+}]

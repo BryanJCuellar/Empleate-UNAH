@@ -1,0 +1,203 @@
+[{
+  "_id": {
+    "$oid": "6051439d5807492e1477f3e0"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col.Izaguirre"
+    }
+  ],
+  "ofertas": [],
+  "organizacion": "Agent Company",
+  "email": "mragent317@gmail.com",
+  "password": "$2a$10$BRUPqBkNwwD3N0Io7qtek.QSjJQC8k9jG6/knuFwBm9F.RZD2O1Rq",
+  "telefono": "9988-4455",
+  "imagenPerfil": null,
+  "descripcionPerfil": null,
+  "facebook": null,
+  "paginaWeb": null,
+  "createdAt": {
+    "$date": "2021-03-16T23:47:41.578Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-16T23:47:41.578Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6051443d5807492e1477f3e1"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "Comayagua",
+      "direccion": "Calle"
+    }
+  ],
+  "ofertas": [
+    {
+      "id_oferta": {
+        "$oid": "6053d4603061d80022a1fc47"
+      }
+    }
+  ],
+  "organizacion": "LOL",
+  "email": "riverita.enoc@gmail.com",
+  "password": "$2a$10$auFDzFRIrrHJsq3B0DtGe.YikNn2XRZVIYq7jr/pN8h34gXxE6CHi",
+  "telefono": "9977-4577",
+  "imagenPerfil": null,
+  "descripcionPerfil": null,
+  "facebook": null,
+  "paginaWeb": null,
+  "createdAt": {
+    "$date": "2021-03-16T23:50:21.233Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-18T22:29:52.576Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60529a7b6be62300225261f5"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col. Castaño Sur"
+    }
+  ],
+  "ofertas": [
+    {
+      "id_oferta": {
+        "$oid": "60529b826be62300225261f6"
+      }
+    },
+    {
+      "id_oferta": {
+        "$oid": "60529dc96be62300225261f7"
+      }
+    },
+    {
+      "id_oferta": {
+        "$oid": "6053f9d80b0c9d0022e9aff1"
+      }
+    }
+  ],
+  "organizacion": "Banco Popular",
+  "email": "empleateunahtest@gmail.com",
+  "password": "$2a$10$bX0at5nFj9UVhpXsrMn9Bu4gDklqankOHZ04xhtmeDLEakQ10sAkW",
+  "telefono": "9988-5577",
+  "imagenPerfil": "uploads\\images\\logoBancoPopular.png",
+  "descripcionPerfil": null,
+  "facebook": null,
+  "paginaWeb": null,
+  "createdAt": {
+    "$date": "2021-03-18T00:10:35.744Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-19T01:09:44.517Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605e58fba441760022e63f6f"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "DISTRITO CENTRAL",
+      "direccion": "8y 9 calle barrio Concepcion"
+    }
+  ],
+  "ofertas": [
+    {
+      "id_oferta": {
+        "$oid": "605e5ab3a441760022e63f70"
+      }
+    }
+  ],
+  "organizacion": "almacen extra",
+  "email": "ccinthya375@gmail.com",
+  "password": "$2a$10$XnJrsSQMtKT3FdICkyPUhOZTOIsjMgi.TiPii8EEPDCrmZJz7jcd.",
+  "telefono": "1234-5678",
+  "imagenPerfil": null,
+  "descripcionPerfil": null,
+  "facebook": null,
+  "paginaWeb": null,
+  "createdAt": {
+    "$date": "2021-03-26T21:58:19.832Z"
+  },
+  "updatedAt": {
+    "$date": "2021-03-26T22:05:39.814Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e4d18ff64510022856197"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col. Alameda"
+    }
+  ],
+  "ofertas": [
+    {
+      "id_oferta": {
+        "$oid": "606e4d71ff64510022856198"
+      }
+    }
+  ],
+  "organizacion": "Ficohosa",
+  "email": "ficihosa@yopmail.com",
+  "password": "$2a$10$kZtPZw6vcyYsW7oO5Zwi.OW7zpF6JpdE0ilSOQPo6zXuTtkvk5C1O",
+  "telefono": "2235-7890",
+  "imagenPerfil": null,
+  "descripcionPerfil": "Banco estafador",
+  "facebook": "Ficohosahn",
+  "paginaWeb": "www.ficohosa.hn",
+  "createdAt": {
+    "$date": "2021-04-08T00:23:52.211Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T00:29:34.430Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e505bff64510022856199"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col. El trapiche"
+    }
+  ],
+  "ofertas": [
+    {
+      "id_oferta": {
+        "$oid": "606e5134ff6451002285619a"
+      }
+    }
+  ],
+  "organizacion": "Energía Eléctrica Honduras",
+  "email": "eeh@yopmail.com",
+  "password": "$2a$10$eOMLhxMJ40bjujjobZxfQOFXOG6ovy7xsshVpv3o/4EO2hwrTQyJG",
+  "telefono": "3356-7893",
+  "imagenPerfil": null,
+  "descripcionPerfil": "Breve descripción",
+  "facebook": "EEHonduras",
+  "paginaWeb": "www.eeh.hn",
+  "createdAt": {
+    "$date": "2021-04-08T00:37:47.879Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T00:41:25.033Z"
+  },
+  "__v": 0
+}]
