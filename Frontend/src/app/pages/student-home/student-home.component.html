@@ -108,10 +108,12 @@
                          *ngFor= "let oferta of ofertas">-->
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let oferta of ofertas">
                 <div class="card flex-fill">
+                  <ng-container *ngIf="ofertas!=null">
                   <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top rounded-circle"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">
                   <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle"
                     [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
+                  </ng-container>
                   <div class="card-body">
                     <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
                     <p class="card-text text-left">{{oferta.resumenDescripcion}}</p>
