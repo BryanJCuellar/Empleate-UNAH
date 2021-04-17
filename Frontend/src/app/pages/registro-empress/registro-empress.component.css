@@ -8,8 +8,8 @@
 }
 
 #contenedor, #contenedor-confirmacion {
-  background-image: url(../../../assets/img/lineas2.png);
-  background-color: rgba(0, 0, 0, 0.65);
+  /*background-image: url(../../../assets/img/lineas2.png);*/
+  background-color: rgb(64 160 197);
   min-height: 100%;
   width: 100%;
   padding: 30px;
@@ -24,7 +24,7 @@
 }
 
 #registro {
-  background-color: #6f6f6fad;
+  background-color: #00000075;
   width: 700px;
   max-width: 100%;
   color: white;
