@@ -1,134 +1,122 @@
 <body>
 
-  <div *ngIf="formRegistro">
-    <div id="contenedor">
-      <!--<a href="#"><img id="logo" src="img/logo.png" alt="logotipo"></a>-->
-      <section id="registro">
-        <div class="text-center">
-          <i class="fas fa-user-edit icono-alumno"></i>
-        </div>
-        <h1 class="mt-3">Regístra tu Empresa</h1>
+    <div *ngIf="formRegistro">
+        <div id="contenedor">
+            <!--<a href="#"><img id="logo" src="img/logo.png" alt="logotipo"></a>-->
+            <section id="registro">
+                <div class="text-center">
+                    <i class="fas fa-user-edit icono-alumno"></i>
+                </div>
+                <h1 class="mt-3">Regístra tu Empresa</h1>
 
-        <form [formGroup]="formularioEmpresa" (ngSubmit)="confirmacionEmail()">
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':name.invalid && (name.dirty || name.touched)}" type="text"
-              formControlName="name" placeholder="Nombre de tu empresa">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-error">
-              <span *ngIf="name.errors.required">Campo obligatorio</span>
-            </div>
-          </div>
+                <form [formGroup]="formularioEmpresa" (ngSubmit)="confirmacionEmail()">
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':name.invalid && (name.dirty || name.touched)}" type="text" formControlName="name" placeholder="Nombre de tu empresa">
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-error">
+                            <span *ngIf="name.errors.required">Campo obligatorio</span>
+                        </div>
+                    </div>
 
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':(email.invalid && (email.dirty || email.touched)) || emailDuplicado}"
-              type="text" formControlName="email" placeholder="Correo electronico" (keyup)="validarEmail()">
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
-              <span *ngIf="email.errors.required">Campo obligatorio</span>
-              <span *ngIf="email.errors.pattern">Ingrese un correo válido</span>
-            </div>
-            <div *ngIf="emailDuplicado && email.valid" class="form-error">
-              <span>Este email ya esta en uso. Elige otro.</span>
-            </div>
-          </div>
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':(email.invalid && (email.dirty || email.touched)) || emailDuplicado}" type="text" formControlName="email" placeholder="Correo electronico" (keyup)="validarEmail()">
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
+                            <span *ngIf="email.errors.required">Campo obligatorio</span>
+                            <span *ngIf="email.errors.pattern">Ingrese un correo válido</span>
+                        </div>
+                        <div *ngIf="emailDuplicado && email.valid" class="form-error">
+                            <span>Este email ya esta en uso. Elige otro.</span>
+                        </div>
+                    </div>
 
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':phone.invalid && (phone.dirty || phone.touched)}" type="text"
-              formControlName="phone" placeholder="Telefono">
-            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-error">
-              <span *ngIf="phone.errors.required">Campo obligatorio</span>
-              <span *ngIf="phone.errors.pattern">Ingrese un Telefono valido, Ejemplo: 1234-5678</span>
-            </div>
-          </div>
-          <div class="mb-2">
-            <select formControlName="departament"
-              [ngClass]="{'form-input-error':departament.invalid && (departament.dirty || departament.touched)}">
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':phone.invalid && (phone.dirty || phone.touched)}" type="text" formControlName="phone" placeholder="Telefono">
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-error">
+                            <span *ngIf="phone.errors.required">Campo obligatorio</span>
+                            <span *ngIf="phone.errors.pattern">Ingrese un Telefono valido, Ejemplo: 1234-5678</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <select formControlName="departament" [ngClass]="{'form-input-error':departament.invalid && (departament.dirty || departament.touched)}">
               <option value="-">Seleccione Departamento</option>
               <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}</option>
             </select>
-            <div *ngIf="departament.invalid && (departament.dirty || departament.touched)" class="form-error">
-              <span *ngIf="departament.errors.required">Campo obligatorio</span>
-              <span *ngIf="departament.errors.valueRestricted">Seleccione un departamento, por favor</span>
-            </div>
-            <!--<div>{{departament.errors | json}}</div>-->
-          </div>
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':city.invalid && (city.dirty || city.touched)}" type="text"
-              formControlName="city" placeholder="Ciudad">
-            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="form-error">
-              <span *ngIf="city.errors.required">Campo obligatorio</span>
-            </div>
-          </div>
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}"
-              type="text" formControlName="direction" placeholder="Direccion">
-            <div *ngIf="direction.invalid && (direction.dirty || direction.touched)" class="form-error">
-              <span *ngIf="direction.errors.required">Campo obligatorio</span>
-            </div>
-          </div>
+                        <div *ngIf="departament.invalid && (departament.dirty || departament.touched)" class="form-error">
+                            <span *ngIf="departament.errors.required">Campo obligatorio</span>
+                            <span *ngIf="departament.errors.valueRestricted">Seleccione un departamento, por favor</span>
+                        </div>
+                        <!--<div>{{departament.errors | json}}</div>-->
+                    </div>
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':city.invalid && (city.dirty || city.touched)}" type="text" formControlName="city" placeholder="Ciudad">
+                        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="form-error">
+                            <span *ngIf="city.errors.required">Campo obligatorio</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':direction.invalid && (direction.dirty || direction.touched)}" type="text" formControlName="direction" placeholder="Direccion">
+                        <div *ngIf="direction.invalid && (direction.dirty || direction.touched)" class="form-error">
+                            <span *ngIf="direction.errors.required">Campo obligatorio</span>
+                        </div>
+                    </div>
 
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}"
-              type="password" #inputPassword formControlName="password" placeholder="Contraseña">
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
-              <span *ngIf="password.errors.required">Campo obligatorio</span>
-              <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>
-            </div>
-          </div>
-          <div class="mb-2">
-            <input [ngClass]="{'form-input-error':samePassword.invalid && (samePassword.dirty || samePassword.touched)}"
-              type="password" #confirmPassword formControlName="samePassword" placeholder="Confirmar Contraseña">
-            <div *ngIf="samePassword.invalid && (samePassword.dirty || samePassword.touched)" class="form-error">
-              <span *ngIf="samePassword.errors.required">Campo obligatorio</span>
-              <span *ngIf="samePassword.errors.confirmedValidator && !samePassword.errors.required">Contraseñas no
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}" type="password" #inputPassword formControlName="password" placeholder="Contraseña">
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
+                            <span *ngIf="password.errors.required">Campo obligatorio</span>
+                            <span *ngIf="password.errors.minlength">La contraseña debe ser mínimo de 8 caracteres</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <input [ngClass]="{'form-input-error':samePassword.invalid && (samePassword.dirty || samePassword.touched)}" type="password" #confirmPassword formControlName="samePassword" placeholder="Confirmar Contraseña">
+                        <div *ngIf="samePassword.invalid && (samePassword.dirty || samePassword.touched)" class="form-error">
+                            <span *ngIf="samePassword.errors.required">Campo obligatorio</span>
+                            <span *ngIf="samePassword.errors.confirmedValidator && !samePassword.errors.required">Contraseñas no
                 coinciden</span>
-            </div>
-            <div class="pt-2 pl-2"><input type="checkbox" class="mr-2"
-                (click)="mostrarPasswords(inputPassword, confirmPassword)"><b>Mostrar contraseña</b></div>
-          </div>
-          <!-- Boton registrar -->
-          <button class="mb-2" type="submit"
-            [disabled]="formularioEmpresa.invalid || emailDuplicado">Registrarme</button>
+                        </div>
+                        <div class="pt-2 pl-2"><input type="checkbox" class="mr-2" (click)="mostrarPasswords(inputPassword, confirmPassword)"><b>Mostrar contraseña</b></div>
+                    </div>
+                    <!-- Boton registrar -->
+                    <button class="mb-2" type="submit" [disabled]="formularioEmpresa.invalid || emailDuplicado">Registrarme</button>
 
-        </form>
-        <div class="text-right mb-3">
-          <a class="primary-link" style="font-size: 14px;" [routerLink]="['/login/company']">
+                </form>
+                <div class="text-right mb-3">
+                    <a class="primary-link" style="font-size: 14px;" [routerLink]="['/login/company']">
             Ya tienes una cuenta? Inicia sesión
           </a>
-        </div>
-        <div>
-          <a class="primary-link" style="font-size: 17px;" [routerLink]="['/home']">
+                </div>
+                <div>
+                    <a class="primary-link" style="font-size: 17px;" [routerLink]="['/home']">
             Regresar a Inicio<i class="fas fa-arrow-circle-left ml-1"></i>
           </a>
-        </div>
+                </div>
 
-      </section>
-    </div>
-  </div>
-  <!--Parte confirmacion correo-->
-  <div *ngIf="confirmRegistro">
-    <div id="contenedor-confirmacion">
-      <section id="confirmacion-email">
-        <h1 class="mb-4">Confirmar Correo Electrónico</h1>
-        <p class="mb-4">Busque en el buzón de su correo <b>{{email.value}}</b> un mensaje enviado desde la dirección
-          <b>empleateunah@gmail.com</b> que contiene el código de confirmación.
-        </p>
-        <form [formGroup]="formularioConfirm" (ngSubmit)="registrar()">
-          <div class="mb-3">
-            <input
-              [ngClass]="{'form-input-error':(codigoConfirm.invalid && (codigoConfirm.dirty || codigoConfirm.touched)) || errorCodigo}"
-              type="text" formControlName="codigoConfirm" placeholder="Código de confirmación">
-            <div *ngIf="errorCodigo && codigoConfirm.valid" class="form-error">
-              <span *ngIf="!codigoExpirado">Código no válido</span>
-              <span *ngIf="codigoExpirado">El código expiro, solicite otro código</span>
-            </div>
-          </div>
-          <!-- Boton confirmar codigo -->
-          <button class="mb-5 w-100" type="submit" [disabled]="formularioConfirm.invalid">Confirmar</button>
-        </form>
-        <p>¿No recibió el mensaje de confirmación?</p>
-        <div class="mb-4"><a class="primary-link" (click)="enviarConfirmacionEmail()">Enviar de nuevo el código</a>
+            </section>
         </div>
-        <button class="btn btn-red" type="button" (click)="formRegistro=true;confirmRegistro=false;">Regresar</button>
-      </section>
     </div>
-  </div>
+    <!--Parte confirmacion correo-->
+    <div *ngIf="confirmRegistro">
+        <div id="contenedor-confirmacion">
+            <section id="confirmacion-email">
+                <h1 class="mb-4">Confirmar Correo Electrónico</h1>
+                <p class="mb-4">Busque en el buzón de su correo <b>{{email.value}}</b> un mensaje enviado desde la dirección
+                    <b>empleateunah@gmail.com</b> que contiene el código de confirmación.
+                </p>
+                <form [formGroup]="formularioConfirm" (ngSubmit)="registrar()">
+                    <div class="mb-3">
+                        <input [ngClass]="{'form-input-error':(codigoConfirm.invalid && (codigoConfirm.dirty || codigoConfirm.touched)) || errorCodigo}" type="text" formControlName="codigoConfirm" placeholder="Código de confirmación">
+                        <div *ngIf="errorCodigo && codigoConfirm.valid" class="form-error">
+                            <span *ngIf="!codigoExpirado">Código no válido</span>
+                            <span *ngIf="codigoExpirado">El código expiro, solicite otro código</span>
+                        </div>
+                    </div>
+                    <!-- Boton confirmar codigo -->
+                    <button class="mb-5 w-100" type="submit" [disabled]="formularioConfirm.invalid">Confirmar</button>
+                </form>
+                <p>¿No recibió el mensaje de confirmación?</p>
+                <div class="mb-4"><a class="primary-link" (click)="enviarConfirmacionEmail()">Enviar de nuevo el código</a>
+                </div>
+                <button class="btn btn-red" type="button" (click)="formRegistro=true;confirmRegistro=false;">Regresar</button>
+            </section>
+        </div>
+    </div>
 </body>

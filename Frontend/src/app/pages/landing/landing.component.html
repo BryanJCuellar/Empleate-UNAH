@@ -2,20 +2,14 @@
     <div class="collapse nav-principal " id="navbarHeader">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
+                <div class=" py-4">
                     <h4 class="text-white">Sobre nosotros</h4>
                     <p class="text-muted">
                         Con base a la situación que atravesamos como país, muchas familias han sido afectadas y muchos estudiantes tuvieron que dejar sus estudios. La idea del proyecto surge para ayudar a los estudiantes que puedan encontrar el empleo que les permita continuar
                         con sus sueños.
                         <p>
                 </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">@empleateUNAH</a></li>
-                        <li><a href="#" class="text-white">EmpleateUNAH</a></li>
-                        <li><a href="#" class="text-white">empleateunah@gmail.com</a></li>
-                    </ul>
-                </div>
+
             </div>
         </div>
     </div>
@@ -26,9 +20,9 @@
             </a>
             <ng-container *ngIf="!getAuthService().loggedIn()">
                 <a style="color: white;" class="nav-link link-login" [routerLink]="['login/student']"><i
-            class="fas fa-user-graduate"></i>   Ingresar como estudiante</a>
+            class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
                 <a style=" color: white;" class="nav-link link-login" [routerLink]="['login/company']"><i
-            class="fas far fa-building"></i>   Ingresar como empresa</a>
+            class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
             </ng-container>
             <ng-container *ngIf="getAuthService().loggedIn() && getAuthService().loggedInStudent()">
                 <a style="color: white;" class="nav-link link-session font-s" [routerLink]="['student/home']"><i
@@ -49,83 +43,51 @@
     <section class="jumbotron text-center" style="background-image: url(../assets/img/img5.jpg); background-size: cover;">
         <div class="container">
             <!-- Image and text -->
-            <div class="caja_transparente">
-            <h3 class="texto_empleate animate__animated animate__fadeInUp">Empléate UNAH</h3>
-            <p class="lead text-muted texto_empleate_descripcion animate__animated animate__fadeInUp">
-                Aprovecha e inscríbete a la plataforma donde los estudiantes y empresas se encuentran
+            <h3 style="color: beige !important; font-weight: bolder; background-color: #0000005e;">Empléate UNAH</h3>
+            <p class="lead text-muted" style="color:#1E7064 !important; font-weight: bolder; background-color: #f0ffff54;">
+                Aprovecha e inscríbete a la plataforma <br> donde los <br> estudiantes y empresas <br> se encuentran
             </p>
-            </div>
-            <br><br>    
             <p>
-                <a [routerLink]="['register/company']" class="btn btn-empresa m-2 animate__animated animate__fadeInUp">Registro de empresas</a>
+                <a [routerLink]="['register/company']" class="btn btn-empresa m-2">Registro de empresas</a>
             </p>
         </div>
     </section>
 
     <div class="album py-5 bg-light">
         <div class="container">
+
             <div class="row">
-
-
-                <div class="wrapper animate__animated animate__fadeInUp">
-                    <div class="card">
-                        <img src="../assets/img/PublicidadBurgerKing.jpg">
-                        <div class="descriptions">
-                            <h1>Combos Económicos</h1><br>
-                            <p>
-                                Aprovecha todos los Martes y Jueves de nuestros combos económicos especial 
-                                para estudiantes, solo muestra tu carnet de estudiante y podrás disfrutar 
-                                del 20% de descuento en nuestros combos.<br>
-                                Hamburguesa jumbo       Lps. 59<br>
-                                Hamburguesa Deluxe      Lps. 69<br>
-                                Hamburguesa TexMex      Lps. 56<br>
-                                Hamburguesa Big Bacon   Lps. 80
-                            </p>
+                <div class="col-md-4 d-flex div.card">
+                    <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <img src="../assets/img/img7.jpg" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Encuentra trabajo de acuerdo al horario que tengas <i class="far fa-clock"></i>
+                            </h5>
                         </div>
                     </div>
                 </div>
 
-                <div class="wrapper animate__animated animate__fadeInUp">
-                    <div class="card">
-                        <img src="../assets/img/Anuncio1.jpg">
-                        <div class="descriptions">
-                            <h1>Encuentra talento</h1><br>
-                            <p>
-                                La mayoría de los estudiantes están deseosos de aprender<br>
-                                Haz crecer tu empresa con nuevas ideas..<br>
-                                Busca estudiantes de todas las carreras<br>
-                                Encuentra el indicado segun su año de estudio<br>
-                                Busca segun la experiencia<br><br>
-                                Dale like: EmpléateUNAH. 
-                            </p>
+                <div class="col-md-4 d-flex div.card">
+                    <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <img src="../assets/img/img2.jpg" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">¡No tienes que moverte de casa! Busca trabajo según tu locación!
+                                <i class="fas fa-map-marked-alt"></i> </h5>
                         </div>
                     </div>
                 </div>
-
-                <div class="wrapper animate__animated animate__fadeInUp">
-                    <div class="card">
-                        <img src="../assets/img/Anuncio2.jpg">
-                        <div class="descriptions">
-                            <h1>Experiencia laboral</h1><br>
-                            <p>
-                                Encuentra trabajo de acuerdo al horario que tengas.<br>
-                                Solo debes ingresar con tu correo institucional y
-                                buscar el trabajo que mejor se acomode a tus necesidades<br><br>
-                                Dale like: EmpléateUNAH. 
-                            </p>
+                <div class="col-md-4 d-flex div.card">
+                    <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <img src="../assets/img/img1.jpg" class="card-img-top" alt="...">
                         </div>
-                    </div>
-                </div>
-
-                <div class="wrapper animate__animated animate__fadeInUp">
-                    <div class="card">
-                        <img src="../assets/img/Anuncio3.jpg">
-                        <div class="descriptions">
-                            <h1>Empleo ya!</h1><br>
-                            <p>
-                                ¡No tienes que moverte de casa! Busca trabajo según tu locación!.<br><br>
-                                Siguenos: @empleateUNAH
-                            </p>
+                        <div class="card-body">
+                            <h5 class="card-title">La mayoría de los estudiantes están deseosos de aprender. Haz crecer tu empresa con nuevas ideas.
+                                <i class="fas fa-users"></i> </h5>
                         </div>
                     </div>
                 </div>
@@ -133,19 +95,20 @@
         </div>
     </div>
     <div class="album py-2 bg-light">
+
     </div>
     <div class="album py-5 sec-two">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="col-md-4 img-anio card_footer " style="background-color: white;">
+                    <div class="col-md-4 img-anio card " style="background-color: white;">
                         <img src="../assets/img/prueba 4.jpg" class="card-img" alt="...">
                     </div>
                     <br>
-                    <div class="card_footer mb-3 medium-card">
+                    <div class="card mb-3 medium-card">
                         <div class="row">
                             <div class="card-body">
-                                <h5 class="card-title" style="font-weight: bold;">No dejes que este 2021 fruste tus planes</h5>
+                                <h3 class="card-title" style="font-weight: bold;">No dejes que este 2021 fruste tus planes</h3>
                                 <p class="card-text">Empléate UNAH te ayuda a encontrar el trabajo que deseas</p>
                             </div>
 
@@ -166,7 +129,7 @@
 
 
 <footer class="footer-ditributed">
-    <div class="footer_logoEmpleateUNAH">
+    <div class="footer-left">
         <img src="../assets/img/Logo.png" alt="logo">
         <h3>Empléate <span>UNAH</span></h3>
 
@@ -192,13 +155,13 @@
 
     <div class="footer-right">
         <p class="footer-commpany-about">
-            <span>About UNAH</span> La Universidad Nacional Autónoma de Honduras (UNAH) es una institución autónoma, laica y estatal de la República de Honduras.
+            <span>Sobre la UNAH</span> La Universidad Nacional Autónoma de Honduras (UNAH) es una institución autónoma, laica y estatal de la República de Honduras.
         </p>
         <div class="footer-icons">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://www.facebook.com/unahoficial/"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/unahoficial"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/unahoficial/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCSfkiToSLspGO06IdWhpoMA"><i class="fa fa-youtube-play"></i></a>
         </div>
     </div>
 </footer>

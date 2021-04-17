@@ -310,7 +310,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color2 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
-    this.color1 = '#ffc400';
+    this.color1 = '#078bbe';
     this.elegir = 'perfil';
   }
 
@@ -319,7 +319,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color3 = "#00035a";
     this.color4 = "#00035a";
-    this.color2 = '#ffc400';
+    this.color2 = '#078bbe';
     this.elegir = 'listarOfertas';
     this.cargarOfertasRealizadas();
   }
@@ -329,7 +329,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color4 = "#00035a";
-    this.color3 = '#ffc400';
+    this.color3 = '#078bbe';
     this.elegir = 'oferta';
     this.createFormOferta();
   }
@@ -339,7 +339,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
-    this.color4 = '#ffc400';
+    this.color4 = '#078bbe';
     this.elegir = 'postulados';
     this.cargarOfertasRealizadas();
   }
@@ -349,7 +349,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
-    this.color4 = '#ffc400';
+    this.color4 = '#078bbe';
     this.elegir = 'postuladosDetalle';
     this.ofertasService.obtenerPostulacionesOferta(idOferta)
       .subscribe(
