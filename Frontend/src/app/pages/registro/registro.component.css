@@ -9,6 +9,7 @@
 
 #contenedor {
     background-color: rgba(0, 0, 0, 0.65);
+    background-image: url(../../../../src/assets/img/volver-escuela-fondo-tonos-azul_159711-772.jpg);
     height: auto;
     padding: 30px;
     justify-content: center;

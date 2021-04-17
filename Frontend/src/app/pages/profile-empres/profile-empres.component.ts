@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -16,14 +17,19 @@ import { OfertasService } from 'src/app/services/ofertas.service';
 export class ProfileEmpresComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
+  date = new Date();
 
   empresa: any;
   OfertasActivas = [];
   OfertasArchivadas = [];
-
+  ofertasPostulaciones = [];
+  estudiantes_postulados = [];
   array_palabras: any = [];
   ofertas_Optimas: Boolean = false;
+  postulaciones_Optimas: Boolean = false;
   hayPalabrasClave: Boolean = true;
+
+  ofertaSeleccionada: any;
 
   elegir = 'perfil';
 
@@ -31,7 +37,6 @@ export class ProfileEmpresComponent implements OnInit {
   color2 = "#00035a";
   color3 = "#00035a";
   color4 = "#00035a";
-  color5 = "#00035a";
 
   //Variable para guardar id de la empresa
   idEmpresa: any;
@@ -49,9 +54,11 @@ export class ProfileEmpresComponent implements OnInit {
 
   // Form
   formulario_Oferta: FormGroup;
+  formEditOferta: FormGroup;
 
   constructor(
     private router: Router,
+    private modalService: NgbModal,
     private fb: FormBuilder,
     private empresasService: EmpresasService,
     private ofertasService: OfertasService,
@@ -60,6 +67,7 @@ export class ProfileEmpresComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfil();
+    this.editOfertaModal();
     // Datos Empresa logueada
     if (this.authService.getRol() == 'Empresa') {
       this.empresasService.obtenerIDEmpresa()
@@ -192,10 +200,9 @@ export class ProfileEmpresComponent implements OnInit {
       contract_type = null;
     }
 
-    let date = new Date();
-    let dia = date.getDate();
-    let mes = date.getMonth() + 1;
-    let anio = date.getFullYear();
+    let dia = this.date.getDate();
+    let mes = this.date.getMonth() + 1;
+    let anio = this.date.getFullYear();
 
     if (this.hayPalabras_Clave() && this.authService.loggedInCompany()) {
       const formOfertaData = {
@@ -260,31 +267,15 @@ export class ProfileEmpresComponent implements OnInit {
     */
   }
 
-  // Componente Perfil
-  perfil() {
-    this.color2 = "#00035a";
-    this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = "#00035a";
-    this.color1 = '#ffc400';
-    this.elegir = 'perfil';
-  }
-
-  // Componente Ofertas Realizadas
-  verOfertas() {
-    this.color1 = "#00035a";
-    this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = "#00035a";
-    this.color2 = '#ffc400';
-    this.elegir = 'listarOfertas';
-
+  // Funcion cargar ofertas empresa
+  cargarOfertasRealizadas() {
     this.ofertasService.obtenerOfertasEmpresa(this.idEmpresa)
       .subscribe(
         res => {
           // Reset Ofertas
           this.OfertasActivas = [];
           this.OfertasArchivadas = [];
+          this.ofertasPostulaciones = [];
           if (res.length > 2) {
             this.ofertas_Optimas = true;
           } else {
@@ -300,14 +291,37 @@ export class ProfileEmpresComponent implements OnInit {
             }
             if (res[i].estado_oferta == true) {
               this.OfertasActivas.push(res[i]);
+              if (res[i].postulaciones.length > 0) {
+                this.ofertasPostulaciones.push(res[i]);
+              }
             }
             if (res[i].estado_oferta == false) {
               this.OfertasArchivadas.push(res[i]);
             }
           }
+          // console.log(this.OfertasActivas);
         },
         error => console.log('error al obterner ofertas', error)
       )
+  }
+
+  // Componente Perfil
+  perfil() {
+    this.color2 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.color1 = '#078bbe';
+    this.elegir = 'perfil';
+  }
+
+  // Componente Ofertas Realizadas
+  verOfertas() {
+    this.color1 = "#00035a";
+    this.color3 = "#00035a";
+    this.color4 = "#00035a";
+    this.color2 = '#078bbe';
+    this.elegir = 'listarOfertas';
+    this.cargarOfertasRealizadas();
   }
 
   // Componente Oferta
@@ -315,8 +329,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color4 = "#00035a";
-    this.color5 = "#00035a";
-    this.color3 = '#ffc400';
+    this.color3 = '#078bbe';
     this.elegir = 'oferta';
     this.createFormOferta();
   }
@@ -326,19 +339,209 @@ export class ProfileEmpresComponent implements OnInit {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
-    this.color4 = '#ffc400';
-    this.color5 = "#00035a";
+    this.color4 = '#078bbe';
     this.elegir = 'postulados';
+    this.cargarOfertasRealizadas();
   }
 
-  // Componente editarperfil
-  editarPerfil() {
+  // Componente postuladosDetalle
+  postuladosDetalle(idOferta) {
     this.color1 = "#00035a";
     this.color2 = "#00035a";
     this.color3 = "#00035a";
-    this.color4 = "#00035a";
-    this.color5 = '#ffc400';
-    this.elegir = 'editarPerfil';
+    this.color4 = '#078bbe';
+    this.elegir = 'postuladosDetalle';
+    this.ofertasService.obtenerPostulacionesOferta(idOferta)
+      .subscribe(
+        res => {
+          if (res.length > 4) {
+            this.postulaciones_Optimas = true;
+          } else {
+            this.postulaciones_Optimas = false;
+          }
+          for (let i = 0; i < res.length; i++) {
+            for (let j = 0; j < res[i].postulaciones.length; j++) {
+              if (res[i].estudiante._id == res[i].postulaciones[j].id_estudiante) {
+                res[i].postulaciones = res[i].postulaciones[j];
+              }
+            }
+            if (res[i].postulaciones.fecha_postulacion.dia < 10) {
+              res[i].postulaciones.fecha_postulacion.dia = `0${res[i].postulaciones.fecha_postulacion.dia}`;
+            }
+            if (res[i].postulaciones.fecha_postulacion.mes < 10) {
+              res[i].postulaciones.fecha_postulacion.mes = `0${res[i].postulaciones.fecha_postulacion.mes}`;
+            }
+          }
+          this.estudiantes_postulados = res;
+        },
+        error => console.log('error al obterner ofertas', error)
+      )
+  }
+
+  editOfertaModal() {
+    this.formEditOferta = this.fb.group({
+      _id: [''],
+      titulo_Oferta: ['', [Validators.required]],
+      idiomas: [''],
+      salario: [''],
+      edad: [''],
+      indice_estudiante: [''],
+      ciudad: ['', [Validators.required]],
+      departamento: ['', [Validators.required]],
+      experiencia_laboral: ['', [Validators.required]],
+      jornada_laboral: ['', [Validators.required]],
+      tipo_contrato: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]]
+    })
+  }
+
+  // Metodos GET de formEditOferta
+  get titulo_Oferta() {
+    return this.formEditOferta.get('titulo_Oferta');
+  }
+  get ciudadEdit() {
+    return this.formEditOferta.get('ciudad');
+  }
+  get departamentoEdit() {
+    return this.formEditOferta.get('departamento');
+  }
+  get experiencia_laboralEdit() {
+    return this.formEditOferta.get('experiencia_laboral');
+  }
+  get jornada_laboralEdit() {
+    return this.formEditOferta.get('jornada_laboral');
+  }
+  get tipo_contratoEdit() {
+    return this.formEditOferta.get('tipo_contrato');
+  }
+  get descripcionEdit() {
+    return this.formEditOferta.get('descripcion');
+  }
+
+  detalleOferta(oferta){
+    this.formEditOferta.reset();
+    this.formEditOferta.patchValue(oferta);
+    this.ciudadEdit.setValue(oferta.ubicacion[0].ciudad);
+    this.departamentoEdit.setValue(oferta.ubicacion[0].departamento);
+  }
+
+  listarOferta(oferta) {
+    this.formEditOferta.reset();
+    this.formEditOferta.patchValue(oferta);
+    this.ciudadEdit.setValue(oferta.ubicacion[0].ciudad);
+    this.departamentoEdit.setValue(oferta.ubicacion[0].departamento);
+    // console.log(this.formEditOferta.value);
+  }
+
+  actualizarOferta() {
+    /*const data = this.formEditOferta.getRawValue()
+    data['ubicacion'] = [{ ciudad: data.ciudad, departamento: data.departamento }]*/
+    let languages = this.formEditOferta.get('idiomas').value;
+    let salary = this.formEditOferta.get('salario').value;
+    let age = this.formEditOferta.get('edad').value;
+    let student_index = this.formEditOferta.get('indice_estudiante').value;
+    let work_experience = this.experiencia_laboralEdit.value;
+    let working_day = this.jornada_laboralEdit.value;
+    let contract_type = this.tipo_contratoEdit.value;
+    if (this.formEditOferta.get('idiomas').value == '' || this.formEditOferta.get('idiomas').value == null) {
+      languages = null;
+    }
+    if (this.formEditOferta.get('salario').value == '' || this.formEditOferta.get('salario').value == null) {
+      salary = null;
+    }
+    if (this.formEditOferta.get('edad').value == '' || this.formEditOferta.get('edad').value == null) {
+      age = null;
+    }
+    if (this.formEditOferta.get('indice_estudiante').value == '' || this.formEditOferta.get('indice_estudiante').value == null || this.formEditOferta.get('indice_estudiante').value > 100) {
+      student_index = null;
+    }
+    if (this.experiencia_laboralEdit.value == 'No Especificar (N/A)') {
+      work_experience = null;
+    }
+    if (this.jornada_laboralEdit.value == 'No Especificar (N/A)') {
+      working_day = null;
+    }
+    if (this.tipo_contratoEdit.value == 'No Especificar (N/A)') {
+      contract_type = null;
+    }
+    const formData = {
+      titulo_Oferta: this.titulo_Oferta.value,
+      idiomas: languages,
+      salario: salary,
+      edad: age,
+      indice_estudiante: student_index,
+      ciudad: this.ciudadEdit.value,
+      departamento: this.departamentoEdit.value,
+      experiencia_laboral: work_experience,
+      jornada_laboral: working_day,
+      tipo_contrato: contract_type,
+      descripcion: this.descripcionEdit.value
+    }
+    this.ofertasService.actualizarOferta(this.formEditOferta.get('_id').value, formData)
+      .subscribe(
+        res => {
+          console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+          }
+        },
+        error => console.log('Error al actualizar oferta', error)
+      )
+  }
+
+  modalOfertaConfirmar(modal, oferta) {
+    this.ofertaSeleccionada = oferta;
+    this.modalService.open(
+      modal,
+      {
+        centered: false
+      }
+    );
+  }
+
+  archivar() {
+    if (this.ofertaSeleccionada != null) {
+      this.ofertasService.archivarOferta(this.ofertaSeleccionada._id)
+        .subscribe(
+          res => {
+            // console.log(res);
+            if (res.ok == 1) {
+              this.verOfertas();
+              this.modalService.dismissAll();
+            }
+          },
+          error => console.log('Error al cambiar estado de oferta', error)
+        )
+    }
+  }
+
+  restaurar(id) {
+    this.ofertasService.restaurarOferta(id)
+      .subscribe(
+        res => {
+          // console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+          }
+        },
+        error => console.log('Error al cambiar estado de oferta', error)
+      )
+  }
+
+  borrarOferta() {
+    if (this.ofertaSeleccionada != null) {
+      this.ofertasService.borrarOferta(this.ofertaSeleccionada._id)
+      .subscribe(
+        res => {
+          // console.log(res);
+          if (res.ok == 1) {
+            this.verOfertas();
+            this.modalService.dismissAll();
+          }
+        },
+        error => console.log('Error al eliminar oferta', error)
+      );
+    }
   }
 
   getAuthService() {

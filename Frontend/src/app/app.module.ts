@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,6 +24,7 @@ import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estu
 import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.component';
 import { PostulacionComponent } from './pages/postulacion/postulacion.component';
+import {CompanyProfileEditComponent} from './pages/company-profile-edit/company-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { PostulacionComponent } from './pages/postulacion/postulacion.component'
     PerfilEstudianteComponent,
     StudentProfileEditComponent,
     ProfileEmpresComponent,
-    PostulacionComponent
+    PostulacionComponent,
+    CompanyProfileEditComponent
   ],
   imports: [
     BrowserModule,
@@ -54,12 +55,12 @@ import { PostulacionComponent } from './pages/postulacion/postulacion.component'
       { path: 'register/company', component: RegistroEmpressComponent, data: { title: 'Empleate-UNAH - Registro Empresa' } },
       { path: 'login/student', component: LoginComponent, data: { title: 'Empleate-UNAH - Login Estudiante' } },
       { path: 'login/company', component: LoginEmpressComponent, data: { title: 'Empleate-UNAH - Login Empresa' } },
+      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - HOME-ESTUDIANTE' } },
       { path: 'student/profile', component: PerfilEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
-      { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
       { path: 'student/profile/edit', component: StudentProfileEditComponent, data: { title: 'Empleate-UNAH - Editar Perfil Estudiante' } },
-      { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
       { path: 'student/home/postulate', component: PostulacionComponent, data: { title: 'Empleate-UNAH - Postulate' } },
-      { path: 'student/home', component: StudentHomeComponent, data: { title: 'Empleate-UNAH - HOME-ESTUDIANTE' } }
+      { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
+      { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } }
     ])
   ],
   providers: [

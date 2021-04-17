@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
 import { OfertasService } from 'src/app/services/ofertas.service';
+import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-student-home',
@@ -12,6 +14,8 @@ export class StudentHomeComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com/';
   estudianteActual: any;
+  ofertaActual: any;
+  aggregatePostulaciones = [];
   ofertas = [];
   closeResult = '';
   elegir = 'home';
@@ -21,10 +25,14 @@ export class StudentHomeComponent implements OnInit {
   color4 = "#520547";
   color5 = "#520547";
 
+
+
   constructor(
     private authService: AuthService,
     private estudiantesService: EstudiantesService,
-    private OfertasService: OfertasService
+    private OfertasService: OfertasService,
+    private router: Router,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +81,28 @@ export class StudentHomeComponent implements OnInit {
     return this.authService;
   }
 
+  cargarPostulaciones(){
+    if(this.estudianteActual != null){
+      this.estudiantesService.obtenerPostulacionesEstudiante(this.estudianteActual._id)
+      .subscribe(
+        response => {
+          this.aggregatePostulaciones = [];
+          for(let i = 0; i < response.length; i++){
+            this.aggregatePostulaciones.push(response[i]);
+            if (response[i].oferta.descripcion.length > 50) {
+              this.aggregatePostulaciones[i].oferta.resumenDescripcion = (response[i].oferta.descripcion).substring(0, 49) + '...';
+            } else {
+              this.aggregatePostulaciones[i].oferta.resumenDescripcion = response[i].oferta.descripcion;
+            }
+          }
+          console.log("Postulaciones", this.aggregatePostulaciones);
+        },
+        error => console.log('Error al obtener postulaciones', error)
+      )
+    }
+  }
+
+
   home() {
     this.color2 = "#520547";
     this.color3 = "#520547";
@@ -88,6 +118,7 @@ export class StudentHomeComponent implements OnInit {
     this.color5 = "#520547";
     this.elegir = 'Mis_Postulaciones';
     this.color2 = '#854A7C';
+    this.cargarPostulaciones();
   }
   Buscar_Ofertas() {
     this.color1 = "#520547";
@@ -115,6 +146,42 @@ export class StudentHomeComponent implements OnInit {
     this.color4 = "#520547";
     this.elegir = 'Configuracion';
     this.color5 = '#854A7C';
+  }
+
+  seleccionarOferta(idOferta){
+    console.log(idOferta);
+    this.OfertasService.seleccionarOferta(idOferta);
+    this.router.navigateByUrl(`/student/home/postulate`);
+  }
+
+  verDetalleOferta(idOferta){
+    this.OfertasService.obtenerOfertaSelccionada(idOferta)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.ofertaActual = data;
+      },
+      error => console.log('Error al obtener informacion oferta', error)
+    );
+  }
+
+  open(content, idOferta) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.verDetalleOferta(idOferta);
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }

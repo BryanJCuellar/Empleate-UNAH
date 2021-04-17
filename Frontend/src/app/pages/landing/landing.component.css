@@ -27,9 +27,15 @@
 }
 
 .outline-cards {
-    border-color: #65305D;
+    border-color: #ffffff;
     border-width: 5px;
-    color: #65305D;
+    color: #000000;
+}
+
+div.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    border-radius: 5px;
 }
 
 .sec-two {
@@ -47,8 +53,6 @@
 }
 
 .medium-card {
-    border-color: #2B2452;
-    border-width: 5px;
     text-align: center;
 }
 
@@ -234,7 +238,7 @@ footer {
 }
 
 .footer-ditributed .footer-right .footer-icons a:hover {
-    background: red;
+    background: rgb(0, 204, 255);
 }
 
 @media(max-width:880px) {

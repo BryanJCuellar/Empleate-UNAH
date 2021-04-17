@@ -29,4 +29,11 @@ export class EmpresasService {
         id_oferta: idOferta
       });
   }
+  actualizarPerfilEmpresa(idEmpresa, data): Observable<any>{
+    return this.httpClient.put(`${this.backendHost}/empresas/${idEmpresa}`, data);
+  }
+
+  subirImagenPerfil(idEmpresa, dataImage): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresas/${idEmpresa}/imagenPerfil`, dataImage);
+  }
 }

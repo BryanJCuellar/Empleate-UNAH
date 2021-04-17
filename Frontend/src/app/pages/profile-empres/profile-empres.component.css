@@ -16,8 +16,6 @@ label {
     font-size: 14px;
     font-weight: bold;
     border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
     display: inline-block;
     outline: none;
     position: relative;
@@ -29,10 +27,6 @@ label {
     background: #f7347a;
 }*/
 
-.btn:hover {
-    background: #800080;
-}
-
 .boton-editar {
     color: #FFF !important;
     font-weight: bolder;
@@ -42,24 +36,19 @@ label {
 
 .main {
     /*funciona en cada despliegue de pestana */
-    background-image: url(../../../assets/img/lineas2.png);
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute
+    background-color: #483d8b24;
 }
 
-.vh-100 {
-    height: 100vh;
+@media screen and (min-width: 768px) {
+    .vh-100 {
+        height: 100vh;
+    }
 }
 
 body {
     /*funciona cuando no hay contenido y asi no aparesca cortada la imagen */
     font-family: 'Open sans';
-    background-image: url(../../../assets/img/lineas2.png);
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
     position: absolute
 }
 
@@ -73,19 +62,19 @@ body {
 
 .btn-cerrar {
     color: white;
-    background-color: #966FA6;
+    background-color: #078bbe;
     padding: 4px 30px;
 }
 
 .btn-cerrar:hover {
-    color: #966FA6;
+    color: #2d64da;
     background-color: white;
     font-weight: bolder;
 }
 
 ul.tabs {
     width: 100%;
-    background: #00035a;
+    background: rgb(0 3 90);
     list-style: none;
     display: flex;
 }
@@ -105,11 +94,11 @@ ul.tabs li a {
 }
 
 ul.tabs a:active {
-    background: #ffd900;
+    background: #078bbe;
 }
 
 ul.tabs a:hover {
-    background: #ffc400;
+    background: #078bbe;
 }
 
 ul.tabs li a .tab-text {
@@ -119,6 +108,8 @@ ul.tabs li a .tab-text {
 .secciones {
     width: 100%;
     background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: -16px;
 }
 
 .secciones div {
@@ -126,7 +117,7 @@ ul.tabs li a .tab-text {
 }
 
 div.form-error {
-    color: #CD0052;
+    color: #cd0011;
     margin: 5px;
     padding: 0px !important;
     margin-top: 0px;
@@ -137,6 +128,7 @@ div.form-error {
 .listaPalabrasClave {
     margin-top: 10px;
     width: 100% !important;
+    margin-left: 30px;
 }
 
 .secciones div p {
@@ -168,7 +160,7 @@ div.form-error {
 }
 
 .resume-profile-image {
-    width: 500px;
+    width: 250px;
     max-width: 100%;
     height: auto;
     max-height: 800px;
@@ -214,6 +206,8 @@ div.form-error {
 
 .imagen-empresa {
     display: block;
+    object-fit: cover;
+    object-position: center;
     width: 200px;
     height: 200px;
 }
@@ -305,7 +299,6 @@ textarea {
 input {
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
@@ -336,29 +329,57 @@ select {
 
 .boton-guardar:hover {
     color: #FFF !important;
-    background-color: #FFC400 !important;
-    border-color: #FFC400 !important;
+    background-color: #067caa !important;
+    border-color: #078bbe !important;
     box-shadow: 0px 0px 5px inset#ffffff;
 }
 
 
+/****** Estilizando la vizualizacion de Ofertas *******************************/
+
+.overItemVisualizar input {
+    width: 100% !important;
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    color: black !important;
+}
+
+.overItemVisualizar textarea {
+    width: 100% !important;
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    color: black !important;
+}
+
+
+/*************************************/
+
+
 /*Estilizando la parte de ver OFERTAS*/
+
+.table-dark {
+    color: rgb(255, 255, 255);
+    background-color: #ffffff;
+}
+
+.table-dark td {
+    color: #000005 !important;
+}
 
 .table-dark th {
     background-color: #00035a !important;
 }
 
 .table-dark tr:hover {
-    background-color: #0069d9 !important;
+    background-color: #f1f1f1 !important;
 }
 
 .boton {
     padding: 5px 5px 5px 5px !important;
-}
-
-.boton:hover {
-    background-color: #ffd900 !important;
-    outline: none !important;
 }
 
 
@@ -371,7 +392,7 @@ select {
 }
 
 .close {
-    color: #ffe600;
+    color: #ffffff;
     font-size: 2em;
     position: absolute;
     top: .5em;
@@ -383,9 +404,13 @@ select {
     border-color: #046990;
 }
 
+.modal-archivar {
+    border-bottom: 0px solid #dee2e6;
+}
+
 .modal-content {
-    border: 5px solid rgb(4 105 144);
     border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, .2);
 }
 
 .table td,
@@ -394,5 +419,60 @@ select {
     vertical-align: inherit;
 }
 
+.link-profile:hover {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 
 /***************************************************************************/
+
+
+/*********Seccion Postulados***********/
+
+.postulacion-item {
+    border-radius: 20px;
+    border: 2px solid #00035a;
+}
+
+.postulacion-item h3 {
+    color: #00035a;
+    font-weight: 500;
+}
+
+.postulacion-item p {
+    color: #5c5c5c;
+    font-weight: 500;
+}
+
+.postulacion-item i {
+    color: #00035a;
+}
+
+.postulacion-item:hover {
+    background-color: #00035a;
+    border: 2px solid #FFF;
+    box-shadow: 0px 0px 8px inset #FFF;
+    transition: all 0.2s ease-in-out;
+}
+
+.postulacion-item:hover h3,
+.postulacion-item:hover p,
+.postulacion-item:hover i {
+    color: #FFF;
+}
+
+.back-link {
+    color: #00035a !important;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #0069D9 !important;
+    text-decoration: none;
+}
+
+
+/*************************************/

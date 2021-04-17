@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var path = require('path');
 var bcrypt = require('bcryptjs');
+var fs = require('fs-extra');
 var jwt = require('jsonwebtoken');
+var multerImages = require('../libs/multer-images');
 var empresa = require('../models/empresas');
 var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 var nodemailer = require('nodemailer');
@@ -31,7 +34,7 @@ router.get('/:idEmpresa', verifyToken, function (req, res) {
         });
 });
 
-router.post('/signup/validateEmail', validateEmail, function (req, res){
+router.post('/signup/validateEmail', validateEmail, function (req, res) {
     res.status(200).send({
         mensaje: 'Email no duplicado'
     });
@@ -95,35 +98,35 @@ router.post('/signup', function (req, res) {
         paginaWeb: null
     });
 
-    if(codigoCorrecto){
+    if (codigoCorrecto) {
         nueva_empresa.save()
-        .then(result => {
-            // Success, inicia sesion con JWT
-            const expiresIn = 24 * 60 * 60;
-            const accessToken = jwt.sign({
-                _id: result.id,
-                rol: 'Empresa'
-            }, SECRET_KEY, {
-                expiresIn: expiresIn
-            });
-            const dataEnviar = {
-                email: result.email,
-                rol: 'Empresa',
-                accessToken: accessToken,
-                expiresIn: expiresIn
-            };
-            res.status(200).send({
-                mensaje: 'Registrado',
-                data: dataEnviar
-            });
-            res.end();
-        }).catch(error => {
-            res.send({
-                error: error,
-                mensaje: "Error al guardar empresa"
-            });
-            res.end();
-        })
+            .then(result => {
+                // Success, inicia sesion con JWT
+                const expiresIn = 24 * 60 * 60;
+                const accessToken = jwt.sign({
+                    _id: result.id,
+                    rol: 'Empresa'
+                }, SECRET_KEY, {
+                    expiresIn: expiresIn
+                });
+                const dataEnviar = {
+                    email: result.email,
+                    rol: 'Empresa',
+                    accessToken: accessToken,
+                    expiresIn: expiresIn
+                };
+                res.status(200).send({
+                    mensaje: 'Registrado',
+                    data: dataEnviar
+                });
+                res.end();
+            }).catch(error => {
+                res.send({
+                    error: error,
+                    mensaje: "Error al guardar empresa"
+                });
+                res.end();
+            })
     } else {
         res.status(401).send({
             mensaje: "Codigo no valido"
@@ -201,11 +204,6 @@ router.get('/', function (req, res) {
         });
 });
 
-// Listar las ofertas de una empresa logueada (Metodo aggregate)
-/*router.get('/:idEmpresa/ofertas', verifyToken, function (req, res) {
-    // Code
-});*/
-
 // Guardar ID de ofertas en una empresa
 router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
     empresa.updateOne({
@@ -224,6 +222,61 @@ router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
         res.end();
     })
 });
+// Guardar o actualizar datos de la empresa
+router.put('/:idEmpresa', verifyToken, function (req, res) {
+    empresa.updateOne({
+            _id: mongoose.Types.ObjectId(req.params.idEmpresa)
+        }, {
+            organizacion: req.body.organizacion,
+            telefono: req.body.telefono,
+            descripcionPerfil: req.body.descripcionPerfil,
+            datosDireccion: {
+                departamento: req.body.departamento,
+                ciudad: req.body.ciudad,
+                direccion: req.body.direccion
+            },
+            facebook: req.body.facebook,
+            paginaWeb: req.body.paginaWeb
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.status(500).send(error);
+            res.end();
+        });
+});
+
+// Subir o actualizar imagenPerfil
+router.post('/:idEmpresa/imagenPerfil', multerImages.single('imagenPerfil'),
+    deleteImageOnUpdate,
+    function (req, res) {
+        empresa.updateOne({
+                _id: req.params.idEmpresa
+            }, {
+                $set: {
+                    imagenPerfil: req.file.path
+                }
+            })
+            .then(result => {
+                // console.log("Original Name", req.file.originalname);
+                res.send(result);
+                res.end();
+            })
+            .catch(error => {
+                res.send(error);
+                res.end();
+            });
+    });
+
+async function deleteImageOnUpdate(req, res, next) {
+    const Empresa = await empresa.findById(req.params.idEmpresa);
+    if (Empresa.imagenPerfil != null) {
+        await fs.unlink(path.resolve(Empresa.imagenPerfil));
+    }
+    next();
+}
 
 module.exports = router;
 
@@ -264,4 +317,7 @@ function verifyToken(req, res, next) {
     } else {
         res.status(401).send('No-Autorizado');
     }
+
+
+
 }
