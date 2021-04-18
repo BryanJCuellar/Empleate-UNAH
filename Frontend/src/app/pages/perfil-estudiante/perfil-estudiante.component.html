@@ -1,12 +1,13 @@
+<body class="body">
 <nav class="navbar navbar-expand-lg nav-principal py-2">
     <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
         <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
     </a>
     <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse" data-target="#navbarTogglerStudentProfile" aria-controls="navbarTogglerStudentProfile" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> 
     <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentProfile">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto"> 
             <li class="nav-item my-2 my-lg-0">
                 <a class="nav-link mx-2 ml-lg-3" style=" color:white !important;" href="student/home">
                     <span class="link-profile">
@@ -30,8 +31,8 @@
 </nav>
 
 <div class="main-wrapper">
-    <div class="container px-3 px-lg-5">
-        <article class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+    <div class="container px-3 px-lg-5 animate__animated animate__fadeInRight">
+        <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
 
             <div class="resume-header">
                 <div class="row align-items-center">
@@ -56,7 +57,7 @@
             <hr>
             <div class="resume-intro py-3">
                 <div class="media flex-column flex-md-row align-items-center">
-                    <img class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto" [src]="backendHost + estudiante.imagenPerfil" alt="image">
+                    <img class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto tamaño" [src]="backendHost + estudiante.imagenPerfil" alt="image">
                     <div class="media-body text-left">
                         <p class="mb-0">{{estudiante.descripcionPerfil}}
                         </p>
@@ -136,4 +137,5 @@
     </footer>
 
 </div>
+</body>
 <!--//main-wrapper-->

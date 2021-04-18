@@ -1,12 +1,24 @@
 .nav-logo {
   width: 100px;
 }
+.body {
+  background-color: #E5E4EF !important;
+}
+.tamaño{
+    width: 244px;
+    height: 170px;
+}
 
+.b
 .resume-profile-image {
   width: 500px;
   max-width: 100%;
   height: auto;
   max-height: 800px;
+}
+
+.color{
+  background-color: #ffffff !important;
 }
 
 .nav-principal {
@@ -27,19 +39,18 @@
 }
 
 .link-profile:hover {
-  color: #966FA6;
+  color: #1C928A !important;
   font-weight: bold;
-  font-size: 18px;
 }
 
 .btn-cerrar {
   color: white;
-  background-color: #966FA6;
+  background-color: #1C928A !important;
   padding: 4px 30px;
 }
 
 .btn-cerrar:hover {
-  color: #966FA6;
-  background-color: white;
+  color: #1C928A !important;
+  background-color: white !important;
   font-weight: bolder;
 }

@@ -1,16 +1,20 @@
 <body>
   <div *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
-    <div class="navPerfil d-none d-lg-block">
-      <img src="../../../assets/img/logo/Logo180X100.png" alt="">
-      <span class="textoNavPerfil">Empleate-UNAH</span>
-      <span class="textoNavPerfil">Actualizando mi Perfil</span>
-    </div>
+  <nav class="navbar navbar-expand-lg nav-principal py-2 barra">
+      <img class="tamañologo" src="../../../assets/img/logo/Logo180X100.png" alt="">
+      <span class="textoNavPerfil colortextoperfil">Empleate-UNAH</span>
+      <span class="textoNavPerfil colortextoperfil">Actualizando mi Perfil</span>
     <div class="navPerfil d-block d-lg-none">
       <div><img src="../../../assets/img/logo/Logo180X100.png" alt=""></div>
       <div><span class="textoNavPerfil">Empleate-UNAH</span></div>
       <div><span class="textoNavPerfil">Actualizando mi Perfil</span></div>
+    </div> 
+    <div class="text-center text-lg-right mt-4 pr-0 pr-lg-5 btn_regresar">
+      <a class="secondary-link font-s colortexto" href="student/profile">Regresar<i
+          class="fas fa-arrow-circle-left ml-1"></i></a>
     </div>
-    <div class="container">
+  </nav>
+    <div class="container animate__animated animate__fadeInLeft">
       <div class="row form-group mt-3">
         <div class="col-lg-5 col-sm-12">
           <div class="text-center">
@@ -20,7 +24,7 @@
               <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid rounded-circle imGUsuario"
                 [src]="backendHost + estudianteActual.imagenPerfil" alt="Profile Image">
             </div>
-            <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar</button>
+            <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar foto</button>
             <form [formGroup]="formularioUploadImage">
               <input
                 [ngClass]="{'visible':imagenPerfilHabilitada == true, 'no-visible': imagenPerfilHabilitada == false}"
@@ -37,10 +41,6 @@
             <h4 class="font-weight-bold"><span class="mr-3">Identidad:</span>{{estudianteActual.numeroIdentidad}}</h4>
             <h4 class="font-weight-bold"><span class="mr-3">Centro:</span>{{estudianteActual.centro}}</h4>
             <h4 class="font-weight-bold"><span class="mr-3">Carrera:</span>{{estudianteActual.carreras}}</h4>
-          </div>
-          <div class="text-center text-lg-right mt-4 pr-0 pr-lg-5">
-            <a class="secondary-link font-s" href="student/profile">Regresar<i
-                class="fas fa-arrow-circle-left ml-1"></i></a>
           </div>
         </div>
       </div>

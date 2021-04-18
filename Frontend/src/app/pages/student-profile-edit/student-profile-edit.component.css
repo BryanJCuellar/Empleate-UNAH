@@ -1,13 +1,42 @@
 body {
-  /*background-color: #32D5AD;*/
-  background-color: #191140;
+  background-color: #E5E4EF;
 
+}
+.barra{
+  background-color: #191140;
+  margin: 50px,90px;
+  margin-bottom: 52px;
+}
+
+.tamañologo{
+  width: 119px;
+}
+
+.colortextoperfil{
+ color: #ffffff;
+}
+
+.colortexto{
+  color: white !important;
+  font-size: 18px;
+}
+
+.colortexto:hover{
+  color: #1C928A  !important;
+  font-size: 18px;
+}
+
+.btn_regresar{
+  margin-left: 701px;
+  padding-top: -24px;
+  margin-top: -1px !important;
 }
 
 .container {
-  background-color: #d4d4d4ad !important;
+  background-color: #ffffff !important;
   padding: 20px 20px !important;
-  border-radius: 10px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .navPerfil {
@@ -31,14 +60,14 @@ body {
 }
 
 .imGUsuario {
-  /*border-radius: 50%;
-  width: 80%;*/
-  width: 400px;
-  max-height: 400px;
+  border-radius: 0% !important;
+  width: 310px;
+  max-height: 284px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .datosGenerales {
-  margin-top: 10px;
+  margin-top: -15px;
 }
 
 @media only screen and (max-width: 1000px) {
