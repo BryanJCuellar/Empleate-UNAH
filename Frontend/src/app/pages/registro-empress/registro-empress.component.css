@@ -9,8 +9,7 @@
 
 #contenedor,
 #contenedor-confirmacion {
-  /*background-image: url(../../../assets/img/fondo-registro.jpg);*/
-  background-color: #40a0c5;
+  background-image: url(../../../assets/img/unah1847.jpg);
   min-height: 100%;
   width: 100%;
   padding: 30px;
@@ -25,10 +24,10 @@
 }
 
 #registro {
-  /*background-color: #00000075;*/
+  background-color: #00000059;
   width: 900px;
   max-width: 100%;
-  color: #40a0c5;
+  color: #ffffff;
   border-radius: 5px;
   padding: 30px 100px;
   margin-left: auto;
@@ -46,10 +45,10 @@
 }
 
 #confirmacion-email {
-  /*background-color: #6f6f6fad;*/
+  background-color: #00000061;
   width: 700px;
   max-width: 100%;
-  color: #2e2e2e;
+  color: #ffffff;
   border-radius: 5px;
   padding: 55px 80px;
   margin-left: auto;
@@ -70,7 +69,7 @@
   text-align: -webkit-center;
   font-size: 32px;
   font-weight: 700;
-  color: #40a0c5;
+  color: #ffffff;
   ;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /*font-family: 'Aguafina Script', cursive; /*Fuente del API de Google fonts*/

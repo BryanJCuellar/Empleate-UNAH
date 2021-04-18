@@ -3,7 +3,7 @@
   <div *ngIf="formRegistro">
     <div id="contenedor">
       <!--<a href="#"><img id="logo" src="img/logo.png" alt="logotipo"></a>-->
-      <section id="registro" class="bg-white shadow-lg">
+      <section id="registro">
         <div class="text-center">
           <i class="fas fa-building font-s-5"></i>
         </div>
@@ -17,7 +17,7 @@
               <span *ngIf="name.errors.required">Campo obligatorio</span>
             </div>
           </div>
-
+ 
           <div class="mb-3">
             <input [ngClass]="{'form-input-error':(email.invalid && (email.dirty || email.touched)) || emailDuplicado}"
               type="text" formControlName="email" placeholder="Correo electronico" (keyup)="validarEmail()">
@@ -119,7 +119,7 @@
   <!--Parte confirmacion correo-->
   <div *ngIf="confirmRegistro">
     <div id="contenedor-confirmacion">
-      <section id="confirmacion-email" class="bg-white shadow-lg">
+      <section id="confirmacion-email">
         <h1 class="mb-4">Confirmar Correo Electrónico</h1>
         <p class="mb-4">Busque en el buzón de su correo <b>{{email.value}}</b> un mensaje enviado desde la dirección
           <b>empleateunah@gmail.com</b> que contiene el código de confirmación.
