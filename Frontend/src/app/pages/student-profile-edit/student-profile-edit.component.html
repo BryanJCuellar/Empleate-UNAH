@@ -1,27 +1,36 @@
 <body>
   <div *ngIf="getAuthService().loggedInStudent() && estudianteActual != null">
-  <nav class="navbar navbar-expand-lg nav-principal py-2 barra">
-      <img class="tamañologo" src="../../../assets/img/logo/Logo180X100.png" alt="">
-      <span class="textoNavPerfil colortextoperfil">Empleate-UNAH</span>
-      <span class="textoNavPerfil colortextoperfil">Actualizando mi Perfil</span>
-    <div class="navPerfil d-block d-lg-none">
-      <div><img src="../../../assets/img/logo/Logo180X100.png" alt=""></div>
-      <div><span class="textoNavPerfil">Empleate-UNAH</span></div>
-      <div><span class="textoNavPerfil">Actualizando mi Perfil</span></div>
-    </div> 
-    <div class="text-center text-lg-right mt-4 pr-0 pr-lg-5 btn_regresar">
-      <a class="secondary-link font-s colortexto" href="student/profile">Regresar<i
-          class="fas fa-arrow-circle-left ml-1"></i></a>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg nav-principal py-2">
+      <div class="navPerfil d-none d-lg-block">
+        <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+          <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+        </a>
+        <span class="textoNavPerfil colortextoperfil">Actualizando mi Perfil</span>
+      </div>
+      <div class="navPerfil d-block d-lg-none">
+        <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+          <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Actualizando mi Perfil
+        </a>
+      </div>
+      <ul class="navbar-nav ml-md-auto mr-md-5">
+        <li class="nav-item my-2 my-lg-0">
+          <a class="secondary-link colortexto" href="student/profile">Regresar<i
+            class="fas fa-arrow-circle-left ml-1"></i></a>
+        </li>
+      </ul>
+      <!--<div class="text-center text-lg-right pr-0 pr-lg-5">
+        <a class="secondary-link font-s colortexto" href="student/profile">Regresar<i
+            class="fas fa-arrow-circle-left ml-1"></i></a>
+      </div>-->
+    </nav>
     <div class="container animate__animated animate__fadeInLeft">
       <div class="row form-group mt-3">
         <div class="col-lg-5 col-sm-12">
           <div class="text-center">
             <div class="">
-              <img *ngIf="estudianteActual.imagenPerfil==null" class="img-fluid rounded-circle imGUsuario"
+              <img *ngIf="estudianteActual.imagenPerfil==null" class="img-fluid imGUsuario"
                 src="../../../assets/img/usuario.png" alt="">
-              <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid rounded-circle imGUsuario"
+              <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid imGUsuario"
                 [src]="backendHost + estudianteActual.imagenPerfil" alt="Profile Image">
             </div>
             <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar foto</button>
@@ -151,9 +160,10 @@
         <div class="form-group mt-3 row">
           <label class="col-2 col-form-label">Adjuntar CV (Opcional)</label>
           <div class="col">
-            <input class="form-control" type="file" formControlName="curriculumAdjunto" (change)="selectCurriculumFile($event)">
-            <button [ngClass]="{'visible': hayCurriculum == true, 'no-visible': hayCurriculum == false}"
-                type="button" class="btn btn-red my-4" (click)="cancelCurriculumFile()">Cancelar</button>
+            <input class="form-control" type="file" formControlName="curriculumAdjunto"
+              (change)="selectCurriculumFile($event)">
+            <button [ngClass]="{'visible': hayCurriculum == true, 'no-visible': hayCurriculum == false}" type="button"
+              class="btn btn-red my-4" (click)="cancelCurriculumFile()">Cancelar</button>
           </div>
         </div>
       </form>
@@ -161,7 +171,8 @@
       <div class="form-group row mt-5">
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col">
-          <button [disabled]="formularioEdit.invalid" type="button" class="btn btn-primary btn-block btnLenguaje" (click)="sendForm()">
+          <button [disabled]="formularioEdit.invalid" type="button" class="btn btn-primary btn-block btnLenguaje"
+            (click)="sendForm()">
             Guardar
           </button>
         </div>

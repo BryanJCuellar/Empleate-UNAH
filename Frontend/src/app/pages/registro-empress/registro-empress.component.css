@@ -7,9 +7,10 @@
   /*padding: 10px 10px 10px 10px;*/
 }
 
-#contenedor, #contenedor-confirmacion {
-  /*background-image: url(../../../assets/img/lineas2.png);*/
-  background-color: rgb(64 160 197);
+#contenedor,
+#contenedor-confirmacion {
+  /*background-image: url(../../../assets/img/fondo-registro.jpg);*/
+  background-color: #40a0c5;
   min-height: 100%;
   width: 100%;
   padding: 30px;
@@ -24,23 +25,31 @@
 }
 
 #registro {
-  background-color: #00000075;
-  width: 700px;
+  /*background-color: #00000075;*/
+  width: 900px;
   max-width: 100%;
-  color: white;
+  color: #40a0c5;
   border-radius: 5px;
-  padding: 30px 80px;
+  padding: 30px 100px;
   margin-left: auto;
   margin-right: auto;
   /*padding-top: 10px;  
     min-height: 600px;*/
 }
 
+@media only screen and (max-width: 767.98px) {
+
+  #registro {
+    padding: 30px 30px;
+  }
+
+}
+
 #confirmacion-email {
-  background-color: #6f6f6fad;
+  /*background-color: #6f6f6fad;*/
   width: 700px;
   max-width: 100%;
-  color: white;
+  color: #2e2e2e;
   border-radius: 5px;
   padding: 55px 80px;
   margin-left: auto;
@@ -61,7 +70,8 @@
   text-align: -webkit-center;
   font-size: 32px;
   font-weight: 700;
-  color: white;
+  color: #40a0c5;
+  ;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /*font-family: 'Aguafina Script', cursive; /*Fuente del API de Google fonts*/
   /*font-family: FuenteGoticaSalvaje, Arial;*/
@@ -72,14 +82,33 @@
 #registro select,
 #confirmacion-email input[type='text'],
 #confirmacion-email input[type='password'] {
-  background-color: #eaeaea;
+  background-color: #fdfdfd;
   font-size: 1.1rem;
-  /* border: 0px solid #000; */
-  border-width: 0;
+  border: 0px solid #3491a1;
+  box-shadow: inset 0 4px 4px 0 rgb(123 40 40 / 13%), inset 0 4px 4px 0 rgb(0 0 0 / 5%);
   border-radius: 5px;
   width: 100%;
   padding: 15px;
+  padding-right: 40px;
   box-sizing: border-box;
+}
+
+#registro input[type='text']:focus,
+#registro input[type='password']:focus,
+#registro select:focus,
+#confirmacion-email input[type='text']:focus,
+#confirmacion-email input[type='password']:focus {
+  outline: 0px;
+  border-color: #40A0C5;
+  box-shadow: 0 0 0 0.2rem #40A0C5;
+}
+
+#registro .inputPassword-container i.fa-eye,
+#registro .inputPassword-container i.fa-eye-slash {
+  color: #7C8080;
+  margin-left: -35px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 #registro button {
@@ -116,8 +145,8 @@
 }
 
 .btn-red {
-    padding: 10px 40px !important;
-  }
+  padding: 10px 40px !important;
+}
 
 .texto-pequenio {
   font-size: 0.9rem;
@@ -137,7 +166,24 @@
   font-size: 55px;
 }
 
+.primary-link {
+  color: #40A0C5 !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-link:hover {
+  color: #2f7ea0 !important;
+  text-decoration: none;
+}
+
 .form-error {
   color: #e7214c;
   font-size: 1rem;
+}
+
+.form-input-error:focus {
+  outline: 0px !important;
+  border-color: #DD0000 !important;
+  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0, 0.637) !important;
 }

@@ -2,14 +2,14 @@ body {
   background-color: #E5E4EF;
 
 }
-.barra{
+
+.nav-principal {
   background-color: #191140;
-  margin: 50px,90px;
   margin-bottom: 52px;
 }
 
-.tamañologo{
-  width: 119px;
+.nav-logo {
+  width: 100px;
 }
 
 .colortextoperfil{
@@ -39,18 +39,9 @@ body {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
-.navPerfil {
-  text-align: center !important;
-  /*background-color: #32D5AD;*/
-  background-color:  #191140;
-  width: 100%;
-  color: white;
-  padding: 10px 10px 10px 10px !important;
-  font-size: 30px;
-}
-
 .textoNavPerfil {
-  padding: 15px;
+  padding: 0px 15px;
+  font-size: 20px;
 }
 
 
@@ -60,7 +51,7 @@ body {
 }
 
 .imGUsuario {
-  border-radius: 0% !important;
+  border-radius: 5px;
   width: 310px;
   max-height: 284px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -77,15 +68,6 @@ body {
     width: 50%;
     height: 50%;
   }*/
-
-
-}
-
-@media only screen and (max-width: 770px) {
-
-  .navPerfil {
-    font-size: 20px;
-  }
 
 
 }
@@ -121,11 +103,8 @@ body {
   font-weight: bold;
 }
 
-
-
-.form-control:hover {
-
-  border: 3px solid #40a0c5 !important;
+.form-control:hover, .form-control:focus {
+  border: 2px solid #40a0c5;
 }
 
 .btnLenguaje {
@@ -162,8 +141,7 @@ body {
   border-radius: 5px;
 }
 
-.seleLengua:hover {
-  padding: 8px;
-  border-radius: 5px;
-  border: 3px solid #40a0c5;
+.seleLengua:hover, .seleLengua:focus {
+  outline: 0px;
+  border: 2px solid #40a0c5;
 }

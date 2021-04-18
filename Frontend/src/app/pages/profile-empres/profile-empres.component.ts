@@ -331,6 +331,7 @@ export class ProfileEmpresComponent implements OnInit {
     this.color4 = "#00035a";
     this.color3 = '#078bbe';
     this.elegir = 'oferta';
+    this.array_palabras = [];
     this.createFormOferta();
   }
 
