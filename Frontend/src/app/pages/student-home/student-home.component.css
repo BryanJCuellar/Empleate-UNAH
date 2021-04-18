@@ -14,17 +14,18 @@
 
 .btn-detalle {
     color: #000000;
+    padding: 2px;
     background-color: white;
     border-color: white;
 }
 
 .titulo-modal {
     color: white;
-    background-color: #00A6F7;
+    background-color: #191140;
 }
 .btn-detalle:hover {
-    color: #191140;
-    background-color: #00A6F7;
+    color: white;
+    background-color: #191140;
     border-color: white;
 }
 
@@ -551,7 +552,7 @@ ul.tabs li a .tab-text {
 }
 
 .card:hover {
-    box-shadow: 0px 0px 8px inset #191140;
+    box-shadow: 0px 0px 6px inset #191140;
 }
 
 .imgUSER {
@@ -563,15 +564,13 @@ ul.tabs li a .tab-text {
 }
 
 .card-body span {
-    padding: 2px 2px !important;
+    padding: 4px 4px;
 }
 
 .card-body span:hover {
-    color: #191140;
-    background-color: #00A6F7;
+    background-color: #191140;
     color: #FFF;
     border-radius: 10px;
-    padding: 7px;
     box-shadow: 0px 0px 7px #ccc;
     border: solid #FFF 1px;
     cursor: pointer;
@@ -580,7 +579,7 @@ ul.tabs li a .tab-text {
 
 .list-group-item:hover {
     color: #FFF;
-    background-color: #00A6F7;
+    background-color: #191140;
     padding: 2px 2px;
 }
 
