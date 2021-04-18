@@ -152,9 +152,9 @@
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex"
                 *ngFor="let postulacion of aggregatePostulaciones">
                 <div class="card flex-fill">
-                  <img *ngIf="postulacion.empresa.imagenPerfil == null" class="card-img-top rounded-circle"
+                  <img *ngIf="postulacion.empresa.imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">
-                  <img *ngIf="postulacion.empresa.imagenPerfil != null" class="card-img-top rounded-circle"
+                  <img *ngIf="postulacion.empresa.imagenPerfil != null" class="card-img-top img-fluid rounded"
                     [src]="backendHost + postulacion.empresa.imagenPerfil" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">{{postulacion.oferta.titulo_Oferta}}</h5>
