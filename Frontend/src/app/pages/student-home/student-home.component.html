@@ -19,7 +19,7 @@
                 <span class="fas fa-id-card-alt"></span> Ver perfil
                             </span>
                         </a>
-                    </li>
+                    </li> 
                 </ul>
 
                 <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
@@ -82,20 +82,14 @@
 
     <body>
 
-        <div class="main" [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
+        <div style="background-color: #E5E4EF" class="main" [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
             <div class="wrap" style="width:100%">
                 <ul class="tabs">
-                    <li [style.background-color]="color1"><a (click)="home()"><span class="fa fa-home ">
+                    <li style="background-color: #191140"><a (click)="home()"><span class="fa fa-home ">
 
               </span><span class="tab-text text-center">Home</span></a></li>
-                    <li [style.background-color]="color2"><a (click)="Mis_Postulaciones()"><span
+                    <li style="background-color: #191140"><a (click)="Mis_Postulaciones()"><span
                 class="fas fa-list-alt"></span><span class="tab-text">Mis Postulaciones</span></a></li>
-                    <li [style.background-color]="color3"><a (click)="Buscar_Ofertas()" class="active"><span
-                class="fas fa-search"></span><span class="tab-text">Buscar Ofertas</span></a></li>
-                    <li [style.background-color]="color5"><a (click)="Configuracion()" class="active"><span
-                class="fas fa-user-cog"></span><span class="tab-text">Configuración</span></a></li>
-                    <!-- <li><img class="imgUSER" src="../../../assets/img/usuario.png" alt=""></li>-->
-
                 </ul>
 
                 <div class="secciones">
@@ -115,7 +109,7 @@
                         <div class="row mt-2">
                             <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let oferta of ofertas">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas">
                                 <div class="card flex-fill">
                                     <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top rounded-circle" src="../../../assets/img/empresa1.jpg" alt="Card image cap">
                                     <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top rounded-circle" [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
@@ -136,7 +130,7 @@
                                         <button type="button" class="card-link mr-1 btn-detalle" (click)="open(content, oferta._id)">
                       <i class="fas fa-info-circle mr-1"></i>Detalles
                     </button>
-                                        <a style="color: purple;" (click)="seleccionarOferta(oferta._id)">
+                                        <a style="color: Black;" (click)="seleccionarOferta(oferta._id)">
                                             <span><i class="fas fa-mail-bulk mr-1"></i>Postularse</span></a>
                                     </div>
                                 </div>

@@ -19,10 +19,10 @@
                 <img src="../assets/img/Logo.png" width="60" height="40" class="d-inline-block align-top" alt=""> Empléate UNAH
             </a>
             <ng-container *ngIf="!getAuthService().loggedIn()">
-                <a style="color: white;" class="nav-link link-login" [routerLink]="['login/student']"><i
-            class="fas fa-sign-in-alt mr-1"></i>Ingresar como estudiante</a>
-                <a style=" color: white;" class="nav-link link-login" [routerLink]="['login/company']"><i
-            class="fas fa-sign-in-alt mr-1"></i>Ingresar como empresa</a>
+                <a style="color: white;" class="nav-link link-login" [routerLink]="['login/student']"><i 
+                    class="fas fa-user-graduate"></i>    Ingresar como estudiante</a>
+                <a style=" color: white;" class="nav-link link-login" [routerLink]="['login/company']"><i 
+                    class="far fa-building"></i>    Ingresar como empresa</a>
             </ng-container>
             <ng-container *ngIf="getAuthService().loggedIn() && getAuthService().loggedInStudent()">
                 <a style="color: white;" class="nav-link link-session font-s" [routerLink]="['student/home']"><i
@@ -43,10 +43,12 @@
     <section class="jumbotron text-center" style="background-image: url(../assets/img/img5.jpg); background-size: cover;">
         <div class="container">
             <!-- Image and text -->
-            <h3 style="color: beige !important; font-weight: bolder; background-color: #0000005e;">Empléate UNAH</h3>
-            <p class="lead text-muted" style="color:#191140 !important; font-weight: bolder; background-color: #f0ffff54;">
-                Aprovecha e inscríbete a la plataforma <br> donde los <br> estudiantes y empresas <br> se encuentran
-            </p>
+            <div style="background-color: rgba(0 0 0 / 26%); border-radius: 7px;">
+                <h2 class="titulo_estilo">Empléate UNAH</h2>
+                <p class="lead text-muted titulo_estilo">
+                    Aprovecha e inscríbete a la plataforma donde <br> los estudiantes y empresas se encuentran
+                </p>
+            </div><br><br>
             <p>
                 <a [routerLink]="['register/company']" class="btn btn-empresa m-2">Registro de empresas</a>
             </p>
@@ -55,9 +57,8 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-
             <div class="row">
-                <div class="col-md-4 d-flex div.card">
+                <div class="col-md-4 d-flex div.card animate__animated animate__fadeInUp">
                     <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
                         <div class="card-header">
                             <img src="../assets/img/img7.jpg" class="card-img-top" alt="...">
@@ -65,11 +66,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Encuentra trabajo de acuerdo al horario que tengas <i class="far fa-clock"></i>
                             </h5>
-                        </div>
+                        </div> 
                     </div>
                 </div>
 
-                <div class="col-md-4 d-flex div.card">
+                <div class="col-md-4 d-flex div.card animate__animated animate__fadeInUp">
                     <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
                         <div class="card-header">
                             <img src="../assets/img/img2.jpg" class="card-img-top" alt="...">
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex div.card">
+                <div class="col-md-4 d-flex div.card animate__animated animate__fadeInUp">
                     <div class="card outline-cards mb-3 flex-fill" style="max-width: 18rem;">
                         <div class="card-header">
                             <img src="../assets/img/img1.jpg" class="card-img-top" alt="...">

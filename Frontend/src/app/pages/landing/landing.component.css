@@ -6,7 +6,11 @@
     background-color: #191140;
     color: beige;
 }
-
+.titulo_estilo{
+    color:#ffffff !important; 
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px #000000;
+}
 .btn-empresa:hover {
     background-color: #23185e;
     color: beige;
@@ -46,8 +50,6 @@ div.card {
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    border-color: #2B2452;
-    border-width: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -125,12 +127,12 @@ footer {
 
 .footer-ditributed .footer-left h3 {
     color: #fff;
-    font: normal 36px 'cookie', cursive;
+    font: normal 32px 'cookie', cursive;
     margin: 0;
 }
 
 .footer-ditributed .footer-left img {
-    width: 30%;
+    width: 53%;
 }
 
 .footer-ditributed .footer-left h3 span {
@@ -253,4 +255,5 @@ footer {
     .footer-ditributed .footer-center i {
         margin-left: 0;
     }
+
 }

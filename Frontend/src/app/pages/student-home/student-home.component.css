@@ -6,25 +6,30 @@
     box-sizing: border-box;
 }
 
-.btn-cerrar {
+.btn-cerrar { 
     color: white;
     background-color: #007bff;
     padding: 4px 30px;
 }
 
 .btn-detalle {
-    color: #520547;
+    color: #000000;
     background-color: white;
     border-color: white;
 }
 
 .titulo-modal {
     color: white;
-    background-color: #966FA6;
+    background-color: #00A6F7;
+}
+.btn-detalle:hover {
+    color: #191140;
+    background-color: #00A6F7;
+    border-color: white;
 }
 
 .btn-cerrar:hover {
-    color: #966FA6;
+    color: #00A6F7;
     background-color: white;
     font-weight: bolder;
 }
@@ -35,7 +40,7 @@
 
 .main {
     /*funciona en cada despliegue de pestana */
-    background-image: url(../../../assets/img/lineas2.png);
+    color: #E5E4EF !important;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -83,7 +88,7 @@ body {
     overflow: hidden;
     border: 1px solid #fff;
     margin-top: 10px;
-    background: #b6b7ee8a;
+    background: #00A6F7;
     justify-content: center;
 }
 
@@ -184,7 +189,7 @@ body {
 }
 
 #publicaciones .aplicar {
-    background: #fde406;
+    background: #00A6F7;
     color: #fff;
     border: 0px;
     border-radius: 5px;
@@ -193,7 +198,7 @@ body {
 }
 
 #publicaciones .aplicar:hover {
-    background: #fac104;
+    background: #00A6F7;
     color: #fff;
 }
 
@@ -207,11 +212,11 @@ body {
 
 .nav-principal .custom-toggler {
     padding: 4px 8px;
-    border-color: #4c33c7;
+    border-color: #00A6F7;
 }
 
 .nav-principal .navbar-toggler:focus {
-    box-shadow: 0px 0px 5px inset #4c33c7;
+    box-shadow: 0px 0px 5px inset #00A6F7;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -219,7 +224,7 @@ body {
 }
 
 .link-profile:hover {
-    color: #966FA6;
+    color: #00A6F7;
     font-weight: bold;
     font-size: 18px;
 }
@@ -240,7 +245,7 @@ body {
 #sidemenu a {
     color: #fff;
     text-decoration: none;
-    background: #fde406;
+    background: #00A6F7;
 }
 
 #sidemenu #heade {
@@ -371,12 +376,12 @@ body {
 }
 
 #sidemenu .nom-item:hover {
-    background: #fac104;
+    background: #00A6F7;
 }
 
 #sidemenu #salir {
     box-sizing: border-box;
-    background: #fac104;
+    background: #00A6F7;
     width: 300px;
     overflow: hidden;
     text-align: center;
@@ -430,14 +435,7 @@ body {
     box-sizing: border-box;
 }
 
-.main {
-    /*funciona en cada despliegue de pestana */
-    background-image: url(../../../assets/img/lineas2.png);
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute
-}
+
 
 body {
     /*funciona cuando no hay contenido y asi no aparesca cortada la imagen */
@@ -459,7 +457,7 @@ body {
 
 ul.tabs {
     width: 100%;
-    background: #520547;
+    background: #191140;
     list-style: none;
     display: flex;
 }
@@ -479,11 +477,11 @@ ul.tabs li a {
 }
 
 ul.tabs a:active {
-    background: #854A7C;
+    background: #00A6F7;
 }
 
 ul.tabs a:hover {
-    background: #854A7C !important;
+    background: #00A6F7 !important;
 }
 
 ul.tabs li a .tab-text {
@@ -492,11 +490,13 @@ ul.tabs li a .tab-text {
 
 .secciones {
     width: 100%;
-    background-color: rgba(232, 230, 235, 0.84);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .secciones div {
     padding: 10px 16px 10px 16px;
+    color: black;
 }
 
 .secciones div p {
@@ -542,7 +542,7 @@ ul.tabs li a .tab-text {
 
 .card {
     border-radius: 10px;
-    border: #191140 3px solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-title {
@@ -551,9 +551,7 @@ ul.tabs li a .tab-text {
 }
 
 .card:hover {
-    border: #854A7C solid 3px;
-    box-shadow: 0px 0px 15px inset #854A7C;
-    color: #854A7C !important
+    box-shadow: 0px 0px 8px inset #191140;
 }
 
 .imgUSER {
@@ -570,7 +568,7 @@ ul.tabs li a .tab-text {
 
 .card-body span:hover {
     color: #191140;
-    background-color: #854A7C;
+    background-color: #00A6F7;
     color: #FFF;
     border-radius: 10px;
     padding: 7px;
@@ -582,7 +580,7 @@ ul.tabs li a .tab-text {
 
 .list-group-item:hover {
     color: #FFF;
-    background-color: #854A7C;
+    background-color: #00A6F7;
     padding: 2px 2px;
 }
 
@@ -628,7 +626,7 @@ ul.tabs li a .tab-text {
 }
 
 .botonesDetalles div button:hover {
-    background-color: #ffd900;
+    background-color: #00A6F7;
     color: #191140;
 }
 
