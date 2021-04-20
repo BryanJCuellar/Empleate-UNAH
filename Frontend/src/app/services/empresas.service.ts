@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class EmpresasService {
   backendHost: string = 'http://localhost:8888';
   // backendHost: string = 'https://ingsoftware-backend.herokuapp.com';
+  idEstudiante: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,5 +36,12 @@ export class EmpresasService {
 
   subirImagenPerfil(idEmpresa, dataImage): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresas/${idEmpresa}/imagenPerfil`, dataImage);
+  } 
+  seleccionarEstudiante(estudiante_seleccionado){
+    this.idEstudiante = estudiante_seleccionado;
+    localStorage.setItem("estudiante", this.idEstudiante);
+  }
+  getEstudiante(){
+    return localStorage.getItem('estudiante');
   }
 }

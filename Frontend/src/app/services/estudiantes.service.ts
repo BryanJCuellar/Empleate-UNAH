@@ -46,5 +46,8 @@ export class EstudiantesService {
   obtenerPostulacionesEstudiante(idEstudiante): Observable<any> {
     return this.httpClient.get(`${this.backendHost}/estudiantes/${idEstudiante}/postulaciones`, {});
   }
+  obtenerPerfilEstudiante(idEstudiante): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/estudiantes/${idEstudiante}/ver_perfil`, {});
+  }
 
 }
