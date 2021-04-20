@@ -18,6 +18,24 @@ router.get('/tokenID', verifyToken, function (req, res) {
     });
 });
 
+//Obtener la información de un estudiante
+router.get('/:idEstudiante/ver_perfil', function(req,res){
+    estudiante.find(
+        {
+            _id: req.params.idEstudiante
+        },
+        )
+    .then(result=>{
+        res.send(result[0]);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    });
+    
+});
+
 // Obtener informacion principal de estudiante (Logueado)
 router.get('/:idEstudiante/main', verifyToken, function (req, res) {
     estudiante.findOne({
