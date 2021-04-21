@@ -442,18 +442,6 @@ body {
   box-sizing: border-box;
 }
 
-
-
-body {
-  /*funciona cuando no hay contenido y asi no aparesca cortada la imagen */
-  font-family: 'Open sans';
-  background-image: url(../../../assets/img/lineas2.png);
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute
-}
-
 .wrap {
   width: 800px;
   height: 100%;
@@ -592,17 +580,6 @@ ul.tabs li a .tab-text {
 }
 
 
-/*.card-body h5:hover {
-  color: #191140 !important;
-  font-size: 25px;
-}*/
-
-
-/*.card-body p:hover {
-  font-size: 20px !important;
-}*/
-
-
 /********************************/
 
 
@@ -655,21 +632,6 @@ ul.tabs li a .tab-text {
   text-align: center;
   pointer-events: none;
   color: #aaa;
-}
-
-/*Filtro select*/
-.filtros {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid #000;
-}
-
-.filtros:focus {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  box-shadow: none;
 }
 
 /* Estilizando el CHAT */

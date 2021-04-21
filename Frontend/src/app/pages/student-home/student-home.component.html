@@ -22,6 +22,14 @@
               </span>
             </a>
           </li>
+          <li class="nav-item my-2 my-lg-0 ml-1 ml-md-0">
+            <a style="color: white !important;" class="nav-link mx-3 ml-lg-5"
+              (click)="irMensajes(estudianteActual._id)">
+              <span class="link-profile">
+                <span class="fas fa-comment-alt"></span> Mensajes
+              </span>
+            </a>
+          </li>
         </ul>
 
         <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
@@ -98,7 +106,7 @@
         <div class="secciones">
           <div *ngIf="elegir=='home'">
             <div class="row">
-              <div class="form-group has-search col-12 col-sm-5 col-lg-6">
+              <div class="form-group has-search col-12 col-sm-4 col-lg-5">
                 <span class="fa fa-search form-control-feedback"></span>
                 <input type="text" class="form-control" placeholder="Buscar">
               </div>
@@ -120,6 +128,9 @@
                 </label>
                 <!--<input type="text" class="form-control" placeholder="Jornada" name="filtrarJornada" spellcheck="false"
                   autocomplete="none" [(ngModel)]="filtrarJornada">-->
+              </div>
+              <div class="col-1 col-sm-1 col-lg-1">
+                <button type="button" class="btn btn-cerrar" (click)="reset()"><i class="fas fa-sync"></i></button>
               </div>
             </div>
             <div class="row mt-2">

@@ -61,6 +61,10 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
+  irMensajes(idUsuario){
+    window.location.href = `student/${idUsuario}/chats`;
+  }
+
   obtenerOfertas() {
     // console.log('Error al obtener informacion estudiante', error)
     this.OfertasService.obtenerOfertas()
@@ -107,7 +111,6 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
-
   home() {
     this.color2 = "#520547";
     this.color3 = "#520547";
@@ -116,6 +119,11 @@ export class StudentHomeComponent implements OnInit {
     this.elegir = 'home';
     this.color1 = '#854A7C';
   }
+
+  reset(): void { 
+    window.location.reload(); 
+  }
+
   Mis_Postulaciones() {
     this.color1 = "#520547";
     this.color3 = "#520547";
