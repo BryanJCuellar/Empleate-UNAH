@@ -1,4 +1,0 @@
-<div id="company-homepg" *ngIf="getAuthService().loggedInCompany() && empresaActual != null">
-    <h2 class="pt-5 px-5">Empresa: {{empresaActual.organizacion}}</h2>
-    <h4 class="px-5 primary-link"><a (click)="getAuthService().logoutCompany()">Cerrar Sesión</a></h4>
-</div>

@@ -145,3 +145,62 @@ body {
   outline: 0px;
   border: 2px solid #40a0c5;
 }
+
+/* css para input file*/
+
+html {
+  font-family: sans-serif;
+}
+
+.custom-file__input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.custom-file__label {
+  position: relative;
+  display: block;
+  width: 400px;
+  max-width: 90%;
+  min-width: 335px;
+  min-height: 45px;
+  margin: 10px 0;
+  padding: 1;
+  background: #00909b;
+  border-radius: 5px;
+  color: #fffdfd;
+  line-height: 45px;
+  text-align: center;
+  text-transform: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.custom-file__label:hover {
+  background: #00b2be;
+}
+
+.custom-file__input:valid~.custom-file__label {
+  border-color: #39B54A;
+  background: #39B54A;
+  color: #39B54A;
+}
+
+.custom-file__input:valid~.custom-file__label:before {
+  content: '\f00c';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  color: #ffffff;
+  font-family: 'FontAwesome';
+  line-height: 45px;
+}
+
+
+/*fin de css para input file*/

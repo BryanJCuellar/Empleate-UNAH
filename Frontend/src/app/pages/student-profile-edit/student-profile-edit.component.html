@@ -15,7 +15,7 @@
       <ul class="navbar-nav ml-md-auto mr-md-5">
         <li class="nav-item my-2 my-lg-0">
           <a class="secondary-link colortexto" href="student/profile">Regresar<i
-            class="fas fa-arrow-circle-left ml-1"></i></a>
+              class="fas fa-arrow-circle-left ml-1"></i></a>
         </li>
       </ul>
       <!--<div class="text-center text-lg-right pr-0 pr-lg-5">
@@ -33,13 +33,20 @@
               <img *ngIf="estudianteActual.imagenPerfil!=null" class="img-fluid imGUsuario"
                 [src]="backendHost + estudianteActual.imagenPerfil" alt="Profile Image">
             </div>
-            <button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar foto</button>
+            <!--<button type="button" class="btn btn-primary my-4" (click)="habilitarImagen()">Editar foto</button>-->
             <form [formGroup]="formularioUploadImage">
-              <input
+              <input formControlName="imagenPerfil" type="file" id="field-upload" class="custom-file__input" required
+                (change)="selectProfileImage($event)">
+              <label class="custom-file__label mx-auto" for="field-upload">Editar Foto</label>
+              <div class="col text-left"
+                [ngClass]="{'visible': hayImagenPerfil == true, 'no-visible': hayImagenPerfil == false}">
+                <button type="button" class="btn btn-red my-3" (click)="cancelProfileImage()">Cancelar</button>
+              </div>
+              <!--<input
                 [ngClass]="{'visible':imagenPerfilHabilitada == true, 'no-visible': imagenPerfilHabilitada == false}"
                 formControlName="imagenPerfil" class="ml-5 ml-lg-0" type="file" (change)="selectProfileImage($event)">
               <button [ngClass]="{'visible': hayImagenPerfil == true, 'no-visible': hayImagenPerfil == false}"
-                type="button" class="btn btn-red my-4" (click)="cancelProfileImage()">Cancelar</button>
+                type="button" class="btn btn-red my-4" (click)="cancelProfileImage()">Cancelar</button>-->
             </form>
           </div>
         </div>

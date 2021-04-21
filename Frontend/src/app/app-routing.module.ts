@@ -6,7 +6,6 @@ import { RegistroEmpressComponent } from './pages/registro-empress/registro-empr
 import { LoginComponent } from './pages/login/login.component';
 import { LoginEmpressComponent } from './pages/login-empress/login-empress.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
-import { CompanyHomeComponent } from './pages/company-home/company-home.component';
 import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estudiante.component';
 import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
   { path: 'student/profile', component: PerfilEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
   { path: 'student/profile/edit', component: StudentProfileEditComponent, data: { title: 'Empleate-UNAH - Editar Perfil Estudiante' } },
   { path: 'student/home/postulate', component: PostulacionComponent, data: { title: 'Empleate-UNAH - Postulate' } },
-  { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
   { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
   { path: 'company/profile/edit', component: CompanyProfileEditComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
   { path: 'company/student-selected/:idEstudiante', component: VistaEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
