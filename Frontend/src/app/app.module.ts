@@ -12,6 +12,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Services
 import { AuthService } from './services/auth.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+// Pipes
+import { FiltrarDeptoPipe } from './pipes/filtrar-depto.pipe';
+import { FiltrarJornadaPipe } from './pipes/filtrar-jornada.pipe';
 // Components
 import { LandingComponent } from './pages/landing/landing.component';
 import { RegistroEmpressComponent } from './pages/registro-empress/registro-empress.component';
@@ -24,7 +27,7 @@ import { PerfilEstudianteComponent } from './pages/perfil-estudiante/perfil-estu
 import { StudentProfileEditComponent } from './pages/student-profile-edit/student-profile-edit.component';
 import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.component';
 import { PostulacionComponent } from './pages/postulacion/postulacion.component';
-import {CompanyProfileEditComponent} from './pages/company-profile-edit/company-profile-edit.component';
+import { CompanyProfileEditComponent } from './pages/company-profile-edit/company-profile-edit.component';
 import { VistaEstudianteComponent } from './pages/vista-estudiante/vista-estudiante.component';
 
 @NgModule({
@@ -41,7 +44,9 @@ import { VistaEstudianteComponent } from './pages/vista-estudiante/vista-estudia
     ProfileEmpresComponent,
     PostulacionComponent,
     CompanyProfileEditComponent,
-    VistaEstudianteComponent
+    VistaEstudianteComponent,
+    FiltrarDeptoPipe,
+    FiltrarJornadaPipe
   ],
   imports: [
     BrowserModule,

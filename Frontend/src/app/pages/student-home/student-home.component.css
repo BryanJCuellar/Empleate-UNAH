@@ -648,3 +648,17 @@ ul.tabs li a .tab-text {
     pointer-events: none;
     color: #aaa;
 }
+
+/*Filtro select*/
+.filtros{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #000;
+}
+.filtros:focus{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+}

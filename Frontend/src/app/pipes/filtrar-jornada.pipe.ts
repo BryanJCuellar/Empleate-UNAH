@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FiltrarJornadaPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
-    if (arg == '' ) {
+    if (arg == null ) {
       return value;
     };
     const res_ofertasDepto =[];

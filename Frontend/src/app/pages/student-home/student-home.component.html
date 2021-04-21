@@ -82,7 +82,7 @@
     </div>
   </ng-template>
 
-  <body> 
+  <body>
 
     <div style="background-color: #E5E4EF" class="main"
       [ngClass]="{'vh-100':elegir == 'Mis_Postulaciones' || elegir == 'Buscar_Ofertas' || elegir == 'Configuracion'}">
@@ -103,17 +103,30 @@
                 <input type="text" class="form-control" placeholder="Buscar">
               </div>
               <div class="col-6 col-sm-4 col-lg-3">
-                <input type="text" class="form-control"  placeholder="Departamento"  name="filtrarDepto" spellcheck="false" autocomplete="none" [(ngModel)]="filtrarDepto">
+                <label>Seleccione el departamento
+                  <select name="departamento" class="form-control filtros" [(ngModel)]="departamento">
+                    <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}
+                    </option>
+                  </select>
+                </label>
+                <!--<input type="text" class="form-control" placeholder="Departamento" name="filtrarDepto"
+                  spellcheck="false" autocomplete="none" [(ngModel)]="filtrarDepto">-->
               </div>
               <div class="col-6 col-sm-3 col-lg-3">
-                <input type="text" class="form-control"  placeholder="Jornada" name="filtrarJornada" spellcheck="false" autocomplete="none" [(ngModel)]="filtrarJornada">
+                <label>Seleccione la jornada laboral
+                  <select name="jornada" class="form-control filtros" [(ngModel)]="jornada">
+                    <option *ngFor="let jornada of jornada_laboral" value="{{jornada}}">{{jornada}}</option>
+                  </select>
+                </label>
+                <!--<input type="text" class="form-control" placeholder="Jornada" name="filtrarJornada" spellcheck="false"
+                  autocomplete="none" [(ngModel)]="filtrarJornada">-->
               </div>
             </div>
             <div class="row mt-2">
               <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp"
-              *ngFor="let oferta of ofertas | filtrarDepto:filtrarDepto  | filtrarJornada:filtrarJornada ">
+                *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada">
                 <div class="card flex-fill">
                   <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">
@@ -179,18 +192,6 @@
               </div>
             </div>
 
-          </div>
-
-          <div *ngIf="elegir=='Buscar_Ofertas'">
-            <p>hola Buscar_Ofertas</p>
-          </div>
-
-          <div *ngIf="elegir=='Mi_Curriculum'">
-            <p>hola Mi_Curriculum</p>
-          </div>
-
-          <div *ngIf="elegir=='Configuracion'">
-            <p>hola Configuracion</p>
           </div>
 
         </div>

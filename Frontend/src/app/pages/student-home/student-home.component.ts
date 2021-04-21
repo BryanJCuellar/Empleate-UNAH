@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
 import { OfertasService } from 'src/app/services/ofertas.service';
 import { Router } from '@angular/router';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-student-home',
@@ -17,8 +17,11 @@ export class StudentHomeComponent implements OnInit {
   ofertaActual: any;
   aggregatePostulaciones = [];
   ofertas = [];
-  filtrarDepto = '';
-  filtrarJornada ='';
+  departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
+    'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
+    'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
+  jornada_laboral: any = ['Tiempo Completo', 'Desde Casa', 'Por Horas', 'Medio Tiempo',
+    'Beca/Prácticas', 'No Especificar (N/A)'];
   closeResult = '';
   elegir = 'home';
   color1 = "#520547";
@@ -83,24 +86,24 @@ export class StudentHomeComponent implements OnInit {
     return this.authService;
   }
 
-  cargarPostulaciones(){
-    if(this.estudianteActual != null){
+  cargarPostulaciones() {
+    if (this.estudianteActual != null) {
       this.estudiantesService.obtenerPostulacionesEstudiante(this.estudianteActual._id)
-      .subscribe(
-        response => {
-          this.aggregatePostulaciones = [];
-          for(let i = 0; i < response.length; i++){
-            this.aggregatePostulaciones.push(response[i]);
-            if (response[i].oferta.descripcion.length > 50) {
-              this.aggregatePostulaciones[i].oferta.resumenDescripcion = (response[i].oferta.descripcion).substring(0, 49) + '...';
-            } else {
-              this.aggregatePostulaciones[i].oferta.resumenDescripcion = response[i].oferta.descripcion;
+        .subscribe(
+          response => {
+            this.aggregatePostulaciones = [];
+            for (let i = 0; i < response.length; i++) {
+              this.aggregatePostulaciones.push(response[i]);
+              if (response[i].oferta.descripcion.length > 50) {
+                this.aggregatePostulaciones[i].oferta.resumenDescripcion = (response[i].oferta.descripcion).substring(0, 49) + '...';
+              } else {
+                this.aggregatePostulaciones[i].oferta.resumenDescripcion = response[i].oferta.descripcion;
+              }
             }
-          }
-          console.log("Postulaciones", this.aggregatePostulaciones);
-        },
-        error => console.log('Error al obtener postulaciones', error)
-      )
+            console.log("Postulaciones", this.aggregatePostulaciones);
+          },
+          error => console.log('Error al obtener postulaciones', error)
+        )
     }
   }
 
@@ -122,53 +125,26 @@ export class StudentHomeComponent implements OnInit {
     this.color2 = '#854A7C';
     this.cargarPostulaciones();
   }
-  Buscar_Ofertas() {
-    this.color1 = "#520547";
-    this.color2 = "#520547";
-    this.color4 = "#520547";
-    this.color5 = "#520547";
-    this.elegir = 'Buscar_Ofertas';
-    this.color3 = '#854A7C';
-  }
 
-
-  Mi_Curriculum() {
-    this.color1 = "#520547";
-    this.color2 = "#520547";
-    this.color3 = "#520547";
-    this.color5 = "#520547";
-    this.elegir = 'Mi_Curriculum';
-    this.color4 = '#854A7C';
-  }
-
-  Configuracion() {
-    this.color1 = "#520547";
-    this.color2 = "#520547";
-    this.color3 = "#520547";
-    this.color4 = "#520547";
-    this.elegir = 'Configuracion';
-    this.color5 = '#854A7C';
-  }
-
-  seleccionarOferta(idOferta){
+  seleccionarOferta(idOferta) {
     console.log(idOferta);
     this.OfertasService.seleccionarOferta(idOferta);
     this.router.navigateByUrl(`/student/home/postulate`);
   }
 
-  verDetalleOferta(idOferta){
+  verDetalleOferta(idOferta) {
     this.OfertasService.obtenerOfertaSelccionada(idOferta)
-    .subscribe(
-      data => {
-        console.log(data);
-        this.ofertaActual = data;
-      },
-      error => console.log('Error al obtener informacion oferta', error)
-    );
+      .subscribe(
+        data => {
+          console.log(data);
+          this.ofertaActual = data;
+        },
+        error => console.log('Error al obtener informacion oferta', error)
+      );
   }
 
   open(content, idOferta) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
