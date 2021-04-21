@@ -21,13 +21,13 @@
           </ul>
   
           <form class="form-inline my-2 my-lg-0 ml-lg-auto">
-            <button type="button" class="btn btn-cerrar mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i
+            <button type="button" class="btn btn-cerrar mx-lg-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión<i
                 class="fas fa-sign-out-alt ml-2"></i></button>
           </form>
         </div>
       </nav>
   
-      <div class="main-wrapper">
+      <div class="main-wrapper" *ngIf="vista=='perfil'">
         <div class="container px-3 px-lg-5 animate__animated animate__fadeInRight">
           <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
   
@@ -61,6 +61,9 @@
                   class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto tamaño"
                   [src]="backendHost + estudiante.imagenPerfil" alt="image">
                 <div class="media-body text-left">
+                  <button type="button" class="btn btn-cerrar mx-lg-5" (click)="verCurriculo()">Revisar Curriculum
+                    <i class="fas fa-file-pdf"></i>
+                  </button>
                   <p class="mb-0">{{estudiante.descripcionPerfil}}
                   </p>
                 </div>
@@ -92,10 +95,10 @@
                           <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">
                             {{estudiante.clasesAprobadas}}</div>
                         </div>
+                       
                       </div>
                     </div>
                     <!--//item-->
-  
                   </section>
                   <!--//work-section-->
                 </div>
@@ -131,6 +134,7 @@
   
         </div>
         <!--//container-->
+     
   
         <footer class="footer text-center py-4">
           <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
@@ -140,4 +144,30 @@
   
       </div>
     </div>
+
+    <div class="main-wrapper" *ngIf="vista=='curriculum'">
+      <div class="container px-3 px-lg-5 ">
+        <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+          <div class="resume-header">
+            <div class="row align-items-center">
+              <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
+                <h2 class="resume-name mb-0 text-uppercase">{{estudiante.nombre}} {{estudiante.apellido}}</h2>
+              </div>
+              <!--//resume-title-->
+              <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+                <button type="button" class="btn btn-cerrar mx-lg-5" style="width: 197px;"
+                (click)="verPerfil()">Revisar el perfil
+                  <i class="fas fa-user-circle"></i></button>
+              </div>
+              <!--//resume-contact-->
+            </div>
+            <!--//row-->
+
+          </div>
+        <embed [src] = "backendHost + estudiante.CurriculumAdjunto | safeurl" 
+         type="application/pdf" width="100%" height="900px" >
+        </article>
+      </div>
+    </div>
+
   </body>
