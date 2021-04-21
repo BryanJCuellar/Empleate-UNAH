@@ -13,6 +13,8 @@ import { ProfileEmpresComponent } from './pages/profile-empres/profile-empres.co
 import { PostulacionComponent } from './pages/postulacion/postulacion.component';
 import {CompanyProfileEditComponent} from './pages/company-profile-edit/company-profile-edit.component';
 import { VistaEstudianteComponent } from './pages/vista-estudiante/vista-estudiante.component';
+import { ListChatsComponent } from './pages/chats/list-chats/list-chats.component';
+import { ChatComponent } from './pages/chats/chat/chat.component';
 
 const routes: Routes = [
   { path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -27,7 +29,10 @@ const routes: Routes = [
   { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
   { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
   { path: 'company/profile/edit', component: CompanyProfileEditComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
-  { path: 'company/student-selected', component: VistaEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } }
+  { path: 'company/student-selected', component: VistaEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
+  /**Chats**/
+  { path: ':tipoUsuario/:idUsuario/chats', component: ListChatsComponent, data: { title: 'Empleate-UNAH - Mis Chats' } },
+  { path: ':tipoUsuario/:idUsuario/chats/:idChat', component: ChatComponent, data: { title: 'Empleate-UNAH - Chat' } }
 ];
 
 @NgModule({
