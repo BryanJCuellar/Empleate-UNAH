@@ -422,12 +422,11 @@
                                         {{postulado.postulaciones.fecha_postulacion.dia}}/{{postulado.postulaciones.fecha_postulacion.mes}}/{{postulado.postulaciones.fecha_postulacion.anio}}
                                     </td>
                                     <td>
-                                        <button class="col-4" type="button" class="btn btn-info boton" style="margin: 5px;">Ver <i
+                                        <button class="col-4" type="button" class="btn btn-info boton"
+                                        (click)="verPerfil(postulado.estudiante._id)" style="margin: 5px;">Ver <i
                         class="fas fa-info"></i></button>
-                                        <button class="col-4" type="button" class="btn btn-success boton" style="margin: 5px;">Aceptar
-                      <i class="far fa-check-square"></i></button>
-                                        <button class="col-4" type="button" class="btn btn-danger boton" style="margin: 5px;">Rechazar <i
-                        class="fas fa-trash-alt"></i></button>
+                                        
+                    
                                     </td>
                                 </tr>
                             </tbody>

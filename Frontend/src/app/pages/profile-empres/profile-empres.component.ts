@@ -549,4 +549,9 @@ export class ProfileEmpresComponent implements OnInit {
     return this.authService;
   }
 
+  verPerfil(idEstudiante){
+    this.empresasService.seleccionarEstudiante(idEstudiante);
+    this.router.navigateByUrl(`company/student-selected`);
+  }
+
 }
