@@ -15,6 +15,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 // Pipes
 import { FiltrarDeptoPipe } from './pipes/filtrar-depto.pipe';
 import { FiltrarJornadaPipe } from './pipes/filtrar-jornada.pipe';
+import { SafeurlPipe } from './pipes/safeurl.pipe';
 // Components
 import { LandingComponent } from './pages/landing/landing.component';
 import { RegistroEmpressComponent } from './pages/registro-empress/registro-empress.component';
@@ -46,7 +47,8 @@ import { VistaEstudianteComponent } from './pages/vista-estudiante/vista-estudia
     CompanyProfileEditComponent,
     VistaEstudianteComponent,
     FiltrarDeptoPipe,
-    FiltrarJornadaPipe
+    FiltrarJornadaPipe,
+    SafeurlPipe
   ],
   imports: [
     BrowserModule,
