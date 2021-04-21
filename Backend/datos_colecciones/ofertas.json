@@ -94,47 +94,6 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "6053d4603061d80022a1fc47"
-  },
-  "ubicacion": [
-    {
-      "departamento": "Comayagua",
-      "ciudad": "Comayagua"
-    }
-  ],
-  "fecha_publicacion": [
-    {
-      "dia": 18,
-      "mes": 3,
-      "anio": 2021
-    }
-  ],
-  "palabras_clave": [
-    "Tecnologías"
-  ],
-  "id_empresa": {
-    "$oid": "6051443d5807492e1477f3e1"
-  },
-  "titulo_Oferta": "Oferta 2",
-  "descripcion": "Mmm esto es una oferta de prueba",
-  "idiomas": "Todos",
-  "edad": "20",
-  "indice_estudiante": 80,
-  "experiencia_laboral": null,
-  "jornada_laboral": "Medio Tiempo",
-  "tipo_contrato": "Otro tipo de contrato",
-  "salario": null,
-  "estado_oferta": true,
-  "postulaciones": [],
-  "createdAt": {
-    "$date": "2021-03-18T22:29:52.348Z"
-  },
-  "updatedAt": {
-    "$date": "2021-03-18T22:29:52.348Z"
-  },
-  "__v": 0
-},{
-  "_id": {
     "$oid": "6053f9d80b0c9d0022e9aff1"
   },
   "ubicacion": [
@@ -172,47 +131,6 @@
   },
   "updatedAt": {
     "$date": "2021-03-19T01:09:44.269Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "605e5ab3a441760022e63f70"
-  },
-  "ubicacion": [
-    {
-      "departamento": "Atlántida",
-      "ciudad": "teg"
-    }
-  ],
-  "fecha_publicacion": [
-    {
-      "dia": 26,
-      "mes": 3,
-      "anio": 2021
-    }
-  ],
-  "palabras_clave": [
-    "call"
-  ],
-  "id_empresa": {
-    "$oid": "605e58fba441760022e63f6f"
-  },
-  "titulo_Oferta": "a",
-  "descripcion": "sssss",
-  "idiomas": "español",
-  "edad": "34",
-  "indice_estudiante": 70,
-  "experiencia_laboral": "Sin experiencia",
-  "jornada_laboral": "Tiempo Completo",
-  "tipo_contrato": "Contrato por tiempo determinado",
-  "salario": 4444,
-  "estado_oferta": true,
-  "postulaciones": [],
-  "createdAt": {
-    "$date": "2021-03-26T22:05:39.554Z"
-  },
-  "updatedAt": {
-    "$date": "2021-03-26T22:05:39.554Z"
   },
   "__v": 0
 },{

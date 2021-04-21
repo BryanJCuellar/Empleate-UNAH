@@ -36,13 +36,7 @@
       "direccion": "Calle"
     }
   ],
-  "ofertas": [
-    {
-      "id_oferta": {
-        "$oid": "6053d4603061d80022a1fc47"
-      }
-    }
-  ],
+  "ofertas": [],
   "organizacion": "LOL",
   "email": "riverita.enoc@gmail.com",
   "password": "$2a$10$auFDzFRIrrHJsq3B0DtGe.YikNn2XRZVIYq7jr/pN8h34gXxE6CHi",
@@ -112,13 +106,7 @@
       "direccion": "8y 9 calle barrio Concepcion"
     }
   ],
-  "ofertas": [
-    {
-      "id_oferta": {
-        "$oid": "605e5ab3a441760022e63f70"
-      }
-    }
-  ],
+  "ofertas": [],
   "organizacion": "almacen extra",
   "email": "ccinthya375@gmail.com",
   "password": "$2a$10$XnJrsSQMtKT3FdICkyPUhOZTOIsjMgi.TiPii8EEPDCrmZJz7jcd.",
