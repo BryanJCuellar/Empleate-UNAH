@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'company/home', component: CompanyHomeComponent, data: { title: 'Empleate-UNAH - Inicio Empresa' } },
   { path: 'company/profile', component: ProfileEmpresComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
   { path: 'company/profile/edit', component: CompanyProfileEditComponent, data: { title: 'Empleate-UNAH - PERFIL-EMPRESA' } },
-  { path: 'company/student-selected', component: VistaEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
+  { path: 'company/student-selected/:idEstudiante', component: VistaEstudianteComponent, data: { title: 'Empleate-UNAH - Perfil Estudiante' } },
   /**Chats**/
   { path: ':tipoUsuario/:idUsuario/chats', component: ListChatsComponent, data: { title: 'Empleate-UNAH - Mis Chats' } },
   { path: ':tipoUsuario/:idUsuario/chats/:idChat', component: ChatComponent, data: { title: 'Empleate-UNAH - Chat' } }

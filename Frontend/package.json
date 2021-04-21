@@ -1,6 +1,6 @@
 {
   "name": "empleate-unah",
-  "version": "0.0.0",
+  "version": "5.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -35,6 +35,7 @@
     "express": "^4.17.1",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^4.0.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^10.15.2",
     "tslib": "^2.0.0",

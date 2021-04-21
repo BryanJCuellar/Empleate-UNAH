@@ -1,1 +1,108 @@
-<p>chat works!</p>
+<ng-container *ngIf="getAuthService().loggedIn()">
+  <div>
+    <nav class=" navbar navbar-expand-lg nav-principal py-2">
+      <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+      </a>
+      <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
+        <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
+          <li class="nav-item my-2 my-lg-0">
+            <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" (click)="redireccionarAHome()">
+              <span class="link-profile">
+                <span class="fa fa-home "></span> Home
+              </span>
+            </a>
+          </li>
+          <li class="nav-item my-2 my-lg-0">
+            <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" (click)="redireccionarAMensajes()">
+              <span class="link-profile">
+                <span class="fas fa-comment-alt"></span> Mis Mensajes
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <body>
+
+    <div style="background-color: #E5E4EF" class="main">
+      <div class="wrap" style="width:100%">
+        <ul class="tabs">
+          <li><a><span class="fas fa-comments font-s"></span><span class="tab-text">Chat</span></a></li>
+        </ul>
+
+        <div class="secciones">
+          <div class="chats-box">
+            <div class="row h-100">
+              <ng-container *ngIf="chat_actual != null">
+                <div class="col-12 my-2"
+                  style="height: 90vh; background-color: white; border-radius: 10px; border: #191140 solid 1px;">
+                  <ng-container *ngIf="log_estudiante">
+                    <div class="row align-items-center">
+                      <div class="col-2 col-lg-1">
+                        <img *ngIf="chat_actual.empresa.imagenPerfil == null" src="../../../../assets/img/empresa1.jpg"
+                          alt="" width="50px" height="50px" style="border-radius: 50%;">
+                        <img *ngIf="chat_actual.empresa.imagenPerfil != null"
+                          [src]="backendHost + chat_actual.empresa.imagenPerfil" alt="" width="50px" height="50px"
+                          style="border-radius: 50%;">
+                      </div>
+                      <div class="col-10 col-lg-11">
+                        <h5><strong>{{chat_actual.empresa.organizacion}}</strong></h5>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="log_empresa">
+                    <div class="row align-items-center">
+                      <div class="col-2 col-lg-1">
+                        <img *ngIf="chat_actual.estudiante.imagenPerfil == null"
+                          src="../../../../assets/img/usuario.png" alt="" width="50px" height="50px"
+                          style="border-radius: 50%;">
+                        <img *ngIf="chat_actual.estudiante.imagenPerfil != null"
+                          [src]="backendHost + chat_actual.estudiante.imagenPerfil" alt="" width="50px" height="50px"
+                          style="border-radius: 50%;">
+                      </div>
+                      <div class="col-10 col-lg-11">
+                        <h5><strong>{{chat_actual.estudiante.nombre}} {{chat_actual.estudiante.apellido}}</strong></h5>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <hr>
+                  <div #chatHistory style="overflow-y: auto; height: 60vh;">
+                    <ng-container *ngIf="mensajes != null">
+                      <ng-container *ngFor="let item of mensajes">
+                        <div *ngIf="item.from != id_usuario" class="w-100">
+                          <div class="mensaje-remoto">
+                            {{item.text}}
+                          </div>
+                        </div>
+                        <div *ngIf="item.from == id_usuario" class="w-100">
+                          <div class="mensaje-local ml-auto">
+                            {{item.text}}
+                          </div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                  <div style="width: 100%; margin-top: 0px;">
+                    <input (keydown)="submitMessage($event)" [(ngModel)]="userChat.text" class="inputEM" type="text"
+                      placeholder="Escribe un mensaje">
+                    <span (click)="sendMessage()" class="btnEnviar"><i class="fas fa-paper-plane"></i></span>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</ng-container>

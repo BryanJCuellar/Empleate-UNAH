@@ -19,11 +19,6 @@
   border-color: white;
 }
 
-.titulo-modal {
-  color: white;
-  background-color: #191140;
-}
-
 .btn-detalle:hover {
   color: white;
   background-color: #191140;
@@ -42,7 +37,7 @@
 
 .main {
   /*funciona en cada despliegue de pestana */
-  color: #E5E4EF !important;
+  background-color: #E5E4EF !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,151 +51,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute
-}
-
-#mn {
-  height: 50px;
-  width: 50px;
-  display: none
-}
-
-#mn #btn-mn {
-  display: none;
-}
-
-#mn img {
-  width: 30px;
-  height: 30px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-#principal {
-  width: 90%;
-  height: auto;
-  overflow: hidden;
-  border: 1px solid;
-  margin: 10px auto;
-}
-
-#publicaciones {
-  width: 70%;
-  height: auto;
-  overflow: hidden;
-  border: 1px solid #fff;
-  margin-top: 10px;
-  background: #00A6F7;
-  justify-content: center;
-}
-
-.post {
-  width: 95%;
-  height: auto;
-  overflow: hidden;
-  padding: 7px;
-  background: #fdfdfd;
-  border-left-style: solid;
-  border-left-width: 5px;
-  border-left-color: #0205c0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px #ccc;
-  margin-bottom: 20px;
-  margin-left: 15px;
-}
-
-.titulo-vacante {
-  width: 95%;
-  height: auto;
-  overflow: hidden;
-  margin-top: 10px;
-  margin-left: 15px;
-  background: #fff;
-  text-align: center;
-  margin-bottom: 20px;
-  font-family: 'calibri light';
-}
-
-.saludo {
-  width: 70%;
-  height: auto;
-  overflow: hidden;
-  /**background: #191140;**/
-  color: #fff;
-  font-family: 'calibri light';
-  text-align: center;
-  margin-top: 15px;
-}
-
-.enlace-post {
-  text-decoration: none;
-}
-
-#publicaciones a .titulo-post {
-  color: #6e6e6e;
-  font-size: 22px;
-  font-family: 'calibri light';
-}
-
-#publicaciones a .titulo-post:hover {
-  text-decoration: underline;
-}
-
-#publicaciones .img-post {
-  width: 150px;
-  height: 100px;
-  float: left;
-  margin: 7px 7px 7px 0px;
-  padding: 5px;
-  border: 1px solid rgb(151, 205, 255);
-  border-radius: 5px;
-}
-
-#publicaciones .datos-publicaciones {
-  font-family: 'calibri light';
-  color: rgb(10, 122, 250);
-}
-
-#publicaciones .requisitos {
-  font-family: 'calibri light';
-  font-size: 16px;
-  color: #616060;
-  /**padding: 0px 5px 5px 0px ;**/
-}
-
-#publicaciones .requisitos-items {
-  font-family: 'calibri light';
-  font-size: 13px;
-  color: #848484;
-  padding: 0px 5px 5px 5px;
-}
-
-#publicaciones .leer-mas {
-  background: #0205c0;
-  color: #fff;
-  border: 0px;
-  padding: 5px;
-  text-decoration: none;
-  margin-top: 20px;
-  border-radius: 5px;
-}
-
-#publicaciones .leer-mas:hover {
-  background: #010274;
-  color: #fff;
-}
-
-#publicaciones .aplicar {
-  background: #00A6F7;
-  color: #fff;
-  border: 0px;
-  border-radius: 5px;
-  text-decoration: none;
-  padding: 5px;
-}
-
-#publicaciones .aplicar:hover {
-  background: #00A6F7;
-  color: #fff;
 }
 
 .nav-logo {
@@ -404,31 +254,6 @@ body {
   #sidemenu {
     right: -300px;
   }
-
-  #mn {
-    display: block;
-    margin-right: 20px;
-  }
-
-  #mn #btn-menu:checked~#sidemenu {
-    right: 0;
-  }
-
-  #publicaciones {
-    justify-content: center;
-  }
-
-  .post {
-    display: block;
-    width: 90%;
-    height: auto;
-  }
-
-  .titulo-vacante {
-    display: block;
-    width: 90%;
-    height: auto;
-  }
 }
 
 
@@ -469,14 +294,6 @@ ul.tabs li a {
   text-align: center;
   display: block;
   padding: 20px 0px;
-}
-
-ul.tabs a:active {
-  background: #00A6F7;
-}
-
-ul.tabs a:hover {
-  background: #00A6F7 !important;
 }
 
 ul.tabs li a .tab-text {
@@ -636,14 +453,51 @@ ul.tabs li a .tab-text {
 
 /* Estilizando el CHAT */
 
+.chats-box {
+  padding: 0px 100px !important;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .chats-box {
+    padding: 0px 50px !important;
+  }
+}
+
+/***Small devices (landscape phones, 576px and up)***/
+@media (max-width: 767.98px) {
+  .chats-box {
+    padding: 0px !important;
+  }
+}
+
 .listaMensajes {
   border-radius: 10px !important;
-  margin-top: 2px !important;
-  background-color: #32E5AD !important;
+  border: 1px solid #191140;
+  background-color: #ffffff !important;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .listaMensajes:hover {
-  background-color: #109DBB !important;
+  background-color: #00A6F7 !important;
+  border: 1px solid #00A6F7;
+  color: #FFF;
+  box-shadow: 0 6px 10px 0 #54c9ff33, 0 8px 22px 0 #70eaff30;
+  cursor: pointer;
+}
+
+.listaMensajes h4 {
+  color: #000;
+  font-weight: bold;
+}
+
+.listaMensajes:hover h4 {
+  color: #FFF;
+}
+
+.listaMensajes:hover .btnVaciarCHAT {
+  font-size: 20px;
 }
 
 .inputEM {
@@ -673,10 +527,10 @@ ul.tabs li a .tab-text {
 }
 
 .btnVaciarCHAT {
-  text-align: right !important;
   color: #E9512C;
+  font-size: 18px;
 }
 
-.btnVaciarCHAT:hover {
-  font-size: 20px;
+.listaMensajes:hover .btnVaciarCHAT:hover {
+  font-size: 26px;
 }

@@ -1,127 +1,128 @@
-<div>
-  <nav class="navbar navbar-expand-lg nav-principal py-2">
-    <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
-      <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
-    </a>
-    <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
-      data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item my-2 my-lg-0">
-          <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="/student/home">
-            <span class="link-profile">
-              <span class="fa fa-home "></span> Home
-            </span>
-          </a>
-        </li>
-      </ul>
+<ng-container *ngIf="getAuthService().loggedIn()">
+  <div>
+    <nav class=" navbar navbar-expand-lg nav-principal py-2">
+      <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+      </a>
+      <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
+        <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
+          <li class="nav-item my-2 my-lg-0">
+            <ng-container *ngIf="getAuthService().loggedInStudent()">
+              <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="student/home">
+                <span class="link-profile">
+                  <span class="fa fa-home "></span> Home
+                </span>
+              </a>
+            </ng-container>
+            <ng-container *ngIf="getAuthService().loggedInCompany()">
+              <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="company/profile">
+                <span class="link-profile">
+                  <span class="fa fa-home "></span> Home
+                </span>
+              </a>
+            </ng-container>
+          </li>
+        </ul>
 
-      <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
-        <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i
-            class="fas fa-sign-out-alt ml-2"></i></button>
-      </form>
-    </div>
-  </nav>
-</div>
-
-<body>
-
-  <div style="background-color: #E5E4EF" class="main" [ngClass]="{'vh-100':elegir == 'Mis_Chats'}">
-    <div class="wrap" style="width:100%">
-      <ul class="tabs">
-        <li style="background-color: #191140"><a><span class="fas fa-comments font-s"></span><span
-              class="tab-text">Mis Chats</span></a></li>
-      </ul>
-
-      <div class="secciones">
-
-        <div *ngIf="elegir=='Mis_Chats'">
-          <div class="row">
-            <div class="col-xl-4 col-lg-4 col-sm-2">
-
-              <div class="row listaMensajes">
-                <div class="col-2">
-                  <img src="../../../assets/img/empresa1.jpg" alt="" width="50px" height="50px"
-                    style="border-radius: 50%;">
-                </div>
-                <div class="col-8" style="margin-left: 2px; margin-top: 5px;">
-                  <h5>Publicacion numero 1</h5>
-                  <h6>Nombre de la empresa</h6>
-                </div>
-                <div class="col-2" style="margin-left: -5px; margin-top: 5px;color: #854A7C;">
-                  <p>10:00</p>
-                  <p class="btnVaciarCHAT"> <i class="fas fa-trash-alt"></i></p>
-                </div>
-              </div>
-
-              <div class="row listaMensajes">
-                <div class="col-2">
-                  <img src="../../../assets/img/empresa1.jpg" alt="" width="50px" height="50px"
-                    style="border-radius: 50%;">
-                </div>
-                <div class="col-8" style="margin-left: 2px; margin-top: 5px;">
-                  <h5>Publicacion numero 1</h5>
-                  <h6>Nombre de la empresa</h6>
-                </div>
-                <div class="col-2" style="margin-left: -5px; margin-top: 5px;color: #854A7C;">
-                  <p>10:00</p>
-                  <p class="btnVaciarCHAT"> <i class="fas fa-trash-alt"></i></p>
-                </div>
-              </div>
-
-              <div class="row listaMensajes">
-                <div class="col-2">
-                  <img src="../../../assets/img/empresa1.jpg" alt="" width="50px" height="50px"
-                    style="border-radius: 50%;">
-                </div>
-                <div class="col-8" style="margin-left: 2px; margin-top: 5px;">
-                  <h5>Publicacion numero 1</h5>
-                  <h6>Nombre de la empresa</h6>
-                </div>
-                <div class="col-2" style="margin-left: -5px; margin-top: 5px;color: #854A7C;">
-                  <p>10:00</p>
-                  <p class="btnVaciarCHAT"> <i class="fas fa-trash-alt"></i></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-8 col-lg-8 col-sm-10"
-              style="height: 65vh; background-color: white; border-radius: 10px; border: #854A7C solid 1px; ">
-              <div>
-                <h6><strong>Publicacion numero 1</strong></h6>
-                <hr>
-              </div>
-              <div style="overflow-y: scroll; height: 50vh;">
-
-                <div
-                  style="background-color: transparent; border-radius: 5px; text-align: left; margin-top: 2px; border: solid 1px #109DBB;">
-                  hola como estas?
-                </div>
-                <div style="font-size: 10px; margin-top: 0px; padding-top: 0px; text-align: right;">
-                  <span><i class="fas fa-check"></i></span>
-                  <span><i class="fas fa-check"></i></span>
-                </div>
-                <div
-                  style="background-color: transparent; border-radius: 5px;margin-top: 2px; text-align: right; border: solid 1px #70AD30;">
-                  bien y tu?
-                </div>
-                <div style="font-size: 10px; margin-top: 0px; padding-top: 0px; text-align: left;">
-                  <span><i class="fas fa-check"></i></span>
-                  <span><i class="fas fa-check"></i></span>
-                </div>
-              </div>
-              <div style="width: 100%; margin-top: -35px;">
-                <input class="inputEM" type="text" placeholder="Escribe aqui el mensaje">
-                <span class="btnEnviar"><i class="fas fa-paper-plane"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
+          <ng-container *ngIf="getAuthService().loggedInStudent()">
+            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar
+              Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
+          </ng-container>
+          <ng-container *ngIf="getAuthService().loggedInCompany()">
+            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logoutCompany()">Cerrar
+              Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
+          </ng-container>
+        </form>
       </div>
-    </div>
+    </nav>
   </div>
 
-</body>
+  <body>
+
+    <div class="main" [ngClass]="{'vh-100':chats_optimos == false}">
+      <div class="wrap" style="width:100%">
+        <ul class="tabs">
+          <li><a><span class="fas fa-comment-alt font-s"></span><span class="tab-text">Mis Mensajes</span></a></li>
+        </ul>
+
+        <div class="secciones">
+          <div class="chats-box">
+            <div class="row h-100">
+              <ng-container *ngIf="mis_chats != null">
+                <ng-container *ngIf="mis_chats.length > 0">
+                  <ng-container *ngIf="log_estudiante">
+                    <div class="col-12 mb-2" *ngFor="let chat of mis_chats">
+                      <a (click)="irChat(chat._id)">
+                        <div class="row listaMensajes">
+                          <div class="col-sm-2 my-auto d-none d-sm-block">
+                            <img *ngIf="chat.empresa.imagenPerfil == null" src="../../../assets/img/empresa1.jpg" alt=""
+                              width="70px" height="70px" style="border-radius: 50%;">
+                            <img *ngIf="chat.empresa.imagenPerfil != null"
+                              [src]="backendHost + chat.empresa.imagenPerfil" alt="" width="70px" height="70px"
+                              style="border-radius: 50%;">
+                          </div>
+                          <div class="col-9 col-sm-8 my-auto">
+                            <h4>{{chat.empresa.organizacion}}</h4>
+                          </div>
+                          <div class="col-3 col-sm-2 my-auto">
+                            <a (click)="borrarChat(chat._id)">
+                              <p class="btnVaciarCHAT text-right">
+                                <i class="fas fa-trash-alt"></i>
+                              </p>
+                            </a>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="log_empresa">
+                    <div class="col-12 mb-2" *ngFor="let chat of mis_chats">
+                      <a (click)="irChat(chat._id)">
+                        <div class="row listaMensajes">
+                          <div class="col-sm-2 my-auto d-none d-sm-block">
+                            <img *ngIf="chat.estudiante.imagenPerfil == null" src="../../../../assets/img/usuario.png"
+                              alt="" width="70px" height="70px" style="border-radius: 50%;">
+                            <img *ngIf="chat.estudiante.imagenPerfil != null"
+                              [src]="backendHost + chat.estudiante.imagenPerfil" alt="" width="70px" height="70px"
+                              style="border-radius: 50%;">
+                          </div>
+                          <div class="col-9 col-sm-8 my-auto">
+                            <h4>{{chat.estudiante.nombre}} {{chat.estudiante.apellido}}</h4>
+                          </div>
+                          <div class="col-3 col-sm-2 my-auto">
+                            <a (click)="borrarChat(chat._id)">
+                              <p class="btnVaciarCHAT text-right">
+                                <i class="fas fa-trash-alt"></i>
+                              </p>
+                            </a>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngIf="mis_chats.length == 0">
+                  <div class="col-12 mb-2">
+                    <div class="text-center">
+                      <div class="font-s">
+                        No tiene mensajes.
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</ng-container>
