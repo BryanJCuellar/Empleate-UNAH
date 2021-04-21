@@ -1,36 +1,36 @@
 <body class="body">
-    <div>
-      <nav class="navbar navbar-expand-lg nav-principal py-2">
-        <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
-          <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
-        </a>
-        <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
-          data-target="#navbarTogglerStudentProfile" aria-controls="navbarTogglerStudentProfile" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentProfile">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item my-2 my-lg-0">
-              <a class="nav-link mx-2 ml-lg-3" style=" color:white !important;" href="company/profile">
-                <span class="link-profile">
-                  <span class="fas fa-home mr-2"></span>Home
-                </span>
-              </a>
-            </li>
-          </ul>
-  
-          <form class="form-inline my-2 my-lg-0 ml-lg-auto">
-            <button type="button" class="btn btn-cerrar mx-lg-5" (click)="getAuthService().logoutCompany()">Cerrar Sesión<i
-                class="fas fa-sign-out-alt ml-2"></i></button>
-          </form>
-        </div>
-      </nav>
-  
-      <div class="main-wrapper" *ngIf="vista=='perfil'">
-        <div class="container px-3 px-lg-5 animate__animated animate__fadeInRight">
-          <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
-  
+  <div>
+    <nav class="navbar navbar-expand-lg nav-principal py-2">
+      <a class="navbar-brand ml-0 ml-lg-3" style=" color:white !important;" href="/home">
+        <img class="nav-logo" src="../../../assets/img/logo/Logo180X100.png" alt=""> Empléate UNAH
+      </a>
+      <button class="navbar-toggler custom-toggler mr-3 mr-lg-0" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerStudentProfile" aria-controls="navbarTogglerStudentProfile" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentProfile">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item my-2 my-lg-0">
+            <a class="nav-link mx-2 ml-lg-3" style=" color:white !important;" href="company/profile">
+              <span class="link-profile">
+                <span class="fas fa-home mr-2"></span>Home
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0 ml-lg-auto">
+          <button type="button" class="btn btn-cerrar mx-lg-5" (click)="getAuthService().logoutCompany()">Cerrar
+            Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="main-wrapper" *ngIf="vista=='perfil'">
+      <div class="container px-3 px-lg-5 animate__animated animate__fadeInRight">
+        <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+          <ng-container *ngIf="estudiante != null">
             <div class="resume-header">
               <div class="row align-items-center">
                 <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
@@ -48,12 +48,12 @@
                 <!--//resume-contact-->
               </div>
               <!--//row-->
-  
+
             </div>
             <!--//resume-header-->
             <hr>
             <div class="resume-intro py-3">
-              <div class="media flex-column flex-md-row align-items-center">
+              <div class="media flex-column flex-md-row">
                 <img *ngIf="estudiante.imagenPerfil ==null"
                   class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto tamaño"
                   src="../../../assets/img/usuario.png" alt="image">
@@ -61,9 +61,20 @@
                   class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto tamaño"
                   [src]="backendHost + estudiante.imagenPerfil" alt="image">
                 <div class="media-body text-left">
-                  <button type="button" class="btn btn-cerrar mx-lg-5" (click)="verCurriculo()">Revisar Curriculum
-                    <i class="fas fa-file-pdf"></i>
-                  </button>
+
+                  <div class="row my-4">
+                    <div class="col-6 d-flex">
+                      <button type="button" class="btn btn-cerrar mx-lg-5" (click)="verCurriculo()">
+                        Revisar Curriculum <i class="fas fa-file-pdf ml-1"></i>
+                      </button>
+                    </div>
+                    <div class="col-6 d-flex">
+                      <button type="button" class="btn btn-chat mx-lg-5" (click)="irChat()">
+                        Enviar mensaje <i class="fas fa-comment"></i>
+                      </button>
+                    </div>
+                  </div>
+
                   <p class="mb-0">{{estudiante.descripcionPerfil}}
                   </p>
                 </div>
@@ -82,7 +93,7 @@
                         <h5 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Fecha Nacimiento</h5>
                         <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">
                           {{estudiante.fechaNacimiento}}</div>
-  
+
                       </div>
                       <div class="item-content">
                         <div class="item-heading row align-items-center mb-2">
@@ -95,7 +106,7 @@
                           <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">
                             {{estudiante.clasesAprobadas}}</div>
                         </div>
-                       
+
                       </div>
                     </div>
                     <!--//item-->
@@ -122,7 +133,7 @@
                     </ul>
                   </section>
                   <!--//certificates-section-->
-  
+
                 </aside>
                 <!--//resume-aside-->
               </div>
@@ -130,44 +141,54 @@
             </div>
             <!--//resume-body-->
             <hr>
-          </article>
-  
-        </div>
-        <!--//container-->
-     
-  
-        <footer class="footer text-center py-4">
-          <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-          <small class="copyright text-muted">Empléate UNAH <i class="fas fa-heart"></i> <a class="theme-link"
-              href="http://themes.3rdwavemedia.com" target="_blank"></a>para estudiantes</small>
-        </footer>
-  
-      </div>
-    </div>
-
-    <div class="main-wrapper" *ngIf="vista=='curriculum'">
-      <div class="container px-3 px-lg-5 ">
-        <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
-          <div class="resume-header">
-            <div class="row align-items-center">
-              <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
-                <h2 class="resume-name mb-0 text-uppercase">{{estudiante.nombre}} {{estudiante.apellido}}</h2>
-              </div>
-              <!--//resume-title-->
-              <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
-                <button type="button" class="btn btn-cerrar mx-lg-5" style="width: 197px;"
-                (click)="verPerfil()">Revisar el perfil
-                  <i class="fas fa-user-circle"></i></button>
-              </div>
-              <!--//resume-contact-->
-            </div>
-            <!--//row-->
-
-          </div>
-        <embed [src] = "backendHost + estudiante.CurriculumAdjunto | safeurl" 
-         type="application/pdf" width="100%" height="900px" >
+          </ng-container>
         </article>
-      </div>
-    </div>
 
-  </body>
+      </div>
+      <!--//container-->
+
+
+      <footer class="footer text-center py-4">
+        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+        <small class="copyright text-muted">Empléate UNAH <i class="fas fa-heart"></i> <a class="theme-link"
+            href="http://themes.3rdwavemedia.com" target="_blank"></a>para estudiantes</small>
+      </footer>
+
+    </div>
+  </div>
+
+  <div class="main-wrapper" *ngIf="vista=='curriculum'" [ngClass]="{'vh-100':estudiante.CurriculumAdjunto == null}">
+    <div class="container px-3 px-lg-5 ">
+      <article class="resume-wrapper color mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+        <div class="resume-header">
+          <div class="row align-items-center">
+            <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
+              <h2 class="resume-name mb-0 text-uppercase">{{estudiante.nombre}} {{estudiante.apellido}}</h2>
+            </div>
+            <!--//resume-title-->
+            <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+              <button type="button" class="btn btn-cerrar mx-lg-5" style="width: 197px;" (click)="verPerfil()">Revisar
+                el perfil
+                <i class="fas fa-user-circle"></i></button>
+            </div>
+            <!--//resume-contact-->
+          </div>
+          <!--//row-->
+
+        </div>
+        <ng-container *ngIf="estudiante.CurriculumAdjunto != null">
+          <embed [src]="backendHost + estudiante.CurriculumAdjunto | safeurl" type="application/pdf" width="100%"
+          height="900px">
+        </ng-container>
+        <ng-container *ngIf="estudiante.CurriculumAdjunto == null">
+          <div class="text-center">
+            <div class="p-5 font-s">
+              No se encontro CV.
+            </div>
+          </div>
+        </ng-container>
+      </article>
+    </div>
+  </div>
+
+</body>

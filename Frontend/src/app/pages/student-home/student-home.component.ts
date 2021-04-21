@@ -27,11 +27,11 @@ export class StudentHomeComponent implements OnInit {
   palabrasClaves = '';
   closeResult = '';
   elegir = 'home';
-  color1 = "#520547";
-  color2 = "#520547";
-  color3 = "#520547";
-  color4 = "#520547";
-  color5 = "#520547";
+  color1 = "#00A6F7";
+  color2 = "#191140";
+  color3 = "#191140";
+  color4 = "#191140";
+  color5 = "#191140";
 
 
 
@@ -115,12 +115,12 @@ export class StudentHomeComponent implements OnInit {
   }
 
   home() {
-    this.color2 = "#520547";
-    this.color3 = "#520547";
-    this.color4 = "#520547";
-    this.color5 = "#520547";
+    this.color2 = "#191140";
+    this.color3 = "#191140";
+    this.color4 = "#191140";
+    this.color5 = "#191140";
     this.elegir = 'home';
-    this.color1 = '#854A7C';
+    this.color1 = '#00A6F7';
   }
 
   reset(): void {
@@ -128,12 +128,12 @@ export class StudentHomeComponent implements OnInit {
   }
 
   Mis_Postulaciones() {
-    this.color1 = "#520547";
-    this.color3 = "#520547";
-    this.color4 = "#520547";
-    this.color5 = "#520547";
+    this.color1 = "#191140";
+    this.color3 = "#191140";
+    this.color4 = "#191140";
+    this.color5 = "#191140";
     this.elegir = 'Mis_Postulaciones';
-    this.color2 = '#854A7C';
+    this.color2 = '#00A6F7';
     this.cargarPostulaciones();
   }
 

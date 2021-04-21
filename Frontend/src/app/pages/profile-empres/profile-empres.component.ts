@@ -77,7 +77,7 @@ export class ProfileEmpresComponent implements OnInit {
             this.empresasService.obtenerEmpresa(this.idEmpresa)
               .subscribe(
                 data => {
-                  console.log(data);
+                  // console.log(data);
                   this.empresa = data;
                 },
                 error => console.log('Error al obtener informacion empresa', error)
@@ -86,6 +86,10 @@ export class ProfileEmpresComponent implements OnInit {
           error => console.log('Error al obtener ID', error)
         )
     }
+  }
+
+  irMensajes(idUsuario) {
+    window.location.href = `company/${idUsuario}/chats`;
   }
 
   createFormOferta() {
@@ -550,8 +554,8 @@ export class ProfileEmpresComponent implements OnInit {
   }
 
   verPerfil(idEstudiante){
-    this.empresasService.seleccionarEstudiante(idEstudiante);
-    this.router.navigateByUrl(`company/student-selected`);
+    // this.empresasService.seleccionarEstudiante(idEstudiante);
+    this.router.navigateByUrl(`company/student-selected/${idEstudiante}`);
   }
 
 }

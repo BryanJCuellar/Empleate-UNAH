@@ -483,13 +483,13 @@ ul.tabs li a {
   padding: 20px 0px;
 }
 
-ul.tabs a:active {
+/*ul.tabs a:active {
   background: #00A6F7;
 }
 
 ul.tabs a:hover {
   background: #00A6F7 !important;
-}
+}*/
 
 ul.tabs li a .tab-text {
   margin-left: 8px;
@@ -587,8 +587,29 @@ ul.tabs li a .tab-text {
 
 .list-group-item:hover {
   color: #FFF;
-  background-color: #191140;
+  background-color: #65305D;
   padding: 2px 2px;
+  border-radius: 5px;
+}
+
+.btnsOfertas {
+  font-size: 14px;
+  padding: 5px 0px;
+  border-bottom: #1E7064 solid 2px;
+  cursor: pointer;
+}
+
+.btnsOfertas:hover {
+  font-size: 13px;
+  padding: 5px 0px;
+  border-bottom: #5A508C solid 2px;
+  font-weight: bold !important;
+  color: #5A508C !important;
+}
+
+.btnsOfertas:hover .fa-info-circle,
+.btnsOfertas:hover .fa-mail-bulk {
+  color: #5A508C !important;
 }
 
 
@@ -663,6 +684,7 @@ ul.tabs li a .tab-text {
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #000;
+  border-radius: 0px;
 }
 
 .filtros:focus {
@@ -672,67 +694,21 @@ ul.tabs li a .tab-text {
   box-shadow: none;
 }
 
-/* Estilizando el CHAT */
-
-.listaMensajes {
-  border-radius: 10px !important;
-  margin-top: 2px !important;
-  background-color: #32E5AD !important;
-}
-
-.listaMensajes:hover {
-  background-color: #109DBB !important;
-}
-
-.inputEM {
-  width: 95%;
-  border-radius: 10px;
-  padding: 5px;
-  font-size: 15px;
-}
-
-.inputEM:focus {
-  background-color: #70AD30;
-  color: black;
-  box-shadow: none;
-  outline: none;
-  border: none;
-  padding: 10px 10px 10px 10px;
-}
-
-.btnEnviar {
-  margin-left: 5px;
-  color: #854A7C;
-}
-
-.btnEnviar:hover {
-  color: #109DBB;
-  font-size: 20px;
-}
-
-.btnVaciarCHAT {
-  text-align: right !important;
-  color: #E9512C;
-}
-
-.btnVaciarCHAT:hover {
-  font-size: 20px;
-}
-
-.parrafo-detalle{
+.parrafo-detalle {
   color: #5A508C;
 }
 
-.titulo-tabla{
+.titulo-tabla {
   background-color: #140E33;
   color: white;
 }
-.contenido-tabla{
+
+.contenido-tabla {
   background-color: #5A508C;
   color: white;
 }
 
-.titulo-descripcion{
+.titulo-descripcion {
   color: #140E33;
   font-weight: bold;
 }

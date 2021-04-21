@@ -53,4 +53,20 @@
     background-color: white !important;
     font-weight: bolder;
   }
+
+  .btn-chat {
+    color: white;
+    background-color: #088BBE !important;
+    padding: 4px 30px;
+  }
+  
+  .btn-chat:hover {
+    color: #088BBE !important;
+    background-color: white !important;
+    font-weight: bolder;
+  }
+
+  .vh-100{
+    height: 100vh;
+  }
   
