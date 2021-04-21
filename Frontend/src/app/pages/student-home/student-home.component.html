@@ -103,17 +103,17 @@
                 <input type="text" class="form-control" placeholder="Buscar">
               </div>
               <div class="col-6 col-sm-4 col-lg-3">
-                <input type="text" class="form-control" placeholder="Departamento">
+                <input type="text" class="form-control"  placeholder="Departamento"  name="filtrarDepto" spellcheck="false" autocomplete="none" [(ngModel)]="filtrarDepto">
               </div>
               <div class="col-6 col-sm-3 col-lg-3">
-                <input type="text" class="form-control" placeholder="Jornada">
+                <input type="text" class="form-control"  placeholder="Jornada" name="filtrarJornada" spellcheck="false" autocomplete="none" [(ngModel)]="filtrarJornada">
               </div>
             </div>
             <div class="row mt-2">
               <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp"
-                *ngFor="let oferta of ofertas">
+              *ngFor="let oferta of ofertas | filtrarDepto:filtrarDepto  | filtrarJornada:filtrarJornada ">
                 <div class="card flex-fill">
                   <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">

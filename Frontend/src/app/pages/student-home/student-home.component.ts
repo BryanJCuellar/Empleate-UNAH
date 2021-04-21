@@ -17,6 +17,8 @@ export class StudentHomeComponent implements OnInit {
   ofertaActual: any;
   aggregatePostulaciones = [];
   ofertas = [];
+  filtrarDepto = '';
+  filtrarJornada ='';
   closeResult = '';
   elegir = 'home';
   color1 = "#520547";
