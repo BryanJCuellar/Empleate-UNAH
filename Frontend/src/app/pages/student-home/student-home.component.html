@@ -44,23 +44,28 @@
 
   <ng-template #content let-modal>
     <div class="modal-header titulo-modal p-2">
-      <h4 class="modal-title" id="modal-basic-title" style="padding-left: 15px;">Información de oferta</h4>
+      <h4 class="modal-title" id="modal-basic-title" style="padding-left: 15px;">
+      {{ofertaActual.titulo_Oferta}}</h4>
       <button type="button" class="close font-s-2 text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <br>
     <div class="modal-body p-2">
       <ng-container *ngIf="ofertaActual != null">
-        <table class="table table-striped">
-          <thead>
+        <div >
+        <h5 class="titulo-descripcion">Descripción requerida</h5>
+        <p class="parrafo-detalle">{{ofertaActual.descripcion}}</p>
+        </div>
+        <br>
+        <table class="table table-striped" >
+          <thead class="titulo-tabla">
             <tr>
               <th scope="col">Experiencia Laboral</th>
               <th scope="col">Jornada de trabajo</th>
               <th scope="col">Indice requerido</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  class="contenido-tabla">
             <tr>
               <td>{{ofertaActual.experiencia_laboral}}</td>
               <td>{{ofertaActual.jornada_laboral}}</td>
@@ -70,13 +75,13 @@
         </table>
         <br>
         <table class="table table-striped">
-          <thead>
+          <thead  class="titulo-tabla">
             <tr>
               <th scope="col">Rango de edad</th>
               <th scope="col">Idioma requerido</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="contenido-tabla">
             <tr>
               <td>{{ofertaActual.edad}}</td>
               <td>{{ofertaActual.idiomas}}</td>
@@ -146,7 +151,6 @@
                     [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
-                    <p class="card-text text-left">{{oferta.resumenDescripcion}}</p>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i>

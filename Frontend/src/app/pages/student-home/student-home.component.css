@@ -718,3 +718,21 @@ ul.tabs li a .tab-text {
 .btnVaciarCHAT:hover {
   font-size: 20px;
 }
+
+.parrafo-detalle{
+  color: #5A508C;
+}
+
+.titulo-tabla{
+  background-color: #140E33;
+  color: white;
+}
+.contenido-tabla{
+  background-color: #5A508C;
+  color: white;
+}
+
+.titulo-descripcion{
+  color: #140E33;
+  font-weight: bold;
+}
