@@ -106,9 +106,9 @@
         <div class="secciones">
           <div *ngIf="elegir=='home'">
             <div class="row">
-              <div class="form-group has-search col-12 col-sm-4 col-lg-5">
+              <div class="form-group has-search col-12 col-sm-4 col-lg-5 mt-4">
                 <span class="fa fa-search form-control-feedback"></span>
-                <input type="text" class="form-control" placeholder="Buscar">
+                <input type="text" class="form-control filtros"  placeholder="Buscar" name="palabrasClaves" spellcheck="false" autocomplete="none" [(ngModel)]="palabrasClaves">
               </div>
               <div class="col-6 col-sm-4 col-lg-3">
                 <label>Seleccione el departamento
@@ -137,7 +137,8 @@
               <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp"
-                *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada">
+                *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
+                | filtrarPalabrasClaves:palabrasClaves">
                 <div class="card flex-fill">
                   <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">

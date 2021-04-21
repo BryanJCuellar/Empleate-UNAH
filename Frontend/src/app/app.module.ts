@@ -31,6 +31,7 @@ import { CompanyProfileEditComponent } from './pages/company-profile-edit/compan
 import { VistaEstudianteComponent } from './pages/vista-estudiante/vista-estudiante.component';
 import { ListChatsComponent } from './pages/chats/list-chats/list-chats.component';
 import { ChatComponent } from './pages/chats/chat/chat.component';
+import { FiltrarPalabrasClavesPipe } from './pipes/filtrar-palabras-claves.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ChatComponent } from './pages/chats/chat/chat.component';
     FiltrarDeptoPipe,
     FiltrarJornadaPipe,
     ListChatsComponent,
-    ChatComponent
+    ChatComponent,
+    FiltrarPalabrasClavesPipe
   ],
   imports: [
     BrowserModule,

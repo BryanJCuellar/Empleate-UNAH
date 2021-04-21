@@ -17,11 +17,14 @@ export class StudentHomeComponent implements OnInit {
   ofertaActual: any;
   aggregatePostulaciones = [];
   ofertas = [];
+  departamento: any;
+  jornada: any;
   departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
     'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
     'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
   jornada_laboral: any = ['Tiempo Completo', 'Desde Casa', 'Por Horas', 'Medio Tiempo',
     'Beca/Prácticas', 'No Especificar (N/A)'];
+  palabrasClaves = '';
   closeResult = '';
   elegir = 'home';
   color1 = "#520547";
@@ -49,7 +52,7 @@ export class StudentHomeComponent implements OnInit {
             this.estudiantesService.obtenerInfoPrincipalEstudiante(res.id)
               .subscribe(
                 data => {
-                  // console.log(data);
+                  console.log(data);
                   this.estudianteActual = data;
                   this.obtenerOfertas();
                 },
@@ -61,7 +64,7 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
-  irMensajes(idUsuario){
+  irMensajes(idUsuario) {
     window.location.href = `student/${idUsuario}/chats`;
   }
 
@@ -120,8 +123,8 @@ export class StudentHomeComponent implements OnInit {
     this.color1 = '#854A7C';
   }
 
-  reset(): void { 
-    window.location.reload(); 
+  reset(): void {
+    window.location.reload();
   }
 
   Mis_Postulaciones() {
