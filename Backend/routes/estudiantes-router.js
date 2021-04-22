@@ -19,21 +19,19 @@ router.get('/tokenID', verifyToken, function (req, res) {
 });
 
 //Obtener la información de un estudiante
-router.get('/:idEstudiante/ver_perfil', function(req,res){
-    estudiante.find(
-        {
+router.get('/:idEstudiante/ver_perfil', function (req, res) {
+    estudiante.find({
             _id: req.params.idEstudiante
-        },
-        )
-    .then(result=>{
-        res.send(result[0]);
-        res.end();
-    })
-    .catch(error=>{
-        res.send(error);
-        res.end();
-    });
-    
+        }, )
+        .then(result => {
+            res.send(result[0]);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
 });
 
 // Obtener informacion principal de estudiante (Logueado)
@@ -219,7 +217,7 @@ router.post('/:idEstudiante/CV', multerFiles.single('CurriculumAdjunto'),
     });
 
 // postulaciones para estudiantes
-router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
+router.post('/:idEstudiante/postulaciones', verificarPostulacion, function (req, res) {
     estudiante.updateOne({
         _id: mongoose.Types.ObjectId(req.params.idEstudiante)
     }, {
@@ -241,6 +239,25 @@ router.post('/:idEstudiante/postulaciones', verifyToken, function (req, res) {
         res.send(error);
         res.end();
     })
+});
+
+// Eliminar una postulacion en Estudiantes
+router.put('/:idEstudiante/postulaciones/:idOferta', function (req, res) {
+    estudiante.updateOne({
+        _id: mongoose.Types.ObjectId(req.params.idEstudiante)
+    }, {
+        $pull: {
+            postulaciones: {
+                id_oferta: mongoose.Types.ObjectId(req.params.idOferta)
+            }
+        }
+    }).then(result => {
+        res.send(result);
+        res.end();
+    }).catch(error => {
+        res.send(error);
+        res.end();
+    });
 });
 
 // Obtener postulaciones de Estudiante (Metodo Aggregate)
@@ -302,7 +319,7 @@ router.get('/:idEstudiante/postulaciones', function (req, res) {
 
 async function deleteImageOnUpdate(req, res, next) {
     const Estudiante = await estudiante.findById(req.params.idEstudiante);
-    if (Estudiante.imagenPerfil != null) {
+    if (Estudiante.imagenPerfil != null && fs.existsSync(path.resolve(Estudiante.imagenPerfil))) {
         await fs.unlink(path.resolve(Estudiante.imagenPerfil));
     }
     next();
@@ -310,13 +327,32 @@ async function deleteImageOnUpdate(req, res, next) {
 
 async function deleteCVOnUpdate(req, res, next) {
     const Estudiante = await estudiante.findById(req.params.idEstudiante);
-    if (Estudiante.CurriculumAdjunto != null) {
+    if (Estudiante.CurriculumAdjunto != null && fs.existsSync(path.resolve(Estudiante.CurriculumAdjunto))) {
         await fs.unlink(path.resolve(Estudiante.CurriculumAdjunto));
     }
     next();
 }
 
 module.exports = router;
+
+// Postulacion existente?
+function verificarPostulacion(req, res, next) {
+    estudiante.findOne({
+        _id: mongoose.Types.ObjectId(req.params.idEstudiante),
+        "postulaciones.id_oferta": mongoose.Types.ObjectId(req.body.id_oferta)
+    }, (err, data) => {
+        if (err) return res.status(500).send('Server error');
+        if (!data) {
+            // Si estudiante no esta postulado, prosigue con la peticion
+            next();
+        } else {
+            res.status(200).send({
+                mensaje: 'Ya postulado para esta oferta'
+            });
+            res.end();
+        }
+    });
+}
 
 // Verificar token
 function verifyToken(req, res, next) {

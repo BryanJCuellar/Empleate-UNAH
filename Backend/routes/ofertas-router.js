@@ -169,22 +169,21 @@ router.delete('/:idOferta', function (req, res) {
 });
 
 //Obtener una oferta
-router.get('/:idOFerta', function(req,res){
-    oferta.find(
-        {
-            _id: req.params.idOFerta
-        },
+router.get('/:idOFerta', function (req, res) {
+    oferta.find({
+                _id: req.params.idOFerta
+            },
 
         )
-    .then(result=>{
-        res.send(result[0]);
-        res.end();
-    })
-    .catch(error=>{
-        res.send(error);
-        res.end();
-    });
-    
+        .then(result => {
+            res.send(result[0]);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
 });
 // Agregar postulados para empresas (Postulaciones en Ofertas)
 router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res) {
@@ -198,8 +197,7 @@ router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res
                     dia: req.body.dia,
                     mes: req.body.mes,
                     anio: req.body.anio
-                },
-                estado_postulacion: 'En proceso'
+                }
             }
         }
     }).then(result => {
@@ -210,6 +208,25 @@ router.post('/:idOferta/postulaciones', verificarPostulacion, function (req, res
             error: error,
             mensaje: 'Ocurrio un error al postular en Ofertas'
         });
+        res.end();
+    });
+});
+
+// Eliminar una postulacion en ofertas
+router.put('/:idOferta/postulaciones/:idEstudiante', function (req, res) {
+    oferta.updateOne({
+        _id: mongoose.Types.ObjectId(req.params.idOferta)
+    }, {
+        $pull: {
+            postulaciones: {
+                id_estudiante: mongoose.Types.ObjectId(req.params.idEstudiante)
+            }
+        }
+    }).then(result => {
+        res.send(result);
+        res.end();
+    }).catch(error => {
+        res.send(error);
         res.end();
     });
 });

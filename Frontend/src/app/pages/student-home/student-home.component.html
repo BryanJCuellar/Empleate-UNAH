@@ -194,18 +194,22 @@
                     <p style="font-weight: bold;" class="card-text text-left">{{postulacion.empresa.organizacion}}</p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"></i>
+                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1" style="padding: 5px 5px 5px 5px; color: #E9512C;"></i>
                       {{postulacion.oferta.ubicacion[0].ciudad}}, {{postulacion.oferta.ubicacion[0].departamento}}
                     </li>
                     <li class="list-group-item" *ngIf="postulacion.oferta.salario != null"><i
-                        class="fas fa-money-bill-wave mr-1"></i>{{postulacion.oferta.salario}}</li>
-                    <li class="list-group-item"><i class="fas fa-calendar-day"></i>
+                        class="fas fa-money-bill-wave mr-1" style="color: #70AD30;"></i>{{postulacion.oferta.salario}}</li>
+                    <li class="list-group-item"><i class="fas fa-calendar-day"  style="padding: 5px 5px 5px 5px; color: #109DBB;"></i>
                       {{postulacion.oferta.fecha_publicacion[0].dia}}-{{postulacion.oferta.fecha_publicacion[0].mes}}-{{postulacion.oferta.fecha_publicacion[0].anio}}
                     </li>
                   </ul>
                   <div class="card-body" style="padding-left: 0px;">
-                    <!--<span class="card-link mr-1" style="margin-left: 0px;">
-                                      <i class="fas fa-info-circle mr-1"></i>Ver Aplicacion</span>-->
+                    <a class="btnsOfertas">
+                      <span>
+                        <i style="color: #c51122;" class="fas fa-trash"></i>
+                        Eliminar postulación
+                      </span>
+                    </a>
 
                   </div>
                 </div>
