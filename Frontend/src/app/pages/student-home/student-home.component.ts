@@ -4,6 +4,7 @@ import { EstudiantesService } from 'src/app/services/estudiantes.service';
 import { OfertasService } from 'src/app/services/ofertas.service';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-home',
@@ -32,6 +33,10 @@ export class StudentHomeComponent implements OnInit {
   color3 = "#191140";
   color4 = "#191140";
   color5 = "#191140";
+  date = new Date();
+  dia = this.date.getDate();
+  mes = this.date.getMonth() + 1;
+  anio = this.date.getFullYear();
 
 
 
@@ -137,12 +142,6 @@ export class StudentHomeComponent implements OnInit {
     this.cargarPostulaciones();
   }
 
-  seleccionarOferta(idOferta) {
-    console.log(idOferta);
-    this.OfertasService.seleccionarOferta(idOferta);
-    this.router.navigateByUrl(`/student/home/postulate`);
-  }
-
   verDetalleOferta(idOferta) {
     this.OfertasService.obtenerOfertaSelccionada(idOferta)
       .subscribe(
@@ -172,5 +171,61 @@ export class StudentHomeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  
+  enviarPostulacion(idOferta): void {
+    const formEditData = {
+      id_oferta: idOferta,
+      dia: this.dia,
+      mes: this.mes,
+      anio: this.anio
+    };
+    const formOferta = {
+      id_estudiante: this.estudianteActual._id,
+      dia: this.dia,
+      mes: this.mes,
+      anio: this.anio
+    };
+    if (this.authService.getRol() == 'Estudiante' && this.authService.loggedInStudent()) {
+      this.estudiantesService.obtenerIDEstudiante()
+        .subscribe(
+          res => {
+            this.estudiantesService.agregarPostulacionEstudiante(res.id, formEditData)
+              .subscribe(
+                success => {
+                  this.OfertasService.agregarPostulacionOferta(idOferta, formOferta).
+                   subscribe(
+                     success => {
+                      console.log(success);
+                      // Mensaje success
+                      Swal.fire({
+                        title: 'Postulación realizada con éxito',
+                        icon: 'success',
+                        showConfirmButton: true
+                      }).then(success => {
+                        window.location.href = 'student/home';
+                      }
+                      ).catch(err => console.log(err));
+                     },
+                     error =>{
+                       console.log('Error al actualizar oferta', error);
+                       Swal.fire({
+                         title: "Usted ya se postuló a esta oferta",
+                         icon: 'error',
+                         showCloseButton: true
+                       })
+                       
+                      }
+                   )
+                },
+                error => console.log('Error al actualizar informacion estudiante', error)
+              )
+          },
+          error => console.log('Error al obtener ID', error)
+        )
+    }
+    
+
+  }
+  
 
 }
