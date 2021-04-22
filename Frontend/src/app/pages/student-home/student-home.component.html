@@ -8,7 +8,7 @@
         data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> 
       <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item my-2 my-lg-0">
@@ -135,9 +135,10 @@
             <div class="row mt-2">
               <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
                 | filtrarPalabrasClaves:palabrasClaves">
-                <div class="card flex-fill">
+                
+                <div class="tarjeta">
                   <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">
                   <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top img-fluid rounded"
