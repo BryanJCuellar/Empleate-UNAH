@@ -346,7 +346,7 @@ function verificarPostulacion(req, res, next) {
             // Si estudiante no esta postulado, prosigue con la peticion
             next();
         } else {
-            res.status(403).send({
+            res.status(200).send({
                 mensaje: 'Ya postulado para esta oferta'
             });
             res.end();
