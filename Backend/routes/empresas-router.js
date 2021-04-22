@@ -272,7 +272,7 @@ router.post('/:idEmpresa/imagenPerfil', multerImages.single('imagenPerfil'),
 
 async function deleteImageOnUpdate(req, res, next) {
     const Empresa = await empresa.findById(req.params.idEmpresa);
-    if (Empresa.imagenPerfil != null) {
+    if (Empresa.imagenPerfil != null && fs.existsSync(path.resolve(Empresa.imagenPerfil))) {
         await fs.unlink(path.resolve(Empresa.imagenPerfil));
     }
     next();
