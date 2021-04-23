@@ -125,7 +125,7 @@ router.put('/:idOferta', verifyToken, function (req, res) {
             _id: mongoose.Types.ObjectId(req.params.idOferta)
         }, newOferta, {
             new: true
-        }).exec()
+        })
         .then(result => {
             res.send(result);
             res.end();

@@ -212,12 +212,13 @@ export class StudentHomeComponent implements OnInit {
                          title: "Usted ya se postuló a esta oferta",
                          icon: 'error',
                          showCloseButton: true
-                       })
-                       
+                       });
                       }
                    )
                 },
-                error => console.log('Error al actualizar informacion estudiante', error)
+                error => {
+                  console.log('Error al actualizar informacion estudiante', error);
+                }
               )
           },
           error => console.log('Error al obtener ID', error)

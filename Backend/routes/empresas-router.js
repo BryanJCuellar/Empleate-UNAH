@@ -93,7 +93,6 @@ router.post('/signup', function (req, res) {
         telefono: req.body.telefono,
         imagenPerfil: null,
         descripcionPerfil: null,
-        ofertas: [],
         facebook: null,
         paginaWeb: null
     });
@@ -191,8 +190,7 @@ router.get('/', function (req, res) {
             datosDireccion: true,
             telefono: true,
             imagenPerfil: true,
-            descripcionPerfil: true,
-            ofertas: true
+            descripcionPerfil: true
         })
         .then(result => {
             res.send(result);
@@ -204,24 +202,6 @@ router.get('/', function (req, res) {
         });
 });
 
-// Guardar ID de ofertas en una empresa
-router.post('/:idEmpresa/ofertas', verifyToken, function (req, res) {
-    empresa.updateOne({
-        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
-    }, {
-        $push: {
-            ofertas: {
-                id_oferta: mongoose.Types.ObjectId(req.body.id_oferta)
-            }
-        }
-    }).then(result => {
-        res.send(result);
-        res.end();
-    }).catch(error => {
-        res.send(error);
-        res.end();
-    })
-});
 // Guardar o actualizar datos de la empresa
 router.put('/:idEmpresa', verifyToken, function (req, res) {
     empresa.updateOne({
