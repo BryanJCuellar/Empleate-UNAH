@@ -16,39 +16,29 @@
     }
   ],
   "palabras_clave": [
-    "Finanzas"
+    "Finanzas",
+    "Asesor de negocios",
+    "Business"
   ],
   "id_empresa": {
     "$oid": "60529a7b6be62300225261f5"
   },
-  "titulo_Oferta": "Secretario",
-  "descripcion": "Descripcion",
-  "idiomas": "Ingles",
-  "edad": "Entre 25 y 30",
+  "titulo_Oferta": "Asesor de negocios",
+  "descripcion": "Captar para clientes de micro y pequeña empresa que requieran créditos o servicios financieros para su negocio o vivienda, asegurando colocaciones acordes a las metas y cumpliendo con los requerimientos estipulados en el manual de crédito, siendo responsable en la adecuada administración garantizando una cartera sana.",
+  "idiomas": "Español, Ingles",
+  "edad": "Entre 20 y 30",
   "indice_estudiante": 80,
-  "experiencia_laboral": "Sin experiencia",
+  "experiencia_laboral": "2 años",
   "jornada_laboral": "Desde Casa",
-  "tipo_contrato": null,
-  "salario": 15000,
+  "tipo_contrato": "Contrato por tiempo determinado",
+  "salario": 20000,
   "estado_oferta": true,
-  "postulaciones": [
-    {
-      "id_estudiante": {
-        "$oid": "606bb006f6903615bc5377b0"
-      },
-      "fecha_postulacion": {
-        "dia": 7,
-        "mes": 4,
-        "anio": 2021
-      },
-      "estado_postulacion": "En proceso"
-    }
-  ],
+  "postulaciones": [],
   "createdAt": {
     "$date": "2021-03-18T00:14:58.559Z"
   },
   "updatedAt": {
-    "$date": "2021-04-08T01:08:48.091Z"
+    "$date": "2021-04-23T00:47:43.463Z"
   },
   "__v": 0
 },{
@@ -69,7 +59,9 @@
     }
   ],
   "palabras_clave": [
-    "Contabilidad"
+    "Contabilidad",
+    "Tesorería",
+    "Economia"
   ],
   "id_empresa": {
     "$oid": "60529a7b6be62300225261f5"
@@ -94,6 +86,50 @@
   "__v": 0
 },{
   "_id": {
+    "$oid": "6053d4603061d80022a1fc47"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "Comayagua"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 18,
+      "mes": 3,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Tecnologías",
+    "Programación",
+    "Programador de videojuegos",
+    "videojuegos"
+  ],
+  "id_empresa": {
+    "$oid": "6051443d5807492e1477f3e1"
+  },
+  "titulo_Oferta": "Programador de videojuegos",
+  "descripcion": "Se necesita un programador de videojuegos",
+  "idiomas": "Español, Ingles, Portugues",
+  "edad": "20-25",
+  "indice_estudiante": 80,
+  "experiencia_laboral": "3-4 años",
+  "jornada_laboral": "Medio Tiempo",
+  "tipo_contrato": "Otro tipo de contrato",
+  "salario": 50000,
+  "estado_oferta": false,
+  "postulaciones": [],
+  "createdAt": {
+    "$date": "2021-03-18T22:29:52.348Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-22T00:59:20.900Z"
+  },
+  "__v": 0
+},{
+  "_id": {
     "$oid": "6053f9d80b0c9d0022e9aff1"
   },
   "ubicacion": [
@@ -110,27 +146,29 @@
     }
   ],
   "palabras_clave": [
-    "Ingenieria en sistemas"
+    "Supervisor de Caja",
+    "caja",
+    "supervisor"
   ],
   "id_empresa": {
     "$oid": "60529a7b6be62300225261f5"
   },
-  "titulo_Oferta": "oferta 1",
-  "descripcion": "ejemplo",
-  "idiomas": "Ingles",
+  "titulo_Oferta": "Supervisor de Caja Santa Cruz de Yojoa",
+  "descripcion": "Experiencia de 1 año en instituciones financiera (no indispensable),\nGenero: Indistinto,\nEdad : 25 años minimo,\nLugar de Residencia Santa Cruz de Yojoa,\nDisponibilidad de horario,\nExcelente presentación,\nFacilidad de expresión,\nOrientado a metas",
+  "idiomas": "Español, Ingles",
   "edad": "entre 25 y 30",
   "indice_estudiante": 70,
   "experiencia_laboral": "Sin experiencia",
   "jornada_laboral": "Desde Casa",
-  "tipo_contrato": null,
-  "salario": 15000,
+  "tipo_contrato": "Contrato por tiempo determinado",
+  "salario": 20000,
   "estado_oferta": true,
   "postulaciones": [],
   "createdAt": {
     "$date": "2021-03-19T01:09:44.269Z"
   },
   "updatedAt": {
-    "$date": "2021-03-19T01:09:44.269Z"
+    "$date": "2021-04-23T00:58:31.988Z"
   },
   "__v": 0
 },{
@@ -151,7 +189,10 @@
     }
   ],
   "palabras_clave": [
-    "Carreras"
+    "Carreras",
+    "Cajero",
+    "caja",
+    "universitario"
   ],
   "postulaciones": [],
   "id_empresa": {
@@ -171,7 +212,7 @@
     "$date": "2021-04-08T00:25:21.227Z"
   },
   "updatedAt": {
-    "$date": "2021-04-08T00:48:43.899Z"
+    "$date": "2021-04-08T01:48:12.626Z"
   },
   "__v": 0
 },{
@@ -192,7 +233,9 @@
     }
   ],
   "palabras_clave": [
-    "Carreras"
+    "Carreras",
+    "Técnico",
+    "mantenimiento"
   ],
   "postulaciones": [],
   "id_empresa": {
@@ -206,13 +249,182 @@
   "experiencia_laboral": "Sin experiencia",
   "jornada_laboral": "Tiempo Completo",
   "tipo_contrato": "Contrato por tiempo determinado",
-  "salario": 16000,
+  "salario": 13000,
   "estado_oferta": true,
   "createdAt": {
     "$date": "2021-04-08T00:41:24.841Z"
   },
   "updatedAt": {
-    "$date": "2021-04-08T00:41:24.841Z"
+    "$date": "2021-04-08T01:38:23.723Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e5e06ff6451002285619b"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Cortés",
+      "ciudad": "Choloma"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 7,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Staff",
+    "Manager"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "6051439d5807492e1477f3e0"
+  },
+  "titulo_Oferta": "Staff Manager",
+  "descripcion": "We are looking for a Staff Manager to manage one or more medium/large projects, typically to deliver a specific product or transformation via a multi-disciplinary, highly skilled engineering team.",
+  "idiomas": "Español, Ingles y Frances",
+  "edad": "20-30 años",
+  "indice_estudiante": 80,
+  "experiencia_laboral": "2 años",
+  "jornada_laboral": "Tiempo Completo",
+  "tipo_contrato": "Contrato por tiempo determinado",
+  "salario": 40000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-08T01:36:06.810Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-08T01:38:29.289Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e631bff6451002285619d"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 7,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Carreras",
+    "Cajero"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "606e625eff6451002285619c"
+  },
+  "titulo_Oferta": "Cajero",
+  "descripcion": "Se solicita cajero ",
+  "idiomas": "español",
+  "edad": "entre 20 a 30 años",
+  "indice_estudiante": 80,
+  "experiencia_laboral": "Sin experiencia",
+  "jornada_laboral": "Medio Tiempo",
+  "tipo_contrato": "Contrato por tiempo indefinido",
+  "salario": 16000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-08T01:57:47.572Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-11T00:30:46.282Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6080ca52d0ee860022838b7f"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Comayagua",
+      "ciudad": "Comayagua"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 21,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "Juegos",
+    "Jugador"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "6051443d5807492e1477f3e1"
+  },
+  "titulo_Oferta": "Jugador en la posición Jungla",
+  "descripcion": "Se solicita un empleado que tenga un gran afán por aprender a jugar en la jungla con los campeones más top que están.",
+  "idiomas": "Español",
+  "edad": "12-40",
+  "indice_estudiante": 50,
+  "experiencia_laboral": "3-4 años",
+  "jornada_laboral": null,
+  "tipo_contrato": "Contrato por tiempo indefinido",
+  "salario": 12000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-22T00:58:58.576Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-23T00:43:21.764Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6080cb19d0ee860022838b80"
+  },
+  "ubicacion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa"
+    }
+  ],
+  "fecha_publicacion": [
+    {
+      "dia": 21,
+      "mes": 4,
+      "anio": 2021
+    }
+  ],
+  "palabras_clave": [
+    "ADC",
+    "Jugador",
+    "Juegos"
+  ],
+  "postulaciones": [],
+  "id_empresa": {
+    "$oid": "6051443d5807492e1477f3e1"
+  },
+  "titulo_Oferta": "Jugador en la posición ADC",
+  "descripcion": "Se necesita un jugador en la posición de adc, que sepa jugar con una gran variedad de campeones top.",
+  "idiomas": "Español",
+  "edad": "20-30",
+  "indice_estudiante": 80,
+  "experiencia_laboral": "5-10 años",
+  "jornada_laboral": "Por Horas",
+  "tipo_contrato": "Contrato de obra o labor",
+  "salario": 12000,
+  "estado_oferta": true,
+  "createdAt": {
+    "$date": "2021-04-22T01:02:17.459Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-22T01:02:17.459Z"
   },
   "__v": 0
 }]

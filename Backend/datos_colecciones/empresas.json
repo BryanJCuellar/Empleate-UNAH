@@ -9,20 +9,19 @@
       "direccion": "Col.Izaguirre"
     }
   ],
-  "ofertas": [],
   "organizacion": "Agent Company",
   "email": "mragent317@gmail.com",
   "password": "$2a$10$BRUPqBkNwwD3N0Io7qtek.QSjJQC8k9jG6/knuFwBm9F.RZD2O1Rq",
   "telefono": "9988-4455",
-  "imagenPerfil": null,
-  "descripcionPerfil": null,
+  "imagenPerfil": "uploads/images/5316601b-ac6e-435f-abe3-c81566c5ddf6.png",
+  "descripcionPerfil": "Lorem Ipsum",
   "facebook": null,
   "paginaWeb": null,
   "createdAt": {
     "$date": "2021-03-16T23:47:41.578Z"
   },
   "updatedAt": {
-    "$date": "2021-03-16T23:47:41.578Z"
+    "$date": "2021-04-23T00:36:20.580Z"
   },
   "__v": 0
 },{
@@ -33,23 +32,22 @@
     {
       "departamento": "Comayagua",
       "ciudad": "Comayagua",
-      "direccion": "Calle"
+      "direccion": "Calle los Almendros, frente al Mall Premier."
     }
   ],
-  "ofertas": [],
-  "organizacion": "LOL",
+  "organizacion": "Riot Games",
   "email": "riverita.enoc@gmail.com",
   "password": "$2a$10$auFDzFRIrrHJsq3B0DtGe.YikNn2XRZVIYq7jr/pN8h34gXxE6CHi",
-  "telefono": "9977-4577",
-  "imagenPerfil": null,
-  "descripcionPerfil": null,
-  "facebook": null,
-  "paginaWeb": null,
+  "telefono": "9870-7307",
+  "imagenPerfil": "uploads/images/6826ec2c-67cd-4d39-9865-00a7f3cdd91e.jpg",
+  "descripcionPerfil": "Creemos que cualquiera con la suficiente pasión, visión y perseverancia puede generar un impacto positivo. Esta filosofía nos impulsa a creer que existen muchas maneras de ofrecer un servicio que mantenga su valor a largo plazo y que impacte de forma positiva a los jugadores, los socios, los Rioters y las comunidades a las que servimos.",
+  "facebook": "https://www.facebook.com/RiotGames/",
+  "paginaWeb": "http://www.riotgames.com/",
   "createdAt": {
     "$date": "2021-03-16T23:50:21.233Z"
   },
   "updatedAt": {
-    "$date": "2021-03-18T22:29:52.576Z"
+    "$date": "2021-04-23T00:38:24.683Z"
   },
   "__v": 0
 },{
@@ -63,36 +61,19 @@
       "direccion": "Col. Castaño Sur"
     }
   ],
-  "ofertas": [
-    {
-      "id_oferta": {
-        "$oid": "60529b826be62300225261f6"
-      }
-    },
-    {
-      "id_oferta": {
-        "$oid": "60529dc96be62300225261f7"
-      }
-    },
-    {
-      "id_oferta": {
-        "$oid": "6053f9d80b0c9d0022e9aff1"
-      }
-    }
-  ],
   "organizacion": "Banco Popular",
   "email": "empleateunahtest@gmail.com",
   "password": "$2a$10$bX0at5nFj9UVhpXsrMn9Bu4gDklqankOHZ04xhtmeDLEakQ10sAkW",
   "telefono": "9988-5577",
-  "imagenPerfil": "uploads\\images\\logoBancoPopular.png",
-  "descripcionPerfil": null,
-  "facebook": null,
-  "paginaWeb": null,
+  "imagenPerfil": "uploads/images/c0dc3be8-5118-480f-be52-a06d072a1378.png",
+  "descripcionPerfil": "Nacemos con la finalidad de apoyar a la micro, pequeña y mediana empresa debido a que juega un rol fundamental en la creación de empleo, la reducción de la pobreza y el crecimiento económico de las familias hondureñas y por ende de Honduras.",
+  "facebook": "https://es-la.facebook.com/BancoPopular.Hn/",
+  "paginaWeb": "https://bancopopular.hn",
   "createdAt": {
     "$date": "2021-03-18T00:10:35.744Z"
   },
   "updatedAt": {
-    "$date": "2021-03-19T01:09:44.517Z"
+    "$date": "2021-04-23T00:23:39.360Z"
   },
   "__v": 0
 },{
@@ -106,7 +87,6 @@
       "direccion": "8y 9 calle barrio Concepcion"
     }
   ],
-  "ofertas": [],
   "organizacion": "almacen extra",
   "email": "ccinthya375@gmail.com",
   "password": "$2a$10$XnJrsSQMtKT3FdICkyPUhOZTOIsjMgi.TiPii8EEPDCrmZJz7jcd.",
@@ -133,18 +113,11 @@
       "direccion": "Col. Alameda"
     }
   ],
-  "ofertas": [
-    {
-      "id_oferta": {
-        "$oid": "606e4d71ff64510022856198"
-      }
-    }
-  ],
-  "organizacion": "Ficohosa",
+  "organizacion": "Ficohsa",
   "email": "ficihosa@yopmail.com",
   "password": "$2a$10$kZtPZw6vcyYsW7oO5Zwi.OW7zpF6JpdE0ilSOQPo6zXuTtkvk5C1O",
   "telefono": "2235-7890",
-  "imagenPerfil": null,
+  "imagenPerfil": "uploads/images/3c196a28-193f-425d-8c90-6f118a252ced.png",
   "descripcionPerfil": "Banco estafador",
   "facebook": "Ficohosahn",
   "paginaWeb": "www.ficohosa.hn",
@@ -152,7 +125,7 @@
     "$date": "2021-04-08T00:23:52.211Z"
   },
   "updatedAt": {
-    "$date": "2021-04-08T00:29:34.430Z"
+    "$date": "2021-04-23T00:39:49.290Z"
   },
   "__v": 0
 },{
@@ -166,18 +139,11 @@
       "direccion": "Col. El trapiche"
     }
   ],
-  "ofertas": [
-    {
-      "id_oferta": {
-        "$oid": "606e5134ff6451002285619a"
-      }
-    }
-  ],
   "organizacion": "Energía Eléctrica Honduras",
   "email": "eeh@yopmail.com",
   "password": "$2a$10$eOMLhxMJ40bjujjobZxfQOFXOG6ovy7xsshVpv3o/4EO2hwrTQyJG",
   "telefono": "3356-7893",
-  "imagenPerfil": null,
+  "imagenPerfil": "uploads/images/a54bde2c-87ed-4ed9-af5e-a2ddf5ae59d9.jpeg",
   "descripcionPerfil": "Breve descripción",
   "facebook": "EEHonduras",
   "paginaWeb": "www.eeh.hn",
@@ -185,7 +151,33 @@
     "$date": "2021-04-08T00:37:47.879Z"
   },
   "updatedAt": {
-    "$date": "2021-04-08T00:41:25.033Z"
+    "$date": "2021-04-23T00:40:33.460Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606e625eff6451002285619c"
+  },
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col. El trapiche"
+    }
+  ],
+  "organizacion": "Pizza Hut",
+  "email": "talentohumanopizzahuthonduras@gmail.com",
+  "password": "$2a$10$QjzMaG0z9nuw1q5iN2HZq.xFVqFFACr9ku9Klv8I1rLKStyTNZ4Ti",
+  "telefono": "2234-6789",
+  "imagenPerfil": "uploads/images/4f9dcf93-418e-48f6-98a7-7c115f5811af.jpg",
+  "descripcionPerfil": "Pizza Cara y fea",
+  "facebook": "PizzaHutHonduras",
+  "paginaWeb": "www.pizzahut.hn",
+  "createdAt": {
+    "$date": "2021-04-08T01:54:38.317Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-23T00:41:02.590Z"
   },
   "__v": 0
 }]
