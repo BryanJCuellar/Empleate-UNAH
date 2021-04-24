@@ -59,6 +59,9 @@ export class OfertasService {
   getIdOferta(){
     return this.idOferta;
   }
+  eliminarPostulacionOferta(idOferta, idEstudiante): Observable<any> {
+    return this.httpClient.put(`${this.backendHost}/ofertas/${idOferta}/postulaciones/${idEstudiante}`, {});
+  }
 
 }
 

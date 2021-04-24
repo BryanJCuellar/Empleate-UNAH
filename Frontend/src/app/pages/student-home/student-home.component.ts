@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-student-home',
   templateUrl: './student-home.component.html',
-  styleUrls: ['./student-home.component.css']
+  styleUrls: ['./student-home.component.css'],
+  
 })
 export class StudentHomeComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
@@ -45,7 +46,7 @@ export class StudentHomeComponent implements OnInit {
     private estudiantesService: EstudiantesService,
     private OfertasService: OfertasService,
     private router: Router,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -225,6 +226,31 @@ export class StudentHomeComponent implements OnInit {
     }
     
 
+  }
+  openSm(content, idOferta) {
+    this.modalService.open(content, { size: 'lg', centered: true } );
+    this.verDetalleOferta(idOferta);
+  }
+
+  eliminarPostulacion(idOferta): void{
+    this.OfertasService.eliminarPostulacionOferta(idOferta, this.estudianteActual._id)
+    .subscribe 
+    (res => {
+      // console.log(res);
+      if (res.ok == 1) {
+        this.estudiantesService.eliminarPostulacionEstudiantes(this.estudianteActual._id, idOferta)
+        .subscribe(
+          res=> {
+            this.cargarPostulaciones();
+            this.modalService.dismissAll();
+          }, 
+          error=> console.log('Error al eliminar oferta del lado de Estudiannte', error) 
+        )
+      }
+    },
+    error => console.log('Error al eliminar oferta del lado de ofertas', error)
+  );
+    
   }
   
 

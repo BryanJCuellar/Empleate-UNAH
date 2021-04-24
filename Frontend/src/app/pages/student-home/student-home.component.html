@@ -92,6 +92,36 @@
     </div>
   </ng-template>
 
+  <ng-template #eliminar let-modal>
+    <div class="modal-content modal-ng">
+      <div class="modal-header modal-ng titulo-modal">
+        <h5 class="modal-title" id="modalEliminarOfertaLabel"
+          style="color: beige !important; font-weight: bolder; text-align: center;">Eliminar Postulación</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mb-2">
+          <i style="color:#dc3545;" class="fas fa-exclamation-circle font-s-5"></i>
+        </div>
+        <div class="text-center">
+          <p style="color: rgb(17, 17, 17) !important; font-size: 20px;" class="text-justify">
+            ¿Está seguro que desea eliminar esta postulación (cargo: {{ofertaActual.titulo_Oferta}}) de forma permanente?
+            <br>
+            <b>Nota: Esta operación es irreversible</b>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer modal-ng">
+        <button type="button" class="btn btn-info boton mr-3" (click)="modal.close('Cancel click')">Cancelar</button>
+        <button type="button" class="btn btn-danger boton" (click)="eliminarPostulacion(ofertaActual._id)">Eliminar <i
+            class="fas fa-trash-alt"></i></button>
+      </div>
+    </div>
+  </ng-template>
+
+  
   <body>
 
     <div style="background-color: #E5E4EF" class="main"
@@ -204,7 +234,7 @@
                     </li>
                   </ul>
                   <div class="card-body" style="padding-left: 0px;">
-                    <a class="btnsOfertas">
+                    <a class="btnsOfertas" (click)="openSm(eliminar, postulacion.oferta._id)">
                       <span>
                         <i style="color: #c51122;" class="fas fa-trash"></i>
                         Eliminar postulación
@@ -221,6 +251,7 @@
         </div>
       </div>
     </div>
+   
 
   </body>
 </ng-container>
