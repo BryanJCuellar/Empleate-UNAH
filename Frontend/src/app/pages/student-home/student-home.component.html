@@ -165,7 +165,7 @@
             <div class="row mt-2">
               <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
                          *ngFor= "let oferta of ofertas">-->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
                 | filtrarPalabrasClaves:palabrasClaves">
                 
                 <div class="tarjeta">
@@ -211,10 +211,10 @@
           </div>
 
           <div *ngIf="elegir=='Mis_Postulaciones'">
-            <div class="row mt-2">
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex"
+            <div class="row mt-2 animate__animated animate__fadeInUp">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 d-flex"
                 *ngFor="let postulacion of aggregatePostulaciones">
-                <div class="card flex-fill">
+                <div class="tarjeta">
                   <img *ngIf="postulacion.empresa.imagenPerfil == null" class="card-img-top img-fluid rounded"
                     src="../../../assets/img/empresa1.jpg" alt="Card image cap">
                   <img *ngIf="postulacion.empresa.imagenPerfil != null" class="card-img-top img-fluid rounded"

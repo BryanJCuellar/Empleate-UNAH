@@ -64,6 +64,12 @@ body {
   padding: 30px 0px;
 }
 
+@media (max-width:575.98px) {
+  .wrap {
+    max-width: 100%;
+  }
+}
+
 .btn-cerrar {
   color: white;
   background-color: #078bbe;
@@ -132,7 +138,6 @@ div.form-error {
 .listaPalabrasClave {
   margin-top: 10px;
   width: 100% !important;
-  margin-left: 30px;
 }
 
 .secciones div p {
@@ -208,6 +213,9 @@ div.form-error {
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 0.3em;
   background-color: #00035A;
+}
+#formCrearOferta .card{
+  max-width: 100%;
 }
 
 .imagen-empresa {

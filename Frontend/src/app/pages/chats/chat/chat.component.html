@@ -43,7 +43,7 @@
             <div class="row h-100">
               <ng-container *ngIf="chat_actual != null">
                 <div class="col-12 my-2"
-                  style="height: 90vh; background-color: white; border-radius: 10px; border: #191140 solid 1px;">
+                  style="height: 100%; background-color: white; border-radius: 10px; border: #191140 solid 1px;">
                   <ng-container *ngIf="log_estudiante">
                     <div class="row align-items-center">
                       <div class="col-2 col-lg-1">
@@ -74,7 +74,7 @@
                     </div>
                   </ng-container>
                   <hr>
-                  <div #chatHistory style="overflow-y: auto; height: 60vh;">
+                  <div #chatHistory style="overflow-y: auto; height: 80vh;">
                     <ng-container *ngIf="mensajes != null">
                       <ng-container *ngFor="let item of mensajes">
                         <div *ngIf="item.from != id_usuario" class="w-100">

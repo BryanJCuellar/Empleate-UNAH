@@ -153,6 +153,7 @@ export class ProfileEmpresComponent implements OnInit {
       if (!this.array_palabras.some(current => current === item)) {
         this.array_palabras.push(item);
       }
+      this.palabrasClave.setValue("");
       this.hayPalabras_Clave();
     }
   }
@@ -232,43 +233,20 @@ export class ProfileEmpresComponent implements OnInit {
           res => {
             console.log("Respuesta al guardar Oferta", res);
             if (res.mensaje == 'Oferta Publicada') {
-              this.empresasService.guardarIDOfertaEmpresa(this.idEmpresa, res.data._id)
-                .subscribe(
-                  response => {
-                    console.log("Respuesta al guardar IDOferta en Empresa", response);
-                    if (response.ok == 1) {
-                      // Mensaje success
-                      Swal.fire({
-                        title: 'Oferta publicada con exito!',
-                        icon: 'success',
-                        showConfirmButton: true
-                      }).then(success => {
-                        window.location.href = 'company/profile';
-                      }
-                      ).catch(err => console.log(err));
-                    }
-                  },
-                  error => console.log(error)
-                )
+              // Mensaje success
+              Swal.fire({
+                title: 'Oferta publicada con exito!',
+                icon: 'success',
+                showConfirmButton: true
+              }).then(success => {
+                window.location.href = 'company/profile';
+              }
+              ).catch(err => console.log(err));
             }
           },
           err => console.log(err)
         )
     }
-    /*
-    Swal.fire(
-      'oferta creada con exito!',
-      'da click en el boton!',
-      'success'
-    )*/
-
-    /*ESTA ALERTA ES POR SI DA ERROR AL CREAR LA TARJETA
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Parece que algo salio mal'
-    })  
-    */
   }
 
   // Funcion cargar ofertas empresa
@@ -423,7 +401,7 @@ export class ProfileEmpresComponent implements OnInit {
     return this.formEditOferta.get('descripcion');
   }
 
-  detalleOferta(oferta){
+  detalleOferta(oferta) {
     this.formEditOferta.reset();
     this.formEditOferta.patchValue(oferta);
     this.ciudadEdit.setValue(oferta.ubicacion[0].ciudad);
@@ -475,8 +453,10 @@ export class ProfileEmpresComponent implements OnInit {
       salario: salary,
       edad: age,
       indice_estudiante: student_index,
-      ciudad: this.ciudadEdit.value,
-      departamento: this.departamentoEdit.value,
+      ubicacion: {
+        departamento: this.departamentoEdit.value,
+        ciudad: this.ciudadEdit.value
+      },
       experiencia_laboral: work_experience,
       jornada_laboral: working_day,
       tipo_contrato: contract_type,
@@ -536,16 +516,16 @@ export class ProfileEmpresComponent implements OnInit {
   borrarOferta() {
     if (this.ofertaSeleccionada != null) {
       this.ofertasService.borrarOferta(this.ofertaSeleccionada._id)
-      .subscribe(
-        res => {
-          // console.log(res);
-          if (res.ok == 1) {
-            this.verOfertas();
-            this.modalService.dismissAll();
-          }
-        },
-        error => console.log('Error al eliminar oferta', error)
-      );
+        .subscribe(
+          res => {
+            // console.log(res);
+            if (res.ok == 1) {
+              this.verOfertas();
+              this.modalService.dismissAll();
+            }
+          },
+          error => console.log('Error al eliminar oferta', error)
+        );
     }
   }
 
@@ -553,7 +533,7 @@ export class ProfileEmpresComponent implements OnInit {
     return this.authService;
   }
 
-  verPerfil(idEstudiante){
+  verPerfil(idEstudiante) {
     // this.empresasService.seleccionarEstudiante(idEstudiante);
     this.router.navigateByUrl(`company/student-selected/${idEstudiante}`);
   }

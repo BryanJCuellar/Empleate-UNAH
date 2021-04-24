@@ -8,7 +8,7 @@
   "passwordCuenta": "Mavalladares.05",
   "email": "mavalladares@unah.hn",
   "centro": "CU",
-  "imagenPerfil": "uploads\\images\\1832590f-659d-4c89-8a1b-08d590b4812f.jpg",
+  "imagenPerfil": "uploads/images/5bcc16f0-a60d-4875-b337-9837cbb513dc.jpg",
   "clasesAprobadas": 35,
   "indice": 86,
   "carreras": "Ingenieria en sistemas",
@@ -34,21 +34,9 @@
   "puestoDeseado": null,
   "horarioDeseado": null,
   "estado": true,
-  "postulaciones": [
-    {
-      "id_oferta": {
-        "$oid": "60529b826be62300225261f6"
-      },
-      "fecha_postulacion": {
-        "dia": 7,
-        "mes": 4,
-        "anio": 2021
-      },
-      "estado_postulacion": "En proceso"
-    }
-  ],
+  "postulaciones": [],
   "updatedAt": {
-    "$date": "2021-04-08T01:08:48.042Z"
+    "$date": "2021-04-23T00:49:13.446Z"
   }
 },{
   "_id": {
@@ -69,15 +57,28 @@
   "fechaNacimiento": "20/09/1999",
   "numeroIdentidad": "0801-1999-24352",
   "descripcionPerfil": "Soy un estudiante responsable y creativo. Puedo aprender rápido, por tanto, seré valioso en una empresa ",
-  "intereses": null,
-  "datosDireccion": null,
+  "intereses": "Programacion,Videojuegos",
+  "datosDireccion": [
+    {
+      "departamento": "Francisco Morazán",
+      "ciudad": "Tegucigalpa",
+      "direccion": "Col. Las Palmas"
+    }
+  ],
   "CurriculumAdjunto": null,
-  "Lenguajes": null,
+  "Lenguajes": [
+    "Español",
+    "Francés",
+    "Inglés"
+  ],
   "areaDeseada": null,
   "puestoDeseado": null,
   "horarioDeseado": null,
   "estado": true,
-  "postulaciones": []
+  "postulaciones": [],
+  "updatedAt": {
+    "$date": "2021-04-23T00:45:33.069Z"
+  }
 },{
   "_id": {
     "$oid": "606bb006f6903615bc5377b2"
@@ -125,8 +126,14 @@
   "fechaNacimiento": "07/11/2000",
   "numeroIdentidad": "0801-2000-54235",
   "descripcionPerfil": "Soy un estudiante responsable y creativo. Puedo aprender rápido, por tanto, seré valioso en una empresa ",
-  "intereses": null,
-  "datosDireccion": null,
+  "intereses": "Videojuegos, comercio electronico",
+  "datosDireccion": [
+    {
+      "departamento": "Cortés",
+      "ciudad": "San Pedro Sula",
+      "direccion": "Col. Las flechas"
+    }
+  ],
   "CurriculumAdjunto": null,
   "Lenguajes": [
     "Español",
@@ -136,7 +143,10 @@
   "puestoDeseado": null,
   "horarioDeseado": null,
   "estado": true,
-  "postulaciones": []
+  "postulaciones": [],
+  "updatedAt": {
+    "$date": "2021-04-23T00:52:33.855Z"
+  }
 },{
   "_id": {
     "$oid": "606bb006f6903615bc5377b4"
@@ -175,7 +185,7 @@
   "passwordCuenta": "ramartinez.15",
   "email": "ramartinez@unah.hn",
   "centro": "CU",
-  "imagenPerfil": "uploads\\images\\690bd12b-f220-4f8a-b70e-23b729423f88.jpg",
+  "imagenPerfil": null,
   "clasesAprobadas": 17,
   "indice": 70,
   "carreras": "Finanzas",
@@ -192,7 +202,7 @@
       "direccion": "Lorem Ipsum"
     }
   ],
-  "CurriculumAdjunto": "uploads\\files\\ea7603c2-00b2-443c-bfa0-4066c709e35c.docx",
+  "CurriculumAdjunto": null,
   "Lenguajes": [
     "Español",
     "Inglés"

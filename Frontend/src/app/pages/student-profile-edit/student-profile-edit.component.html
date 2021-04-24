@@ -68,7 +68,7 @@
           <h4 class="titGen">Datos Generales</h4>
         </div>
         <div class="form-group mt-3 row">
-          <label class="col-2 col-form-label">Descripcion del Perfil</label>
+          <label class="col-12 col-md-2 col-form-label">Descripcion del Perfil</label>
           <div class="col">
             <textarea
               [ngClass]="{'form-input-error':profileDescription.invalid && (profileDescription.dirty || profileDescription.touched)}"
@@ -83,7 +83,7 @@
         </div>
 
         <div class="form-group mt-3 row">
-          <label class="col-2 col-form-label">Telefóno</label>
+          <label class="col-12 col-md-2 col-form-label">Telefóno</label>
           <div class="col">
             <input [ngClass]="{'form-input-error':phone.invalid && (phone.dirty || phone.touched)}" class="form-control"
               type="text" placeholder="Ingrese su telefono" formControlName="phone">
@@ -95,7 +95,7 @@
         </div>
 
         <div class="form-group mt-3 row">
-          <label class="col-2 col-form-label">Intereses Personales</label>
+          <label class="col-12 col-md-2 col-form-label">Intereses Personales</label>
           <div class="col">
             <input [ngClass]="{'form-input-error':interests.invalid && (interests.dirty || interests.touched)}"
               class="form-control" type="text" placeholder="Ingrese sus intereses" formControlName="interests">
@@ -106,7 +106,7 @@
         </div>
 
         <div class="form-group mt-3 row">
-          <label class="col-2 col-form-label">Dirección</label>
+          <label class="col-12 col-md-2 col-form-label">Dirección</label>
           <div class="form-row col">
             <div class="col">
               <select [ngClass]="{'form-input-error':department.invalid && (department.dirty || department.touched)}"
@@ -139,7 +139,7 @@
         </div>
 
         <div class="form-group row mt-5">
-          <label class="col-2 col-form-label">Idiomas</label>
+          <label class="col-12 col-md-2 col-form-label">Idiomas</label>
           <div class="col">
             <select class="col-12 seleLengua" #select formControlName="languages">
               <option *ngFor="let idioma of idiomas">{{idioma}}</option>
@@ -165,7 +165,7 @@
 
       <form [formGroup]="formularioUploadCV">
         <div class="form-group mt-3 row">
-          <label class="col-2 col-form-label">Adjuntar CV (Opcional)</label>
+          <label class="col-12 col-md-2 col-form-label">Adjuntar CV (PDFs)</label>
           <div class="col">
             <input class="form-control" type="file" formControlName="curriculumAdjunto"
               (change)="selectCurriculumFile($event)">

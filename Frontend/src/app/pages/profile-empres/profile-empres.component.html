@@ -61,7 +61,7 @@
                     src="../../../assets/img/empresa1.jpg" alt="">
                   <img *ngIf="empresa.imagenPerfil!=null" class="mr-3 img-fluid resume-profile-image picture mx-auto"
                     [src]="backendHost + empresa.imagenPerfil" alt="">
-                  <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+                  <div class="media-body p-0 p-md-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
                     <div class="primary-info py-5">
                       <!--<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Steve Doe</h1>-->
                       <h1 class="title mb-3">{{empresa.organizacion}}</h1>
@@ -72,10 +72,10 @@
                       </ul>
                     </div>
                     <!--//primary-info-->
-                    <div class="secondary-info ml-md-auto py-5">
+                    <div class="secondary-info ml-lg-auto py-5">
                       <ul class="resume-social list-unstyled">
                         <li class="mb-3">
-                          <a class="primary-link">
+                          <a style="color: #009FE1 !important;font-weight: bold;">
                             <span class="fa-container text-center">
                               <i class="fab fa-facebook mr-2"></i>
                               <ng-container *ngIf="empresa.facebook == null">Facebook</ng-container>
@@ -84,7 +84,7 @@
                           </a>
                         </li>
                         <li>
-                          <a class="primary-link">
+                          <a style="color: #009FE1 !important;font-weight: bold;">
                             <span class="fa-container text-center">
                               <i class="fas fa-globe mr-2"></i>
                               <ng-container *ngIf="empresa.paginaWeb == null">Sitio Web</ng-container>
@@ -101,7 +101,7 @@
                 </div>
                 <!--//media-->
               </header>
-              <div class="resume-body p-5">
+              <div class="resume-body p-0 p-md-5">
                 <div class="row">
                   <div class="col-lg-9">
                     <section class="resume-section experience-section mb-5">
@@ -127,7 +127,7 @@
                   </div>
                   <div class="col-lg-3">
                     <section class="resume-section skills-section mb-5">
-                      <h3 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
+                      <h3 class="resume-section-title text-center text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
                       <div class="resume-section-content">
                         <div class="resume-skill-item">
                           <ul class="list-inline" *ngFor="let direccion of empresa.datosDireccion">
@@ -250,18 +250,16 @@
         <div id="formCrearOferta" *ngIf="elegir=='oferta'">
           <div class="cards">
             <div class="card">
-
-
               <div class="description">
                 <form [formGroup]="formulario_Oferta">
                   <div class="row">
-                    <div class="col-12 col-sm-4 col-lg-3">
+                    <div class="col-12 col-lg-4 col-xl-3">
                       <img *ngIf="empresa.imagenPerfil == null" class="imagen-empresa"
                         src="../../../assets/img/empresa1.jpg" alt="green forest">
                       <img *ngIf="empresa.imagenPerfil != null" class="imagen-empresa"
                         [src]="backendHost + empresa.imagenPerfil" alt="green forest">
                     </div>
-                    <div class="col-12 col-sm-8 col-md-8 col-lg-9">
+                    <div class="col-12 col-lg-8 col-xl-9">
                       <input [ngClass]="{'form-input-error':vacante.invalid && (vacante.dirty || vacante.touched)}"
                         formControlName="vacante" type="text" placeholder="Vacante" class="mb-2" style="width: 100%;">
                       <div *ngIf="vacante.invalid && (vacante.dirty || vacante.touched)" class="form-error">
@@ -287,7 +285,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-12">
+                  <div class="col-12">
                     <textarea
                       [ngClass]="{'form-input-error':descripcion.invalid && (descripcion.dirty || descripcion.touched)}"
                       formControlName="descripcion" placeholder="Descripcion de Vacante" class="mb-1" name="descripcion"
@@ -298,26 +296,24 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-md-4">
                       <input formControlName="salario" type="number" placeholder="Salario (Neto Mensual)" min="1"
                         class="mb-2" style="width: 100%;">
                     </div>
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-md-4">
                       <input formControlName="edad" type="text" placeholder="Rango de edad " class="mb-2"
                         style="width: 100%;">
                     </div>
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-md-4">
                       <input formControlName="indiceEstudiante" type="number"
                         placeholder="Índice de Estudiante requerido" min="1" max="100" class="mb-2"
                         style="width: 100%;">
                     </div>
-
-
-                    <div class="col-12 col-sm-12">
+                    <div class="col-12">
                       <input formControlName="idiomas" type="text" placeholder="Idiomas (Ej. Español, Inglés, Francés)"
                         class="mb-2" style="width: 100%;">
                     </div>
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-sm-4">
                       <label class="label-form text-white pb-1">Experiencia Laboral</label>
                       <select
                         [ngClass]="{'form-input-error':experienciaLaboral.invalid && (experienciaLaboral.dirty || experienciaLaboral.touched)}"
@@ -331,7 +327,7 @@
                       </div>
                     </div>
 
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-sm-4">
                       <label class="label-form text-white pb-1">Tipo de Jornada</label>
                       <select
                         [ngClass]="{'form-input-error':jornadaLaboral.invalid && (jornadaLaboral.dirty || jornadaLaboral.touched)}"
@@ -344,7 +340,7 @@
                       </div>
                     </div>
 
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-sm-4">
                       <label class="label-form text-white pb-1">Tipo de Contrato</label>
                       <select
                         [ngClass]="{'form-input-error':tipoContrato.invalid && (tipoContrato.dirty || tipoContrato.touched)}"
@@ -357,16 +353,16 @@
                       </div>
                     </div>
 
-                    <div class="col-12 col-sm-12">
+                    <div class="col-12">
                       <input type="text" formControlName="palabrasClave"
                         placeholder="Palabras claves para filtros de búsqueda (Ej. Carreras, habilidades, tecnologias)"
                         style="width: 100%;" class="empresa mb-2">
                       <div *ngIf="!hayPalabrasClave" class="form-error"><span>Se requiere mínimo un dato</span></div>
                     </div>
                   </div>
-                  <div class="row p-0 mb-4">
-                    <div class="col-12 col-lg-7 p-0">
-                      <ul class=" listaPalabrasClave">
+                  <div class="row mb-4">
+                    <div class="col-12 col-lg-7">
+                      <ul class="listaPalabrasClave">
                         <li *ngFor="let item of array_palabras;" class="list-group-item">
                           <div class="row">
                             <div class="col-12">{{item}}<span class="float-right"><i class="fas fa-minus-circle"
@@ -375,7 +371,7 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col-12 col-lg-5 p-0">
+                    <div class="col-12 col-lg-5">
                       <div class="text-right">
                         <button type="button" (click)="addItem(palabrasClave.value)" class="btn boton-guardar">Agregar
                           Palabra Clave</button>
