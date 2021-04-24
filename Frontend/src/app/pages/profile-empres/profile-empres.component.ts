@@ -153,6 +153,7 @@ export class ProfileEmpresComponent implements OnInit {
       if (!this.array_palabras.some(current => current === item)) {
         this.array_palabras.push(item);
       }
+      this.palabrasClave.setValue("");
       this.hayPalabras_Clave();
     }
   }
