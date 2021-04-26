@@ -4,19 +4,24 @@ var mongoose = require('mongoose');
 var path = require('path');
 var bcrypt = require('bcryptjs');
 var fs = require('fs-extra');
-var jwt = require('jsonwebtoken');
 var multerImages = require('../libs/multer-images');
 var empresa = require('../models/empresas');
-var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
 var nodemailer = require('nodemailer');
+// Auth
+var jwt = require('jsonwebtoken');
+var randToken = require('rand-token');
+var SECRET_KEY = 'B0K9VuiHThqATv0dk1iKu8INW1OQ6YqAZbcEPKhOEV8N3eTbXU5kjbsnchlXbZ0';
+var refreshTokensEmpresa = [];
+var expiresIn = 24 * 60 * 60;
 
 // Obtener Token
 router.get('/tokenID', verifyToken, function (req, res) {
-    res.send({
+    res.status(200).send({
         text: 'This is your token ID and Rol',
         id: req._id,
         rol: req.rol
     });
+    res.end();
 });
 
 // Obtener toda la informacion de una empresa (logueada)
@@ -101,18 +106,19 @@ router.post('/signup', function (req, res) {
         nueva_empresa.save()
             .then(result => {
                 // Success, inicia sesion con JWT
-                const expiresIn = 24 * 60 * 60;
-                const accessToken = jwt.sign({
-                    _id: result.id,
+                const user = {
+                    _id: result._id,
                     rol: 'Empresa'
-                }, SECRET_KEY, {
+                };
+                const token = jwt.sign(user, SECRET_KEY, {
                     expiresIn: expiresIn
                 });
+                const refreshToken = randToken.uid(256);
+                refreshTokensEmpresa[refreshToken] = user._id;
                 const dataEnviar = {
-                    email: result.email,
-                    rol: 'Empresa',
-                    accessToken: accessToken,
-                    expiresIn: expiresIn
+                    jwt: token,
+                    refreshToken: refreshToken,
+                    rol: user.rol
                 };
                 res.status(200).send({
                     mensaje: 'Registrado',
@@ -127,14 +133,14 @@ router.post('/signup', function (req, res) {
                 res.end();
             })
     } else {
-        res.status(401).send({
+        res.status(400).send({
             mensaje: "Codigo no valido"
         });
         res.end();
     }
 });
 
-// Loguear empresa
+// Login empresa
 router.post('/login', function (req, res) {
     empresa.findOne({
             email: req.body.email
@@ -148,18 +154,19 @@ router.post('/login', function (req, res) {
             let password_match = bcrypt.compareSync(req.body.password, result.password)
             if (password_match) {
                 // Success, inicia sesion con JWT
-                const expiresIn = 24 * 60 * 60;
-                const accessToken = jwt.sign({
+                const user = {
                     _id: result._id,
                     rol: 'Empresa'
-                }, SECRET_KEY, {
+                };
+                const token = jwt.sign(user, SECRET_KEY, {
                     expiresIn: expiresIn
                 });
+                const refreshToken = randToken.uid(256);
+                refreshTokensEmpresa[refreshToken] = user._id;
                 const dataEnviar = {
-                    email: result.email,
-                    rol: 'Empresa',
-                    accessToken: accessToken,
-                    expiresIn: expiresIn
+                    jwt: token,
+                    refreshToken: refreshToken,
+                    rol: user.rol
                 }
                 res.status(200).send({
                     mensaje: 'OK',
@@ -167,19 +174,52 @@ router.post('/login', function (req, res) {
                 });
                 res.end();
             } else {
-                res.status(401).send({
+                res.status(400).send({
                     mensaje: 'No-Autorizado: Password incorrecta'
                 });
                 res.end();
             }
         })
         .catch(error => {
-            res.status(401).send({
+            res.status(400).send({
                 error: error,
                 mensaje: 'No-Autorizado: Email no encontrado'
             });
             res.end();
         });
+});
+
+// Logout Empresa
+router.post('/logout', function (req, res) {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken in refreshTokensEmpresa) {
+        delete refreshTokensEmpresa[refreshToken];
+    }
+    res.status(200).send({
+        mensaje: "logout"
+    });
+    res.end();
+});
+
+// Refresh Token
+router.post('/refresh', function (req, res) {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken in refreshTokensEmpresa) {
+        const user = {
+            _id: refreshTokensEmpresa[refreshToken],
+            rol: 'Empresa'
+        };
+        const token = jwt.sign(user, SECRET_KEY, {
+            expiresIn: expiresIn
+        });
+        res.status(200).send({
+            jwt: token
+        });
+        res.end();
+    } else {
+        res.sendStatus(401);
+        res.end();
+    }
 });
 
 // Obtener todas las empresas
@@ -287,13 +327,23 @@ function verifyToken(req, res, next) {
         if (bearerToken === null) {
             return res.status(401).send('No-Autorizado');
         }
-        const payload = jwt.verify(bearerToken, SECRET_KEY);
-        if (payload.rol !== 'Empresa') {
-            return res.status(401).send('No-Autorizado');
-        }
-        req._id = payload._id;
-        req.rol = payload.rol;
-        next();
+        jwt.verify(bearerToken, SECRET_KEY, (err, decoded) => {
+            if (err) {
+                if (err.message == "jwt expired" || err.message == "invalid token") {
+                    res.sendStatus(401);
+                } else {
+                    res.sendStatus(500);
+                }
+            }
+            if (decoded) {
+                if (decoded.rol !== 'Empresa') {
+                    return res.status(401).send('No-Autorizado');
+                }
+                req._id = decoded._id;
+                req.rol = decoded.rol;
+                next();
+            }
+        });
     } else {
         res.status(401).send('No-Autorizado');
     }

@@ -5,17 +5,22 @@ var path = require('path');
 var fs = require('fs-extra');
 var multerImages = require('../libs/multer-images');
 var multerFiles = require('../libs/multer-files');
-var jwt = require('jsonwebtoken');
 var estudiante = require('../models/estudiante');
+// Auth
+var jwt = require('jsonwebtoken');
+var randToken = require('rand-token');
 var SECRET_KEY = 'bHYFnHrZ20WQDPQnCqcZbwAXDuyWxSxsRRQQ78IkhvmykZiE6jPsZuMbAFsvXOz';
+var refreshTokensEstudiante = [];
+var expiresIn = 24 * 60 * 60;
 
 // Obtener Token
 router.get('/tokenID', verifyToken, function (req, res) {
-    res.send({
+    res.status(200).send({
         text: 'This is your token ID and Rol',
         id: req._id,
         rol: req.rol
     });
+    res.end();
 });
 
 //Obtener la información de un estudiante
@@ -52,8 +57,8 @@ router.get('/:idEstudiante/main', verifyToken, function (req, res) {
             Lenguajes: true,
             descripcionPerfil: true,
             indice: true,
-            clasesAprobadas: true,
-            fechaNacimiento: true
+            fechaNacimiento: true,
+            CurriculumAdjunto: true
         })
         .then(result => {
             res.send(result);
@@ -80,7 +85,7 @@ router.get('/:idEstudiante', verifyToken, function (req, res) {
         });
 });
 
-// Loguear estudiante
+// Login estudiante
 router.post('/login', function (req, res) {
     estudiante.findOne({
             email: req.body.email
@@ -92,18 +97,19 @@ router.post('/login', function (req, res) {
         .then(result => {
             if (result.passwordCuenta === req.body.password) {
                 // Success, inicia sesion con JWT
-                const expiresIn = 24 * 60 * 60;
-                const accessToken = jwt.sign({
+                const user = {
                     _id: result._id,
                     rol: 'Estudiante'
-                }, SECRET_KEY, {
+                };
+                const token = jwt.sign(user, SECRET_KEY, {
                     expiresIn: expiresIn
                 });
+                const refreshToken = randToken.uid(256);
+                refreshTokensEstudiante[refreshToken] = user._id;
                 const dataEnviar = {
-                    email: result.email,
-                    rol: 'Estudiante',
-                    accessToken: accessToken,
-                    expiresIn: expiresIn
+                    jwt: token,
+                    refreshToken: refreshToken,
+                    rol: user.rol
                 }
                 res.status(200).send({
                     mensaje: 'OK',
@@ -111,19 +117,52 @@ router.post('/login', function (req, res) {
                 });
                 res.end();
             } else {
-                res.status(401).send({
+                res.status(400).send({
                     mensaje: 'No-Autorizado: Password incorrecta'
                 });
                 res.end();
             }
         })
         .catch(error => {
-            res.status(401).send({
+            res.status(400).send({
                 error: error,
                 mensaje: 'No-Autorizado: Email no encontrado'
             });
             res.end();
         });
+});
+
+// Logout Estudiante
+router.post('/logout', function (req, res) {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken in refreshTokensEstudiante) {
+        delete refreshTokensEstudiante[refreshToken];
+    }
+    res.status(200).send({
+        mensaje: "logout"
+    });
+    res.end();
+});
+
+// Refresh Token
+router.post('/refresh', function (req, res) {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken in refreshTokensEstudiante) {
+        const user = {
+            _id: refreshTokensEstudiante[refreshToken],
+            rol: 'Estudiante'
+        };
+        const token = jwt.sign(user, SECRET_KEY, {
+            expiresIn: expiresIn
+        });
+        res.status(200).send({
+            jwt: token
+        });
+        res.end();
+    } else {
+        res.sendStatus(401);
+        res.end();
+    }
 });
 
 // Obtener todos los estudiantes
@@ -363,13 +402,23 @@ function verifyToken(req, res, next) {
         if (bearerToken === null) {
             return res.status(401).send('No-Autorizado');
         }
-        const payload = jwt.verify(bearerToken, SECRET_KEY);
-        if (payload.rol !== 'Estudiante') {
-            return res.status(401).send('No-Autorizado');
-        }
-        req._id = payload._id;
-        req.rol = payload.rol;
-        next();
+        jwt.verify(bearerToken, SECRET_KEY, (err, decoded) => {
+            if (err) {
+                if (err.message == "jwt expired" || err.message == "invalid token") {
+                    res.sendStatus(401);
+                } else {
+                    res.sendStatus(500);
+                }
+            }
+            if (decoded) {
+                if (decoded.rol !== 'Estudiante') {
+                    return res.status(401).send('No-Autorizado');
+                }
+                req._id = decoded._id;
+                req.rol = decoded.rol;
+                next();
+            }
+        });
     } else {
         res.status(401).send('No-Autorizado');
     }

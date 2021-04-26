@@ -137,7 +137,7 @@ router.put('/:idOferta', verifyToken, function (req, res) {
 });
 
 // Cambiar estado oferta (Oferta archivada o activa)
-router.put('/:idOferta/estado', verifyToken, function (req, res) {
+router.put('/:idOferta/estado', function (req, res) {
     oferta.updateOne({
             _id: mongoose.Types.ObjectId(req.params.idOferta)
         }, {
@@ -154,7 +154,7 @@ router.put('/:idOferta/estado', verifyToken, function (req, res) {
 })
 
 // Eliminar Oferta
-router.delete('/:idOferta', function (req, res) {
+router.delete('/:idOferta', verifyToken, function (req, res) {
     oferta.deleteOne({
             _id: mongoose.Types.ObjectId(req.params.idOferta)
         })
@@ -232,7 +232,7 @@ router.put('/:idOferta/postulaciones/:idEstudiante', function (req, res) {
 });
 
 // Obtener todas las postulaciones de ofertas de una empresa (Metodo Aggregate)
-router.get('/:idOferta/postulaciones', verifyToken, function (req, res) {
+router.get('/:idOferta/postulaciones', function (req, res) {
     oferta.aggregate([
             // Join with empresa
             {
@@ -319,13 +319,23 @@ function verifyToken(req, res, next) {
         if (bearerToken === null) {
             return res.status(401).send('No-Autorizado');
         }
-        const payload = jwt.verify(bearerToken, SK_EMPRESA);
-        if (payload.rol !== 'Empresa') {
-            return res.status(401).send('No-Autorizado');
-        }
-        req._id = payload._id;
-        req.rol = payload.rol;
-        next();
+        jwt.verify(bearerToken, SK_EMPRESA, (err, decoded) => {
+            if (err) {
+                if (err.message == "jwt expired" || err.message == "invalid token") {
+                    res.sendStatus(401);
+                } else {
+                    res.sendStatus(500);
+                }
+            }
+            if (decoded) {
+                if (decoded.rol !== 'Empresa') {
+                    return res.status(401).send('No-Autorizado');
+                }
+                req._id = decoded._id;
+                req.rol = decoded.rol;
+                next();
+            }
+        });
     } else {
         res.status(401).send('No-Autorizado');
     }
