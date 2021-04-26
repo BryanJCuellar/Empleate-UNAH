@@ -25,10 +25,7 @@ export class ProfileEmpresComponent implements OnInit {
   ofertasPostulaciones = [];
   estudiantes_postulados = [];
   array_palabras: any = [];
-  ofertas_Optimas: Boolean = false;
-  postulaciones_Optimas: Boolean = false;
   hayPalabrasClave: Boolean = true;
-
   ofertaSeleccionada: any;
 
   elegir = 'perfil';
@@ -258,11 +255,6 @@ export class ProfileEmpresComponent implements OnInit {
           this.OfertasActivas = [];
           this.OfertasArchivadas = [];
           this.ofertasPostulaciones = [];
-          if (res.length > 2) {
-            this.ofertas_Optimas = true;
-          } else {
-            this.ofertas_Optimas = false;
-          }
           // Recorrer para ofertas activas y archivadas
           for (let i = 0; i < res.length; i++) {
             if (res[i].fecha_publicacion[0].dia < 10) {
@@ -337,11 +329,6 @@ export class ProfileEmpresComponent implements OnInit {
     this.ofertasService.obtenerPostulacionesOferta(idOferta)
       .subscribe(
         res => {
-          if (res.length > 4) {
-            this.postulaciones_Optimas = true;
-          } else {
-            this.postulaciones_Optimas = false;
-          }
           for (let i = 0; i < res.length; i++) {
             for (let j = 0; j < res[i].postulaciones.length; j++) {
               if (res[i].estudiante._id == res[i].postulaciones[j].id_estudiante) {
@@ -536,6 +523,16 @@ export class ProfileEmpresComponent implements OnInit {
   verPerfil(idEstudiante) {
     // this.empresasService.seleccionarEstudiante(idEstudiante);
     this.router.navigateByUrl(`company/student-selected/${idEstudiante}`);
+  }
+
+  logOutCompany() {
+    this.authService.logoutCompany()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/company';
+        }
+      })
   }
 
 }

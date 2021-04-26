@@ -26,7 +26,7 @@
         </li>
       </ul>
       <div class="ml-3 ml-lg-auto">
-        <button type="button" class="btn btn-cerrar mr-5" (click)="getAuthService().logoutCompany()">Cerrar
+        <button type="button" class="btn btn-cerrar mr-5" (click)="logOutCompany()">Cerrar
           Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
       </div>
     </div>
@@ -34,9 +34,7 @@
 </ng-container>
 
 <body>
-  <div class="main" [ngClass]="{'vh-100':(elegir == 'listarOfertas' && !ofertas_Optimas) || (elegir == 'postulados' && ofertasPostulaciones.length < 2)
-    || (elegir == 'postuladosDetalle' && !postulaciones_Optimas)}"
-    *ngIf="getAuthService().loggedInCompany() && empresa != null">
+  <div class="main" *ngIf="getAuthService().loggedInCompany() && empresa != null">
     <div class="wrap animate__animated animate__fadeIn" style="width:100%">
       <ul class="tabs">
         <li [style.background-color]="color1"><a (click)="perfil()"><span class="fa fa-home "></span>
@@ -127,7 +125,8 @@
                   </div>
                   <div class="col-lg-3">
                     <section class="resume-section skills-section mb-5">
-                      <h3 class="resume-section-title text-center text-uppercase font-weight-bold pb-3 mb-3">Dirección</h3>
+                      <h3 class="resume-section-title text-center text-uppercase font-weight-bold pb-3 mb-3">Dirección
+                      </h3>
                       <div class="resume-section-content">
                         <div class="resume-skill-item">
                           <ul class="list-inline" *ngFor="let direccion of empresa.datosDireccion">

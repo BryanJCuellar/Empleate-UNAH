@@ -8,18 +8,18 @@
         data-target="#navbarTogglerStudentHome" aria-controls="navbarTogglerStudentHome" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button> 
+      </button>
       <div class="collapse navbar-collapse py-3 py-lg-0" id="navbarTogglerStudentHome">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item my-2 my-lg-0">
-            <a style="color: white !important;" class="nav-link mx-3 ml-lg-5" href="/student/profile">
+            <a style="color: white !important;" class="nav-link ml-3 ml-lg-2 ml-xl-5" href="/student/profile">
               <span class="link-profile">
                 <span class="fas fa-id-card-alt"></span> Ver perfil
               </span>
             </a>
           </li>
-          <li class="nav-item my-2 my-lg-0 ml-1 ml-md-0">
-            <a style="color: white !important;" class="nav-link mx-3 ml-lg-5"
+          <li class="nav-item my-2 my-lg-0">
+            <a style="color: white !important;" class="nav-link ml-3 ml-lg-2 ml-xl-5"
               (click)="irMensajes(estudianteActual._id)">
               <span class="link-profile">
                 <span class="fas fa-comment-alt"></span> Mensajes
@@ -31,7 +31,7 @@
         <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
           <span style="color:white !important;">
             ¡Bievenid@ {{estudianteActual.nombre}}! </span>
-          <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar Sesión<i
+          <button type="button" class="btn btn-cerrar ml-3 mr-lg-4" (click)="logOut()">Cerrar Sesión<i
               class="fas fa-sign-out-alt ml-2"></i></button>
         </form>
       </div>
@@ -94,39 +94,42 @@
 
   <ng-template #eliminar let-modal>
     <div class="modal-content modal-ng">
-      <div class="modal-header modal-ng titulo-modal">
+      <div class="modal-header modal-ng titulo-modal py-3 px-2">
         <h5 class="modal-title" id="modalEliminarOfertaLabel"
-          style="color: beige !important; font-weight: bolder; text-align: center;">Eliminar Postulación</h5>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          style="padding-left: 10px; color: beige !important; font-weight: bolder; text-align: center;">Eliminar
+          Postulación</h5>
+        <button type="button" class="close font-s-2 text-white" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-2">
         <div class="text-center mb-2">
           <i style="color:#dc3545;" class="fas fa-exclamation-circle font-s-5"></i>
         </div>
         <div class="text-center">
           <p style="color: rgb(17, 17, 17) !important; font-size: 20px;" class="text-justify">
-            ¿Está seguro que desea eliminar esta postulación (cargo: {{ofertaActual.titulo_Oferta}}) de forma permanente?
+            ¿Está seguro que desea eliminar esta postulación (cargo: {{ofertaActual.titulo_Oferta}}) de forma
+            permanente?
             <br>
             <b>Nota: Esta operación es irreversible</b>
           </p>
         </div>
       </div>
-      <div class="modal-footer modal-ng">
-        <button type="button" class="btn btn-info boton mr-3" (click)="modal.close('Cancel click')">Cancelar</button>
-        <button type="button" class="btn btn-danger boton" (click)="eliminarPostulacion(ofertaActual._id)">Eliminar <i
-            class="fas fa-trash-alt"></i></button>
+      <div class="modal-footer modal-ng p-2">
+        <button ngbAutoFocus type="button" class="btn btn-info boton p-2 mr-3"
+          (click)="modal.close('Cancel click')">Cancelar</button>
+        <button type="button" class="btn btn-danger boton p-2" (click)="eliminarPostulacion(ofertaActual._id)">Eliminar
+          <i class="fas fa-trash-alt"></i></button>
       </div>
     </div>
   </ng-template>
 
-  
+
   <body>
 
-    <div style="background-color: #E5E4EF" class="main"
-      [ngClass]="{'vh-100':(elegir == 'Mis_Postulaciones' && aggregatePostulaciones.length < 5)}">
-      <div class="wrap" style="width:100%">
+    <div style="background-color: #E5E4EF" class="main">
+      <div class="wrap" style="width:100%;">
         <ul class="tabs">
           <li [style.background-color]="color1"><a (click)="home()"><span class="fa fa-home ">
 
@@ -138,76 +141,83 @@
         <div class="secciones">
           <div *ngIf="elegir=='home'">
             <div class="row">
-              <div class="form-group has-search col-12 col-sm-4 col-lg-5 mt-4">
+              <div class="form-group has-search col-12 col-md-4 col-lg-5 mt-4">
                 <span class="fa fa-search form-control-feedback"></span>
                 <input type="text" class="form-control filtros" placeholder="Buscar" name="palabrasClaves"
-                  spellcheck="false" autocomplete="none" [(ngModel)]="palabrasClaves">
+                  spellcheck="false" autocomplete="none" [(ngModel)]="palabrasClaves" (keyup)="resetPaginationInput()">
               </div>
-              <div class="col-6 col-sm-4 col-lg-3">
+              <div class="col-6 col-md-4 col-lg-3">
                 <label>Seleccione el departamento
-                  <select name="departamento" class="form-control filtros" [(ngModel)]="departamento">
+                  <select name="departamento" class="form-control filtros" [(ngModel)]="departamento" (change)="resetPaginationSelect()">
                     <option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}
                     </option>
                   </select>
                 </label>
               </div>
-              <div class="col-6 col-sm-3 col-lg-3">
+              <div class="col-6 col-md-4 col-lg-3">
                 <label>Seleccione la jornada laboral
-                  <select name="jornada" class="form-control filtros" [(ngModel)]="jornada">
-                    <option *ngFor="let jornada of jornada_laboral" value="{{jornada}}">{{jornada}}</option>
+                  <select name="jornada_laboral" class="form-control filtros" [(ngModel)]="jornada_laboral" (change)="resetPaginationSelect()">
+                    <option *ngFor="let jornada of jornadas_laborales" value="{{jornada}}">{{jornada}}</option>
                   </select>
                 </label>
               </div>
-              <div class="col-1 col-sm-1 col-lg-1 mt-4">
+              <div class="col-1 mt-4">
                 <button type="button" class="btn btn-cerrar" (click)="reset()"><i class="fas fa-sync"></i></button>
               </div>
             </div>
-            <div class="row mt-2">
-              <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" (click)="openVerticallyCentered(content)"
-                         *ngFor= "let oferta of ofertas">-->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 d-flex animate__animated animate__fadeInUp" *ngFor="let oferta of ofertas | filtrarDepto:departamento  | filtrarJornada:jornada
-                | filtrarPalabrasClaves:palabrasClaves">
-                
-                <div class="tarjeta">
-                  <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
-                    src="../../../assets/img/empresa1.jpg" alt="Card image cap">
-                  <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top img-fluid rounded"
-                    [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
-                  <div>
-                    <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
-                    <p class="card-text text-left" style="color: #768F95;">{{oferta.resumenDescripcion}}</p>
-                  </div>
-                  <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"
-                          style="padding: 5px 5px 5px 5px; color: #E9512C;"></i>
-                        {{oferta.ubicacion[0].ciudad}}, {{oferta.ubicacion[0].departamento}}
-                      </li>
-                      <li class="list-group-item" *ngIf="oferta.salario != null"><i class="fas fa-money-bill-wave mr-2"
-                          style="color: #70AD30;"></i>{{oferta.salario}}
-                      </li>
-                      <li class="list-group-item"><i class="fas fa-calendar-day"
-                          style="padding: 5px 5px 5px 5px; color: #109DBB;"></i>
-                        {{oferta.fecha_publicacion[0].dia}}-{{oferta.fecha_publicacion[0].mes}}-{{oferta.fecha_publicacion[0].anio}}
-                      </li>
-                    </ul>
-                  </div>
-                  <div class=" text-center">
-                    <!--<span (click)="openVerticallyCentered(content)" class="card-link"
-                                  style="margin-left: 0px;"><i class="fas fa-info-circle"></i> Detalles</span> href="/student/home/postulate"-->
-                    <a class="btnsOfertas mr-2" (click)="open(content, oferta._id)">
-                      <span><i style="color: #109DBB;" class="fas fa-info-circle mr-1"></i>Detalles</span>
-                    </a>
-                    <a class="btnsOfertas" (click)="enviarPostulacion(oferta._id)">
-                      <span>
-                        Postularse
-                        <i style="color: #70AD30;" class="fas fa-mail-bulk mr-1"></i>
-                      </span>
-                    </a>
+            <ng-container *ngIf="(ofertas | filtrarDepto:departamento | filtrarJornada:jornada_laboral
+              | filtrarPalabrasClaves:palabrasClaves) as result">
+              <div class="row mt-2">
+                <div *ngIf="result.length != ofertas.length" class="col-12 pr-0 pr-lg-5 text-center text-lg-right font-s">
+                  <b style="color: #5e7175;">Resultados: {{result.length}}</b>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 d-flex animate__animated animate__fadeIn"
+                  *ngFor="let oferta of result | paginate: { itemsPerPage: dataPerPage, currentPage: pageActual, totalItems:result.length }">
+                  <div class="tarjeta">
+                    <img *ngIf="oferta.empresa[0].imagenPerfil == null" class="card-img-top img-fluid rounded"
+                      src="../../../assets/img/empresa1.jpg" alt="Card image cap">
+                    <img *ngIf="oferta.empresa[0].imagenPerfil != null" class="card-img-top img-fluid rounded"
+                      [src]="backendHost + oferta.empresa[0].imagenPerfil" alt="Card image cap">
+                    <div>
+                      <h5 class="card-title">{{oferta.titulo_Oferta}}</h5>
+                      <p class="card-text text-left" style="color: #768F95;">{{oferta.resumenDescripcion}}</p>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"
+                            style="padding: 5px 5px 5px 5px; color: #E9512C;"></i>
+                          {{oferta.ubicacion[0].ciudad}}, {{oferta.ubicacion[0].departamento}}
+                        </li>
+                        <li class="list-group-item" *ngIf="oferta.salario != null"><i
+                            class="fas fa-money-bill-wave mr-2" style="color: #70AD30;"></i>{{oferta.salario}}
+                        </li>
+                        <li class="list-group-item"><i class="fas fa-calendar-day"
+                            style="padding: 5px 5px 5px 5px; color: #109DBB;"></i>
+                          {{oferta.fecha_publicacion[0].dia}}-{{oferta.fecha_publicacion[0].mes}}-{{oferta.fecha_publicacion[0].anio}}
+                        </li>
+                      </ul>
+                    </div>
+                    <div class=" text-center">
+                      <a class="btnsOfertas mr-2" (click)="open(content, oferta._id)">
+                        <span><i style="color: #109DBB;" class="fas fa-info-circle mr-1"></i>Detalles</span>
+                      </a>
+                      <a class="btnsOfertas" (click)="enviarPostulacion(oferta._id)">
+                        <span>
+                          Postularse
+                          <i style="color: #70AD30;" class="fas fa-mail-bulk mr-1"></i>
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              <!--Controles de paginacion-->
+              <div class="div-pagination text-center my-4" [ngClass]="{'no-visible':result.length == 0}">
+                <pagination-controls class="offers-pagination" directionLinks="true" responsive="true"
+                  previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="pageActual = $event">
+                </pagination-controls>
+              </div>
+            </ng-container>
           </div>
 
           <div *ngIf="elegir=='Mis_Postulaciones'">
@@ -224,12 +234,15 @@
                     <p style="font-weight: bold;" class="card-text text-left">{{postulacion.empresa.organizacion}}</p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1" style="padding: 5px 5px 5px 5px; color: #E9512C;"></i>
+                    <li class="list-group-item"><i class="fas fa-map-marker-alt mr-1"
+                        style="padding: 5px 5px 5px 5px; color: #E9512C;"></i>
                       {{postulacion.oferta.ubicacion[0].ciudad}}, {{postulacion.oferta.ubicacion[0].departamento}}
                     </li>
                     <li class="list-group-item" *ngIf="postulacion.oferta.salario != null"><i
-                        class="fas fa-money-bill-wave mr-1" style="color: #70AD30;"></i>{{postulacion.oferta.salario}}</li>
-                    <li class="list-group-item"><i class="fas fa-calendar-day"  style="padding: 5px 5px 5px 5px; color: #109DBB;"></i>
+                        class="fas fa-money-bill-wave mr-1" style="color: #70AD30;"></i>{{postulacion.oferta.salario}}
+                    </li>
+                    <li class="list-group-item"><i class="fas fa-calendar-day"
+                        style="padding: 5px 5px 5px 5px; color: #109DBB;"></i>
                       {{postulacion.oferta.fecha_publicacion[0].dia}}-{{postulacion.oferta.fecha_publicacion[0].mes}}-{{postulacion.oferta.fecha_publicacion[0].anio}}
                     </li>
                   </ul>
@@ -245,13 +258,21 @@
                 </div>
               </div>
             </div>
-
+            <ng-container *ngIf="aggregatePostulaciones.length == 0">
+              <div class="col-12 mb-2">
+                <div class="text-center">
+                  <div class="font-s">
+                    No tiene postulaciones.
+                  </div>
+                </div>
+              </div>
+            </ng-container>
           </div>
 
         </div>
       </div>
     </div>
-   
+
 
   </body>
 </ng-container>

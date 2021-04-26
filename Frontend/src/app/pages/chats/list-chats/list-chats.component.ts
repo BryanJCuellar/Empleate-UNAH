@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-chats',
@@ -15,7 +16,6 @@ export class ListChatsComponent implements OnInit {
   id_usuario: any;
   tipo_usuario: any;
   mis_chats: any;
-  chats_optimos: boolean = false;
   log_estudiante: boolean;
   log_empresa: boolean;
 
@@ -37,6 +37,7 @@ export class ListChatsComponent implements OnInit {
       this.log_estudiante = false;
       this.log_empresa = true;
     }
+    localStorage.setItem('TIPO_USUARIO', this.tipo_usuario);
     // Cargar mis chats
     this.cargarMisChats();
   }
@@ -55,11 +56,6 @@ export class ListChatsComponent implements OnInit {
       .subscribe(
         dataChats => {
           // console.log(dataChats);
-          if (dataChats.length > 3) {
-            this.chats_optimos = true;
-          } else {
-            this.chats_optimos = false;
-          }
           this.mis_chats = dataChats;
         },
         error => console.log(error)
@@ -67,14 +63,47 @@ export class ListChatsComponent implements OnInit {
   }
 
   borrarChat(idChat) {
-    this.chatService.borrarChat(idChat)
-      .subscribe(
-        res => {
-          console.log(res);
-          window.location.reload();
-        },
-        error => console.log(error)
-      )
+    Swal.fire({
+      title: "¿Esta seguro de eliminar chat?",
+      icon: 'warning',
+      iconColor: '#E11A41',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#E11A41',
+      cancelButtonColor: '#00A6F7',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then(result => {
+      if (result.isConfirmed) {
+        this.chatService.borrarChat(idChat)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.cargarMisChats();
+            },
+            error => console.log(error)
+          )
+      }
+    });
   }
 
+  logOutStudent() {
+    this.authService.logout()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/student';
+        }
+      })
+  }
+
+  logOutCompany() {
+    this.authService.logoutCompany()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/company';
+        }
+      })
+  }
 }

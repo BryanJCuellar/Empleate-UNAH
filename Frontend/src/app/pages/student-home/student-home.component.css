@@ -44,6 +44,7 @@
   /*funciona en cada despliegue de pestana */
   color: #E5E4EF !important;
   width: 100%;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute
@@ -780,3 +781,38 @@ ul.tabs li a .tab-text {
 .animate__animated.animate__fadeInUp {
     --animate-duration: 2s;
   }
+
+  /*Paginacion de ofertas*/
+.offers-pagination /deep/ .pagination-previous,
+.offers-pagination /deep/ .pagination-previous:focus,
+.offers-pagination /deep/ .pagination-next,
+.offers-pagination /deep/ .pagination-next:focus {
+  background-color: #fcffff;
+  border: 1px solid #00A6F7;
+  color: #00A6F7;
+}
+
+.offers-pagination /deep/ .pagination-previous.disabled,
+.offers-pagination /deep/ .pagination-previous.disabled:focus,
+.offers-pagination /deep/ .pagination-previous.disabled:hover,
+.offers-pagination /deep/ .pagination-next.disabled,
+.offers-pagination /deep/ .pagination-next.disabled:focus,
+.offers-pagination /deep/ .pagination-next.disabled:hover {
+  background-color: #fcffff;
+  border: 1px solid #616161;
+  color: #616161;
+}
+
+.offers-pagination /deep/ .ngx-pagination li {
+  background-color: #fcffff;
+  border: 1px solid #00A6F7;
+  color: #00A6F7;
+}
+
+.offers-pagination /deep/ .ngx-pagination .current {
+  background-color: #00A6F7;
+  border: 1px solid #00A6F7;
+  color: #fcffff;
+}
+
+/**/

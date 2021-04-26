@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   selector: 'app-student-home',
   templateUrl: './student-home.component.html',
   styleUrls: ['./student-home.component.css'],
-  
+
 })
 export class StudentHomeComponent implements OnInit {
   backendHost: string = 'http://localhost:8888/';
@@ -20,12 +20,12 @@ export class StudentHomeComponent implements OnInit {
   aggregatePostulaciones = [];
   ofertas = [];
   departamento: any;
-  jornada: any;
+  jornada_laboral: any;
   departamentos: any = ['Atlántida', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'Choluteca', 'El Paraíso',
     'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de Bahía', 'La Paz', 'Lempira', 'Ocotepeque',
     'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
-  jornada_laboral: any = ['Tiempo Completo', 'Desde Casa', 'Por Horas', 'Medio Tiempo',
-    'Beca/Prácticas', 'No Especificar (N/A)'];
+  jornadas_laborales: any = ['Tiempo Completo', 'Desde Casa', 'Por Horas', 'Medio Tiempo',
+    'Beca/Prácticas'];
   palabrasClaves = '';
   closeResult = '';
   elegir = 'home';
@@ -38,6 +38,10 @@ export class StudentHomeComponent implements OnInit {
   dia = this.date.getDate();
   mes = this.date.getMonth() + 1;
   anio = this.date.getFullYear();
+
+  // Paginacion
+  dataPerPage: number; 
+  pageActual: number = 1;
 
 
 
@@ -70,6 +74,20 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
+  onPageChange(size, event){
+    console.log(size, event);
+  }
+
+  resetPaginationInput(){
+    if(this.palabrasClaves.length >= 3){
+      this.pageActual = 1;
+    }
+  }
+
+  resetPaginationSelect(){
+    this.pageActual = 1;
+  }
+
   irMensajes(idUsuario) {
     window.location.href = `student/${idUsuario}/chats`;
   }
@@ -79,8 +97,11 @@ export class StudentHomeComponent implements OnInit {
     this.OfertasService.obtenerOfertas()
       .subscribe(
         res => {
-          // console.log("Ofertas", res);
-          // console.log(res[0].empresa[0].imagenPerfil);
+          if(res.length < 6){
+            this.dataPerPage = res.length;
+          } else {
+            this.dataPerPage = 6;
+          }
           for (let i = 0; i < res.length; i++) {
             this.ofertas.push(res[i]);
             if (res[i].descripcion.length > 50) {
@@ -172,8 +193,27 @@ export class StudentHomeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  
+
   enviarPostulacion(idOferta): void {
+    if(this.estudianteActual.CurriculumAdjunto == null){
+      Swal.fire({
+        title: "Primero debe añadir su curriculum para postularse",
+        text: "¿Desea ir a editar su perfil?",
+        icon: 'info',
+        iconColor: '#00A6F7',
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonColor: '#00A6F7',
+        cancelButtonColor: '#E11A41',
+        confirmButtonText: 'Si, llevame ahí',
+        cancelButtonText: 'No, gracias'
+      }).then(result => {
+        if(result.isConfirmed){
+          window.location.href = 'student/profile/edit';
+        }
+      });
+      return;
+    }
     const formEditData = {
       id_oferta: idOferta,
       dia: this.dia,
@@ -194,28 +234,28 @@ export class StudentHomeComponent implements OnInit {
               .subscribe(
                 success => {
                   this.OfertasService.agregarPostulacionOferta(idOferta, formOferta).
-                   subscribe(
-                     success => {
-                      console.log(success);
-                      // Mensaje success
-                      Swal.fire({
-                        title: 'Postulación realizada con éxito',
-                        icon: 'success',
-                        showConfirmButton: true
-                      }).then(success => {
-                        window.location.href = 'student/home';
+                    subscribe(
+                      success => {
+                        console.log(success);
+                        // Mensaje success
+                        Swal.fire({
+                          title: 'Postulación realizada con éxito',
+                          icon: 'success',
+                          showConfirmButton: true
+                        }).then(success => {
+                          window.location.href = 'student/home';
+                        }
+                        ).catch(err => console.log(err));
+                      },
+                      error => {
+                        console.log('Error al actualizar oferta', error);
+                        Swal.fire({
+                          title: "Usted ya se postuló a esta oferta",
+                          icon: 'error',
+                          showCloseButton: true
+                        });
                       }
-                      ).catch(err => console.log(err));
-                     },
-                     error =>{
-                       console.log('Error al actualizar oferta', error);
-                       Swal.fire({
-                         title: "Usted ya se postuló a esta oferta",
-                         icon: 'error',
-                         showCloseButton: true
-                       });
-                      }
-                   )
+                    )
                 },
                 error => {
                   console.log('Error al actualizar informacion estudiante', error);
@@ -225,34 +265,43 @@ export class StudentHomeComponent implements OnInit {
           error => console.log('Error al obtener ID', error)
         )
     }
-    
+
 
   }
   openSm(content, idOferta) {
-    this.modalService.open(content, { size: 'lg', centered: true } );
+    this.modalService.open(content, { size: 'lg', centered: true });
     this.verDetalleOferta(idOferta);
   }
 
-  eliminarPostulacion(idOferta): void{
+  eliminarPostulacion(idOferta): void {
     this.OfertasService.eliminarPostulacionOferta(idOferta, this.estudianteActual._id)
-    .subscribe 
-    (res => {
-      // console.log(res);
-      if (res.ok == 1) {
-        this.estudiantesService.eliminarPostulacionEstudiantes(this.estudianteActual._id, idOferta)
-        .subscribe(
-          res=> {
-            this.cargarPostulaciones();
-            this.modalService.dismissAll();
-          }, 
-          error=> console.log('Error al eliminar oferta del lado de Estudiannte', error) 
-        )
-      }
-    },
-    error => console.log('Error al eliminar oferta del lado de ofertas', error)
-  );
-    
+      .subscribe
+      (res => {
+        // console.log(res);
+        if (res.ok == 1) {
+          this.estudiantesService.eliminarPostulacionEstudiantes(this.estudianteActual._id, idOferta)
+            .subscribe(
+              res => {
+                this.cargarPostulaciones();
+                this.modalService.dismissAll();
+              },
+              error => console.log('Error al eliminar oferta del lado de Estudiante', error)
+            )
+        }
+      },
+        error => console.log('Error al eliminar oferta del lado de ofertas', error)
+      );
+
   }
-  
+
+  logOut() {
+    this.authService.logout()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/student';
+        }
+      })
+  }
 
 }

@@ -48,9 +48,8 @@ export class LoginComponent implements OnInit {
         response => {
           console.log('Respuesta del servidor', response);
           if (response.mensaje == 'OK') {
-            // Guardar token en localStorage
-            localStorage.setItem('token', response.data.accessToken);
-            localStorage.setItem('rol', response.data.rol);
+            // Guardar tokens en localStorage
+            this.authService.storeTokens(response.data);
             // Mensaje success
             Swal.fire({
               title: '',

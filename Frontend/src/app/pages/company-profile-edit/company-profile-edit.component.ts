@@ -181,5 +181,15 @@ export class CompanyProfileEditComponent implements OnInit {
       )
   }
 
+  logOutCompany() {
+    this.authService.logoutCompany()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/company';
+        }
+      })
+  }
+
 }
 

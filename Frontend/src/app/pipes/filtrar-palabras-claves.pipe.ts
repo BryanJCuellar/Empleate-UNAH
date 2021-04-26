@@ -9,10 +9,12 @@ export class FiltrarPalabrasClavesPipe implements PipeTransform {
     if (arg == '' || arg.length < 3) return value;
     const res_ofertasPalbrasClaves = [];
     for (let palabrasClaves of value){
-      if (palabrasClaves.palabras_clave[0].toLowerCase().indexOf(arg.toLowerCase()) > -1) {
-        //console.log("funciona");
-        res_ofertasPalbrasClaves.push(palabrasClaves);
-      };
+      for (let i = 0; i < palabrasClaves.palabras_clave.length; i++) {
+        if (palabrasClaves.palabras_clave[i].toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+          //console.log("funciona");
+          res_ofertasPalbrasClaves.push(palabrasClaves);
+        };
+      }
     };
     return res_ofertasPalbrasClaves;
   }

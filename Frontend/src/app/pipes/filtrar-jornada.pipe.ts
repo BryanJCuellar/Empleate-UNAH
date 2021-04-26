@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FiltrarJornadaPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
-    if (arg == null ) {
+    if (arg == null) {
       return value;
     };
     const res_ofertasDepto =[];
     for (let oferta of value){
-      if (oferta.jornada_laboral.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (oferta.jornada_laboral === arg) {
         //console.log("funciona");
         res_ofertasDepto.push(oferta);
       };

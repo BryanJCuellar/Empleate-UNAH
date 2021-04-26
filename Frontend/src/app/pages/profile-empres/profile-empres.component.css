@@ -41,6 +41,7 @@ label {
 .main {
   /*funciona en cada despliegue de pestana */
   background-color: #483d8b24;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 992px) {

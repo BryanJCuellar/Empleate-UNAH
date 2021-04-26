@@ -56,4 +56,14 @@ export class PerfilEstudianteComponent implements OnInit {
     return this.authService;
   }
 
+  logOut() {
+    this.authService.logout()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/student';
+        }
+      })
+  }
+
 }

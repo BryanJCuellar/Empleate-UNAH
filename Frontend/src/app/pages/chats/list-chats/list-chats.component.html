@@ -31,11 +31,11 @@
 
         <form class="form-inline my-2 my-lg-0 ml-3 ml-lg-auto">
           <ng-container *ngIf="getAuthService().loggedInStudent()">
-            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logout()">Cerrar
+            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="logOutStudent()">Cerrar
               Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
           </ng-container>
           <ng-container *ngIf="getAuthService().loggedInCompany()">
-            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="getAuthService().logoutCompany()">Cerrar
+            <button type="button" class="btn btn-cerrar ml-3 mx-lg-5" (click)="logOutCompany()">Cerrar
               Sesión<i class="fas fa-sign-out-alt ml-2"></i></button>
           </ng-container>
         </form>
@@ -45,7 +45,7 @@
 
   <body>
 
-    <div class="main" [ngClass]="{'vh-100':chats_optimos == false}">
+    <div class="main">
       <div class="wrap" style="width:100%">
         <ul class="tabs">
           <li><a><span class="fas fa-comment-alt font-s"></span><span class="tab-text">Mis Mensajes</span></a></li>
@@ -58,52 +58,47 @@
                 <ng-container *ngIf="mis_chats.length > 0">
                   <ng-container *ngIf="log_estudiante">
                     <div class="col-12 mb-2" *ngFor="let chat of mis_chats">
-                      <a (click)="irChat(chat._id)">
-                        <div class="row listaMensajes">
-                          <div class="col-sm-2 my-auto d-none d-sm-block">
-                            <img *ngIf="chat.empresa.imagenPerfil == null" src="../../../assets/img/empresa1.jpg" alt=""
-                              width="70px" height="70px" style="border-radius: 50%;">
-                            <img *ngIf="chat.empresa.imagenPerfil != null"
-                              [src]="backendHost + chat.empresa.imagenPerfil" alt="" width="70px" height="70px"
-                              style="border-radius: 50%;">
-                          </div>
-                          <div class="col-9 col-sm-8 my-auto">
-                            <h4>{{chat.empresa.organizacion}}</h4>
-                          </div>
-                          <div class="col-3 col-sm-2 my-auto">
-                            <a (click)="borrarChat(chat._id)">
-                              <p class="btnVaciarCHAT text-right">
-                                <i class="fas fa-trash-alt"></i>
-                              </p>
-                            </a>
-                          </div>
+                      <div class="row listaMensajes" (click)="irChat(chat._id)">
+                        <div class="col-sm-2 my-auto d-none d-sm-block">
+                          <img *ngIf="chat.empresa.imagenPerfil == null" src="../../../assets/img/empresa1.jpg" alt=""
+                            width="70px" height="70px" style="border-radius: 50%;">
+                          <img *ngIf="chat.empresa.imagenPerfil != null" [src]="backendHost + chat.empresa.imagenPerfil"
+                            alt="" width="70px" height="70px" style="border-radius: 50%;">
                         </div>
-                      </a>
+                        <div class="col-9 col-sm-8 my-auto">
+                          <h4>{{chat.empresa.organizacion}}</h4>
+                        </div>
+                        <div class="col-3 col-sm-2 my-auto">
+                          <p class="btnVaciarCHAT text-right">
+                            <a (click)="borrarChat(chat._id); $event.stopPropagation();">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </ng-container>
                   <ng-container *ngIf="log_empresa">
                     <div class="col-12 mb-2" *ngFor="let chat of mis_chats">
-                      <a (click)="irChat(chat._id)">
-                        <div class="row listaMensajes">
-                          <div class="col-sm-2 my-auto d-none d-sm-block">
-                            <img *ngIf="chat.estudiante.imagenPerfil == null" src="../../../../assets/img/usuario.png"
-                              alt="" width="70px" height="70px" style="border-radius: 50%;">
-                            <img *ngIf="chat.estudiante.imagenPerfil != null"
-                              [src]="backendHost + chat.estudiante.imagenPerfil" alt="" width="70px" height="70px"
-                              style="border-radius: 50%;">
-                          </div>
-                          <div class="col-9 col-sm-8 my-auto">
-                            <h4>{{chat.estudiante.nombre}} {{chat.estudiante.apellido}}</h4>
-                          </div>
-                          <div class="col-3 col-sm-2 my-auto">
-                            <a (click)="borrarChat(chat._id)">
-                              <p class="btnVaciarCHAT text-right">
-                                <i class="fas fa-trash-alt"></i>
-                              </p>
-                            </a>
-                          </div>
+                      <div class="row listaMensajes" (click)="irChat(chat._id)">
+                        <div class="col-sm-2 my-auto d-none d-sm-block">
+                          <img *ngIf="chat.estudiante.imagenPerfil == null" src="../../../../assets/img/usuario.png"
+                            alt="" width="70px" height="70px" style="border-radius: 50%;">
+                          <img *ngIf="chat.estudiante.imagenPerfil != null"
+                            [src]="backendHost + chat.estudiante.imagenPerfil" alt="" width="70px" height="70px"
+                            style="border-radius: 50%;">
                         </div>
-                      </a>
+                        <div class="col-9 col-sm-8 my-auto">
+                          <h4>{{chat.estudiante.nombre}} {{chat.estudiante.apellido}}</h4>
+                        </div>
+                        <div class="col-3 col-sm-2 my-auto">
+                          <p class="btnVaciarCHAT text-right">
+                            <a (click)="borrarChat(chat._id); $event.stopPropagation();">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </ng-container>
                 </ng-container>

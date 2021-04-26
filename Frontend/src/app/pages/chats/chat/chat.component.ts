@@ -51,6 +51,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.log_estudiante = false;
       this.log_empresa = true;
     }
+    localStorage.setItem('TIPO_USUARIO', this.tipo_usuario);
     this.userChat.idChat = this.id_chat;
     this.userChat.from = this.id_usuario;
     this.chatService.llamarMensajes(this.id_chat);

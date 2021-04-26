@@ -79,4 +79,14 @@ export class VistaEstudianteComponent implements OnInit {
     console.log(this.vista);
   }
 
+  logOutCompany() {
+    this.authService.logoutCompany()
+      .subscribe(success => {
+        if (success) {
+          this.authService.removeTokens();
+          window.location.href = 'login/company';
+        }
+      })
+  }
+
 }
